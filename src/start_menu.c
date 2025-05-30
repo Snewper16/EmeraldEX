@@ -46,7 +46,6 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "ui_stat_editor.h"
 
 // Menu actions
 enum
@@ -63,8 +62,7 @@ enum
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
-    MENU_ACTION_PYRAMID_BAG,
-    MENU_ACTION_STAT_EDITOR,
+    MENU_ACTION_PYRAMID_BAG
 };
 
 // Save status
@@ -105,7 +103,7 @@ static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
-static bool8 StartMenuStatEditorCallback(void);
+static bool8 StartMenuUiMenuCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -182,6 +180,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .baseBlock = 0x8
 };
 
+static const u8 sText_NewMenu[] = _("My Menu");
 static const struct MenuAction sStartMenuItems[] =
 {
     [MENU_ACTION_POKEDEX]         = {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
@@ -196,8 +195,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_PLAYER_LINK]     = {gText_MenuPlayer,  {.u8_void = StartMenuLinkModePlayerNameCallback}},
     [MENU_ACTION_REST_FRONTIER]   = {gText_MenuRest,    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_RETIRE_FRONTIER] = {gText_MenuRetire,  {.u8_void = StartMenuBattlePyramidRetireCallback}},
-    [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
-    [MENU_ACTION_STAT_EDITOR]     = {gText_StatEditor,  {.u8_void = StartMenuStatEditorCallback}}
+    [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}}
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -333,8 +331,6 @@ static void BuildNormalStartMenu(void)
     {
         AddStartMenuAction(MENU_ACTION_POKENAV);
     }
-    
-    //AddStartMenuAction(MENU_ACTION_STAT_EDITOR);
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -695,7 +691,7 @@ static bool8 StartMenuPokeNavCallback(void)
         PlayRainStoppingSoundEffect();
         RemoveExtraStartMenuWindows();
         CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_InitPokeNav);  // Display PokeNav
+        SetMainCallback2(CB2_InitPokeNav);  // Display PokéNav
 
         return TRUE;
     }
@@ -1380,7 +1376,7 @@ static void ShowSaveInfoWindow(void)
 
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
     {
-        // Print pokedex count
+        // Print Pokédex count
         yOffset += 16;
         AddTextPrinterParameterized(sSaveInfoWindowId, FONT_NORMAL, gText_SavingPokedex, 0, yOffset, TEXT_SKIP_DRAW, NULL);
         BufferSaveMenuText(SAVE_MENU_CAUGHT, gStringVar4, color);
@@ -1442,10 +1438,4 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 {
     list[*pos] = newEntry;
     (*pos)++;
-}
-
-static bool8 StartMenuStatEditorCallback(void)
-{
-    CreateTask(Task_OpenStatEditorFromStartMenu, 0);
-    return TRUE;
 }
