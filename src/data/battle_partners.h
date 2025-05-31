@@ -40,7 +40,7 @@
         {
             {
 #line 15
-            .species = SPECIES_METANG,
+            .species = SPECIES_GLIMMORA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 19
             .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
@@ -49,35 +49,35 @@
 #line 17
             .lvl = 42,
 #line 16
-            .nature = NATURE_BRAVE,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 20
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+                MOVE_RAPID_SPIN,
+                MOVE_ROCK_SLIDE,
+                MOVE_MORTAL_SPIN,
+                MOVE_SPIKES,
             },
             },
             {
 #line 25
-            .species = SPECIES_SKARMORY,
+            .species = SPECIES_CRUSTLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 29
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
+            .ev = TRAINER_PARTY_EVS(252, 252, 6, 0, 0, 0),
 #line 28
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 27
             .lvl = 43,
 #line 26
-            .nature = NATURE_IMPISH,
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 30
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
+                MOVE_X_SCISSOR,
+                MOVE_STONE_EDGE,
+                MOVE_SHELL_SMASH,
                 MOVE_PROTECT,
-                MOVE_STEEL_WING,
             },
             },
             {
@@ -95,10 +95,10 @@
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 40
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
-                MOVE_DRAGON_CLAW,
+                MOVE_IRON_HEAD,
+                MOVE_ROCK_SLIDE,
+                MOVE_THUNDER_PUNCH,
+                MOVE_EARTHQUAKE,
             },
             },
         },
