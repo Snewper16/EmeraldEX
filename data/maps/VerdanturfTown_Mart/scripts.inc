@@ -15,7 +15,6 @@ VerdanturfTown_Mart_EventScript_Clerk::
 VerdanturfTown_Mart_Pokemart:
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_NEST_BALL
-	.2byte ITEM_FRIEND_BALL
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
@@ -25,17 +24,6 @@ VerdanturfTown_Mart_Pokemart:
 	.2byte ITEM_REPEL
 	.2byte ITEM_X_SP_ATK
 	.2byte ITEM_FLUFFY_TAIL
-	.2byte ITEM_LEAF_STONE
-	.2byte ITEM_DAWN_STONE
-	.2byte ITEM_METRONOME
-	.2byte ITEM_DESTINY_KNOT
-	.2byte ITEM_SHED_SHELL
-	.2byte ITEM_STICKY_BARB
-	.2byte ITEM_FLOAT_STONE
-	.2byte ITEM_ELECTRIC_SEED
-	.2byte ITEM_PSYCHIC_SEED
-	.2byte ITEM_GRASSY_SEED
-	.2byte ITEM_MISTY_SEED
 	pokemartlistend
 
 VerdanturfTown_Mart_EventScript_Boy::

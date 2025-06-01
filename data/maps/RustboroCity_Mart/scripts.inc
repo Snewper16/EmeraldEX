@@ -19,18 +19,16 @@ RustboroCity_Mart_EventScript_PokemartBasic::
 	.align 2
 RustboroCity_Mart_Pokemart_Basic:
 	.2byte ITEM_POKE_BALL
-	.2byte ITEM_NEST_BALL
 	.2byte ITEM_POTION
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
 	.2byte ITEM_X_SPEED
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 RustboroCity_Mart_EventScript_PokemartExpanded::
 	pokemart RustboroCity_Mart_Pokemart_Expanded
@@ -43,9 +41,6 @@ RustboroCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_TIMER_BALL
 	.2byte ITEM_REPEAT_BALL
-	.2byte ITEM_QUICK_BALL
-	.2byte ITEM_HEAL_BALL
-	.2byte ITEM_NEST_BALL
 	.2byte ITEM_POTION
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
@@ -55,24 +50,8 @@ RustboroCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_X_SPEED
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_DUSK_STONE
-	.2byte ITEM_UPGRADE
-    .2byte ITEM_PROTECTOR
-	.2byte ITEM_LINKING_CORD
-	.2byte ITEM_UTILITY_UMBRELLA
-	.2byte ITEM_HEAVY_DUTY_BOOTS
-	.2byte ITEM_PROTECTIVE_PADS
-	.2byte ITEM_ASSAULT_VEST
-	.2byte ITEM_PUNCHING_GLOVE
-	.2byte ITEM_CLEAR_AMULET
-	.2byte ITEM_HEAT_ROCK
-	.2byte ITEM_DAMP_ROCK
-	.2byte ITEM_SMOOTH_ROCK
-	.2byte ITEM_ICY_ROCK
-	.2byte ITEM_PURE_INCENSE
-	.2byte ITEM_LUCK_INCENSE
 	pokemartlistend
-	
+
 RustboroCity_Mart_EventScript_PokefanF::
 	msgbox RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish, MSGBOX_NPC
 	end

@@ -37,8 +37,6 @@ PetalburgCity_Mart_EventScript_ExpandedItems::
 PetalburgCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_LEVEL_BALL
-	.2byte ITEM_FAST_BALL
 	.2byte ITEM_POTION
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
@@ -50,19 +48,6 @@ PetalburgCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	.2byte ITEM_ORANGE_MAIL
-	.2byte ITEM_BINDING_BAND
-    .2byte ITEM_WEAKNESS_POLICY
-    .2byte ITEM_BLUNDER_POLICY
-	.2byte ITEM_CHOICE_BAND
-	.2byte ITEM_CHOICE_SPECS
-	.2byte ITEM_CHOICE_SCARF
-	.2byte ITEM_SEA_INCENSE
-	.2byte ITEM_LAX_INCENSE
-	.2byte ITEM_ODD_INCENSE
-	.2byte ITEM_ROCK_INCENSE
-	.2byte ITEM_FULL_INCENSE
-	.2byte ITEM_WAVE_INCENSE
-	.2byte ITEM_ROSE_INCENSE
 	pokemartlistend
 
 PetalburgCity_Mart_EventScript_Woman::
@@ -94,3 +79,4 @@ PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
 	.string "If you walk around with a poisoned\n"
 	.string "POKéMON, it will lose HP until it faints.\l"
 	.string "Take some ANTIDOTES with you.$"
+

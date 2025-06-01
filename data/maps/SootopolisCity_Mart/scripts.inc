@@ -22,15 +22,7 @@ SootopolisCity_Mart_Pokemart:
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	.2byte ITEM_SHADOW_MAIL
-	.2byte ITEM_TM_STONE_EDGE
-	.2byte ITEM_TM_POWER_GEM
-	.2byte ITEM_TM_HYPNOSIS
-	.2byte ITEM_TM_VENOSHOCK
-	.2byte ITEM_TM_PSYSHOCK
-	.2byte ITEM_TM_DRAGON_PULSE
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 SootopolisCity_Mart_EventScript_FatMan::
 	lock

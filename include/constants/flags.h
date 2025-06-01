@@ -55,7 +55,7 @@
 #define FLAG_TERA_ORB_FREE    0x29 // Unused Flag
 #define FLAG_SLEEP_CLAUSE    0x2A // Unused Flag
 #define FLAG_NO_WHITEOUT    0x2B // Unused Flag
-#define FLAG_SKY_BATTLES    0x2C // Unused Flag
+#define FLAG_SKY_BATTLE    0x2C // Unused Flag
 #define FLAG_HEAL_AFTER_FOLLOWER_BATTLE    0x2D // Unused Flag
 #define FLAG_PARTNER_WILD_BATTLES    0x2E // Unused Flag
 #define FLAG_EXP_SHARE_G6    0x2F // Unused Flag
@@ -66,7 +66,7 @@
 #define FLAG_POKE_RIDER    0x34 // Unused Flag
 #define FLAG_SHINY    0x35 // Unused Flag
 #define FLAG_NO_SHINY    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_SUMMARY_STAT_INFO    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag

@@ -2293,13 +2293,13 @@ void GetNpcContestantLocalId(void)
     switch (contestant)
     {
     case 0:
-        localId = LOCALID_CONTESTANT_1;
+        localId = 3;
         break;
     case 1:
-        localId = LOCALID_CONTESTANT_2;
+        localId = 4;
         break;
     case 2:
-        localId = LOCALID_CONTESTANT_3;
+        localId = 5;
         break;
     default: // Invalid
         localId = 100;
@@ -2500,10 +2500,10 @@ void LoadLinkContestPlayerPalettes(void)
     int version;
     struct Sprite *sprite;
     static const u8 sContestantLocalIds[CONTESTANT_COUNT] = {
-        LOCALID_CONTESTANT_1,
-        LOCALID_CONTESTANT_2,
-        LOCALID_CONTESTANT_3,
-        LOCALID_CONTESTANT_4,
+        3,
+        4,
+        5,
+        14,
     };
 
     // gReservedSpritePaletteCount = 12;
