@@ -15,13 +15,25 @@ SlateportCity_Mart_EventScript_Clerk::
 SlateportCity_Mart_Pokemart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_DIVE_BALL
+	.2byte ITEM_LURE_BALL
+	.2byte ITEM_HEAVY_BALL
 	.2byte ITEM_POTION
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
 	.2byte ITEM_HARBOR_MAIL
+	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_PRISM_SCALE
+	.2byte ITEM_PROTECTOR
+	.2byte ITEM_DRAGON_SCALE
+	.2byte ITEM_GALARICA_CUFF
+	.2byte ITEM_GALARICA_WREATH
+	.2byte ITEM_SWEET_APPLE
+	.2byte ITEM_TART_APPLE
+	.2byte ITEM_SYRUPY_APPLE
 	pokemartlistend
 
 SlateportCity_Mart_EventScript_BlackBelt::

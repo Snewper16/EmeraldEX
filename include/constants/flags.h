@@ -43,32 +43,32 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_INVERSE_BATTLE    0x20 // Unused Flag
-#define FLAG_DOUBLE_WILDS    0x21 // Unused Flag
-#define FLAG_SMART_WILD_AI    0x22 // Unused Flag
-#define FLAG_DISABLE_BAG    0x23 // Unused Flag
-#define FLAG_DISABLE_CATCH    0x24 // Unused Flag
-#define FLAG_NO_RUNNING    0x25 // Unused Flag
-#define FLAG_AI_BATTLE    0x26 // Unused Flag
-#define FLAG_DYNAMAX_BATTLE    0x27 // Unused Flag
-#define FLAG_TERA_ORB_CHARGED    0x28 // Unused Flag
-#define FLAG_TERA_ORB_FREE    0x29 // Unused Flag
-#define FLAG_SLEEP_CLAUSE    0x2A // Unused Flag
-#define FLAG_NO_WHITEOUT    0x2B // Unused Flag
-#define FLAG_SKY_BATTLE    0x2C // Unused Flag
-#define FLAG_HEAL_AFTER_FOLLOWER_BATTLE    0x2D // Unused Flag
-#define FLAG_PARTNER_WILD_BATTLES    0x2E // Unused Flag
-#define FLAG_EXP_SHARE_G6    0x2F // Unused Flag
-#define FLAG_PAUSE_TIME    0x30 // Unused Flag
-#define FLAG_NO_ENCOUNTER    0x31 // Unused Flag
-#define FLAG_NO_TRAINERS    0x32 // Unused Flag
-#define FLAG_NO_COLLISION    0x33 // Unused Flag
-#define FLAG_POKE_RIDER    0x34 // Unused Flag
-#define FLAG_SHINY    0x35 // Unused Flag
-#define FLAG_NO_SHINY    0x36 // Unused Flag
-#define FLAG_SUMMARY_STAT_INFO    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_INVERSE_BATTLE    0x20 // Inverse Battle Enable
+#define FLAG_DOUBLE_WILDS    0x21 // Double Wild Battle Enable
+#define FLAG_SMART_WILD_AI    0x22 // Smart Wild AI Enable
+#define FLAG_DISABLE_BAG    0x23 // Disable Bag Usage
+#define FLAG_DISABLE_CATCH    0x24 // Disable Catching
+#define FLAG_NO_RUNNING    0x25 // Disable Fleeing
+#define FLAG_AI_BATTLE    0x26 // AI VS AI Enable
+#define FLAG_DYNAMAX_BATTLE    0x27 // Dynamax Battle Enable
+#define FLAG_TERA_ORB_CHARGED    0x28 // Tera Orb Charged
+#define FLAG_TERA_ORB_FREE    0x29 // Tera Orb Infinite Use
+#define FLAG_SLEEP_CLAUSE    0x2A // Sleep Clause Enable
+#define FLAG_NO_WHITEOUT    0x2B // Whiteout Enable
+#define FLAG_SKY_BATTLE    0x2C // Sky Battle Enable
+#define FLAG_HEAL_AFTER_FOLLOWER_BATTLE    0x2D // Partner NPC Heals
+#define FLAG_PARTNER_WILD_BATTLES    0x2E // Partner Joins in Wild Battles
+#define FLAG_EXP_SHARE_G6    0x2F // EXP Share G6+
+#define FLAG_PAUSE_TIME    0x30 // Freeze Time
+#define FLAG_NO_ENCOUNTER    0x31 // Disable Wild Encounters
+#define FLAG_NO_TRAINERS    0x32 // Disable Trainer Sight Range
+#define FLAG_NO_COLLISION    0x33 // Disable Collision
+#define FLAG_POKE_RIDER    0x34 // Enable PokeRider
+#define FLAG_SHINY    0x35 // Force Shiny
+#define FLAG_NO_SHINY    0x36 // Force Nonshiny
+#define FLAG_SUMMARY_STAT_INFO    0x37 // Stat Info Enable
+#define FLAG_RECEIVED_EON_TICKET    0x38 // Eon Ticket Received
+#define FLAG_RECEIVED_EVENT_TICKETS    0x39 // Event Tickets Received
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
@@ -81,16 +81,16 @@
 #define FLAG_UNUSED_0x043    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
-#define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_HIDE_REGIGIGAS    0x46 // Hide Regigigas
+#define FLAG_DEFEATED_REGIGIGAS    0x47 // Beat Regigigas
+#define FLAG_HIDE_REGIELEKI    0x48 // Hide Regigigas
+#define FLAG_DEFEATED_REGIELEKI    0x49 // Beat Regigigas
+#define FLAG_HIDE_REGIDRAGO    0x4A // Hide Regidrago
+#define FLAG_DEFEATED_REGIDRAGO    0x4B // Beat Regidrago
+#define FLAG_HIDE_JIRACHI    0x4C // Hide Jirachi
+#define FLAG_DEFEATED_JIRACHI    0x4D // Beat Jirachi
+#define FLAG_HIDE_OGERPON    0x4E // Hide Ogerpon
+#define FLAG_DEFEATED_OGERPON    0x4F // Beat Ogerpon
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -295,7 +295,7 @@
 #define FLAG_RECEIVED_TM_THIEF               0x10D
 #define FLAG_CONTEST_SKETCH_CREATED          0x10E  // Set but never read
 #define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F
-#define FLAG_RECEIVED_EXP_SHARE              0x110
+#define FLAG_RECEIVED_ABILITY_PATCH          0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_RECEIVED_RUNNING_SHOES          0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
@@ -656,9 +656,9 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
+#define FLAG_FIRE_MASK     0x264 // Hearthflame Mask
+#define FLAG_WATER_MASK    0x265 // Wellspring Mask
+#define FLAG_ROCK_MASK     0x266 // Cornerstone Mask
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag

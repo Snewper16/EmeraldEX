@@ -1,4 +1,6 @@
 PetalburgWoods_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, PetalburgWoods_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgWoods_OnTransition
 	.byte 0
 
 PetalburgWoods_EventScript_DevonResearcherLeft::
@@ -88,7 +90,7 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
+	giveitem ITEM_EXP_SHARE
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
 	end
@@ -315,6 +317,54 @@ PetalburgWoods_EventScript_JamesRematch::
 	msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
 	end
 
+PetalburgWoods_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, PetalburgWoods_EventScript_TryRemoveOgerpon
+	end
+
+PetalburgWoods_EventScript_TryRemoveOgerpon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject LOCALID_OGERPON
+	return
+
+PetalburgWoods_OnTransition:
+	call_if_unset FLAG_DEFEATED_OGERPON, PetalburgWoods_EventScript_ShowOgerpon
+	end
+
+PetalburgWoods_EventScript_ShowOgerpon::
+	clearflag FLAG_HIDE_OGERPON
+	return
+
+PetalburgWoods_EventScript_Ogerpon::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_OGERPON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_OGERPON
+	setwildbattle SPECIES_OGERPON, 15
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PetalburgWoods_EventScript_DefeatedOgerpon
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, PetalburgWoods_EventScript_RanFromOgerpon
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, PetalburgWoods_EventScript_RanFromOgerpon
+	setflag FLAG_DEFEATED_OGERPON
+	release
+	end
+
+PetalburgWoods_EventScript_DefeatedOgerpon::
+	setflag FLAG_DEFEATED_OGERPON
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+PetalburgWoods_EventScript_RanFromOgerpon::
+	setvar VAR_0x8004, SPECIES_OGERPON
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
 PetalburgWoods_Text_NotAOneToBeFound:
 	.string "Hmmm…\n"
 	.string "Not a one to be found…$"
@@ -364,8 +414,8 @@ PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "That was awfully close!\p"
 	.string "Thanks to you, he didn't rob me of\n"
 	.string "these important papers.\p"
-	.string "I know, I'll give you a GREAT BALL as\n"
-	.string "my thanks!$"
+	.string "I know, I'll give you an EXP. SHARE\n"
+	.string "as my thanks!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
 	.string "Didn't that TEAM AQUA thug say\n"

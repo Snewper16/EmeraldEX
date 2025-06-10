@@ -7032,7 +7032,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 80,
         .baseSpAttack  = 80,
         .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_WATER),
+        .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
         .catchRate = 30,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 240,
@@ -7099,6 +7099,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPhioneLevelUpLearnset,
         .teachableLearnset = sPhioneTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_MANAPHY}),
     },
 
     [SPECIES_MANAPHY] =
@@ -7109,7 +7110,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 100,
         .baseSpAttack  = 100,
         .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_WATER),
+        .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
         .catchRate = 3,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 300,

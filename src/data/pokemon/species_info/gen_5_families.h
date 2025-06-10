@@ -12,7 +12,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 100,
         .baseSpAttack  = 100,
         .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FIRE),
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_FIRE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
         .evYield_HP = 3,
@@ -657,7 +657,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sDewottLevelUpLearnset,
         .teachableLearnset = sDewottTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT},
-                                {EVO_NONE, 0, SPECIES_SAMUROTT_HISUI}),
+                                {EVO_ITEM, ITEM_WATER_STONE, SPECIES_SAMUROTT_HISUI}),
     },
 
     [SPECIES_SAMUROTT] =
@@ -4159,7 +4159,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sPetililTeachableLearnset,
         .eggMoveLearnset = sPetililEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT},
-                                {EVO_NONE, 0, SPECIES_LILLIGANT_HISUI}),
+                                {EVO_ITEM, ITEM_LEAF_STONE, SPECIES_LILLIGANT_HISUI}),
     },
 
     [SPECIES_LILLIGANT] =
@@ -4504,8 +4504,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sBasculinWhiteStripedTeachableLearnset,
         .eggMoveLearnset = sBasculinWhiteStripedEggMoveLearnset,
         .formSpeciesIdTable = sBasculinFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_BASCULEGION_M, CONDITIONS({IF_RECOIL_DAMAGE_GE, 294}, {IF_GENDER, MON_MALE})},
-                                {EVO_LEVEL, 0, SPECIES_BASCULEGION_F, CONDITIONS({IF_RECOIL_DAMAGE_GE, 294}, {IF_GENDER, MON_FEMALE})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_BASCULEGION_M, CONDITIONS({IF_GENDER, MON_MALE})},
+                                {EVO_LEVEL, 30, SPECIES_BASCULEGION_F, CONDITIONS({IF_GENDER, MON_FEMALE})}),
     },
 
     [SPECIES_BASCULEGION_M] =
@@ -5840,7 +5840,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 30,
         .baseSpAttack  = 30,
         .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
+        .types = MON_TYPES(TYPE_ROCK, TYPE_GHOST),
         .catchRate = 190,
         .expYield = 61,
         .evYield_Defense = 1,
@@ -5897,7 +5897,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sYamaskGalarTeachableLearnset,
         .eggMoveLearnset = sYamaskGalarEggMoveLearnset,
         .formSpeciesIdTable = sYamaskFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_SCRIPT_TRIGGER, 0, SPECIES_RUNERIGUS, CONDITIONS({IF_CURRENT_DAMAGE_GE, 49})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_RUNERIGUS}),
     },
 
     [SPECIES_RUNERIGUS] =
@@ -5908,7 +5908,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 30,
         .baseSpAttack  = 50,
         .baseSpDefense = 105,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
+        .types = MON_TYPES(TYPE_ROCK, TYPE_GHOST),
         .catchRate = 90,
         .expYield = 169,
         .evYield_Defense = 2,
@@ -8340,7 +8340,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sKarrablastLevelUpLearnset,
         .teachableLearnset = sKarrablastTeachableLearnset,
         .eggMoveLearnset = sKarrablastEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_SHELMET})}),
     },
 
     [SPECIES_ESCAVALIER] =
@@ -10402,7 +10402,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sShelmetLevelUpLearnset,
         .teachableLearnset = sShelmetTeachableLearnset,
         .eggMoveLearnset = sShelmetEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ACCELGOR, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_ACCELGOR, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_KARRABLAST})}),
     },
 
     [SPECIES_ACCELGOR] =
@@ -11107,7 +11107,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sBisharpLevelUpLearnset,
         .teachableLearnset = sBisharpTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_KINGAMBIT, CONDITIONS({IF_DEFEAT_X_WITH_ITEMS, SPECIES_BISHARP, ITEM_LEADERS_CREST, 3})}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEADERS_CREST, SPECIES_KINGAMBIT}),
     },
 
 #if P_GEN_9_CROSS_EVOS
@@ -11314,8 +11314,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sRuffletLevelUpLearnset,
         .teachableLearnset = sRuffletTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY},
-                                {EVO_NONE, 0, SPECIES_BRAVIARY_HISUI}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 48, SPECIES_BRAVIARY},
+                                {EVO_ITEM, ITEM_DAWN_STONE, SPECIES_BRAVIARY_HISUI}),
     },
 
     [SPECIES_BRAVIARY] =
@@ -11522,7 +11522,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sVullabyLevelUpLearnset,
         .teachableLearnset = sVullabyTeachableLearnset,
         .eggMoveLearnset = sVullabyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_MANDIBUZZ}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 48, SPECIES_MANDIBUZZ}),
     },
 
     [SPECIES_MANDIBUZZ] =
@@ -11813,7 +11813,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sDeinoLevelUpLearnset,
         .teachableLearnset = sDeinoTeachableLearnset,
         .eggMoveLearnset = sDeinoEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_ZWEILOUS}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_ZWEILOUS}),
     },
 
     [SPECIES_ZWEILOUS] =
@@ -11880,7 +11880,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sZweilousLevelUpLearnset,
         .teachableLearnset = sZweilousTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 64, SPECIES_HYDREIGON}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_HYDREIGON}),
     },
 
     [SPECIES_HYDREIGON] =
@@ -12032,7 +12032,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sLarvestaLevelUpLearnset,
         .teachableLearnset = sLarvestaTeachableLearnset,
         .eggMoveLearnset = sLarvestaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 59, SPECIES_VOLCARONA}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_VOLCARONA}),
     },
 
     [SPECIES_VOLCARONA] =

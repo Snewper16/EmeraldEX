@@ -26,6 +26,12 @@ BattleFrontier_Mart_Pokemart:
 	.2byte ITEM_ZINC
 	.2byte ITEM_CARBOS
 	.2byte ITEM_HP_UP
+	.2byte ITEM_TM_BUG_BUZZ
+	.2byte ITEM_TM_IRON_HEAD
+	.2byte ITEM_TM_STEALTH_ROCK
+	.2byte ITEM_TM_TRICK_ROOM
+	.2byte ITEM_TM_GUARD_SWAP
+	.2byte ITEM_TM_POWER_SWAP
 	pokemartlistend
 
 BattleFrontier_Mart_EventScript_OldMan::
@@ -42,6 +48,32 @@ BattleFrontier_Mart_EventScript_OldWoman::
 
 BattleFrontier_Mart_EventScript_Boy::
 	msgbox BattleFrontier_Mart_Text_FacilitiesDontAllowItems, MSGBOX_NPC
+	end
+
+BattleFrontier_Mart_EventScript_TicketGuy::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_EVENT_TICKETS, BattleFrontier_Mart_EventScript_TicketGuyAfterGivenTickets
+	msgbox BattleFrontier_Mart_Text_TicketGuy, MSGBOX_NPC
+	giveitem ITEM_OLD_SEA_MAP
+	setflag FLAG_RECEIVED_OLD_SEA_MAP
+	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+	giveitem ITEM_MYSTIC_TICKET
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	giveitem ITEM_EON_TICKET
+	setflag FLAG_RECEIVED_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	giveitem ITEM_AURORA_TICKET
+	setflag FLAG_RECEIVED_AURORA_TICKET
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	setflag FLAG_RECEIVED_EVENT_TICKETS
+	release
+	end
+
+BattleFrontier_Mart_EventScript_TicketGuyAfterGivenTickets::
+	msgbox BattleFrontier_Mart_Text_TicketGuyAfterGivenTickets, MSGBOX_NPC
+	release
 	end
 
 BattleFrontier_Mart_Text_ChaperonGrandson:
@@ -63,3 +95,11 @@ BattleFrontier_Mart_Text_FacilitiesDontAllowItems:
 	.string "That rule makes things tougher than\n"
 	.string "they already are!$"
 
+BattleFrontier_Mart_Text_TicketGuy:
+	.string "Shhh... just take these, you'll\n"
+	.string "thank me later.$"
+
+BattleFrontier_Mart_Text_TicketGuyAfterGivenTickets:
+	.string "Take those to the ferry in Lilycove City.\p"
+	.string "The ferry should be able to take you\n"
+	.string "to the places mentioned on these things.$"

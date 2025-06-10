@@ -3,50 +3,50 @@ static const struct PyramidWildMon sOpenLevelWildMons_Round1[] =
     {
         .species = SPECIES_PLUSLE,
         .lvl = 15,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_WAVE, MOVE_SPARK, MOVE_ENCORE, MOVE_NONE}
+        .abilityNum = ABILITY_LIGHTNINGROD,
+        .moves = {MOVE_THUNDER_WAVE, MOVE_CHARGE_BEAM, MOVE_GRASS_KNOT, MOVE_PROTECT}
     },
     {
         .species = SPECIES_MINUN,
         .lvl = 15,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_WAVE, MOVE_THUNDERBOLT, MOVE_QUICK_ATTACK, MOVE_NONE}
+        .abilityNum = ABILITY_VOLT_ABSORB,
+        .moves = {MOVE_THUNDER_WAVE, MOVE_CHARGE_BEAM, MOVE_GRASS_KNOT, MOVE_PROTECT}
     },
     {
-        .species = SPECIES_PIKACHU,
+        .species = SPECIES_VOLBEAT,
         .lvl = 13,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_WAVE, MOVE_THUNDERBOLT, MOVE_SLAM, MOVE_NONE}
+        .abilityNum = ABILITY_SWARM,
+        .moves = {MOVE_CONFUSE_RAY, MOVE_CHARGE_BEAM, MOVE_DAZZLING_GLEAM, MOVE_STRUGGLE_BUG}
     },
     {
-        .species = SPECIES_ELECTABUZZ,
+        .species = SPECIES_ILLUMISE,
         .lvl = 13,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_PUNCH, MOVE_SWIFT, MOVE_SCREECH, MOVE_NONE}
+        .abilityNum = ABILITY_TINTED_LENS,
+        .moves = {MOVE_CONFUSE_RAY, MOVE_MOONLIGHT, MOVE_SUNNY_DAY, MOVE_STRUGGLE_BUG}
     },
     {
-        .species = SPECIES_VILEPLUME,
+        .species = SPECIES_SAMUROTT,
         .lvl = 8,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_STUN_SPORE, MOVE_GIGA_DRAIN, MOVE_PROTECT, MOVE_NONE}
+        .abilityNum = ABILITY_SHELL_ARMOR,
+        .moves = {MOVE_RAZOR_SHELL, MOVE_SLASH, MOVE_NIGHT_SLASH, MOVE_FURY_CUTTER}
+    },
+    {
+        .species = SPECIES_TYPHLOSION,
+        .lvl = 8,
+        .abilityNum = ABILITY_FLASH_FIRE,
+        .moves = {MOVE_FLAME_WHEEL, MOVE_DIG, MOVE_QUICK_ATTACK, MOVE_SMOKESCREEN}
+    },
+    {
+        .species = SPECIES_DECIDUEYE,
+        .lvl = 6,
+        .abilityNum = ABILITY_LONG_REACH,
+        .moves = {MOVE_SPIRIT_SHACKLE, MOVE_LEAF_BLADE, MOVE_PLUCK, MOVE_SUCKER_PUNCH}
     },
     {
         .species = SPECIES_MANECTRIC,
-        .lvl = 8,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_WAVE, MOVE_THUNDER, MOVE_QUICK_ATTACK, MOVE_NONE}
-    },
-    {
-        .species = SPECIES_BRELOOM,
         .lvl = 6,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_STUN_SPORE, MOVE_FOCUS_PUNCH, MOVE_GIGA_DRAIN, MOVE_MACH_PUNCH}
-    },
-    {
-        .species = SPECIES_JOLTEON,
-        .lvl = 6,
-        .abilityNum = ABILITY_RANDOM,
-        .moves = {MOVE_THUNDER_WAVE, MOVE_THUNDER, MOVE_PIN_MISSILE, MOVE_QUICK_ATTACK}
+        .abilityNum = ABILITY_STATIC,
+        .moves = {MOVE_THUNDER_FANG, MOVE_FIRE_FANG, MOVE_ICE_FANG, MOVE_CRUNCH}
     }
 };
 

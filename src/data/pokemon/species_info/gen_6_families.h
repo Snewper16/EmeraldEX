@@ -1672,7 +1672,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 42,                                                    \
         .baseSpAttack  = 61,                                                    \
         .baseSpDefense = 79,                                                    \
-        .types = MON_TYPES(TYPE_FAIRY),                                         \
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_GRASS),                                         \
         .catchRate = 225,                                                       \
         .expYield = 61,                                                         \
         .evYield_SpDefense = 1,                                                 \
@@ -1772,7 +1772,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     },
 
 #define FLOETTE_MISC_INFO(form, FORM, iconPal)                                  \
-        .types = MON_TYPES(TYPE_FAIRY),                                         \
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_GRASS),                                         \
         .catchRate = 120,                                                       \
         .evYield_SpDefense = 2,                                                 \
         .genderRatio = MON_FEMALE,                                              \
@@ -1913,7 +1913,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 75,                                                    \
         .baseSpAttack  = 112,                                                   \
         .baseSpDefense = 154,                                                   \
-        .types = MON_TYPES(TYPE_FAIRY),                                         \
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_GRASS),                                         \
         .catchRate = 45,                                                        \
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 276 : 248,                \
         .evYield_SpDefense = 3,                                                 \
@@ -3728,7 +3728,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 70,
         .baseSpAttack  = 61,
         .baseSpDefense = 43,
-        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_NORMAL),
+        .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 190,
         .expYield = 58,
         .evYield_Speed = 1,
@@ -3797,7 +3797,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 109,
         .baseSpAttack  = 109,
         .baseSpDefense = 94,
-        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_NORMAL),
+        .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 75,
         .expYield = 168,
         .evYield_Speed = 1,
@@ -4431,7 +4431,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sGoomyTeachableLearnset,
         .eggMoveLearnset = sGoomyEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_SLIGGOO},
-                                {EVO_NONE, 0, SPECIES_SLIGGOO_HISUI}),
+                                {EVO_ITEM, ITEM_METAL_COAT, SPECIES_SLIGGOO_HISUI}),
     },
 
     [SPECIES_SLIGGOO] =
@@ -5536,7 +5536,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sBergmiteTeachableLearnset,
         .eggMoveLearnset = sBergmiteEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 37, SPECIES_AVALUGG},
-                                {EVO_NONE, 0, SPECIES_AVALUGG_HISUI}),
+                                {EVO_ITEM, ITEM_BLACK_AUGURITE, SPECIES_AVALUGG_HISUI}),
     },
 
     [SPECIES_AVALUGG] =

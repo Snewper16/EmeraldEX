@@ -16,12 +16,26 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_NET_BALL
 	.2byte ITEM_DIVE_BALL
+	.2byte ITEM_DREAM_BALL
+	.2byte ITEM_BEAST_BALL
+	.2byte ITEM_LURE_BALL
 	.2byte ITEM_HYPER_POTION
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_REVIVE
 	.2byte ITEM_MAX_REPEL
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_FOCUS_SASH
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_REAPER_CLOTH
+	.2byte ITEM_LOVE_SWEET
+	.2byte ITEM_STAR_SWEET
+	.2byte ITEM_RIBBON_SWEET
 	pokemartlistend
 
 MossdeepCity_Mart_EventScript_Woman::
