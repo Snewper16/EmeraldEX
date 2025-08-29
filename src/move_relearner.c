@@ -603,21 +603,7 @@ static void DoMoveRelearnerMain(void)
             }
             else if (selection == MENU_B_PRESSED || selection == 1)
             {
-                if (P_ASK_MOVE_CONFIRMATION)
-                {
-                    sMoveRelearnerStruct->state = MENU_STATE_PRINT_STOP_TEACHING;
-                }
-                else
-                {
-                    if (sMoveRelearnerMenuState.showContestInfo == FALSE)
-                    {
-                        sMoveRelearnerStruct->state = MENU_STATE_SETUP_BATTLE_MODE;
-                    }
-                    else if (sMoveRelearnerMenuState.showContestInfo == TRUE)
-                    {
-                        sMoveRelearnerStruct->state = MENU_STATE_SETUP_CONTEST_MODE;
-                    }
-                }
+                sMoveRelearnerStruct->state = MENU_STATE_PRINT_STOP_TEACHING;
             }
         }
         break;

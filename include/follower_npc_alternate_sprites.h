@@ -19,7 +19,6 @@ static const struct FollowerNPCSpriteGraphics gFollowerNPCAlternateSprites[] =
         .acroBikeId = OBJ_EVENT_GFX_RIVAL_MAY_ACRO_BIKE,
         .surfId = OBJ_EVENT_GFX_RIVAL_MAY_SURFING,
         .underwaterId = OBJ_EVENT_GFX_MAY_UNDERWATER,
-        .hasRunningFrames = TRUE,
     },
     {
         .normalId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
@@ -27,7 +26,6 @@ static const struct FollowerNPCSpriteGraphics gFollowerNPCAlternateSprites[] =
         .acroBikeId = OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE,
         .surfId = OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING,
         .underwaterId = OBJ_EVENT_GFX_BRENDAN_UNDERWATER,
-        .hasRunningFrames = TRUE,
     },
 
 };

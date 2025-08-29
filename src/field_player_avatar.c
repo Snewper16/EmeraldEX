@@ -382,16 +382,8 @@ void PlayerStep(u8 direction, u16 newKeys, u16 heldKeys)
             DoPlayerAvatarTransition();
             if (TryDoMetatileBehaviorForcedMovement() == 0)
             {
-                if (GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FALSE)
-                {
-                    gPlayerAvatar.preventStep = TRUE;
-                    CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 1);
-                }
-                else
-                {
-                    MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
-                    PlayerAllowForcedMovementIfMovingSameDirection();
-                }
+                MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
+                PlayerAllowForcedMovementIfMovingSameDirection();
             }
         }
     }
@@ -518,11 +510,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
         else
         {
             if (collision == COLLISION_LEDGE_JUMP)
-            {
-                SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FALSE);
                 PlayerJumpLedge(direction);
-            }
-
             playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVE;
             playerAvatar->runningState = MOVING;
             return TRUE;
@@ -530,11 +518,12 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     }
     else
     {
-        if (PlayerHasFollowerNPC())
-            SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, TRUE);
-
         playerAvatar->runningState = MOVING;
         moveFunc(direction);
+        if (PlayerHasFollowerNPC()
+         && gObjectEvents[GetFollowerNPCObjectId()].invisible == FALSE
+         && FindTaskIdByFunc(Task_MoveNPCFollowerAfterForcedMovement) == TASK_NONE)
+            CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 3);
         return TRUE;
     }
 }

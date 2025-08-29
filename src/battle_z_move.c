@@ -486,9 +486,9 @@ void SetZEffect(void)
         break;
     }
     case Z_EFFECT_BOOST_CRITS:
-        if (!(gBattleMons[gBattlerAttacker].volatiles.dragonCheer || gBattleMons[gBattlerAttacker].volatiles.focusEnergy))
+        if (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY_ANY))
         {
-            gBattleMons[gBattlerAttacker].volatiles.focusEnergy = TRUE;
+            gBattleMons[gBattlerAttacker].status2 |= STATUS2_FOCUS_ENERGY;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_Z_BOOST_CRITS;
             BattleScriptPush(gBattlescriptCurrInstr + Z_EFFECT_BS_LENGTH);
             gBattlescriptCurrInstr = BattleScript_ZEffectPrintString;
@@ -549,8 +549,7 @@ u32 GetZMovePower(u32 move)
 {
     if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS)
         return 0;
-    enum BattleMoveEffects moveEffect = GetMoveEffect(move);
-    if (moveEffect == EFFECT_OHKO || moveEffect == EFFECT_SHEER_COLD)
+    if (GetMoveEffect(move) == EFFECT_OHKO)
         return 180;
 
     u32 power = GetMoveZPowerOverride(move);
@@ -569,3 +568,4 @@ u32 GetZMovePower(u32 move)
     else if (power >= 60)  return 120;
     else                   return 100;
 }
+

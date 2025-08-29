@@ -520,44 +520,12 @@ static void AnimSludgeProjectile(struct Sprite *sprite)
 {
     if (!gBattleAnimArgs[3])
         StartSpriteAnim(sprite, 2);
-    if (gBattleAnimArgs[4] && IsDoubleBattle())
-    {
-        u32 targetPartner;
-        if (IsOnPlayerSide(gBattleAnimTarget))
-        {
-            if (gBattleAnimTarget == 0)
-                targetPartner = 2;
-            else
-                targetPartner = 0;
-        }
-        else
-        {
-            if (gBattleAnimTarget == 1)
-                targetPartner = 3;
-            else
-                targetPartner = 1;
-        }
-
-        if (IsBattlerAlive(gBattleAnimTarget) && !IsBattlerAlive(targetPartner))
-        {
-            sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
-            sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET);
-        }
-        else
-        {
-            sprite->data[2] = GetBattlerSpriteCoord(targetPartner, BATTLER_COORD_X_2);
-            sprite->data[4] = GetBattlerSpriteCoord(targetPartner, BATTLER_COORD_Y_PIC_OFFSET);
-        }
-    }
-    else
-    {
-        sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
-        sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET);
-    }
 
     InitSpritePosToAnimAttacker(sprite, TRUE);
 
     sprite->data[0] = gBattleAnimArgs[2];
+    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
+    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET);
     sprite->data[5] = -30;
 
     InitAnimArcTranslation(sprite);
@@ -632,12 +600,7 @@ static void AnimSludgeBombHitParticle_Step(struct Sprite *sprite)
 static void AnimAcidPoisonDroplet(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[5])
-    {
-        if (gBattleAnimArgs[5] == 1)
-            SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &sprite->x, &sprite->y);
-        if (gBattleAnimArgs[5] == 2)
-            SetToPartnerPositions(gBattleAnimTarget, TRUE, &sprite->x, &sprite->y);
-    }
+        SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &sprite->x, &sprite->y);
 
     if (!IsOnPlayerSide(gBattleAnimAttacker))
         gBattleAnimArgs[0] = -gBattleAnimArgs[0];

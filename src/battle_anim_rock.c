@@ -11,6 +11,7 @@
 
 static void AnimTask_Rollout_Step(u8 taskId);
 static void AnimRolloutParticle(struct Sprite *);
+static void AnimRockTomb(struct Sprite *);
 static void AnimRockTomb_Step(struct Sprite *sprite);
 static void AnimRockScatter(struct Sprite *);
 static void AnimRockScatter_Step(struct Sprite *sprite);
@@ -173,7 +174,7 @@ static const union AnimCmd sAnim_Rock_Smallest[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd *const sAnims_BasicRock[] =
+static const union AnimCmd *const sAnims_BasicRock[] =
 {
     sAnim_Rock_Biggest,
     sAnim_Rock_Bigger,
@@ -934,7 +935,7 @@ static u8 GetRolloutCounter(void)
     return retVal;
 }
 
-void AnimRockTomb(struct Sprite *sprite)
+static void AnimRockTomb(struct Sprite *sprite)
 {
     StartSpriteAnim(sprite, gBattleAnimArgs[4]);
 
@@ -1076,15 +1077,4 @@ const struct SpriteTemplate gSaltCureSwirlSpriteTemplate =
     .images = NULL,
     .affineAnims = gAffineAnims_Whirlpool,
     .callback = AnimParticleInVortex,
-};
-
-const struct SpriteTemplate gRockPlumeSpriteTemplate =
-{
-    .tileTag = ANIM_TAG_ROCKS,
-    .paletteTag = ANIM_TAG_ROCKS,
-    .oam = &gOamData_AffineOff_ObjNormal_32x32,
-    .anims = gAnims_FlyingRock,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimDirtPlumeParticle,
 };

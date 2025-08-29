@@ -60,7 +60,6 @@ enum FirstTurnEventsStates
     FIRST_TURN_EVENTS_OPPORTUNIST_1,
     FIRST_TURN_EVENTS_ITEM_EFFECTS,
     FIRST_TURN_EVENTS_OPPORTUNIST_2,
-    FIRST_TURN_EVENTS_EJECT_PACK,
     FIRST_TURN_EVENTS_END,
 };
 
@@ -89,7 +88,7 @@ void SpriteCB_TrainerThrowObject(struct Sprite *sprite);
 void AnimSetCenterToCornerVecX(struct Sprite *sprite);
 void BeginBattleIntroDummy(void);
 void BeginBattleIntro(void);
-void SwitchInClearSetData(u32 battler, struct Volatiles *volatilesCopy);
+void SwitchInClearSetData(u32 battler);
 const u8* FaintClearSetData(u32 battler);
 void BattleTurnPassed(void);
 u8 IsRunningFromBattleImpossible(u32 battler);
@@ -116,7 +115,6 @@ u32 GeneratePersonalityForGender(u32 gender, u32 species);
 void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry);
 bool32 CanPlayerForfeitNormalTrainerBattle(void);
 bool32 DidPlayerForfeitNormalTrainerBattle(void);
-void BattleDebug_WonBattle(void);
 
 extern struct MultiPartnerMenuPokemon gMultiPartnerParty[MULTI_PARTY_SIZE];
 

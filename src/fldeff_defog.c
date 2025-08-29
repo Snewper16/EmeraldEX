@@ -19,7 +19,7 @@ static void FieldCallback_Defog(void);
 static void FieldMove_Defog(void);
 static void EndDefogTask(u8 taskId);
 
-bool32 SetUpFieldMove_Defog(void)
+bool8 SetUpFieldMove_Defog(void)
 {
     if (gWeather.currWeather != WEATHER_FOG_HORIZONTAL && gWeather.currWeather != WEATHER_FOG_DIAGONAL)
         return FALSE;

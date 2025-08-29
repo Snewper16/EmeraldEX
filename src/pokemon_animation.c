@@ -468,7 +468,7 @@ static void SetPosForRotation(struct Sprite *sprite, u16 index, s16 amplitudeX, 
     sprite->y2 = yAdder + amplitudeY;
 }
 
-enum BackAnim GetSpeciesBackAnimSet(u16 species)
+u8 GetSpeciesBackAnimSet(u16 species)
 {
     if (gSpeciesInfo[species].backAnimId != BACK_ANIM_NONE)
         return gSpeciesInfo[species].backAnimId - 1;
@@ -523,16 +523,11 @@ static void Task_HandleMonAnimation(u8 taskId)
         sprite->data[2] = gTasks[taskId].tSpeciesId;
         sprite->data[1] = 0;
 
-        // Task_HandleMonAnimation handles more than just KO animations,
-        // but if the counter is non-zero then only KO animations are running.
-        // This assumption is not checked.
-        if (gBattleStruct->battlerKOAnimsRunning > 0)
-            gBattleStruct->battlerKOAnimsRunning--;
         DestroyTask(taskId);
     }
 }
 
-void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, enum AnimFunctionIDs frontAnimId)
+void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, u8 frontAnimId)
 {
     u8 taskId = CreateTask(Task_HandleMonAnimation, 128);
     gTasks[taskId].tPtrHi = (u32)(sprite) >> 16;
@@ -540,17 +535,16 @@ void LaunchAnimationTaskForFrontSprite(struct Sprite *sprite, enum AnimFunctionI
     gTasks[taskId].tAnimId = frontAnimId;
 }
 
-void StartMonSummaryAnimation(struct Sprite *sprite, enum AnimFunctionIDs frontAnimId)
+void StartMonSummaryAnimation(struct Sprite *sprite, u8 frontAnimId)
 {
     // sDontFlip is expected to still be FALSE here, not explicitly cleared
     sIsSummaryAnim = TRUE;
     sprite->callback = sMonAnimFunctions[frontAnimId];
 }
 
-void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, enum BackAnim backAnimSet)
+void LaunchAnimationTaskForBackSprite(struct Sprite *sprite, u8 backAnimSet)
 {
-    u8 nature, taskId, battler;
-    enum AnimFunctionIDs animId;
+    u8 nature, taskId, animId, battler;
 
     taskId = CreateTask(Task_HandleMonAnimation, 128);
     gTasks[taskId].tPtrHi = (u32)(sprite) >> 16;
