@@ -303,7 +303,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_MODEST,
                 .evs = {252, 0, 0, 0, 252, 6},
-                .moves = {MOVE_SUNNY_DAY, MOVE_MOONLIGHT, MOVE_PSYSHOCK, MOVE_SHADOW_BALL},
+                .moves = {MOVE_CALM_MIND, MOVE_MOONBLAST, MOVE_PSYSHOCK, MOVE_SHADOW_BALL},
             },
         },
     },
@@ -339,28 +339,28 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
         // Gold Symbol.
         {
             {
-                .species = SPECIES_ANNIHILAPE,
-                .heldItem = ITEM_METRONOME,
+                .species = SPECIES_SPIRITOMB,
+                .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 6, 0, 0, 0},
-                .moves = {MOVE_RAGE_FIST, MOVE_DRAIN_PUNCH, MOVE_SCREECH, MOVE_FOCUS_ENERGY},
+                .moves = {MOVE_SUCKER_PUNCH, MOVE_SHADOW_SNEAK, MOVE_TOXIC, MOVE_PROTECT},
             },
             {
-                .species = SPECIES_AROMATISSE,
-                .heldItem = ITEM_LEFTOVERS,
+                .species = SPECIES_ARCHALUDON,
+                .heldItem = ITEM_POWER_HERB,
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_MODEST,
                 .evs = {252, 252, 6, 0, 0, 0},
-                .moves = {MOVE_MOONBLAST, MOVE_PSYCHIC, MOVE_DARK_PULSE, MOVE_WISH},
+                .moves = {MOVE_ELECTRO_SHOT, MOVE_FLASH_CANNON, MOVE_DRAGON_PULSE, MOVE_DARK_PULSE},
             },
             {
-                .species = SPECIES_GLASTRIER,
-                .heldItem = ITEM_QUICK_CLAW,
+                .species = SPECIES_URSHIFU_RAPID_STRIKE,
+                .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 0, 252, 6, 0, 0},
-                .moves = {MOVE_ICICLE_CRASH, MOVE_IRON_HEAD, MOVE_PROTECT, MOVE_BULLDOZE},
+                .moves = {MOVE_SURGING_STRIKES, MOVE_DRAIN_PUNCH, MOVE_IRON_HEAD, MOVE_EARTHQUAKE},
             },
         },
     },
@@ -453,7 +453,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
         // Gold Symbol.
         {
             {
-                .species = SPECIES_SAMUROTT_HISUI,
+                .species = SPECIES_SAMUROTT,
                 .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_ADAMANT,
@@ -461,12 +461,12 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
                 .moves = {MOVE_NIGHT_SLASH, MOVE_AQUA_CUTTER, MOVE_MEGAHORN, MOVE_SLASH},
             },
             {
-                .species = SPECIES_GENGAR,
-                .heldItem = ITEM_FOCUS_SASH,
+                .species = SPECIES_KORAIDON,
+                .heldItem = ITEM_MUSCLE_BAND,
                 .fixedIV = MAX_PER_STAT_IVS,
-                .nature = NATURE_MODEST,
-                .evs = {252, 0, 252, 0, 6, 0},
-                .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_SLUDGE_BOMB, MOVE_DAZZLING_GLEAM},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6},
+                .moves = {MOVE_COLLISION_COURSE, MOVE_DRAGON_RUSH, MOVE_EARTHQUAKE, MOVE_STONE_EDGE},
             },
             {
                 .species = SPECIES_HEATRAN,
@@ -580,7 +580,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
                 .fixedIV = MAX_PER_STAT_IVS,
                 .nature = NATURE_BRAVE,
                 .evs = {252, 0, 0, 0, 6, 252},
-                .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_THUNDER_FANG, MOVE_SCREECH},
+                .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_THUNDER_FANG, MOVE_IRON_TAIL},
             },
             {
                 .species = SPECIES_WO_CHIEN,

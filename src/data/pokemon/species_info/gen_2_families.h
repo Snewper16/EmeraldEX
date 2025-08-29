@@ -8365,7 +8365,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gShinyOverworldPalette_Lugia
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sLugiaLevelUpLearnset,
         .teachableLearnset = sLugiaTeachableLearnset,
@@ -8445,7 +8444,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gShinyOverworldPalette_HoOh
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sHoOhLevelUpLearnset,
         .teachableLearnset = sHoOhTeachableLearnset,
@@ -8478,7 +8476,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_LEAF_GUARD },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Celebi"),
         .cryId = CRY_CELEBI,
@@ -8527,7 +8525,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gShinyOverworldPalette_Celebi
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCelebiLevelUpLearnset,
         .teachableLearnset = sCelebiTeachableLearnset,

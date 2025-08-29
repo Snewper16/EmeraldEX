@@ -12457,7 +12457,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_DRIZZLE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_DRIZZLE, ABILITY_NONE, ABILITY_WATER_VEIL },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Kyogre"),
         .cryId = CRY_KYOGRE,
@@ -12507,7 +12507,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_Kyogre
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sKyogreLevelUpLearnset,
         .teachableLearnset = sKyogreTeachableLearnset,
@@ -12578,7 +12577,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif //OW_BATTLE_ONLY_FORMS
         .isLegendary = TRUE,
         .isPrimalReversion = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sKyogreLevelUpLearnset,
         .teachableLearnset = sKyogreTeachableLearnset,
@@ -12612,7 +12610,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_DROUGHT, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_DROUGHT, ABILITY_NONE, ABILITY_MAGMA_ARMOR },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Groudon"),
         .cryId = CRY_GROUDON,
@@ -12661,7 +12659,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_Groudon
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGroudonLevelUpLearnset,
         .teachableLearnset = sGroudonTeachableLearnset,
@@ -12733,7 +12730,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif //OW_BATTLE_ONLY_FORMS
         .isLegendary = TRUE,
         .isPrimalReversion = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGroudonLevelUpLearnset,
         .teachableLearnset = sGroudonTeachableLearnset,
@@ -12768,7 +12764,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_AIR_LOCK, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_AIR_LOCK, ABILITY_NONE, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Rayquaza"),
         .cryId = CRY_RAYQUAZA,
@@ -12819,7 +12815,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_Rayquaza
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sRayquazaLevelUpLearnset,
         .teachableLearnset = sRayquazaTeachableLearnset,
@@ -12893,7 +12888,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif //OW_BATTLE_ONLY_FORMS
         .isLegendary = TRUE,
         .isMegaEvolution = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sRayquazaLevelUpLearnset,
         .teachableLearnset = sRayquazaTeachableLearnset,
@@ -12929,7 +12923,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 100,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_TRACE },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Jirachi"),
         .cryId = CRY_JIRACHI,
@@ -12984,7 +12978,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_Jirachi
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sJirachiLevelUpLearnset,
         .teachableLearnset = sJirachiTeachableLearnset,
@@ -13019,7 +13012,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_ADAPTABILITY },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Deoxys"),
         .cryId = CRY_DEOXYS,
@@ -13064,7 +13057,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_DeoxysNormal
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDeoxysNormalLevelUpLearnset,
         .teachableLearnset = sDeoxysNormalTeachableLearnset,
@@ -13090,7 +13082,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_DEFIANT },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Deoxys"),
         .cryId = CRY_DEOXYS,
@@ -13134,7 +13126,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_DeoxysAttack
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDeoxysAttackLevelUpLearnset,
         .teachableLearnset = sDeoxysAttackTeachableLearnset,
@@ -13160,7 +13151,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_STAMINA },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Deoxys"),
         .cryId = CRY_DEOXYS,
@@ -13205,7 +13196,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_DeoxysDefense
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDeoxysDefenseLevelUpLearnset,
         .teachableLearnset = sDeoxysDefenseTeachableLearnset,
@@ -13230,7 +13220,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Deoxys"),
@@ -13276,7 +13266,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gShinyOverworldPalette_DeoxysSpeed
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDeoxysSpeedLevelUpLearnset,
         .teachableLearnset = sDeoxysSpeedTeachableLearnset,

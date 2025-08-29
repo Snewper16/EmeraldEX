@@ -40,6 +40,7 @@
         {
             {
 #line 15
+            .species = SPECIES_GLIMMORA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 19
             .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
@@ -48,24 +49,35 @@
 #line 17
             .lvl = 42,
 #line 16
+            .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 20
+                MOVE_POWER_GEM,
+                MOVE_VENOSHOCK,
+                MOVE_SPIKY_SHIELD,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
 #line 25
+            .species = SPECIES_CRUSTLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 29
+            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
 #line 28
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 27
             .lvl = 43,
 #line 26
+            .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 30
+                MOVE_X_SCISSOR,
+                MOVE_STONE_EDGE,
                 MOVE_PROTECT,
+                MOVE_SHELL_SMASH,
             },
             },
             {
@@ -83,6 +95,10 @@
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 40
+                MOVE_STONE_EDGE,
+                MOVE_IRON_TAIL,
+                MOVE_PROTECT,
+                MOVE_DRAGON_CLAW,
             },
             },
         },

@@ -19281,7 +19281,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_COMPETITIVE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_COMPETITIVE, ABILITY_NONE, ABILITY_SYNCHRONIZE },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Articuno"),
         .cryId = CRY_ARTICUNO,
@@ -19435,7 +19435,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_DEFIANT, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_DEFIANT, ABILITY_NONE, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Zapdos"),
         .cryId = CRY_ZAPDOS,
@@ -19612,7 +19612,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BERSERK, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BERSERK, ABILITY_NONE, ABILITY_DARK_AURA },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Moltres"),
         .cryId = CRY_MOLTRES,
@@ -19951,7 +19951,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gShinyOverworldPalette_Mewtwo
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMewtwoLevelUpLearnset,
         .teachableLearnset = sMewtwoTeachableLearnset,
@@ -20022,8 +20021,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
     #endif //OW_BATTLE_ONLY_FORMS
         .isLegendary = TRUE,
-        .isMegaEvolution = TRUE,
-        .isFrontierBanned = TRUE,
+        .isMegaEvolution = TRUE,        
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMewtwoLevelUpLearnset,
         .teachableLearnset = sMewtwoTeachableLearnset,
@@ -20094,8 +20092,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
     #endif //OW_BATTLE_ONLY_FORMS
         .isLegendary = TRUE,
-        .isMegaEvolution = TRUE,
-        .isFrontierBanned = TRUE,
+        .isMegaEvolution = TRUE,        
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMewtwoLevelUpLearnset,
         .teachableLearnset = sMewtwoTeachableLearnset,
@@ -20131,7 +20128,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_NONE, ABILITY_TRACE },
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Mew"),
         .cryId = CRY_MEW,
@@ -20178,8 +20175,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_Mew,
             gShinyOverworldPalette_Mew
         )
-        .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
+        .isMythical = TRUE,        
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMewLevelUpLearnset,
         .teachableLearnset = sMewTeachableLearnset,

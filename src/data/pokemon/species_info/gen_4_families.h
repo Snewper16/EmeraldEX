@@ -5646,7 +5646,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Rotom"),
         .cryId = CRY_ROTOM,
@@ -5727,7 +5727,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_FLAME_BODY },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Rotom"),
         .cryId = CRY_ROTOM,
@@ -5798,7 +5798,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Rotom"),
@@ -5870,7 +5870,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_ICE_BODY },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Rotom"),
         .cryId = CRY_ROTOM,
@@ -5940,7 +5940,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Rotom"),
         .cryId = CRY_ROTOM,
@@ -6035,7 +6035,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_LEAF_GUARD },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Rotom"),
         .cryId = CRY_ROTOM,
@@ -6116,7 +6116,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 140,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_FOREWARN },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Uxie"),
         .cryId = CRY_UXIE,
@@ -6196,7 +6196,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 140,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_MOODY },
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Mesprit"),
         .cryId = CRY_MESPRIT,
@@ -6280,7 +6280,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 140,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Azelf"),
         .cryId = CRY_AZELF,
@@ -6406,7 +6406,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_Dialga
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDialgaLevelUpLearnset,
         .teachableLearnset = sDialgaTeachableLearnset,
@@ -6474,7 +6473,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_DialgaOrigin
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDialgaLevelUpLearnset,
         .teachableLearnset = sDialgaTeachableLearnset,
@@ -6555,7 +6553,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_Palkia
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPalkiaLevelUpLearnset,
         .teachableLearnset = sPalkiaTeachableLearnset,
@@ -6623,7 +6620,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_PalkiaOrigin
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPalkiaLevelUpLearnset,
         .teachableLearnset = sPalkiaTeachableLearnset,
@@ -6733,7 +6729,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SLOW_START, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SLOW_START, ABILITY_NONE, ABILITY_HUGE_POWER },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Regigigas"),
         .cryId = CRY_REGIGIGAS,
@@ -6858,7 +6854,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_GiratinaAltered
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGiratinaLevelUpLearnset,
         .teachableLearnset = sGiratinaTeachableLearnset,
@@ -6883,7 +6878,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Giratina"),
         .cryId = CRY_GIRATINA,
@@ -6933,7 +6928,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_GiratinaOrigin
         )
         .isLegendary = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGiratinaLevelUpLearnset,
         .teachableLearnset = sGiratinaTeachableLearnset,
@@ -6951,7 +6945,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 85,
         .baseSpAttack  = 75,
         .baseSpDefense = P_UPDATED_STATS >= GEN_9 ? 120 : 130,
-        .types = MON_TYPES(TYPE_PSYCHIC),
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FAIRY),
         .catchRate = 3,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 300,
@@ -6966,7 +6960,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 100,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_FAIRY_AURA },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Cresselia"),
         .cryId = CRY_CRESSELIA,
@@ -7047,7 +7041,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_HYDRATION, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_HYDRATION, ABILITY_NONE, ABILITY_WATER_VEIL },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Phione"),
         .cryId = CRY_PHIONE,
@@ -7095,7 +7089,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_Phione
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPhioneLevelUpLearnset,
         .teachableLearnset = sPhioneTeachableLearnset,
@@ -7125,7 +7118,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_HYDRATION, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_HYDRATION, ABILITY_NONE, ABILITY_WATER_VEIL },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Manaphy"),
         .cryId = CRY_MANAPHY,
@@ -7173,7 +7166,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_Manaphy
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sManaphyLevelUpLearnset,
         .teachableLearnset = sManaphyTeachableLearnset,
@@ -7205,7 +7197,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BAD_DREAMS, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BAD_DREAMS, ABILITY_NONE, ABILITY_DARK_AURA },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Darkrai"),
         .cryId = CRY_DARKRAI,
@@ -7253,7 +7245,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_Darkrai
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDarkraiLevelUpLearnset,
         .teachableLearnset = sDarkraiTeachableLearnset,
@@ -7288,7 +7279,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_LEAF_GUARD },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Shaymin"),
         .cryId = CRY_SHAYMIN_LAND,
@@ -7335,7 +7326,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_ShayminLand
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sShayminLandLevelUpLearnset,
         .teachableLearnset = sShayminLandTeachableLearnset,
@@ -7366,7 +7356,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_STEADFAST },
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
         .speciesName = _("Shaymin"),
@@ -7414,7 +7404,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_ShayminSky
         )
         .isMythical = TRUE,
-        .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sShayminSkyLevelUpLearnset,
         .teachableLearnset = sShayminSkyTeachableLearnset,
@@ -7500,7 +7489,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .formSpeciesIdTable = sArceusFormSpeciesIdTable,                            \
         .formChangeTable = sArceusFormChangeTable,                                  \
         .isMythical = TRUE,                                                         \
-        .isFrontierBanned = TRUE,                                                   \
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT, \
     }
 
