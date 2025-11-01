@@ -7143,7 +7143,6 @@ BattleScript_PowderMoveNoEffectWaitMsg:
 BattleScript_MoveUsedFlinched::
 	printstring STRINGID_PKMNFLINCHED
 	waitmessage B_WAIT_TIME_LONG
-	jumpifability BS_ATTACKER ABILITY_STEADFAST BattleScript_TryActivateSteadFast
 	jumpifability BS_ATTACKER, ABILITY_STEADFAST, BattleScript_TryActivateSteadFast
 BattleScript_MoveUsedFlinchedEnd:
 	goto BattleScript_MoveEnd
