@@ -162,4 +162,62 @@ SINGLE_BATTLE_TEST("Liquid Ooze causes Dream Eater users to lose HP instead of h
     }
 }
 
+<<<<<<< HEAD
 TO_DO_BATTLE_TEST("Liquid Ooze does not cause Dream Eater users to lose HP instead of heal (Gen 3-4")
+=======
+SINGLE_BATTLE_TEST("Liquid Ooze does not cause Dream Eater users to lose HP instead of heal (Gen 3-4")
+{
+    s16 damage;
+    GIVEN {
+        WITH_CONFIG(GEN_DREAM_EATER_LIQUID_OOZE, GEN_3);
+        ASSUME(GetMoveEffect(MOVE_SPORE) == EFFECT_NON_VOLATILE_STATUS);
+        ASSUME(GetMoveNonVolatileStatus(MOVE_SPORE) == MOVE_EFFECT_SLEEP);
+        ASSUME(GetMoveEffect(MOVE_DREAM_EATER) == EFFECT_DREAM_EATER);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_TENTACRUEL) { Ability(ABILITY_LIQUID_OOZE); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_SPORE); }
+        TURN { MOVE(player, MOVE_DREAM_EATER); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        HP_BAR(player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_DREAM_EATER, player);
+        HP_BAR(opponent);
+        HP_BAR(player, captureDamage: &damage);
+    } THEN {
+        EXPECT_LT(damage, 0); // Negative damage = Heal
+    }
+}
+
+SINGLE_BATTLE_TEST("Liquid Ooze HP loss from Absorb is blocked by Magic Guard")
+{
+    GIVEN {
+        PLAYER(SPECIES_CLEFFA) { Ability(ABILITY_MAGIC_GUARD); }
+        OPPONENT(SPECIES_TENTACOOL) { Ability(ABILITY_LIQUID_OOZE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_ABSORB); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ABSORB, player);
+        HP_BAR(opponent);
+        NONE_OF {
+            HP_BAR(player);
+            MESSAGE("Wobbuffet sucked up the liquid ooze!");
+        }
+    }
+}
+
+SINGLE_BATTLE_TEST("Liquid Ooze HP loss from Leech Seed is blocked by Magic Guard")
+{
+    GIVEN {
+        PLAYER(SPECIES_CLEFFA) { Ability(ABILITY_MAGIC_GUARD); }
+        OPPONENT(SPECIES_TENTACOOL) { Ability(ABILITY_LIQUID_OOZE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_LEECH_SEED); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_LEECH_SEED, player);
+        HP_BAR(opponent);
+        NOT HP_BAR(player);
+    }
+}
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb

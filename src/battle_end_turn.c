@@ -61,8 +61,8 @@ enum EndTurnResolutionOrder
     ENDTURN_TERRAIN,
     ENDTURN_THIRD_EVENT_BLOCK,
     ENDTURN_EMERGENCY_EXIT_4,
-    ENDTURN_ABILITIES,
-    ENDTURN_FOURTH_EVENT_BLOCK,
+    ENDTURN_FORM_CHANGE_ABILITIES,
+    ENDTURN_EJECT_PACK,
     ENDTURN_DYNAMAX,
     ENDTURN_COUNT,
 };
@@ -101,6 +101,7 @@ enum ThirdEventBlock
     THIRD_EVENT_BLOCK_ITEMS,
 };
 
+<<<<<<< HEAD
 // Form changing abilities and Eject Pack
 enum FourthEventBlock
 {
@@ -117,6 +118,8 @@ static inline bool32 IsBattlerProtectedByMagicGuard(u32 battler, u32 ability)
     return TRUE;
 }
 
+=======
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 static u32 GetBattlerSideForMessage(u32 side)
 {
     u32 battler = 0;
@@ -182,6 +185,17 @@ static bool32 HandleEndTurnVarious(u32 battler)
             gStatuses3[i] &= ~STATUS3_LASER_FOCUS;
 
         gBattleStruct->hpBefore[i] = gBattleMons[i].hp;
+    }
+
+    if (gBattleStruct->incrementEchoedVoice)
+    {
+        if (gBattleStruct->echoedVoiceCounter < 4)
+            gBattleStruct->echoedVoiceCounter++;
+        gBattleStruct->incrementEchoedVoice = FALSE;
+    }
+    else
+    {
+        gBattleStruct->echoedVoiceCounter = 0;
     }
 
     return effect;
@@ -314,13 +328,17 @@ static bool32 HandleEndTurnEmergencyExit(u32 battler)
          && IsBattlerAlive(battler)
          && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
          && !(gBattleTypeFlags & BATTLE_TYPE_ARENA)
+<<<<<<< HEAD
          && CountUsablePartyMons(battler) > 0
          && !(gStatuses3[battler] & STATUS3_SKY_DROPPED)) // Not currently held by Sky Drop
+=======
+         && gBattleMons[battler].volatiles.semiInvulnerable != STATE_SKY_DROP) // Not currently held by Sky Drop
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
         {
             gBattlerAbility = battler;
             gLastUsedAbility = ability;
 
-            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER || IsOnPlayerSide(battler))
+            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 BattleScriptExecute(BattleScript_EmergencyExitEnd2);
             else
                 BattleScriptExecute(BattleScript_EmergencyExitWildEnd2);
@@ -763,9 +781,14 @@ static bool32 HandleEndTurnWrap(u32 battler)
 
     if (gBattleMons[battler].status2 & STATUS2_WRAPPED && IsBattlerAlive(battler))
     {
-        if (--gDisableStructs[battler].wrapTurns != 0)
+        if (gDisableStructs[battler].wrapTurns != 0)
         {
+<<<<<<< HEAD
             if (IsBattlerProtectedByMagicGuard(battler, GetBattlerAbility(battler)))
+=======
+            gDisableStructs[battler].wrapTurns--;
+            if (IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
                 return effect;
 
             gBattleScripting.animArg1 = gBattleStruct->wrappedMove[battler];
@@ -803,9 +826,9 @@ static bool32 HandleEndTurnSaltCure(u32 battler)
      && !IsBattlerProtectedByMagicGuard(battler, GetBattlerAbility(battler)))
     {
         if (IS_BATTLER_ANY_TYPE(battler, TYPE_STEEL, TYPE_WATER))
-            gBattleStruct->moveDamage[battler] = gBattleMons[battler].maxHP / 4;
+            gBattleStruct->moveDamage[battler] = GetNonDynamaxMaxHP(battler) / 4;
         else
-            gBattleStruct->moveDamage[battler] = gBattleMons[battler].maxHP / 8;
+            gBattleStruct->moveDamage[battler] = GetNonDynamaxMaxHP(battler) / 8;
         if (gBattleStruct->moveDamage[battler] == 0)
             gBattleStruct->moveDamage[battler] = 1;
         PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SALT_CURE);
@@ -1023,7 +1046,6 @@ static bool32 HandleEndTurnYawn(u32 battler)
          && !UproarWakeUpCheck(battler)
          && !IsLeafGuardProtected(battler, ability))
         {
-            CancelMultiTurnMoves(battler, SKY_DROP_STATUS_YAWN);
             gEffectBattler = gBattlerTarget = battler;
             if (IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN))
             {
@@ -1037,7 +1059,15 @@ static bool32 HandleEndTurnYawn(u32 battler)
             }
             else if (IsSleepClauseActiveForSide(GetBattlerSide(battler)))
             {
-                BattleScriptExecute(BattleScript_SleepClausePreventsEnd);
+                BattleScriptExecute(BattleScript_SleepClausePreventsEnd2);
+            }
+            else if ((gBattleScripting.battler = IsAbilityOnSide(battler, ABILITY_SWEET_VEIL)))
+            {
+                gBattleScripting.battler--;
+                gLastUsedAbility = ABILITY_SWEET_VEIL;
+                gBattlerAbility = gBattleScripting.battler;
+                RecordAbilityBattle(gBattleScripting.battler, ABILITY_SWEET_VEIL);
+                BattleScriptExecute(BattleScript_ImmunityProtectedEnd2);
             }
             else
             {
@@ -1046,10 +1076,11 @@ static bool32 HandleEndTurnYawn(u32 battler)
                 else
                     gBattleMons[battler].status1 |= ((Random() % 4) + 3);
 
+                CancelMultiTurnMoves(battler, SKY_DROP_STATUS_YAWN);
                 TryActivateSleepClause(battler, gBattlerPartyIndexes[battler]);
                 BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                 MarkBattlerForControllerExec(battler);
-                BattleScriptExecute(BattleScript_YawnMakesAsleep);
+                BattleScriptExecute(BattleScript_YawnMakesAsleepEnd2);
             }
             effect = TRUE;
         }
@@ -1360,25 +1391,27 @@ static bool32 HandleEndTurnThirdEventBlock(u32 battler)
     case THIRD_EVENT_BLOCK_UPROAR:
         if (gBattleMons[battler].status2 & STATUS2_UPROAR)
         {
-            for (gBattlerAttacker = 0; gBattlerAttacker < gBattlersCount; gBattlerAttacker++)
+            for (gEffectBattler = 0; gEffectBattler < gBattlersCount; gEffectBattler++)
             {
-                if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP)
-                && GetBattlerAbility(gBattlerAttacker) != ABILITY_SOUNDPROOF)
+                if ((gBattleMons[gEffectBattler].status1 & STATUS1_SLEEP)
+                 && GetBattlerAbility(gEffectBattler) != ABILITY_SOUNDPROOF)
                 {
+<<<<<<< HEAD
                     gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_NIGHTMARE;
+=======
+                    gBattleMons[gEffectBattler].status1 &= ~STATUS1_SLEEP;
+                    gBattleMons[gEffectBattler].volatiles.nightmare = FALSE;
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
                     gBattleCommunication[MULTISTRING_CHOOSER] = 1;
                     BattleScriptExecute(BattleScript_MonWokeUpInUproar);
-                    BtlController_EmitSetMonData(gBattlerAttacker, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gBattlerAttacker].status1);
-                    MarkBattlerForControllerExec(gBattlerAttacker);
+                    BtlController_EmitSetMonData(gEffectBattler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gBattlerAttacker].status1);
+                    MarkBattlerForControllerExec(gEffectBattler);
+                    effect = TRUE;
                     break;
                 }
             }
-            if (gBattlerAttacker != gBattlersCount)
-            {
-                break;
-            }
-            else
+            if (effect == FALSE)
             {
                 gBattlerAttacker = battler;
                 gBattleMons[battler].status2 -= STATUS2_UPROAR_TURN(1);  // uproar timer goes down
@@ -1451,7 +1484,7 @@ static bool32 HandleEndTurnThirdEventBlock(u32 battler)
     return effect;
 }
 
-static bool32 HandleEndTurnAbilities(u32 battler)
+static bool32 HandleEndTurnFormChangeAbilities(u32 battler)
 {
     bool32 effect = FALSE;
 
@@ -1465,6 +1498,7 @@ static bool32 HandleEndTurnAbilities(u32 battler)
     case ABILITY_SCHOOLING:
     case ABILITY_SHIELDS_DOWN:
     case ABILITY_ZEN_MODE:
+    case ABILITY_HUNGER_SWITCH:
         if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, battler, ability, 0, MOVE_NONE))
             effect = TRUE;
     }
@@ -1472,8 +1506,9 @@ static bool32 HandleEndTurnAbilities(u32 battler)
     return effect;
 }
 
-static bool32 HandleEndTurnFourthEventBlock(u32 battler)
+static bool32 HandleEndTurnEjectPack(u32 battler)
 {
+<<<<<<< HEAD
     bool32 effect = FALSE;
 
     switch (gBattleStruct->eventBlockCounter)
@@ -1504,6 +1539,10 @@ static bool32 HandleEndTurnFourthEventBlock(u32 battler)
     }
 
     return effect;
+=======
+    gBattleStruct->turnEffectsBattlerId++;
+    return TrySwitchInEjectPack(ITEMEFFECT_NORMAL);
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 }
 
 static bool32 HandleEndTurnDynamax(u32 battler)
@@ -1570,8 +1609,8 @@ static bool32 (*const sEndTurnEffectHandlers[])(u32 battler) =
     [ENDTURN_TERRAIN] = HandleEndTurnTerrain,
     [ENDTURN_THIRD_EVENT_BLOCK] = HandleEndTurnThirdEventBlock,
     [ENDTURN_EMERGENCY_EXIT_4] = HandleEndTurnEmergencyExit,
-    [ENDTURN_ABILITIES] = HandleEndTurnAbilities,
-    [ENDTURN_FOURTH_EVENT_BLOCK] = HandleEndTurnFourthEventBlock,
+    [ENDTURN_FORM_CHANGE_ABILITIES] = HandleEndTurnFormChangeAbilities,
+    [ENDTURN_EJECT_PACK] = HandleEndTurnEjectPack,
     [ENDTURN_DYNAMAX] = HandleEndTurnDynamax,
 };
 

@@ -126,6 +126,7 @@ void TryFadeOutOldMapMusic(void);
 bool8 BGMusicStopped(void);
 void Overworld_FadeOutMapMusic(void);
 void UpdateAmbientCry(s16 *state, u16 *delayCounter);
+<<<<<<< HEAD
 u8 GetMapTypeByGroupAndId(s8 mapGroup, s8 mapNum);
 u8 GetMapTypeByWarpData(struct WarpData *warp);
 u8 GetCurrentMapType(void);
@@ -136,6 +137,18 @@ bool8 IsMapTypeIndoors(u8 mapType);
 u8 GetSavedWarpRegionMapSectionId(void);
 u8 GetCurrentRegionMapSectionId(void);
 u8 GetCurrentMapBattleScene(void);
+=======
+enum MapType GetMapTypeByGroupAndId(s8 mapGroup, s8 mapNum);
+enum MapType GetMapTypeByWarpData(struct WarpData *warp);
+enum MapType GetCurrentMapType(void);
+enum MapType GetLastUsedWarpMapType(void);
+bool8 IsMapTypeOutdoors(enum MapType mapType);
+bool8 Overworld_MapTypeAllowsTeleportAndFly(enum MapType mapType);
+bool8 IsMapTypeIndoors(enum MapType mapType);
+mapsec_u8_t GetSavedWarpRegionMapSectionId(void);
+mapsec_u8_t GetCurrentRegionMapSectionId(void);
+enum MapBattleScene GetCurrentMapBattleScene(void);
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 void CleanupOverworldWindowsAndTilemaps(void);
 bool32 IsOverworldLinkActive(void);
 void CB1_Overworld(void);

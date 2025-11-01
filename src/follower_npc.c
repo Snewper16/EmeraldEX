@@ -196,6 +196,7 @@ static void TurnNPCIntoFollower(u32 localId, u32 followerFlags, u32 setScript, c
     u32 eventObjId;
     const u8 *script;
     u32 flag;
+    u16 facingDirection = gObjectEvents[eventObjId].facingDirection;
 
     // Only allow 1 follower NPC at a time.
     if (PlayerHasFollowerNPC())
@@ -213,12 +214,25 @@ static void TurnNPCIntoFollower(u32 localId, u32 followerFlags, u32 setScript, c
             if (flag == 0)
                 return;
 
+<<<<<<< HEAD
             if (setScript == TRUE)
                 // Set the custom script.
                 script = ptr;
             else
                 // Use the object's original script.
                 script = GetObjectEventScriptPointerByObjectEventId(eventObjId);
+=======
+    npc = *GetObjectEventTemplateByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    npc.movementType = 0;
+    npc.script = script;
+    npc.localId = OBJ_EVENT_ID_NPC_FOLLOWER;
+    SetFollowerNPCData(FNPC_DATA_OBJ_ID, TrySpawnObjectEventTemplate(&npc, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, npcX, npcY));
+    follower = &gObjectEvents[GetFollowerNPCData(FNPC_DATA_OBJ_ID)];
+    MoveObjectEventToMapCoords(follower, npcX, npcY);
+    ObjectEventTurn(follower, facingDirection);
+    follower->movementType = MOVEMENT_TYPE_NONE;
+    gSprites[follower->spriteId].callback = MovementType_None;
+>>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 
             npcX = gObjectEvents[eventObjId].currentCoords.x;
             npcY = gObjectEvents[eventObjId].currentCoords.y;
