@@ -62,3 +62,35 @@ SINGLE_BATTLE_TEST("Ceaseless Edge can set up to 3 layers of Spikes")
         MESSAGE("The opposing Wynaut was hurt by the spikes!");
     }
 }
+
+SINGLE_BATTLE_TEST("Ceaseless Edge fails to set up hazards if user faints")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_ROCKY_HELMET); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_CEASELESS_EDGE); SEND_OUT(player, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
+        HP_BAR(player);
+        MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
+        NOT MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+    }
+}
+
+SINGLE_BATTLE_TEST("Ceaseless Edge does not set up hazards if target was not hit")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_PROTECT);  MOVE(player, MOVE_CEASELESS_EDGE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_CEASELESS_EDGE, player);
+            MESSAGE("Spikes were scattered on the ground all around the opposing team!");
+        }
+    }
+}

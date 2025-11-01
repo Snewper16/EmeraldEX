@@ -169,9 +169,9 @@ bool8 HasAtLeastOnePokeBall(void)
 {
     u16 ballId;
 
-    for (ballId = BALL_STRANGE; ballId < POKEBALL_COUNT; ballId++)
+    for (enum PokeBall ballId = BALL_STRANGE; ballId < POKEBALL_COUNT; ballId++)
     {
-        if (CheckBagHasItem(ballId, 1) == TRUE)
+        if (CheckBagHasItem(gBallItemIds[ballId], 1) == TRUE)
             return TRUE;
     }
     return FALSE;
