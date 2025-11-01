@@ -5851,23 +5851,16 @@ static u8 IsEasyChatWordUnlocked(u16 easyChatWord)
 void InitializeEasyChatWordArray(u16 *words, u16 length)
 {
     u16 i;
-    if (words != NULL)
-    {
-        for (i = length - 1; i != EC_EMPTY_WORD; i--)
-            *(words++) = EC_EMPTY_WORD;
-    }
+    for (i = length - 1; i != EC_EMPTY_WORD; i--)
+        *(words++) = EC_EMPTY_WORD;
 }
 
 void InitQuestionnaireWords(void)
 {
     int i;
     u16 *words = GetQuestionnaireWordsPtr();
-
-    if (words != NULL)
-    {
-        for (i = 0; i < NUM_QUESTIONNAIRE_WORDS; i++)
-            words[i] = EC_EMPTY_WORD;
-    }
+    for (i = 0; i < NUM_QUESTIONNAIRE_WORDS; i++)
+        words[i] = EC_EMPTY_WORD;
 }
 
 bool32 IsEasyChatAnswerUnlocked(int easyChatWord)

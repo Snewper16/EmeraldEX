@@ -632,19 +632,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
     // Switching out
     else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
     {
-<<<<<<< HEAD
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
-=======
-        if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) || gAiLogicData->ejectButtonSwitch || gAiLogicData->ejectPackSwitch)
-            switchType = SWITCH_MID_BATTLE;
-
-        // reset the AI data to consider the correct on-field state at time of switch
-        SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT), gAiLogicData);
-        if (IsDoubleBattle())
-            SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), gAiLogicData);
-
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
         if (chosenMonId == PARTY_SIZE)
         {
             s32 battler1, battler2, firstId, lastId;
@@ -674,14 +662,12 @@ static void OpponentHandleChoosePokemon(u32 battler)
             }
         }
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
-        GetBattlerPartyState(battler)->sentOut = TRUE;
     }
     else
     {
         chosenMonId = gBattleStruct->AI_monToSwitchIntoId[battler];
         gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
-        GetBattlerPartyState(battler)->sentOut = TRUE;
     }
     #if TESTING
     TestRunner_Battle_CheckSwitch(battler, chosenMonId);

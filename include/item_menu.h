@@ -2,7 +2,6 @@
 #define GUARD_ITEM_MENU_H
 
 #include "item.h"
-#include "main.h"
 #include "menu_helpers.h"
 
 enum {
@@ -49,7 +48,7 @@ enum {
 
 struct BagPosition
 {
-    MainCallback exitCallback;
+    void (*exitCallback)(void);
     u8 location;
     u8 pocket;
     u16 pocketSwitchArrowPos;
@@ -61,7 +60,7 @@ extern struct BagPosition gBagPosition;
 
 struct BagMenu
 {
-    MainCallback newScreenCallback;
+    void (*newScreenCallback)(void);
     u8 tilemapBuffer[BG_SCREEN_SIZE];
     u8 spriteIds[ITEMMENUSPRITE_COUNT];
     u8 windowIds[ITEMWIN_COUNT];
@@ -98,21 +97,16 @@ void CB2_BagMenuFromStartMenu(void);
 u8 GetItemListPosition(u8 pocketId);
 bool8 UseRegisteredKeyItemOnField(void);
 void CB2_GoToSellMenu(void);
-void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback);
+void GoToBagMenu(u8 location, u8 pocket, void ( *exitCallback)());
 void DoWallyTutorialBagMenu(void);
 void ResetBagScrollPositions(void);
-void ChooseBerryForMachine(MainCallback exitCallback);
+void ChooseBerryForMachine(void (*exitCallback)(void));
 void CB2_ChooseBerry(void);
 void CB2_ChooseMulch(void);
 void Task_FadeAndCloseBagMenu(u8 taskId);
 void BagMenu_YesNo(u8 taskId, u8 windowType, const struct YesNoFuncTable *funcTable);
-<<<<<<< HEAD
 void UpdatePocketItemList(u8 pocketId);
 void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void (*callback)(u8 taskId));
-=======
-void UpdatePocketItemList(enum Pocket pocketId);
-void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, TaskFunc callback);
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 void DisplayItemMessageOnField(u8 taskId, const u8 *string, TaskFunc callback);
 void CloseItemMessage(u8 taskId);
 void ItemMenu_RotomCatalog(u8 taskId);

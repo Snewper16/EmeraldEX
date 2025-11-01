@@ -13,7 +13,6 @@
 #include "battle_util2.h"
 #include "battle_bg.h"
 #include "pokeball.h"
-#include "main.h"
 #include "battle_debug.h"
 #include "battle_dynamax.h"
 #include "battle_terastal.h"
@@ -134,22 +133,16 @@ struct DisableStruct
     u8 neutralizingGas:1;
     u8 iceFaceActivationPrevention:1; // fixes hit escape move edge case
     u8 unnerveActivated:1; // Unnerve and As One (Unnerve part) activate only once per switch in
-<<<<<<< HEAD
     u8 padding:3;
-=======
-    u8 hazardsDone:1;
-    u8 endured:1;
-    u8 octolockedBy:3;
-    u8 tryEjectPack:1;
-    u8 padding:4;
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 };
 
 // Fully Cleared each turn after end turn effects are done. A few things are cleared before end turn effects
 struct ProtectStruct
 {
     u32 protected:7; // 126 protect options
+    u32 endured:1;
     u32 noValidMoves:1;
+    u32 helpingHand:1;
     u32 bounceMove:1;
     u32 stealMove:1;
     u32 nonVolatileStatusImmobility:1;
@@ -163,7 +156,6 @@ struct ProtectStruct
     u32 statRaised:1;
     u32 usedCustapBerry:1;    // also quick claw
     u32 touchedProtectLike:1;
-<<<<<<< HEAD
     u32 unused:8;
     // End of 32-bit bitfield
     u16 disableEjectPack:1;
@@ -175,33 +167,14 @@ struct ProtectStruct
     u16 shellTrap:1;
     u16 eatMirrorHerb:1;
     u16 activateOpportunist:2; // 2 - to copy stats. 1 - stats copied (do not repeat). 0 - no stats to copy
-=======
-    u32 disableEjectPack:1;
-    u32 pranksterElevated:1;
-    u32 quickDraw:1;
-    u32 beakBlastCharge:1;
-    u32 quash:1;
-    u32 shellTrap:1;
-    u32 eatMirrorHerb:1;
-    u32 activateOpportunist:2; // 2 - to copy stats. 1 - stats copied (do not repeat). 0 - no stats to copy
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
     u16 usedAllySwitch:1;
-    // End of 32-bit bitfield
-    u32 helpingHand:3;
     u16 lashOutAffected:1;
-<<<<<<< HEAD
     u16 padding:4;
-=======
-    u16 assuranceDoubled:1;
-    u16 myceliumMight:1;
-    u16 laggingTail:1;
-    u16 padding:9;
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;
-    u8 physicalBattlerId:4;
-    u8 specialBattlerId:4;
+    u8 physicalBattlerId;
+    u8 specialBattlerId;
 };
 
 // Cleared at the start of HandleAction_ActionFinished
@@ -627,14 +600,7 @@ struct PartyState
     u32 battleBondBoost:1;
     u32 transformZeroToHero:1;
     u32 supersweetSyrup:1;
-<<<<<<< HEAD
     u32 padding:26;
-=======
-    u32 timesGotHit:5;
-    u32 changedSpecies:11; // For forms when multiple mons can change into the same pokemon.
-    u32 sentOut:1;
-    u32 padding:9;
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 };
 
 // Cleared at the beginning of the battle. Fields need to be cleared when needed manually otherwise.
@@ -755,12 +721,8 @@ struct BattleStruct
     struct Illusion illusion[MAX_BATTLERS_COUNT];
     u8 soulheartBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
-<<<<<<< HEAD
     u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESFULLY used.
     u16 changedSpecies[NUM_BATTLE_SIDES][PARTY_SIZE]; // For forms when multiple mons can change into the same pokemon.
-=======
-    u8 metronomeItemCounter[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESFULLY used.
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
     u8 quickClawBattlerId;
     struct LostItem itemLost[NUM_BATTLE_SIDES][PARTY_SIZE];  // Pokemon that had items consumed or stolen (two bytes per party member per side)
     u8 blunderPolicy:1; // should blunder policy activate
@@ -776,7 +738,6 @@ struct BattleStruct
     u8 appearedInBattle; // Bitfield to track which Pokemon appeared in battle. Used for Burmy's form change
     u8 skyDropTargets[MAX_BATTLERS_COUNT]; // For Sky Drop, to account for if multiple Pokemon use Sky Drop in a double battle.
     // When using a move which hits multiple opponents which is then bounced by a target, we need to make sure, the move hits both opponents, the one with bounce, and the one without.
-    u16 beatUpSpecies[PARTY_SIZE];
     u8 attackerBeforeBounce:2;
     u8 beatUpSlot:3;
     u8 pledgeMove:1;
@@ -819,17 +780,9 @@ struct BattleStruct
     u8 noTargetPresent:1;
     struct MessageStatus slideMessageStatus;
     u8 trainerSlideSpriteIds[MAX_BATTLERS_COUNT];
-<<<<<<< HEAD
     u16 opponentMonCanTera:6;
     u16 opponentMonCanDynamax:6;
     u16 padding:4;
-=======
-    u8 hazardsQueue[NUM_BATTLE_SIDES][HAZARDS_MAX_COUNT];
-    u8 numHazards[NUM_BATTLE_SIDES];
-    u8 hazardsCounter:4; // Counter for applying hazard on switch in
-    u8 incrementEchoedVoice:1;
-    u8 echoedVoiceCounter:3;
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 };
 
 struct AiBattleData
@@ -1167,7 +1120,7 @@ extern u16 gBattleTurnCounter;
 extern u8 gBattlerAbility;
 extern struct QueuedStatBoost gQueuedStatBoosts[MAX_BATTLERS_COUNT];
 
-extern MainCallback gPreBattleCallback1;
+extern void (*gPreBattleCallback1)(void);
 extern void (*gBattleMainFunc)(void);
 extern struct BattleResults gBattleResults;
 extern u8 gLeveledUpInBattle;
@@ -1175,7 +1128,7 @@ extern u8 gHealthboxSpriteIds[MAX_BATTLERS_COUNT];
 extern u8 gMultiUsePlayerCursor;
 extern u8 gNumberOfMovesToChoose;
 extern bool8 gHasFetchedBall;
-extern u16 gLastUsedBall;
+extern u8 gLastUsedBall;
 extern u16 gLastThrownBall;
 extern u16 gBallToDisplay;
 extern bool8 gLastUsedBallMenuPresent;

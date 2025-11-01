@@ -139,7 +139,6 @@ u32 BattlePalace_TryEscapeStatus(u8 battler)
                 if (UproarWakeUpCheck(battler))
                 {
                     // Wake up from Uproar
-                    gEffectBattler = battler;
                     gBattleMons[battler].status1 &= ~(STATUS1_SLEEP);
                     gBattleMons[battler].status2 &= ~(STATUS2_NIGHTMARE);
                     BattleScriptPushCursor();

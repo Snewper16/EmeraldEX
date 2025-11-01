@@ -589,13 +589,6 @@ struct FormChange
     u16 param3;
 };
 
-enum FusionExtraMoveHandling
-{
-    FORGET_EXTRA_MOVES,
-    SWAP_EXTRA_MOVES_KYUREM_WHITE,
-    SWAP_EXTRA_MOVES_KYUREM_BLACK
-};
-
 struct Fusion
 {
     u16 fusionStorageIndex;
@@ -604,21 +597,10 @@ struct Fusion
     u16 targetSpecies2;
     u16 fusingIntoMon;
     u16 fusionMove;
-    enum FusionExtraMoveHandling extraMoveHandling;
+    u16 unfuseForgetMove;
 };
 
 extern const struct Fusion *const gFusionTablePointers[NUM_SPECIES];
-
-#if P_FUSION_FORMS
-#if P_FAMILY_KYUREM
-#if P_FAMILY_RESHIRAM
-extern const u16 gKyurenWhiteSwapMoveTable[][2];
-#endif //P_FAMILY_RESHIRAM
-#if P_FAMILY_ZEKROM
-extern const u16 gKyurenBlackSwapMoveTable[][2];
-#endif //P_FAMILY_ZEKROM
-#endif //P_FAMILY_KYUREM
-#endif //P_FUSION_FORMS
 
 #define NUM_UNOWN_FORMS 28
 
@@ -737,22 +719,8 @@ bool8 IsPokemonStorageFull(void);
 const u8 *GetSpeciesName(u16 species);
 const u8 *GetSpeciesCategory(u16 species);
 const u8 *GetSpeciesPokedexDescription(u16 species);
-<<<<<<< HEAD
 u16 GetSpeciesHeight(u16 species);
 u16 GetSpeciesWeight(u16 species);
-=======
-u32 GetSpeciesHeight(u16 species);
-u32 GetSpeciesWeight(u16 species);
-u32 GetSpeciesType(u16 species, u8 slot);
-u32 GetSpeciesAbility(u16 species, u8 slot);
-u32 GetSpeciesBaseHP(u16 species);
-u32 GetSpeciesBaseAttack(u16 species);
-u32 GetSpeciesBaseDefense(u16 species);
-u32 GetSpeciesBaseSpAttack(u16 species);
-u32 GetSpeciesBaseSpDefense(u16 species);
-u32 GetSpeciesBaseSpeed(u16 species);
-u32 GetSpeciesBaseStat(u16 species, u32 statIndex);
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 const struct LevelUpMove *GetSpeciesLevelUpLearnset(u16 species);
 const u16 *GetSpeciesTeachableLearnset(u16 species);
 const u16 *GetSpeciesEggMoves(u16 species);
@@ -829,12 +797,7 @@ void BattleAnimateBackSprite(struct Sprite *sprite, u16 species);
 u8 GetOpposingLinkMultiBattlerId(bool8 rightSide, u8 multiplayerId);
 u16 FacilityClassToPicIndex(u16 facilityClass);
 u16 PlayerGenderToFrontTrainerPicId(u8 playerGender);
-<<<<<<< HEAD
 void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality);
-=======
-void HandleSetPokedexFlag(enum NationalDexOrder nationalNum, u8 caseId, u32 personality);
-void HandleSetPokedexFlagFromMon(struct Pokemon *mon, u32 caseId);
->>>>>>> f969c126b1f74a799f98f0bb9551b737abe812eb
 bool8 HasTwoFramesAnimation(u16 species);
 struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode);
 void DestroyMonSpritesGfxManager(u8 managerId);

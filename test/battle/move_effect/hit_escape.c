@@ -113,7 +113,7 @@ SINGLE_BATTLE_TEST("Hit Escape: U-turn switches the user out after Ice Face acti
     }
 }
 
-SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon switched in by U-turn: player side")
+SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon switched in by U-turn and Intimidate activates after it: player side")
 {
     GIVEN {
         PLAYER(SPECIES_TAPU_KOKO) { Ability(ABILITY_ELECTRIC_SURGE); };
@@ -126,6 +126,7 @@ SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon 
         ABILITY_POPUP(player, ABILITY_ELECTRIC_SURGE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
         HP_BAR(opponent);
+        ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         MESSAGE("2 sent out Wynaut!");
@@ -135,7 +136,7 @@ SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon 
     }
 }
 
-SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon switched in by U-turn: opposing side")
+SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon switched in by U-turn and Intimidate activates after it: opposing side")
 {
     GIVEN {
         PLAYER(SPECIES_TAPU_KOKO) { Ability(ABILITY_ELECTRIC_SURGE); };
@@ -148,6 +149,7 @@ SINGLE_BATTLE_TEST("Hit Escape: Held items are consumed immediately after a mon 
         ABILITY_POPUP(player, ABILITY_ELECTRIC_SURGE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_U_TURN, player);
         HP_BAR(opponent);
+        ABILITY_POPUP(player, ABILITY_INTIMIDATE);
         MESSAGE("2 sent out Wynaut!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);

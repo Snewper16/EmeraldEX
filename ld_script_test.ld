@@ -18,7 +18,6 @@ SECTIONS {
     {
         __ewram_start = .;
         *(.ewram*)
-        . = ALIGN(4);
         __ewram_end = .;
     } > EWRAM
 
