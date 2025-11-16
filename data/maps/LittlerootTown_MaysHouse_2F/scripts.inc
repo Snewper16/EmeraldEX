@@ -342,19 +342,19 @@ RivalsHouse_2F_Text_BrendanWhoAreYou:
 	.string "Who are you?\p"
 	.string "Oh, you're {PLAYER}, aren't you?\n"
 	.string "Moved in next door, right?\p"
-	.string "I didn't know that you're a girl.\p"
-	.string "Dad, PROF. BIRCH, said that our new\n"
+	.string "You don't seem that strong…\p"
+	.string "My dad, PROF. BIRCH, said that our new\n"
 	.string "next-door neighbor is a GYM LEADER's\l"
-	.string "kid, so I assumed you'd be a guy.\p"
-	.string "My name's BRENDAN.\n"
+	.string "kid, so I figured you'd be tough-looking.\p"
+	.string "My name's DAWN.\n"
 	.string "So, hi, neighbor!\p"
 	.string "Huh? Hey, {PLAYER}, don't you have\n"
 	.string "a POKéMON?\p"
 	.string "Do you want me to go catch you one?\p"
-	.string "Aw, darn, I forgot…\p"
+	.string "Oh, darn, I forgot…\p"
 	.string "I'm supposed to go help my dad catch\n"
 	.string "some wild POKéMON.\p"
-	.string "Some other time, okay?$"
+	.string "Maybe another time, okay?$"
 
 RivalsHouse_2F_Text_BrendanGettingReady:
 	.string "POKéMON fully restored…\n"
@@ -381,7 +381,7 @@ RivalsHouse_2F_Text_MayWhereShouldIGoNext:
 	.string "other, {PLAYER}{KUN}?$"
 
 RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
-	.string "BRENDAN: Hey, it's {PLAYER}.\p"
+	.string "DAWN: Hey, it's you, {PLAYER}.\p"
 	.string "I was just checking out my POKéDEX.\p"
 	.string "There are still many POKéMON that\n"
 	.string "I need to catch, I know, but this\l"
@@ -390,8 +390,8 @@ RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
 	.string "the urge to hit the road again.$"
 
 RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
-	.string "BRENDAN: I'm having a hard time deciding\n"
+	.string "DAWN: I'm having a hard time deciding\n"
 	.string "where I should catch POKéMON next.\p"
 	.string "Hey, {PLAYER}, if I see you while I'm out\n"
-	.string "catching POKéMON, I can pitch you a\l"
+	.string "catching POKéMON, I'll take you on in a\l"
 	.string "battle if you'd like.$"

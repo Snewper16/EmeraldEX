@@ -64,7 +64,7 @@ Route119_EventScript_PlayMayMusic::
 	return
 
 Route119_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	playbgm MUS_ENCOUNTER_MAY, TRUE
 	return
 
 Route119_EventScript_BattleMay::
@@ -508,30 +508,28 @@ Route119_Text_MayExplainFly:
 	.string "Well, let's meet again somewhere!$"
 
 Route119_Text_BrendanIntro:
-	.string "BRENDAN: {PLAYER}! So this is where\n"
-	.string "you've been looking for POKéMON?\p"
-	.string "Let me see how good you got.\n"
-	.string "I'll test you!\p"
-	.string "Now!\n"
-	.string "It's a battle, so battle!$"
+	.string "DAWN: {PLAYER}! So this is where\n"
+	.string "you've been hanging around lately?\p"
+	.string "Let me see how good you gotten.\n"
+	.string "I'll test you proper!$"
 
 Route119_Text_BrendanDefeat:
 	.string "Hmm…\n"
-	.string "You've gotten pretty darn decent.$"
+	.string "You've gotten pretty darn strong.$"
 
 Route119_Text_BrendanIllGiveYouThis:
-	.string "BRENDAN: I'd say you're good enough\n"
-	.string "to search for POKéMON anywhere.\p"
+	.string "DAWN: … I know that face, you need\n"
+	.string "an easier travel solution.\p"
 	.string "Here, I'll give you this.\n"
-	.string "Try it out.$"
+	.string "Give it a try.$"
 
 Route119_Text_BrendanExplainFly:
-	.string "BRENDAN: Use FLY, and your POKéMON\n"
+	.string "DAWN: Use FLY, and your POKéMON\n"
 	.string "instantly carries you to any town\l"
-	.string "you've already visited.\p"
+	.string "you've previously visited.\p"
 	.string "But you need the FORTREE GYM BADGE \n"
 	.string "to do that.\p"
-	.string "Anyway, I have to move along.$"
+	.string "Anyway, I have to go on ahead.$"
 
 Route119_Text_ScottWayToGoBeSeeingYou:
 	.string "SCOTT: Hahahah!\n"

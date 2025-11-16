@@ -117,11 +117,11 @@ Route121_SafariZoneEntrance_Text_ComeInAndEnjoy:
 
 Route121_SafariZoneEntrance_Text_FirstTimeInfo:
 	.string "When you enter the SAFARI ZONE, you\n"
-	.string "may bring in your own POKéBALLS for\l"
+	.string "start with 30 SAFARI BALLS for\l"
 	.string "catching POKéMON.\p"
-	.string "The SAFARI Game won't end until you\n"
-	.string "feel you are done catching to your\l"
-	.string "heart's content.\p"
+	.string "The SAFARI Game is over when you run\n"
+	.string "out of SAFARI BALLS, or when you've\l"
+	.string "walked 500 steps.\p"
 	.string "Come in and enjoy the SAFARI ZONE!$"
 
 Route121_SafariZoneEntrance_Text_WouldYouLikeToPlay:

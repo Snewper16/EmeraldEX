@@ -117,8 +117,8 @@
  *  - When the text is done printing, spawns Task_NewGameBirchSpeechSub_InitPokeball
  * Task_NewGameBirchSpeech_MainSpeech
  * Task_NewGameBirchSpeech_AndYouAre
- * Task_NewGameBirchSpeech_StartBirchLotadPlatformFade
- * Task_NewGameBirchSpeech_StartBirchLotadPlatformFade
+ * Task_NewGameBirchSpeech_StartBirchOshawottPlatformFade
+ * Task_NewGameBirchSpeech_StartBirchOshawottPlatformFade
  * Task_NewGameBirchSpeech_SlidePlatformAway
  * Task_NewGameBirchSpeech_StartPlayerFadeIn
  * Task_NewGameBirchSpeech_WaitForPlayerFadeIn
@@ -148,7 +148,7 @@
  *  - Otherwise, return to Task_NewGameBirchSpeech_BoyOrGirl.
  *
  * Task_NewGameBirchSpeech_SlidePlatformAway2
- * Task_NewGameBirchSpeech_ReshowBirchLotad
+ * Task_NewGameBirchSpeech_ReshowBirchOshawott
  * Task_NewGameBirchSpeech_WaitForSpriteFadeInAndTextPrinter
  * Task_NewGameBirchSpeech_AreYouReady
  * Task_NewGameBirchSpeech_ShrinkPlayer
@@ -158,8 +158,8 @@
  *  - Advances to CB2_NewGame.
  *
  * Task_NewGameBirchSpeechSub_InitPokeball
- *  - Advances to Task_NewGameBirchSpeechSub_WaitForLotad
- * Task_NewGameBirchSpeechSub_WaitForLotad
+ *  - Advances to Task_NewGameBirchSpeechSub_WaitForOshawott
+ * Task_NewGameBirchSpeechSub_WaitForOshawott
  *  - Destroys itself when done.
  */
 
@@ -202,8 +202,8 @@ static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8);
 static void Task_NewGameBirchSpeech_MainSpeech(u8);
 static void NewGameBirchSpeech_WaitForThisIsPokemonText(struct TextPrinterTemplate *, u16);
 static void Task_NewGameBirchSpeech_AndYouAre(u8);
-static void Task_NewGameBirchSpeechSub_WaitForLotad(u8);
-static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8);
+static void Task_NewGameBirchSpeechSub_WaitForOshawott(u8);
+static void Task_NewGameBirchSpeech_StartBirchOshawottPlatformFade(u8);
 static void NewGameBirchSpeech_StartFadeOutTarget1InTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformIn(u8, u8);
 static void Task_NewGameBirchSpeech_SlidePlatformAway(u8);
@@ -229,7 +229,7 @@ static void Task_NewGameBirchSpeech_CreateNameYesNo(u8);
 static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8);
 void CreateYesNoMenuParameterized(u8, u8, u16, u16, u8, u8);
 static void Task_NewGameBirchSpeech_SlidePlatformAway2(u8);
-static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8);
+static void Task_NewGameBirchSpeech_ReshowBirchOshawott(u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInAndTextPrinter(u8);
 static void Task_NewGameBirchSpeech_AreYouReady(u8);
 static void Task_NewGameBirchSpeech_ShrinkPlayer(u8);
@@ -252,8 +252,8 @@ static const u16 sBirchSpeechBgPals[][16] = {
     INCBIN_U16("graphics/birch_speech/bg1.gbapal")
 };
 
-static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.lz");
-static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.lz");
+static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.smol");
+static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.smolTM");
 static const u16 sBirchSpeechBgGradientPal[] = INCBIN_U16("graphics/birch_speech/bg2.gbapal");
 
 static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
@@ -478,49 +478,49 @@ static const struct MenuAction sMenuActions_Gender[] = {
 };
 
 static const u8 *const sMalePresetNames[] = {
-    COMPOUND_STRING("STU"),
-    COMPOUND_STRING("MILTON"),
-    COMPOUND_STRING("TOM"),
-    COMPOUND_STRING("KENNY"),
-    COMPOUND_STRING("REID"),
-    COMPOUND_STRING("JUDE"),
-    COMPOUND_STRING("JAXSON"),
-    COMPOUND_STRING("EASTON"),
-    COMPOUND_STRING("WALKER"),
-    COMPOUND_STRING("TERU"),
-    COMPOUND_STRING("JOHNNY"),
-    COMPOUND_STRING("BRETT"),
-    COMPOUND_STRING("SETH"),
+    COMPOUND_STRING("CONNOR"),
+    COMPOUND_STRING("LOGAN"),
+    COMPOUND_STRING("OMEGA"),
+    COMPOUND_STRING("RUBY"),
+    COMPOUND_STRING("EMERALD"),
+    COMPOUND_STRING("BRENDAN"),
+    COMPOUND_STRING("WILLIAM"),
+    COMPOUND_STRING("JACK"),
+    COMPOUND_STRING("ICHIKI"),
+    COMPOUND_STRING("VAL"),
+    COMPOUND_STRING("SYL"),
+    COMPOUND_STRING("GRANT"),
     COMPOUND_STRING("TERRY"),
-    COMPOUND_STRING("CASEY"),
+    COMPOUND_STRING("BOB"),
+    COMPOUND_STRING("JIM"),
     COMPOUND_STRING("DARREN"),
     COMPOUND_STRING("LANDON"),
     COMPOUND_STRING("COLLIN"),
     COMPOUND_STRING("STANLEY"),
-    COMPOUND_STRING("QUINCY")
+    COMPOUND_STRING("JOHNNY")
 };
 
 static const u8 *const sFemalePresetNames[] = {
-    COMPOUND_STRING("KIMMY"),
-    COMPOUND_STRING("TIARA"),
-    COMPOUND_STRING("BELLA"),
-    COMPOUND_STRING("JAYLA"),
-    COMPOUND_STRING("ALLIE"),
-    COMPOUND_STRING("LIANNA"),
-    COMPOUND_STRING("SARA"),
-    COMPOUND_STRING("MONICA"),
-    COMPOUND_STRING("CAMILA"),
-    COMPOUND_STRING("AUBREE"),
-    COMPOUND_STRING("RUTHIE"),
-    COMPOUND_STRING("HAZEL"),
+    COMPOUND_STRING("CONNIE"),
+    COMPOUND_STRING("MILLE"),
+    COMPOUND_STRING("ALPHA"),
+    COMPOUND_STRING("SAPPHIRE"),
+    COMPOUND_STRING("EMERALD"),
+    COMPOUND_STRING("MAY"),
+    COMPOUND_STRING("HELEN"),
+    COMPOUND_STRING("JILL"),
+    COMPOUND_STRING("ASUKA"),
+    COMPOUND_STRING("VALERIE"),
+    COMPOUND_STRING("WEISS"),
+    COMPOUND_STRING("MEI"),
     COMPOUND_STRING("NADINE"),
-    COMPOUND_STRING("TANJA"),
-    COMPOUND_STRING("YASMIN"),
-    COMPOUND_STRING("NICOLA"),
+    COMPOUND_STRING("DAWN"),
+    COMPOUND_STRING("MIZUKI"),
+    COMPOUND_STRING("NICOLE"),
     COMPOUND_STRING("LILLIE"),
-    COMPOUND_STRING("TERRA"),
+    COMPOUND_STRING("LIKO"),
     COMPOUND_STRING("LUCY"),
-    COMPOUND_STRING("HALIE")
+    COMPOUND_STRING("IRIS")
 };
 
 // The number of male vs. female names is assumed to be the same.
@@ -1278,7 +1278,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tPlayerGender data[6]
 #define tTimer data[7]
 #define tBirchSpriteId data[8]
-#define tLotadSpriteId data[9]
+#define tOshawottSpriteId data[9]
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
@@ -1295,8 +1295,8 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     SetGpuReg(REG_OFFSET_BLDALPHA, 0);
     SetGpuReg(REG_OFFSET_BLDY, 0);
 
-    LZ77UnCompVram(sBirchSpeechShadowGfx, (void *)VRAM);
-    LZ77UnCompVram(sBirchSpeechBgMap, (void *)(BG_SCREEN_ADDR(7)));
+    DecompressDataWithHeaderVram(sBirchSpeechShadowGfx, (void *)VRAM);
+    DecompressDataWithHeaderVram(sBirchSpeechBgMap, (void *)(BG_SCREEN_ADDR(7)));
     LoadPalette(sBirchSpeechBgPals, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
     LoadPalette(&sBirchSpeechBgGradientPal[8], BG_PLTT_ID(0) + 1, PLTT_SIZEOF(8));
     ScanlineEffect_Stop();
@@ -1387,7 +1387,7 @@ static void Task_NewGameBirchSpeech_MainSpeech(u8 taskId)
 
 static void Task_NewGameBirchSpeechSub_InitPokeBall(u8 taskId)
 {
-    u8 spriteId = gTasks[sBirchSpeechMainTaskId].tLotadSpriteId;
+    u8 spriteId = gTasks[sBirchSpeechMainTaskId].tOshawottSpriteId;
 
     gSprites[spriteId].x = 100;
     gSprites[spriteId].y = 75;
@@ -1395,14 +1395,14 @@ static void Task_NewGameBirchSpeechSub_InitPokeBall(u8 taskId)
     gSprites[spriteId].data[0] = 0;
 
     CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, PALETTES_BG, SPECIES_OSHAWOTT);
-    gTasks[taskId].func = Task_NewGameBirchSpeechSub_WaitForLotad;
+    gTasks[taskId].func = Task_NewGameBirchSpeechSub_WaitForOshawott;
     gTasks[sBirchSpeechMainTaskId].tTimer = 0;
 }
 
-static void Task_NewGameBirchSpeechSub_WaitForLotad(u8 taskId)
+static void Task_NewGameBirchSpeechSub_WaitForOshawott(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    struct Sprite *sprite = &gSprites[gTasks[sBirchSpeechMainTaskId].tLotadSpriteId];
+    struct Sprite *sprite = &gSprites[gTasks[sBirchSpeechMainTaskId].tOshawottSpriteId];
 
     switch (tState)
     {
@@ -1434,16 +1434,16 @@ static void Task_NewGameBirchSpeech_AndYouAre(u8 taskId)
         sStartedPokeBallTask = FALSE;
         StringExpandPlaceholders(gStringVar4, gText_Birch_AndYouAre);
         AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_StartBirchLotadPlatformFade;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_StartBirchOshawottPlatformFade;
     }
 }
 
-static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8 taskId)
+static void Task_NewGameBirchSpeech_StartBirchOshawottPlatformFade(u8 taskId)
 {
     if (!RunTextPrintersAndIsPrinter0Active())
     {
         gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+        gSprites[gTasks[taskId].tOshawottSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
         gTasks[taskId].tTimer = 64;
@@ -1470,7 +1470,7 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
         gSprites[gTasks[taskId].tBirchSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tOshawottSpriteId].invisible = TRUE;
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -1619,7 +1619,7 @@ static void Task_NewGameBirchSpeech_StartNamingScreen(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        FreeAndDestroyMonPicSprite(gTasks[taskId].tOshawottSpriteId);
         NewGameBirchSpeech_SetDefaultPlayerName(Random() % NUM_PRESET_NAMES);
         DestroyTask(taskId);
         DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_NewGameBirchSpeech_ReturnFromNamingScreen);
@@ -1670,11 +1670,11 @@ static void Task_NewGameBirchSpeech_SlidePlatformAway2(u8 taskId)
     }
     else
     {
-        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchLotad;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ReshowBirchOshawott;
     }
 }
 
-static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
+static void Task_NewGameBirchSpeech_ReshowBirchOshawott(u8 taskId)
 {
     u8 spriteId;
 
@@ -1687,7 +1687,7 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
         gSprites[spriteId].y = 60;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-        spriteId = gTasks[taskId].tLotadSpriteId;
+        spriteId = gTasks[taskId].tOshawottSpriteId;
         gSprites[spriteId].x = 100;
         gSprites[spriteId].y = 75;
         gSprites[spriteId].invisible = FALSE;
@@ -1706,11 +1706,11 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInAndTextPrinter(u8 taskId)
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
         gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[gTasks[taskId].tOshawottSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
         if (!RunTextPrintersAndIsPrinter0Active())
         {
             gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
-            gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
+            gSprites[gTasks[taskId].tOshawottSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
             gTasks[taskId].tTimer = 64;
@@ -1726,7 +1726,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
         gSprites[gTasks[taskId].tBirchSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tOshawottSpriteId].invisible = TRUE;
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -1798,7 +1798,7 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
-        FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
+        FreeAndDestroyMonPicSprite(gTasks[taskId].tOshawottSpriteId);
         ResetAllPicSprites();
         SetMainCallback2(CB2_NewGame);
         DestroyTask(taskId);
@@ -1830,8 +1830,8 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     DmaFill32(3, 0, OAM, OAM_SIZE);
     DmaFill16(3, 0, PLTT, PLTT_SIZE);
     ResetPaletteFade();
-    LZ77UnCompVram(sBirchSpeechShadowGfx, (u8 *)VRAM);
-    LZ77UnCompVram(sBirchSpeechBgMap, (u8 *)(BG_SCREEN_ADDR(7)));
+    DecompressDataWithHeaderVram(sBirchSpeechShadowGfx, (u8 *)VRAM);
+    DecompressDataWithHeaderVram(sBirchSpeechBgMap, (u8 *)(BG_SCREEN_ADDR(7)));
     LoadPalette(sBirchSpeechBgPals, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
     LoadPalette(&sBirchSpeechBgGradientPal[1], BG_PLTT_ID(0) + 1, PLTT_SIZEOF(8));
     ResetTasks();
@@ -1894,7 +1894,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
     sprite->data[0] = y;
 }
 
-static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
+static u8 NewGameBirchSpeech_CreateOshawottSprite(u8 x, u8 y)
 {
     return CreateMonPicSprite_Affine(SPECIES_OSHAWOTT, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
@@ -1902,7 +1902,7 @@ static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 static void AddBirchSpeechObjects(u8 taskId)
 {
     u8 birchSpriteId;
-    u8 lotadSpriteId;
+    u8 oshawottSpriteId;
     u8 brendanSpriteId;
     u8 maySpriteId;
 
@@ -1911,11 +1911,11 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[birchSpriteId].oam.priority = 0;
     gSprites[birchSpriteId].invisible = TRUE;
     gTasks[taskId].tBirchSpriteId = birchSpriteId;
-    lotadSpriteId = NewGameBirchSpeech_CreateLotadSprite(100, 0x4B);
-    gSprites[lotadSpriteId].callback = SpriteCB_Null;
-    gSprites[lotadSpriteId].oam.priority = 0;
-    gSprites[lotadSpriteId].invisible = TRUE;
-    gTasks[taskId].tLotadSpriteId = lotadSpriteId;
+    oshawottSpriteId = NewGameBirchSpeech_CreateOshawottSprite(100, 0x4B);
+    gSprites[oshawottSpriteId].callback = SpriteCB_Null;
+    gSprites[oshawottSpriteId].oam.priority = 0;
+    gSprites[oshawottSpriteId].invisible = TRUE;
+    gTasks[taskId].tOshawottSpriteId = oshawottSpriteId;
     brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
     gSprites[brendanSpriteId].callback = SpriteCB_Null;
     gSprites[brendanSpriteId].invisible = TRUE;
@@ -1932,7 +1932,7 @@ static void AddBirchSpeechObjects(u8 taskId)
 #undef tBG1HOFS
 #undef tPlayerGender
 #undef tBirchSpriteId
-#undef tLotadSpriteId
+#undef tOshawottSpriteId
 #undef tBrendanSpriteId
 #undef tMaySpriteId
 

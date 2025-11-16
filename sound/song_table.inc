@@ -484,7 +484,7 @@ gSongTable::
 	song mus_vs_kyogre_groudon, 0, 0
 	song mus_vs_rival, 0, 0
 	song mus_vs_elite_four, 0, 0
-	song mus_vs_aqua_magma_leader, 0, 0
+	song mus_vs_aqua_magma_boss, 0, 0
 	song mus_rg_follow_me, 0, 0
 	song mus_rg_game_corner, 0, 0
 	song mus_rg_rocket_hideout, 0, 0

@@ -1407,7 +1407,7 @@ F_TRAINER_FEMALE |
 #line 637
         .trainerName = _("ARCHIE"),
 #line 638
-        .trainerClass = TRAINER_CLASS_AQUA_BOSS_ARCHIE,
+        .trainerClass = TRAINER_CLASS_AQUA_BOSS,
 #line 639
         .trainerPic = TRAINER_PIC_AQUA_BOSS_ARCHIE,
         .encounterMusic_gender =
@@ -28160,7 +28160,7 @@ F_TRAINER_FEMALE |
 #line 11259
         .trainerName = _("MAXIE"),
 #line 11260
-        .trainerClass = TRAINER_CLASS_MAGMA_BOSS_MAXIE,
+        .trainerClass = TRAINER_CLASS_MAGMA_BOSS,
 #line 11261
         .trainerPic = TRAINER_PIC_MAGMA_BOSS_MAXIE,
         .encounterMusic_gender =
@@ -28283,7 +28283,7 @@ F_TRAINER_FEMALE |
 #line 11315
         .trainerName = _("MAXIE"),
 #line 11316
-        .trainerClass = TRAINER_CLASS_MAGMA_BOSS_MAXIE,
+        .trainerClass = TRAINER_CLASS_MAGMA_BOSS,
 #line 11317
         .trainerPic = TRAINER_PIC_MAGMA_BOSS_MAXIE,
         .encounterMusic_gender =
@@ -34706,7 +34706,7 @@ F_TRAINER_FEMALE |
 #line 13876
         .trainerName = _("MAXIE"),
 #line 13877
-        .trainerClass = TRAINER_CLASS_MAGMA_BOSS_MAXIE,
+        .trainerClass = TRAINER_CLASS_MAGMA_BOSS,
 #line 13878
         .trainerPic = TRAINER_PIC_MAGMA_BOSS_MAXIE,
         .encounterMusic_gender =

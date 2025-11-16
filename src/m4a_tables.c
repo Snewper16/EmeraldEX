@@ -261,7 +261,6 @@ const struct PokemonCrySong gPokemonCrySongTemplate =
     .blockCount = 0,
     .priority = 255,
     .reverb = 0,
-    .tone = (struct ToneData *)&voicegroup000,
     .part = {NULL, NULL},
     .gap = 0,
     .part0 = TUNE,

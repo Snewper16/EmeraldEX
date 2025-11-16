@@ -44,7 +44,7 @@ Route103_EventScript_RivalMay::
 Route103_EventScript_RivalBrendan::
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
@@ -314,22 +314,22 @@ Route103_Text_MayTimeToHeadBack:
 	.string "the LAB.$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "BRENDAN: Okay, so it's this one and\n"
+	.string "DAWN: Okay, so it's this one and\n"
 	.string "that one that live on ROUTE 103…$"
 
 Route103_Text_BrendanLetsBattle:
 	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
+	.string "Looks like Dad gave you a POKéMON.\p"
 	.string "Since we're here, how about a little\n"
 	.string "battle?\p"
-	.string "I'll teach you what being a TRAINER's\n"
+	.string "I'll show you what being a TRAINER's\n"
 	.string "about!$"
 
 Route103_Text_BrendanDefeated:
-	.string "Huh, {PLAYER}, you're not too shabby.$"
+	.string "Huh, {PLAYER}, you're not that bad.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: I think I get it.\n"
+	.string "DAWN: I think I understand.\n"
 	.string "I think I know why my dad has his eye\l"
 	.string "out for you now.\p"
 	.string "Look, your POKéMON already likes you,\n"

@@ -11,4 +11,4 @@ extern const u8 gAbilityNames[][ABILITY_NAME_LENGTH + 1];
 extern const struct SpeciesInfo gSpeciesInfo[];
 
 
-#endif // GUARD_UI_STAT_EDIT_H
+#endif // GUARD_UI_MENU_H

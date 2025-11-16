@@ -3,6 +3,7 @@
 #include "malloc.h"
 #include "bg.h"
 #include "blit.h"
+#include "decompress.h"
 
 COMMON_DATA void *gWindowBgTilemapBuffers[NUM_BACKGROUNDS] = {0};
 extern u32 gWindowTileAutoAllocEnabled;
@@ -452,7 +453,7 @@ void CopyToWindowPixelBuffer(u32 windowId, const void *src, u16 size, u16 tileOf
     if (size != 0)
         CpuCopy16(src, gWindows[windowId].tileData + (32 * tileOffset), size);
     else
-        LZ77UnCompWram(src, gWindows[windowId].tileData + (32 * tileOffset));
+        DecompressDataWithHeaderWram(src, gWindows[windowId].tileData + (32 * tileOffset));
 }
 
 // Sets all pixels within the window to the fillValue color.

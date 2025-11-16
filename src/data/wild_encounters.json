@@ -2255,12 +2255,12 @@
               {
                 "min_level": 25,
                 "max_level": 25,
-                "species": "SPECIES_GIRAFARIG"
+                "species": "SPECIES_STANTLER"
               },
               {
                 "min_level": 27,
                 "max_level": 27,
-                "species": "SPECIES_STANTLER"
+                "species": "SPECIES_CYNDAQUIL"
               },
               {
                 "min_level": 25,
@@ -6948,7 +6948,7 @@
               {
                 "min_level": 27,
                 "max_level": 27,
-                "species": "SPECIES_STANTLER"
+                "species": "SPECIES_ROWLET"
               },
               {
                 "min_level": 25,
@@ -7102,7 +7102,7 @@
               {
                 "min_level": 29,
                 "max_level": 29,
-                "species": "SPECIES_ODDISH"
+                "species": "SPECIES_SANDILE"
               },
               {
                 "min_level": 27,
@@ -7201,7 +7201,7 @@
               {
                 "min_level": 29,
                 "max_level": 29,
-                "species": "SPECIES_ODDISH"
+                "species": "SPECIES_CHARCADET"
               },
               {
                 "min_level": 27,
@@ -7261,17 +7261,17 @@
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_PSYDUCK"
+                "species": "SPECIES_OSHAWOTT"
               },
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_GOLDUCK"
+                "species": "SPECIES_OSHAWOTT"
               },
               {
                 "min_level": 25,
                 "max_level": 40,
-                "species": "SPECIES_GOLDUCK"
+                "species": "SPECIES_OSHAWOTT"
               }
             ]
           },
