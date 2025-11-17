@@ -394,7 +394,7 @@ Route110_EventScript_PlayMayMusic::
 	return
 
 Route110_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	return
 
 Route110_EventScript_MayBattle::
@@ -781,26 +781,26 @@ Route110_Text_MayExplainItemfinder:
 	.string "harder for the next time.$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "DAWN: Hey, {PLAYER}.\n"
-	.string "So this is where you've been.\l"
+	.string "BRENDAN: Hey, {PLAYER}.\n"
+	.string "So this is where you were.\l"
 	.string "How's it going?\p"
 	.string "Have you been raising your POKéMON?\n"
-	.string "Let me see!$"
+	.string "I'll check for you.$"
 
 Route110_Text_BrendanDefeated:
 	.string "Hmm…\n"
-	.string "You're getting even better.$"
+	.string "You're pretty good.$"
 
 Route110_Text_BrendanTakeThis:
-	.string "DAWN: {PLAYER}, you've trained\n"
+	.string "BRENDAN: {PLAYER}, you've trained\n"
 	.string "without me noticing…\p"
-	.string "Awesome!\n"
+	.string "Good enough!\n"
 	.string "Here, take this.$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "DAWN: That's an ITEMFINDER.\p"
-	.string "Use it to snoop around for items that\n"
-	.string "you can't see.\p"
+	.string "BRENDAN: That's an ITEMFINDER.\p"
+	.string "Use it to root around for items that\n"
+	.string "aren't visible.\p"
 	.string "If it senses something, it emits\n"
 	.string "a sound.\p"
 	.string "Anyway, I'm off to look for new\n"

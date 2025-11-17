@@ -688,7 +688,7 @@ RustboroCity_EventScript_PlayMayMusic::
 	return
 
 RustboroCity_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	return
 
 RustboroCity_EventScript_RivalTrigger0::
@@ -1117,7 +1117,7 @@ RustboroCity_Text_YouGotItThankYou:
 	.string "You got them back!\p"
 	.string "You really are a great TRAINER!\p"
 	.string "I know! As my thanks, I'll give you\n"
-	.string "this GREAT BALL!$"
+	.string "another GREAT BALL!$"
 
 RustboroCity_Text_YoureLoadedWithItems:
 	.string "You're loaded with items.\n"
@@ -1175,51 +1175,50 @@ RustboroCity_Text_MayMrBrineyHint:
 	.string "was once a revered seafarer.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "DAWN: Oh, hey, {PLAYER}!\p"
+	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
 	.string "You had a MATCH CALL feature put\n"
 	.string "on your POKéNAV! Cool!\p"
 	.string "Let's register each other so we can\n"
-	.string "keep in touch!\p"
+	.string "get in touch anytime!\p"
 	.string "… … … … … …$"
 
 RustboroCity_Text_RegisteredBrendan:
-	.string "Registered DAWN\n"
+	.string "Registered BRENDAN\n"
 	.string "in the POKéNAV.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
-	.string "DAWN: By the way, {PLAYER}, I walked\n"
+	.string "BRENDAN: By the way, {PLAYER}, I walked\n"
 	.string "by MR. BRINEY in PETALBURG WOODS.\p"
 	.string "I bet he was on his way home to his\n"
 	.string "cottage by the sea.\p"
 	.string "{PLAYER}, how's your POKéDEX?\n"
 	.string "Have you filled in any pages yet?\p"
-	.string "Mine's awesome.\p"
+	.string "Mine rules.\p"
 	.string "Want to have a battle to test how\n"
 	.string "far you've progressed?$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon:
-	.string "DAWN: What? Don't be such a\n"
-	.string "lameo, it'll be fun!$"
+	.string "BRENDAN: What's the matter? Don't have\n"
+	.string "any confidence in your POKéMON?$"
 
 RustboroCity_Text_BrendanWantToBattle:
-	.string "DAWN: What's up?\n"
+	.string "BRENDAN: What's up?\n"
 	.string "Want to have a battle with me?$"
 
 RustboroCity_Text_BrendanIWontGoEasy:
-	.string "DAWN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy\n"
-	.string "on you!$"
+	.string "BRENDAN: I know you just became\n"
+	.string "a TRAINER, but I won't go easy!$"
 
 RustboroCity_Text_BrendanDefeat:
-	.string "Huh…\n"
+	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
 RustboroCity_Text_BrendanMrBrineyHint:
-	.string "Dawn: By the way, you know\n"
+	.string "BRENDAN: By the way, you know\n"
 	.string "MR. BRINEY? The guy I just passed?\p"
-	.string "He's a great sailor who once roamed\n"
-	.string "the seas.\p"
-	.string "Maybe he'll take you for a cruise!$"
+	.string "I bet you didn't know this, since you\n"
+	.string "just moved here, {PLAYER}, but\l"
+	.string "MR. BRINEY was once a great sailor.$"
 
 RustboroCity_Text_TunnelNearingCompletion:
 	.string "“Timesaving tunnel nearing\n"

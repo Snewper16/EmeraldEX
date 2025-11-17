@@ -1166,7 +1166,7 @@ enum StartingStatusStringID
 };
 
 // gWrappedStringIds
-enum WrappedStringID
+enum __attribute__((packed)) WrappedStringID
 {
     B_MSG_WRAPPED_BIND,
     B_MSG_WRAPPED_WRAP,

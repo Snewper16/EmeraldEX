@@ -491,7 +491,7 @@ static const u8 *const sMalePresetNames[] = {
     COMPOUND_STRING("SYL"),
     COMPOUND_STRING("GRANT"),
     COMPOUND_STRING("TERRY"),
-    COMPOUND_STRING("BOB"),
+	COMPOUND_STRING("BOB"),
     COMPOUND_STRING("JIM"),
     COMPOUND_STRING("DARREN"),
     COMPOUND_STRING("LANDON"),
@@ -520,7 +520,8 @@ static const u8 *const sFemalePresetNames[] = {
     COMPOUND_STRING("LILLIE"),
     COMPOUND_STRING("LIKO"),
     COMPOUND_STRING("LUCY"),
-    COMPOUND_STRING("IRIS")
+    COMPOUND_STRING("IRIS"),
+    COMPOUND_STRING("HALIE")	
 };
 
 // The number of male vs. female names is assumed to be the same.
@@ -1902,7 +1903,7 @@ static u8 NewGameBirchSpeech_CreateOshawottSprite(u8 x, u8 y)
 static void AddBirchSpeechObjects(u8 taskId)
 {
     u8 birchSpriteId;
-    u8 oshawottSpriteId;
+    u8 lotadSpriteId;
     u8 brendanSpriteId;
     u8 maySpriteId;
 
@@ -1911,11 +1912,11 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[birchSpriteId].oam.priority = 0;
     gSprites[birchSpriteId].invisible = TRUE;
     gTasks[taskId].tBirchSpriteId = birchSpriteId;
-    oshawottSpriteId = NewGameBirchSpeech_CreateOshawottSprite(100, 0x4B);
-    gSprites[oshawottSpriteId].callback = SpriteCB_Null;
-    gSprites[oshawottSpriteId].oam.priority = 0;
-    gSprites[oshawottSpriteId].invisible = TRUE;
-    gTasks[taskId].tOshawottSpriteId = oshawottSpriteId;
+    lotadSpriteId = NewGameBirchSpeech_CreateOshawottSprite(100, 0x4B);
+    gSprites[lotadSpriteId].callback = SpriteCB_Null;
+    gSprites[lotadSpriteId].oam.priority = 0;
+    gSprites[lotadSpriteId].invisible = TRUE;
+    gTasks[taskId].tOshawottSpriteId = lotadSpriteId;
     brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
     gSprites[brendanSpriteId].callback = SpriteCB_Null;
     gSprites[brendanSpriteId].invisible = TRUE;

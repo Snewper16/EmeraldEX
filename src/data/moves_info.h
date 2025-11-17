@@ -6706,12 +6706,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Uproar"),
         .description = COMPOUND_STRING(
-                                    #if B_UPROAR_TURNS >= GEN_5
-                                       "Causes an uproar for 2 to 5\n"
-                                    #else
-                                       "Causes an uproar for 3\n"
-                                    #endif
-                                       "turns and prevents sleep."),
+        #if B_UPROAR_TURNS >= GEN_5
+            "Causes an uproar for 3\n"
+        #else
+            "Causes an uproar for 2 to 5\n"
+        #endif
+            "turns and prevents sleep."),
         .effect = EFFECT_UPROAR,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 90 : 50,
         .type = TYPE_NORMAL,
@@ -8071,7 +8071,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A sharp-fanged attack.\n"
             "May badly poison the foe."),
         .effect = EFFECT_HIT,
-        .power = 60,
+        .power = 50,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 15,
@@ -9309,7 +9309,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "attack 2 turns later."),
         .effect = EFFECT_FUTURE_SIGHT,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 140 : 120,
-        .type = TYPE_STEEL,
+        .type = TYPE_PSYCHIC,
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_5 ? 100 : 85,
         .pp = 5,
         .target = MOVE_TARGET_SELECTED,
@@ -10218,7 +10218,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "with the foe."),
         .effect = EFFECT_HEART_SWAP,
         .power = 0,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
@@ -10965,7 +10965,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "May cause flinching or\n"
             "leave the foe paralyzed."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 65,
         .type = TYPE_ELECTRIC,
         .accuracy = 95,
         .pp = 15,
@@ -11000,7 +11000,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "leave the foe frozen."),
         #endif
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 65,
         .type = TYPE_ICE,
         .accuracy = 95,
         .pp = 15,
@@ -11031,7 +11031,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "May cause flinching or\n"
             "leave the foe with a burn."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 65,
         .type = TYPE_FIRE,
         .accuracy = 95,
         .pp = 15,
@@ -11942,7 +11942,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = sHealingWishDescription,
         .effect = EFFECT_HEALING_WISH,
         .power = 0,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 10,
         .target = MOVE_TARGET_USER,

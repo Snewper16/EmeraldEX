@@ -413,7 +413,7 @@
 #define MUS_VS_KYOGRE_GROUDON       480 // MUS_BATTLE34
 #define MUS_VS_RIVAL                481 // MUS_BATTLE35
 #define MUS_VS_ELITE_FOUR           482 // MUS_BATTLE38
-#define MUS_VS_AQUA_MAGMA_BOSS    483 // MUS_BATTLE30
+#define MUS_VS_AQUA_MAGMA_BOSS      483 // MUS_BATTLE30
 // FRLG Music
 #define MUS_RG_FOLLOW_ME            484 // MUS_RG_ANNAI
 #define MUS_RG_GAME_CORNER          485 // MUS_RG_SLOT

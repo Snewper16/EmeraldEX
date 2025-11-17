@@ -70,8 +70,6 @@ SINGLE_BATTLE_TEST("Thunder Wave doesn't affect Electric types (Gen6+)")
     PARAMETRIZE { gen = GEN_5; }
     PARAMETRIZE { gen = GEN_6; }
     GIVEN {
-        ASSUME(gSpeciesInfo[SPECIES_PIKACHU].types[0] == TYPE_ELECTRIC);
-        ASSUME(B_PARALYZE_ELECTRIC >= GEN_6);
         WITH_CONFIG(GEN_CONFIG_PARALYZE_ELECTRIC, gen);
         ASSUME(GetSpeciesType(SPECIES_PIKACHU, 0) == TYPE_ELECTRIC);
         PLAYER(SPECIES_WOBBUFFET);

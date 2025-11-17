@@ -12,6 +12,8 @@ FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner::
 	end
 
 FallarborTown_MoveRelearnersHouse_EventScript_AskTeachMove::
+	checkitem ITEM_HEART_SCALE
+	goto_if_eq VAR_RESULT, FALSE, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
 	msgbox FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove, MSGBOX_YESNO
 	switch VAR_RESULT
 	case NO, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
@@ -34,6 +36,8 @@ FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove::
 	special TeachMoveRelearnerMove
 	waitstate
 	goto_if_eq VAR_0x8004, 0, FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	msgbox FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale, MSGBOX_DEFAULT
+	removeitem ITEM_HEART_SCALE
 	goto FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
 	end
 
@@ -58,9 +62,13 @@ FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
 	.string "learn--every one of them--and I can\l"
 	.string "teach POKéMON those moves.\p"
 	.string "I can teach a move to a POKéMON\n"
-	.string "of yours if you'd like.$"
+	.string "of yours if you'd like.\p"
+	.string "I'll do it for a HEART SCALE.\n"
+	.string "I'm collecting those now.$"
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
+	.string "Oh! That's it! That's an honest to\n"
+	.string "goodness HEART SCALE!\p"
 	.string "Let me guess, you want me to teach\n"
 	.string "a move?$"
 
@@ -75,9 +83,13 @@ FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 	.string "It doesn't appear as if I have any move\n"
 	.string "I can teach that POKéMON.$"
 
+FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
+	.string "{PLAYER} handed over one HEART SCALE\n"
+	.string "in exchange.$"
+
 FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-	.string "Come back anytime if your POKéMON\n"
-	.string "needs to learn a move.$"
+	.string "If your POKéMON need to learn a move,\n"
+	.string "come back with a HEART SCALE.$"
 
 FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
 	.string "Hunh? There isn't a single move that\n"

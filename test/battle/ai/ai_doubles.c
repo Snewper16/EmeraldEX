@@ -85,6 +85,59 @@ AI_DOUBLE_BATTLE_TEST("AI will not use a status move if partner already chose He
     }
 }
 
+TO_DO_BATTLE_TEST("AI understands Instruct")
+
+TO_DO_BATTLE_TEST("AI understands Quick Guard")
+TO_DO_BATTLE_TEST("AI understands Wide Guard")
+
+AI_DOUBLE_BATTLE_TEST("AI won't use the same nondamaging move as its partner for no reason")
+{
+    u32 move;
+    PARAMETRIZE { move = MOVE_AROMATHERAPY; }
+    PARAMETRIZE { move = MOVE_ELECTRIC_TERRAIN; }
+    PARAMETRIZE { move = MOVE_FOLLOW_ME; }
+    PARAMETRIZE { move = MOVE_GRASSY_TERRAIN; }
+    PARAMETRIZE { move = MOVE_GRAVITY; }
+    PARAMETRIZE { move = MOVE_HAIL; }
+    PARAMETRIZE { move = MOVE_HEAL_BELL; }
+    PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
+    PARAMETRIZE { move = MOVE_LUCKY_CHANT; }
+    PARAMETRIZE { move = MOVE_MAGIC_ROOM; }
+    PARAMETRIZE { move = MOVE_MISTY_TERRAIN; }
+    PARAMETRIZE { move = MOVE_MUD_SPORT; }
+    PARAMETRIZE { move = MOVE_PSYCHIC_TERRAIN; }
+    PARAMETRIZE { move = MOVE_RAIN_DANCE; }
+    PARAMETRIZE { move = MOVE_REFLECT; }
+    PARAMETRIZE { move = MOVE_SAFEGUARD; }
+    PARAMETRIZE { move = MOVE_SANDSTORM; }
+    PARAMETRIZE { move = MOVE_SNOWSCAPE; }
+    PARAMETRIZE { move = MOVE_SPOTLIGHT; }
+    PARAMETRIZE { move = MOVE_STEALTH_ROCK; }
+    PARAMETRIZE { move = MOVE_SUNNY_DAY; }
+    PARAMETRIZE { move = MOVE_TAILWIND; }
+    PARAMETRIZE { move = MOVE_TEETER_DANCE; }
+    PARAMETRIZE { move = MOVE_TRICK_ROOM; }
+    PARAMETRIZE { move = MOVE_WATER_SPORT; }
+    PARAMETRIZE { move = MOVE_COURT_CHANGE; }
+    PARAMETRIZE { move = MOVE_PERISH_SONG; }
+    PARAMETRIZE { move = MOVE_STICKY_WEB; }
+    PARAMETRIZE { move = MOVE_TEATIME; }
+    PARAMETRIZE { move = MOVE_WONDER_ROOM; }
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); Status1(STATUS1_BURN); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, move); EXPECT_MOVE(opponentRight, MOVE_TACKLE); }
+    }
+}
+
 AI_DOUBLE_BATTLE_TEST("AI will not choose Earthquake if it damages the partner without a positive effect")
 {
     ASSUME(GetMoveTarget(MOVE_EARTHQUAKE) == MOVE_TARGET_FOES_AND_ALLY);
@@ -348,7 +401,7 @@ AI_DOUBLE_BATTLE_TEST("AI sees corresponding absorbing abilities on partners")
     }
 }
 
-AI_DOUBLE_BATTLE_TEST("AI knows if redirection abilities provide immunity to allies")
+AI_DOUBLE_BATTLE_TEST("AI treats an ally's redirection ability appropriately (gen 4)")
 {
     KNOWN_FAILING;
     ASSUME(GetMoveTarget(MOVE_DISCHARGE) == MOVE_TARGET_FOES_AND_ALLY);
@@ -356,26 +409,44 @@ AI_DOUBLE_BATTLE_TEST("AI knows if redirection abilities provide immunity to all
     ASSUME(GetMoveTarget(MOVE_SURF) == MOVE_TARGET_FOES_AND_ALLY);
     ASSUME(GetMoveType(MOVE_SURF) == TYPE_WATER);
 
-    u32 ability, move, species, config;
+    u32 ability, move, species;
 
-    PARAMETRIZE { species = SPECIES_SEAKING;    ability = ABILITY_LIGHTNING_ROD;    move = MOVE_DISCHARGE;  config = GEN_4; }
-    PARAMETRIZE { species = SPECIES_SEAKING;    ability = ABILITY_LIGHTNING_ROD;    move = MOVE_DISCHARGE;  config = GEN_5; }
-    PARAMETRIZE { species = SPECIES_SHELLOS;    ability = ABILITY_STORM_DRAIN;      move = MOVE_SURF;       config = GEN_4; }
-    PARAMETRIZE { species = SPECIES_SHELLOS;    ability = ABILITY_STORM_DRAIN;      move = MOVE_SURF;       config = GEN_5; }
+    PARAMETRIZE { species = SPECIES_SEAKING;    ability = ABILITY_LIGHTNING_ROD;    move = MOVE_DISCHARGE; }
+    PARAMETRIZE { species = SPECIES_SHELLOS;    ability = ABILITY_STORM_DRAIN;      move = MOVE_SURF; }
 
     GIVEN {
-        ASSUME(GetMoveTarget(MOVE_DISCHARGE) == MOVE_TARGET_FOES_AND_ALLY);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE);
-        WITH_CONFIG(B_REDIRECT_ABILITY_IMMUNITY, config);
-        PLAYER(SPECIES_ZIGZAGOON);
-        PLAYER(SPECIES_ZIGZAGOON);
-        OPPONENT(SPECIES_SLAKING) { Moves(move, MOVE_SCRATCH); }
+        WITH_CONFIG(B_REDIRECT_ABILITY_IMMUNITY, GEN_4);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_HEADBUTT); }
         OPPONENT(species) { HP(1); Ability(ability); Moves(MOVE_ROUND); }
     } WHEN {
-        if (config == GEN_5)
-            TURN { EXPECT_MOVE(opponentLeft, move); }
-        else
-            TURN { EXPECT_MOVE(opponentLeft, MOVE_SCRATCH); }
+        TURN { EXPECT_MOVE(opponentLeft, MOVE_HEADBUTT); }
+    }
+}
+
+AI_DOUBLE_BATTLE_TEST("AI treats an ally's redirection ability appropriately (gen 5+)")
+{
+    ASSUME(GetMoveTarget(MOVE_DISCHARGE) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveType(MOVE_DISCHARGE) == TYPE_ELECTRIC);
+    ASSUME(GetMoveTarget(MOVE_SURF) == MOVE_TARGET_FOES_AND_ALLY);
+    ASSUME(GetMoveType(MOVE_SURF) == TYPE_WATER);
+
+    u32 ability, move, species;
+
+    PARAMETRIZE { species = SPECIES_SEAKING;    ability = ABILITY_LIGHTNING_ROD;    move = MOVE_DISCHARGE; }
+    PARAMETRIZE { species = SPECIES_SHELLOS;    ability = ABILITY_STORM_DRAIN;      move = MOVE_SURF; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE);
+        WITH_CONFIG(B_REDIRECT_ABILITY_IMMUNITY, GEN_5);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_HEADBUTT); }
+        OPPONENT(species) { HP(1); Ability(ability); Moves(MOVE_ROUND); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponentLeft, move); }
     }
 }
 

@@ -1,9 +1,7 @@
 //
 // DO NOT MODIFY THIS FILE! It is auto-generated from src/data/battle_partners.party
 //
-// If you want to modify this file set COMPETITIVE_PARTY_SYNTAX to FALSE
-// in include/config/general.h and remove this notice.
-// Use sed -i '/^#line/d' 'src/data/battle_partners.h' to remove #line markers.
+// If you want to modify this file see expansion PR #7154
 //
 
 #line 1 "src/data/battle_partners.party"
@@ -14,10 +12,12 @@
 #line 3
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
-        .trainerPic = TRAINER_BACK_PIC_BRENDAN,
+        .trainerPic = TRAINER_PIC_BRENDAN,
         .encounterMusic_gender =
 #line 6
             TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 0
+        .trainerBackPic = TRAINER_PIC_BRENDAN,
         .partySize = 0,
         .party = (const struct TrainerMon[])
         {
@@ -31,10 +31,12 @@
 #line 10
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 11
-        .trainerPic = TRAINER_BACK_PIC_STEVEN,
+        .trainerPic = TRAINER_PIC_STEVEN,
         .encounterMusic_gender =
 #line 13
             TRAINER_ENCOUNTER_MUSIC_MALE,
+#line 0
+        .trainerBackPic = TRAINER_PIC_STEVEN,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {

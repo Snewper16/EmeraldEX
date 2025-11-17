@@ -49,7 +49,6 @@ DOUBLE_BATTLE_TEST("Lunar Dance causes the user to faint and fully heals the rep
     }
 }
 
-SINGLE_BATTLE_TEST("Healing Wish effect activates only if the switched pokemon can be healed")
 SINGLE_BATTLE_TEST("Healing Wish effect activates even if the the switched Pokémon can't be healed (Gen4-7)")
 {
     GIVEN {

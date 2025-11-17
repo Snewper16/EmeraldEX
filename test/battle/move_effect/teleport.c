@@ -6,7 +6,6 @@ ASSUMPTIONS
     ASSUME(GetMoveEffect(MOVE_TELEPORT) == EFFECT_TELEPORT);
 }
 
-SINGLE_BATTLE_TEST("Teleport fails when there is no pokemon to switch in")
 SINGLE_BATTLE_TEST("Teleport fails to switch out when there is no Pokémon to switch in (Gen 8+)")
 {
     GIVEN {
@@ -20,7 +19,6 @@ SINGLE_BATTLE_TEST("Teleport fails to switch out when there is no Pokémon to sw
     }
 }
 
-SINGLE_BATTLE_TEST("Teleport fails when there no alive pokemon left")
 SINGLE_BATTLE_TEST("Teleport fails to switch out the user when there no alive Pokémon left (Gen 8+)")
 {
     GIVEN {
@@ -35,7 +33,6 @@ SINGLE_BATTLE_TEST("Teleport fails to switch out the user when there no alive Po
     }
 }
 
-SINGLE_BATTLE_TEST("Teleport forces the pokemon to switch out")
 SINGLE_BATTLE_TEST("Teleport fails in Trainer Battles (Gen 1-7)")
 {
     GIVEN {

@@ -2,7 +2,6 @@
 #include "test/battle.h"
 
 // General
-TO_DO_BATTLE_TEST("Beat Up hits the target for each non-fainted, non-statused member in the party");
 SINGLE_BATTLE_TEST("Beat Up hits the target for each non-fainted, non-statused member in the party")
 {
     GIVEN {

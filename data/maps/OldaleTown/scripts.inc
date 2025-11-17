@@ -387,9 +387,9 @@ OldaleTown_Text_MayLetsGoBack:
 	.string "Let's hurry home!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "DAWN: I'm heading back to my dad's\n"
+	.string "BRENDAN: I'm heading back to my dad's\n"
 	.string "LAB now.\l"
-	.string "{PLAYER}, you should hurry back, too!$"
+	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"

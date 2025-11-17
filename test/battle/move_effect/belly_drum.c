@@ -130,9 +130,6 @@ SINGLE_BATTLE_TEST("Belly Drum minimizes the user's Attack stat with Contrary", 
     }
 }
 
-TO_DO_BATTLE_TEST("Belly Drum maximizes the user's Attack stat, even when below 0");
-TO_DO_BATTLE_TEST("Belly Drum fails if the user's Attack is already at +6, even with Contrary");
-TO_DO_BATTLE_TEST("Belly Drum deducts HP if the user has contrary and is at -6");
 SINGLE_BATTLE_TEST("Belly Drum maximizes the user's Attack stat, even when below 0", s16 damage)
 {
     bool32 raiseAttack;

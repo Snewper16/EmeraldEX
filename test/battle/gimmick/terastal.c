@@ -385,7 +385,7 @@ SINGLE_BATTLE_TEST("(TERA) Synchronoise uses a Terastallized Pokemon's Tera Type
     } SCENE {
         // turn 1
         MESSAGE("The opposing Wobbuffet used Synchronoise!");
-        MESSAGE("It won't have any effect on Wobbuffet!");
+        MESSAGE("It doesn't affect Wobbuffet…");
         // turn 2
         MESSAGE("The opposing Wobbuffet used Synchronoise!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SYNCHRONOISE, opponent);
@@ -639,17 +639,21 @@ SINGLE_BATTLE_TEST("(TERA) Terastallizing into the Stellar type boosts all moves
     }
 }
 
-SINGLE_BATTLE_TEST("(TERA) Protean cannot change the type of a Terastallized Pokemon")
+SINGLE_BATTLE_TEST("(TERA) Protean/Libero cannot change the type of a Terastallized Pokemon")
 {
+    u32 ability, species;
+    PARAMETRIZE { ability = ABILITY_PROTEAN; species = SPECIES_GRENINJA; }
+    PARAMETRIZE { ability = ABILITY_LIBERO;  species = SPECIES_RABOOT; }
     GIVEN {
-        PLAYER(SPECIES_GRENINJA) { Ability(ABILITY_PROTEAN); TeraType(TYPE_GRASS); }
+        PLAYER(species) { Ability(ability); TeraType(TYPE_GRASS); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, MOVE_BUBBLE, gimmick: GIMMICK_TERA);
                MOVE(opponent, MOVE_EMBER); }
     } SCENE {
-        MESSAGE("Greninja used Bubble!");
-        MESSAGE("The opposing Wobbuffet used Ember!");
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_TERA_ACTIVATE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BUBBLE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
         MESSAGE("It's super effective!");
     }
 }
@@ -755,7 +759,7 @@ SINGLE_BATTLE_TEST("(TERA) Terapagos retains its base defensive profile when Ter
     }
 }
 
-SINGLE_BATTLE_TEST("(TERA) Illusion breaks if the pokemon Terastallizes when illusioned as a mon that changes forms by Terastallizing")
+SINGLE_BATTLE_TEST("(TERA) Illusion breaks if the Pokémon Terastallizes when illusioned as a mon that changes forms by Terastallizing")
 {
     u32 species;
     PARAMETRIZE { species = SPECIES_TERAPAGOS; }
@@ -791,19 +795,16 @@ SINGLE_BATTLE_TEST("(TERA) Illusion doesn't break upon Terastallizing when illus
     }
 }
 
-/*
-//  This test freezes the emulator
-SINGLE_BATTLE_TEST("(TERA) Transformed pokemon can't Terastalize")
+SINGLE_BATTLE_TEST("(TERA) Transformed Pokémon can't Terastalize")
 {
     GIVEN {
-        PLAYER(SPECIES_DITTO);
-        OPPONENT(SPECIES_TERAPAGOS) { Moves(MOVE_CELEBRATE); }
+        PLAYER(SPECIES_DITTO) { Moves(MOVE_TRANSFORM, MOVE_CELEBRATE); }
+        OPPONENT(SPECIES_TERAPAGOS) { Moves(MOVE_TRANSFORM, MOVE_CELEBRATE); }
     } WHEN {
         TURN { MOVE(player, MOVE_TRANSFORM); }
         TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
     }
 }
-*/
 
 SINGLE_BATTLE_TEST("(TERA) Pokemon with Tera forms change upon Terastallizing")
 {
