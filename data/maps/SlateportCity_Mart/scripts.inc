@@ -34,6 +34,12 @@ SlateportCity_Mart_Pokemart:
 	.2byte ITEM_SWEET_APPLE
 	.2byte ITEM_TART_APPLE
 	.2byte ITEM_SYRUPY_APPLE
+	.2byte ITEM_POMEG_BERRY
+	.2byte ITEM_KELPSY_BERRY
+	.2byte ITEM_QUALOT_BERRY
+	.2byte ITEM_HONDEW_BERRY
+	.2byte ITEM_GREPA_BERRY
+	.2byte ITEM_TAMATO_BERRY
 	pokemartlistend
 
 SlateportCity_Mart_EventScript_BlackBelt::

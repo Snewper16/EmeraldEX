@@ -5,15 +5,9 @@ Route105_MapScripts::
 	.byte 0
 
 Route105_OnLoad:
-	call_if_unset FLAG_REGI_DOORS_OPENED, Route105_CloseRegiEntrance
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute105North
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute105South
 	end
-
-Route105_CloseRegiEntrance::
-	setmetatile 9, 19, METATILE_General_RockWall_RockBase, TRUE
-	setmetatile 9, 20, METATILE_General_RockWall_SandBase, TRUE
-	return
 
 Route105_OnTransition:
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup

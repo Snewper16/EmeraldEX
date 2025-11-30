@@ -4,6 +4,7 @@ Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
+Back Pic: Brendan
 
 === PARTNER_STEVEN ===
 Name: STEVEN
@@ -11,12 +12,14 @@ Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
+Back Pic: Steven
+AI: Basic Trainer
 
 Glimmora
 Modest Nature
 Level: 42
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
+EVs: 6 HP / 252 Def / 252 SpA
 - Power Gem
 - Venoshock
 - Spiky Shield
@@ -36,8 +39,8 @@ Aggron
 Adamant Nature
 Level: 44
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Stone Edge
+EVs: 6 HP/ 252 Atk / 252 Def
+- Earthquake
 - Iron Tail
 - Protect
 - Dragon Claw

@@ -57,6 +57,13 @@
       "elevation": 3,
       "dest_map": "MAP_FARAWAY_ISLAND_INTERIOR",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 18,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_REMOTE_SHRINE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

@@ -115,3 +115,24 @@ AncientTomb_Braille_ShineInTheMiddle:
 	.braille "INHERIT OUR\n"
 	.braille "WILL, SHINE\n"
 	.braille "IN THE MIDDLE.$"
+
+ConcealedBulb_Braille_CutPathToVictory:
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "CUT OPEN\n"
+	.braille "THE PATH TO\n"
+	.braille "VICTORY THAT\n"
+	.braille "LIES AHEAD.$"
+
+MastersForge_Braille_ShowUsPatience:
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "SHOW YOUR\n"
+	.braille "TRUE PATIENCE.\n"
+	.braille "WAIT FOR TWO\n"
+	.braille "MINUTES.$"
+
+RemoteShrine_Braille_UniteTheElements:
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "UNITE THE\n"
+	.braille "FIVE ELEMENTS\n"
+	.braille "AND YOU WILL\n"
+	.braille "FIND THE KING.$"

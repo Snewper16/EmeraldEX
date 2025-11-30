@@ -490,9 +490,9 @@
                 "species": "SPECIES_TADBULB"
               },
               {
-                "min_level": 4,
-                "max_level": 4,
-                "species": "SPECIES_TAILLOW"
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROOKIDEE"
               },
               {
                 "min_level": 5,
@@ -1078,7 +1078,7 @@
               {
                 "min_level": 16,
                 "max_level": 16,
-                "species": "SPECIES_ROOKIDEE"
+                "species": "SPECIES_CORVISQUIRE"
               },
               {
                 "min_level": 16,

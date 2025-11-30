@@ -6469,19 +6469,6 @@ static void AI_Watch(void)
 // Roaming pokemon logic
 static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
-    bool32 roamerCanFlee = FALSE;
-
-    if (AI_CanBattlerEscape(battlerAtk))
-        roamerCanFlee = TRUE;
-    else if (gAiLogicData->abilities[battlerAtk] == ABILITY_RUN_AWAY)
-        roamerCanFlee = TRUE;
-    else if (gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CAN_ALWAYS_RUN)
-        roamerCanFlee = TRUE;
-
-    if (!roamerCanFlee && IsBattlerTrapped(battlerDef, battlerAtk))
-        return score;
-
-    AI_Flee();
     return score;
 }
 

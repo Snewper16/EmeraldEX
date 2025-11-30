@@ -6,7 +6,7 @@ OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
-	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
+	call_if_unset FLAG_RECEIVED_BOX_LINK_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
@@ -36,8 +36,8 @@ OldaleTown_EventScript_Girl::
 OldaleTown_EventScript_MartEmployee::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
-	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
+	goto_if_set FLAG_RECEIVED_BOX_LINK_OLDALE, OldaleTown_EventScript_ExplainBoxLink
+	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainBoxLink
 	setflag FLAG_TEMP_1
 	playbgm MUS_FOLLOW_ME, FALSE
 	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
@@ -71,16 +71,16 @@ OldaleTown_EventScript_GoToMartEast::
 
 OldaleTown_EventScript_ExplainPokemonMart::
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
+	giveitem ITEM_POKEMON_BOX_LINK
 	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_POTION_OLDALE
+	msgbox OldaleTown_Text_BoxLinkExplanation, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_BOX_LINK_OLDALE
 	fadedefaultbgm
 	release
 	end
 
-OldaleTown_EventScript_ExplainPotion::
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
+OldaleTown_EventScript_ExplainBoxLink::
+	msgbox OldaleTown_Text_BoxLinkExplanation, MSGBOX_DEFAULT
 	release
 	end
 
@@ -354,10 +354,10 @@ OldaleTown_Text_ThisIsAPokemonMart:
 	.string "We sell a variety of goods including\n"
 	.string "POKé BALLS for catching POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"
-	.string "a promotional item.$"
+	.string "a thanks for listening.$"
 
-OldaleTown_Text_PotionExplanation:
-	.string "A POTION can be used anytime, so it's\n"
+OldaleTown_Text_BoxLinkExplanation:
+	.string "The BOX LINK can be used anytime, so it's\n"
 	.string "even more useful than a POKéMON CENTER\l"
 	.string "in certain situations.$"
 

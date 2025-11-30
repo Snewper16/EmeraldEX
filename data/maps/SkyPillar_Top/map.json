@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_RAYQUAZA_SLEEPING",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAYQUAZA)",
+      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA",
       "x": 14,
       "y": 7,
       "elevation": 3,
@@ -29,7 +29,7 @@
       "flag": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAYQUAZA)",
+      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA_STILL",
       "x": 14,
       "y": 6,
       "elevation": 3,

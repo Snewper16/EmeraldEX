@@ -505,6 +505,10 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_MEW:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
+	case SPECIES_ENTEI:
+	case SPECIES_RAIKOU:
+	case SPECIES_SUICUNE:
+        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_C_VS_LEGEND_BEAST);
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -550,6 +554,15 @@ void StartRegiBattle(void)
         break;
     case SPECIES_REGISTEEL:
         transitionId = B_TRANSITION_REGISTEEL;
+        break;
+    case SPECIES_REGIELEKI:
+        transitionId = B_TRANSITION_REGICE;
+        break;
+    case SPECIES_REGIDRAGO:
+        transitionId = B_TRANSITION_REGISTEEL;
+        break;
+    case SPECIES_REGIGIGAS:
+        transitionId = B_TRANSITION_REGIROCK;
         break;
     default:
         transitionId = B_TRANSITION_GRID_SQUARES;

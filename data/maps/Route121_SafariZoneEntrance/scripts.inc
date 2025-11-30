@@ -129,3 +129,27 @@ Route121_SafariZoneEntrance_EventScript_TrainerTipSign::
 	msgbox Route121_SafariZoneEntrance_Text_TrainerTip, MSGBOX_SIGN
 	end
 
+Route121_SafariZoneEntrance_EventScript_SupplyGuy::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart Route121_SafariZoneEntrance_Pokemart_SupplyGuy
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+Route121_SafariZoneEntrance_Pokemart_SupplyGuy:
+	.2byte ITEM_SAFARI_BALL
+	.2byte ITEM_SPORT_BALL
+	.2byte ITEM_FULL_RESTORE
+	.2byte ITEM_MAX_REVIVE
+	.2byte ITEM_MIRROR_HERB
+	.2byte ITEM_LOADED_DICE
+	.2byte ITEM_PUNCHING_GLOVE
+	.2byte ITEM_COVERT_CLOAK
+	.2byte ITEM_CLEAR_AMULET
+	.2byte ITEM_FAIRY_FEATHER
+	pokemartlistend
+

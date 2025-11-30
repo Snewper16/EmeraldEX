@@ -4848,7 +4848,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Thunderbolt
 - Dark Pulse
 
-Dusknoir @ Sitrus Berry
+Dusknoir @ Leftovers
 Level: 51
 Ability: Pressure
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -4904,7 +4904,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hail
 - Ice Beam
 
-Walrein @ Sitrus Berry
+Walrein @ Power Herb
 Level: 53
 Ability: Ice Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -4938,9 +4938,9 @@ Level: 54
 Ability: Gooey
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Iron Head
-- Dragon Rush
+- Dragon Claw
 - Stone Edge
-- Night Slash
+- Earthquake
 
 Kingdra
 Level: 53
@@ -4949,7 +4949,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Smokescreen
 - Ice Beam
 - Surf
-- Hyper Beam
+- Dragon Pulse
 
 Flygon
 Level: 53
@@ -4960,7 +4960,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Dragon Claw
 - Earthquake
 
-Salamence @ Sitrus Berry
+Salamence @ Expert Belt
 Level: 55
 Ability: Intimidate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe

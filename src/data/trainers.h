@@ -12492,7 +12492,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_DUSKNOIR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4851
-            .heldItem = ITEM_SITRUS_BERRY,
+            .heldItem = ITEM_LEFTOVERS,
 #line 4854
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4853
@@ -12623,7 +12623,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_WALREIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4907
-            .heldItem = ITEM_SITRUS_BERRY,
+            .heldItem = ITEM_POWER_HERB,
 #line 4910
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4909
@@ -12702,9 +12702,9 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 4940
                 MOVE_IRON_HEAD,
-                MOVE_DRAGON_RUSH,
+                MOVE_DRAGON_CLAW,
                 MOVE_STONE_EDGE,
-                MOVE_NIGHT_SLASH,
+                MOVE_EARTHQUAKE,
             },
             },
             {
@@ -12724,7 +12724,7 @@ F_TRAINER_FEMALE |
                 MOVE_SMOKESCREEN,
                 MOVE_ICE_BEAM,
                 MOVE_SURF,
-                MOVE_HYPER_BEAM,
+                MOVE_DRAGON_PULSE,
             },
             },
             {
@@ -12752,7 +12752,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SALAMENCE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4963
-            .heldItem = ITEM_SITRUS_BERRY,
+            .heldItem = ITEM_EXPERT_BELT,
 #line 4966
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4965

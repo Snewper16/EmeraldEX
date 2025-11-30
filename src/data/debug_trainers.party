@@ -12,57 +12,73 @@ Start Debug Battle action is selected.
 */
 
 === DEBUG_TRAINER_PLAYER ===
-Name: Player
+Name: Connor
 Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
 
-Buffie (Wobbuffet)
-Brave Nature
+Oshals (Samurott)
+Adamant Nature
 Level: 100
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Earthquake
-- Flamethrower
-- Celebrate
-- Celebrate
+EVs: 252 HP / 252 Atk / 6 Spe
+- Razor Shell
+- Night Slash
+- Fury Cutter
+- Slash
 
 === DEBUG_TRAINER_AI ===
-Name: Debugger
+Name: Maxie
 AI: Basic Trainer
-Class: Rival
+Class: Magma Boss
 Battle Type: Singles
-Pic: Steven
+Pic: Magma Boss Maxie
 Gender: Male
-Music: Male
+Music: Magma
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
+Mightyena
+Level: 40
+Ability: Intimidate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crunch
+- Fire Fang
+- Thunder Fang
+- Ice Fang
 
-Skarmory
-Impish Nature
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
+Crobat
+Level: 40
+Ability: Infiltrator
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Toxic
-- Aerial Ace
+- Venoshock
+- Air Slash
 - Protect
-- Steel Wing
 
-Aggron
-Adamant Nature
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
+
+Scovillain
+Level: 41
+Ability: Chlorophyll
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sunny Day
+- Flamethrower
 - Solar Beam
+- Leech Seed
+
+Flygon
+Level: 42
+Ability: Levitate
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Earthquake
 - Dragon Claw
+- Iron Tail
+- Fire Punch
+
+Camerupt
+Level: 43
+Ability: Magma Armor
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Yawn
+- Flamethrower
+- Earth Power
+- Focus Energy

@@ -127,7 +127,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_GROUDON",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROUDON)",
+      "graphics_id": "OBJ_EVENT_GFX_GROUDON_SIDE",
       "x": 28,
       "y": 44,
       "elevation": 0,
@@ -141,7 +141,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_KYOGRE",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KYOGRE)",
+      "graphics_id": "OBJ_EVENT_GFX_KYOGRE_SIDE",
       "x": 34,
       "y": 44,
       "elevation": 1,
@@ -155,7 +155,7 @@
     },
     {
       "local_id": "LOCALID_SOOTOPOLIS_RAYQUAZA",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAYQUAZA)",
+      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA_STILL",
       "x": 31,
       "y": 41,
       "elevation": 1,

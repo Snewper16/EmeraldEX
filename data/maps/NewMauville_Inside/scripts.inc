@@ -245,6 +245,13 @@ NewMauville_Inside_EventScript_DefeatedVoltorb3::
 	goto Common_EventScript_RemoveStaticPokemon
 	end
 
+NewMauville_EventScript_WarpToEntrance::
+	lockall
+	warp MAP_NEW_MAUVILLE_INSIDE, 29, 35
+	waitstate
+	releaseall
+	end
+
 NewMauville_Inside_Text_GeneratorRadiatingHeat:
 	.string "The generator is radiating heat that\n"
 	.string "can be felt even at a distance.\p"
