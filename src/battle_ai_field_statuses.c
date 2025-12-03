@@ -493,5 +493,3 @@ static enum FieldEffectOutcome BenefitsFromTrickRoom(u32 battler)
 
     return FIELD_EFFECT_POSITIVE;
 }
-
-

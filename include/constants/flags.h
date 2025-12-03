@@ -67,7 +67,7 @@
 #define FLAG_SHINY    0x35 // Force Shiny
 #define FLAG_NO_SHINY    0x36 // Force Nonshiny
 #define FLAG_SUMMARY_STAT_INFO    0x37 // Stat Info Enable
-#define FLAG_RECEIVED_EON_TICKET    0x38 // Eon Ticket Received
+#define FLAG_DOWSING_ORAS         0x38 // ORAS Dowsing Machine Enable
 #define FLAG_RECEIVED_EVENT_TICKETS    0x39 // Event Tickets Received
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag

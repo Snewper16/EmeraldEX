@@ -195,34 +195,34 @@ static const struct {
     u8 location;
 } sPokeOutbreakSpeciesList[] = {
     {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED},
-        .level = 3,
-        .location = MAP_NUM(MAP_ROUTE102)
+        .species = SPECIES_FRIGIBAX,
+        .moves = {MOVE_BIDE, MOVE_ICE_FANG, MOVE_DRAGON_CLAW, MOVE_THUNDER_FANG},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE115)
     },
     {
-        .species = SPECIES_NUZLEAF,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        .level = 15,
+        .species = SPECIES_DWEBBLE,
+        .moves = {MOVE_SHELL_SMASH, MOVE_BUG_BITE, MOVE_SMACK_DOWN, MOVE_NIGHT_SLASH},
+        .level = 22,
+        .location = MAP_NUM(MAP_ROUTE111),
+    },
+    {
+        .species = SPECIES_GLIMMET,
+        .moves = {MOVE_RAPID_SPIN, MOVE_POWER_GEM, MOVE_VENOSHOCK, MOVE_SPIKY_SHIELD},
+        .level = 13,
         .location = MAP_NUM(MAP_ROUTE114),
     },
     {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        .level = 13,
-        .location = MAP_NUM(MAP_ROUTE117),
-    },
-    {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_FRUSTRATION, MOVE_SOLAR_BEAM, MOVE_LEECH_SEED},
-        .level = 25,
+        .species = SPECIES_CRAMORANT,
+        .moves = {MOVE_DIVE, MOVE_FLY, MOVE_STEEL_WING, MOVE_TEETER_DANCE},
+        .level = 26,
         .location = MAP_NUM(MAP_ROUTE120),
     },
     {
-        .species = SPECIES_SKITTY,
-        .moves = {MOVE_GROWL, MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_ATTRACT},
-        .level = 8,
-        .location = MAP_NUM(MAP_ROUTE116),
+        .species = SPECIES_MIMIKYU,
+        .moves = {MOVE_SHADOW_SNEAK, MOVE_PLAY_ROUGH, MOVE_SWORDS_DANCE, MOVE_SUCKER_PUNCH},
+        .level = 27,
+        .location = MAP_NUM(MAP_ROUTE123),
     }
 };
 

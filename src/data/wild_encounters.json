@@ -735,36 +735,31 @@
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_MINUN"
                 "species": "SPECIES_WINGULL"
               },
               {
+                "min_level": 0,
                 "max_level": 13,
-                "species": "SPECIES_PLUSLE"
                 "species": "SPECIES_STARLY"
               },
               {
                 "min_level": 12,
                 "max_level": 12,
-                "species": "SPECIES_WINGULL"
                 "species": "SPECIES_PIKACHU"
               },
               {
                 "min_level": 12,
                 "max_level": 12,
-                "species": "SPECIES_STARLY"
                 "species": "SPECIES_EEVEE"
               },
               {
                 "min_level": 12,
                 "max_level": 12,
-                "species": "SPECIES_WINGULL"
                 "species": "SPECIES_PIKACHU_STARTER"
               },
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_STARLY"
                 "species": "SPECIES_EEVEE_STARTER"
               }
             ]
@@ -874,7 +869,6 @@
               {
                 "min_level": 21,
                 "max_level": 21,
-                "species": "SPECIES_GROWLITHE"
                 "species": "SPECIES_GROWLITHE_HISUI"
               },
               {
@@ -1064,7 +1058,6 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_GROWLITHE_HISUI"
                 "species": "SPECIES_FALINKS"
               },
               {
@@ -1144,7 +1137,6 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_GROWLITHE_HISUI"
                 "species": "SPECIES_CORVISQUIRE"
               },
               {
@@ -1155,7 +1147,6 @@
               {
                 "min_level": 16,
                 "max_level": 16,
-                "species": "SPECIES_ROOKIDEE"
                 "species": "SPECIES_DRAMPA"
               },
               {
