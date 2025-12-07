@@ -8073,7 +8073,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A sharp-fanged attack.\n"
             "May badly poison the foe."),
         .effect = EFFECT_HIT,
-        .power = 50,
+        .power = 60,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 15,
@@ -10968,7 +10968,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "May cause flinching or\n"
             "leave the foe paralyzed."),
         .effect = EFFECT_HIT,
-        .power = 65,
+        .power = 85,
         .type = TYPE_ELECTRIC,
         .accuracy = 95,
         .pp = 15,
@@ -11003,7 +11003,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "leave the foe frozen."),
         #endif
         .effect = EFFECT_HIT,
-        .power = 65,
+        .power = 85,
         .type = TYPE_ICE,
         .accuracy = 95,
         .pp = 15,
@@ -11034,7 +11034,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "May cause flinching or\n"
             "leave the foe with a burn."),
         .effect = EFFECT_HIT,
-        .power = 65,
+        .power = 85,
         .type = TYPE_FIRE,
         .accuracy = 95,
         .pp = 15,

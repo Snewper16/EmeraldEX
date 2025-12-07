@@ -42277,7 +42277,7 @@ F_TRAINER_FEMALE |
 #line 16361
         .trainerName = _("STEVEN"),
 #line 16362
-        .trainerClass = TRAINER_CLASS_RIVAL,
+        .trainerClass = TRAINER_CLASS_CHAMPION,
 #line 16363
         .trainerPic = TRAINER_PIC_STEVEN,
         .encounterMusic_gender =
