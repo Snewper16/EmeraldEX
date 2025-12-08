@@ -9283,7 +9283,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks with ultrasonic\n"
             "waves. May confuse the foe."),
         .effect = EFFECT_HIT,
-        .power = 60,
+        .power = 75,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 20,

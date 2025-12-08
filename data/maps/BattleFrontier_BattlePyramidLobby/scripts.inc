@@ -268,18 +268,18 @@ BattleFrontier_BattlePyramidLobby_EventScript_DoHintComment::
 	case 5, BattleFrontier_BattlePyramidLobby_EventScript_HintTrapAbility
 	case 6, BattleFrontier_BattlePyramidLobby_EventScript_HintIce
 	case 7, BattleFrontier_BattlePyramidLobby_EventScript_HintExplosion
-	case 8, BattleFrontier_BattlePyramidLobby_EventScript_HintPsychic
-	case 9, BattleFrontier_BattlePyramidLobby_EventScript_HintRock
-	case 10, BattleFrontier_BattlePyramidLobby_EventScript_HintFighting
-	case 11, BattleFrontier_BattlePyramidLobby_EventScript_HintWeather
-	case 12, BattleFrontier_BattlePyramidLobby_EventScript_HintBug
-	case 13, BattleFrontier_BattlePyramidLobby_EventScript_HintDark
-	case 14, BattleFrontier_BattlePyramidLobby_EventScript_HintWater
-	case 15, BattleFrontier_BattlePyramidLobby_EventScript_HintGhost
+	case 8, BattleFrontier_BattlePyramidLobby_EventScript_HintPsychicPowers
+	case 9, BattleFrontier_BattlePyramidLobby_EventScript_HintSandstorm
+	case 10, BattleFrontier_BattlePyramidLobby_EventScript_HintStrong
+	case 11, BattleFrontier_BattlePyramidLobby_EventScript_HintSun
+	case 12, BattleFrontier_BattlePyramidLobby_EventScript_HintRain
+	case 13, BattleFrontier_BattlePyramidLobby_EventScript_HintHail
+	case 14, BattleFrontier_BattlePyramidLobby_EventScript_HintCriticalHits
+	case 15, BattleFrontier_BattlePyramidLobby_EventScript_HintDark
 	case 16, BattleFrontier_BattlePyramidLobby_EventScript_HintSteel
-	case 17, BattleFrontier_BattlePyramidLobby_EventScript_HintFlyingDragon
+	case 17, BattleFrontier_BattlePyramidLobby_EventScript_HintDraconic
 	case 18, BattleFrontier_BattlePyramidLobby_EventScript_HintStoneEvolve
-	case 19, BattleFrontier_BattlePyramidLobby_EventScript_HintNormal
+	case 19, BattleFrontier_BattlePyramidLobby_EventScript_HintLowWeaknessCount
 	return
 
 BattleFrontier_BattlePyramidLobby_EventScript_HintParalysis::
@@ -314,52 +314,52 @@ BattleFrontier_BattlePyramidLobby_EventScript_HintExplosion::
 	msgbox BattleFrontier_BattlePyramidLobby_Text_HintExplosion, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintPsychic::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintPsychic, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintPsychicPowers::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintPsychicPowers, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintRock::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintRock, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintSandstorm::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintSandstorm, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintFighting::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintFighting, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintStrong::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintStrong, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintWeather::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintWeather, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintSun::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintSun, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintBug::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintBug, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintRain::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintRain, MSGBOX_DEFAULT
+	return
+
+BattleFrontier_BattlePyramidLobby_EventScript_HintHail::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintHail, MSGBOX_DEFAULT
+	return
+
+BattleFrontier_BattlePyramidLobby_EventScript_HintCriticalHits::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintCriticalHits, MSGBOX_DEFAULT
 	return
 
 BattleFrontier_BattlePyramidLobby_EventScript_HintDark::
 	msgbox BattleFrontier_BattlePyramidLobby_Text_HintDark, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintWater::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintWater, MSGBOX_DEFAULT
-	return
-
-BattleFrontier_BattlePyramidLobby_EventScript_HintGhost::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintGhost, MSGBOX_DEFAULT
-	return
-
 BattleFrontier_BattlePyramidLobby_EventScript_HintSteel::
 	msgbox BattleFrontier_BattlePyramidLobby_Text_HintSteel, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintFlyingDragon::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintFlyingDragon, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintDraconic::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintDraconic, MSGBOX_DEFAULT
 	return
 
 BattleFrontier_BattlePyramidLobby_EventScript_HintStoneEvolve::
 	msgbox BattleFrontier_BattlePyramidLobby_Text_HintStoneEvolve, MSGBOX_DEFAULT
 	return
 
-BattleFrontier_BattlePyramidLobby_EventScript_HintNormal::
-	msgbox BattleFrontier_BattlePyramidLobby_Text_HintNormal, MSGBOX_DEFAULT
+BattleFrontier_BattlePyramidLobby_EventScript_HintLowWeaknessCount::
+	msgbox BattleFrontier_BattlePyramidLobby_Text_HintLowWeaknessCount, MSGBOX_DEFAULT
 	return
 
 BattleFrontier_BattlePyramidLobby_EventScript_ShowResults::
@@ -753,10 +753,10 @@ BattleFrontier_BattlePyramidLobby_Text_HintLevitate:
 	.string "by powerless GROUND-type moves…$"
 
 BattleFrontier_BattlePyramidLobby_Text_HintTrapAbility:
-	.string "I sense terrific energy rising from\n"
-	.string "the ground below…\p"
+	.string "I sense terrifying energy rising\n"
+	.string "from the ground below…\p"
 	.string "…And, I see your POKéMON unable to\n"
-	.string "escape the power's clutches…$"
+	.string "escape that power's clutches…$"
 
 BattleFrontier_BattlePyramidLobby_Text_HintIce:
 	.string "I see ICE-type POKéMON…\p"
@@ -769,71 +769,71 @@ BattleFrontier_BattlePyramidLobby_Text_HintExplosion:
 	.string "…And, I see your POKéMON falling\n"
 	.string "to them…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintPsychic:
-	.string "I see PSYCHIC-type POKéMON…\p"
+BattleFrontier_BattlePyramidLobby_Text_HintPsychicPowers:
+	.string "I see POKéMON that can use mystical\n"
+	.string "powers…\p"
 	.string "…And, I see your POKéMON in torment\n"
-	.string "from PSYCHIC moves…$"
+	.string "from mind-bending moves…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintRock:
-	.string "I see ROCK-type POKéMON…\p"
+BattleFrontier_BattlePyramidLobby_Text_HintSandstorm:
+	.string "I see endless dunes of sand…\p"
 	.string "…And, I see your POKéMON suffering\n"
-	.string "from ROCK moves…$"
+	.string "from the storm of the desert…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintFighting:
-	.string "I see FIGHTING-type POKéMON…\p"
+BattleFrontier_BattlePyramidLobby_Text_HintStrong:
+	.string "I see strong, beefy POKéMON…\p"
 	.string "…And, I see your POKéMON pummeled\n"
-	.string "by FIGHTING moves…$"
+	.string "by their destructive might…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintWeather:
-	.string "RAIN DANCE… SUNNY DAY…\n"
-	.string "SANDSTORM… HAIL…\p"
-	.string "I see POKéMON that become stronger\n"
-	.string "with the weather…\p"
-	.string "…And, I see your POKéMON confounded\n"
-	.string "by different types of moves…$"
+BattleFrontier_BattlePyramidLobby_Text_HintSun:
+	.string "I see POKéMON that are powered\n"
+	.string "by the sun…\p"
+	.string "…And, I see your POKéMON burning\n"
+	.string "in agony…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintBug:
-	.string "I see BUG-type POKéMON…\p"
+BattleFrontier_BattlePyramidLobby_Text_HintRain:
+	.string "I see POKéMON that thrive in\n"
+	.string "the damp enivronment…\p"
+	.string "…And, I see your POKéMON getting\n"
+	.string "completely drenched…$"
+
+BattleFrontier_BattlePyramidLobby_Text_HintHail:
+	.string "I see POKéMON bound by ice…\p"
 	.string "…And, I see your POKéMON suffering\n"
-	.string "from different kinds of attacks…$"
+	.string "from frosty attacks…$"
+
+BattleFrontier_BattlePyramidLobby_Text_HintCriticalHits:
+	.string "I see very lucky wild POKéMON…\p"
+	.string "…And, I see your POKéMON suffering\n"
+	.string "from very damaging moves…$"
 
 BattleFrontier_BattlePyramidLobby_Text_HintDark:
 	.string "I see DARK-type POKéMON…\p"
-	.string "…And, I see your POKéMON suffering\n"
-	.string "from DARK-type moves…$"
-
-BattleFrontier_BattlePyramidLobby_Text_HintWater:
-	.string "I see WATER-type POKéMON…\p"
-	.string "…And, I see your POKéMON suffering\n"
-	.string "from WATER-type moves…$"
-
-BattleFrontier_BattlePyramidLobby_Text_HintGhost:
-	.string "I see GHOST-type POKéMON…\p"
-	.string "…And, I see your POKéMON suffering\n"
-	.string "from GHOST-type moves…$"
+	.string "…And, I see your POKéMON confounded\n"
+	.string "from DARK-type trickery…$"
 
 BattleFrontier_BattlePyramidLobby_Text_HintSteel:
 	.string "I see STEEL-type POKéMON…\p"
 	.string "…And, I see your POKéMON suffering\n"
-	.string "from enormously powerful moves…$"
+	.string "from long, drawn-out battles…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintFlyingDragon:
-	.string "I see flying POKéMON…\p"
+BattleFrontier_BattlePyramidLobby_Text_HintDraconic:
+	.string "I see draconic POKéMON…\p"
 	.string "…And, I see your POKéMON suffering\n"
-	.string "from enormously powerful moves…$"
+	.string "from greatly powerful moves…$"
 
 BattleFrontier_BattlePyramidLobby_Text_HintStoneEvolve:
 	.string "I see those that have evolved from\n"
 	.string "the power of stones…\p"
-	.string "I also sense fire, water,\n"
-	.string "and electricity…\p"
+	.string "I also sense many elemental\n"
+	.string "powers within…\p"
 	.string "…And, I see your POKéMON suffering\n"
-	.string "from those three powers…$"
+	.string "from those powers…$"
 
-BattleFrontier_BattlePyramidLobby_Text_HintNormal:
-	.string "I see NORMAL-type POKéMON…\p"
-	.string "…And, I see your POKéMON suffering\n"
-	.string "from enormously powerful moves…$"
+BattleFrontier_BattlePyramidLobby_Text_HintLowWeaknessCount:
+	.string "I see POKéMON with few weaknesses…\p"
+	.string "…And, I see your POKéMON struggling\n"
+	.string "to hit their opponents hard…$"
 
 BattleFrontier_BattlePyramidLobby_Text_BelieveMyFortunesOrNot:
 	.string "Whether you believe my fortunes\n"

@@ -22,12 +22,16 @@ SootopolisCity_Mart_Pokemart:
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	.2byte ITEM_SHADOW_MAIL
+	.2byte ITEM_TM_RETALIATE
 	.2byte ITEM_TM_STONE_EDGE
 	.2byte ITEM_TM_POWER_GEM
-	.2byte ITEM_TM_HYPNOSIS
-	.2byte ITEM_TM_VENOSHOCK
+	.2byte ITEM_TM_U_TURN
+	.2byte ITEM_TM_VOLT_SWITCH
+	.2byte ITEM_TM_SLUDGE_WAVE
 	.2byte ITEM_TM_PSYSHOCK
 	.2byte ITEM_TM_DRAGON_PULSE
+	.2byte ITEM_TM_NIGHT_SLASH
+	.2byte ITEM_TM_IRON_HEAD
 	pokemartlistend
 
 SootopolisCity_Mart_EventScript_FatMan::
