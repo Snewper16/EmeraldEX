@@ -12397,7 +12397,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Creates a huge\n"
             "wave, then crashes\n"
-            "it down on the foe."),
+            "it down on the foes."),
         .importance = 1,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
