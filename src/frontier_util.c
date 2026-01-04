@@ -438,12 +438,12 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
                 .moves = {MOVE_MEGAHORN, MOVE_ROCK_SLIDE, MOVE_ENDURE, MOVE_REVERSAL},
             },
             {
-                .species = SPECIES_BELLIBOLT,
-                .heldItem = ITEM_DAMP_ROCK,
+                .species = SPECIES_COALOSSAL,
+                .heldItem = ITEM_PASSHO_BERRY,
                 .fixedIV = 20,
-                .nature = NATURE_MODEST,
+                .nature = NATURE_ADAMANT,
                 .evs = {252, 0, 6, 252, 0, 0},
-                .moves = {MOVE_THUNDER, MOVE_RAIN_DANCE, MOVE_SURF, MOVE_MUD_SHOT},
+                .moves = {MOVE_IRON_DEFENSE, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_FLAME_CHARGE},
             },
             {
                 .species = SPECIES_SEISMITOAD,

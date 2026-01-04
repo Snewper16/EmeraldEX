@@ -146,11 +146,11 @@ const struct ContestWinner gDefaultContestWinners[] =
     [CONTEST_WINNER_HALL_1 - 1] = {
         .personality = 0,
         .trainerId = CONTEST_AI_TRAINER_ID,
-        .species = SPECIES_ELECTRIKE,
+        .species = SPECIES_PIPLUP,
         .contestCategory = CONTEST_CATEGORY_CUTE,
-        .monName = _("ELECTER"),
-        .trainerName = _("EZRA"),
-        .contestRank = CONTEST_RANK_NORMAL
+        .monName = _("MrPenguin"),
+        .trainerName = _("DAWN"),
+        .contestRank = CONTEST_RANK_MASTER
     },
     [CONTEST_WINNER_HALL_2 - 1] = {
         .personality = 0,
