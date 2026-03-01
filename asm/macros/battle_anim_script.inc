@@ -10,6 +10,7 @@
 	.2byte \tag
 	.endm
 
+.macro createsprite template:req, anim_battler:req, subpriority_offset:req, argv:vararg
 	.macro createsprite template:req, anim_battler:req, subpriority_offset:req, argv:vararg
 	.byte 0x02
 	.4byte \template
@@ -288,6 +289,7 @@
 	.byte 0x31
 	.4byte \template
 	.if \anim_battler == ANIM_TARGET
+	.byte 0x80 | (\subpriority_offset & 0x7F)
 	.byte ANIMSPRITE_IS_TARGET | (\subpriority_offset & 0x7F)
 	.else
 	.byte (\subpriority_offset & 0x7F)
@@ -304,6 +306,7 @@
 	.byte 0x32
 	.4byte \template
 	.if \anim_battler == ANIM_TARGET
+	.byte 0x80 | (\subpriority_offset & 0x7F)
 	.byte ANIMSPRITE_IS_TARGET | (\subpriority_offset & 0x7F)
 	.else
 	.byte (\subpriority_offset & 0x7F)
