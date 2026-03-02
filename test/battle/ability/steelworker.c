@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Steelworker increases Steel-type move damage", s16 damage)
 {
-    enum Move move;
+    u32 move;
     enum Ability ability;
 
     PARAMETRIZE { move = MOVE_SCRATCH; ability = ABILITY_KLUTZ; }

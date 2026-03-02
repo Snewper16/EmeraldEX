@@ -12,7 +12,7 @@ static const u16 terrainData[][2] =
 SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
 {
     u32 j;
-    enum Move terrainMove = MOVE_NONE;
+    u32 terrainMove = MOVE_NONE;
     enum Type terrainType = TYPE_NONE;
 
     for (j = 0; j < ARRAY_COUNT(terrainData); j++)
@@ -31,7 +31,6 @@ SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
         case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The opposing Stunfisk's type changed to Psychic!"); break;
         case MOVE_GRASSY_TERRAIN:   MESSAGE("The opposing Stunfisk's type changed to Grass!"); break;
         case MOVE_MISTY_TERRAIN:    MESSAGE("The opposing Stunfisk's type changed to Fairy!"); break;
-        default: break;
         }
     } THEN {
         EXPECT_EQ(gBattleMons[B_POSITION_OPPONENT_LEFT].types[0], terrainType);
@@ -42,8 +41,8 @@ SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
 SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed by Steel Roller and Ice Spinner")
 {
     u32 j;
-    enum Move terrainMove = MOVE_NONE;
-    enum Move removeTerrainMove = MOVE_NONE;
+    u32 terrainMove = MOVE_NONE;
+    u32 removeTerrainMove = MOVE_NONE;
 
     for (j = 0; j < ARRAY_COUNT(terrainData); j++)
     {
@@ -54,7 +53,7 @@ SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_STUNFISK_GALAR, 0) == TYPE_GROUND);
         ASSUME(GetSpeciesType(SPECIES_STUNFISK_GALAR, 1) == TYPE_STEEL);
-        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET); 
         OPPONENT(SPECIES_STUNFISK_GALAR) { Ability(ABILITY_MIMICRY); }
     } WHEN {
         TURN { MOVE(opponent, terrainMove); MOVE(player, removeTerrainMove); }
@@ -65,7 +64,6 @@ SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed
         case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The weirdness disappeared from the battlefield!"); break;
         case MOVE_GRASSY_TERRAIN:   MESSAGE("The grass disappeared from the battlefield."); break;
         case MOVE_MISTY_TERRAIN:    MESSAGE("The mist disappeared from the battlefield."); break;
-        default: break;
         }
     } THEN {
         EXPECT_EQ(gBattleMons[B_POSITION_OPPONENT_LEFT].types[0], TYPE_GROUND);

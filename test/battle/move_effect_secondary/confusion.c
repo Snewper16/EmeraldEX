@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Alluring Voice confuses the target if the target raised a stat this turn")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_CELEBRATE; }
     PARAMETRIZE { move = MOVE_SWORDS_DANCE; }

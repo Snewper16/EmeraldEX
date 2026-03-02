@@ -4,7 +4,6 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "field_camera.h"
-#include "field_control_avatar.h"
 #include "field_effect.h"
 #include "field_effect_helpers.h"
 #include "field_screen_effect.h"
@@ -36,7 +35,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
 
-#define NUM_FORCED_MOVEMENTS 22
+#define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
 
 enum SpinDirection
@@ -65,10 +64,9 @@ EWRAM_DATA struct SpinData gPlayerSpinData = {};
 
 // static declarations
 static u8 ObjectEventCB2_NoMovement2(void);
-static bool8 TryUpdatePlayerSpinDirection(void);
-static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *, enum Direction);
+static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *, u8);
 static void npc_clear_strange_bits(struct ObjectEvent *);
-static void MovePlayerAvatarUsingKeypadInput(enum Direction, u16, u16);
+static void MovePlayerAvatarUsingKeypadInput(u8, u16, u16);
 static void PlayerAllowForcedMovementIfMovingSameDirection(void);
 static u8 GetForcedMovementByMetatileBehavior(void);
 
@@ -89,24 +87,19 @@ static bool8 ForcedMovement_SlideEast(void);
 static bool8 ForcedMovement_MatJump(void);
 static bool8 ForcedMovement_MatSpin(void);
 static bool8 ForcedMovement_MuddySlope(void);
-static bool8 ForcedMovement_SpinRight(void);
-static bool8 ForcedMovement_SpinLeft(void);
-static bool8 ForcedMovement_SpinUp(void);
-static bool8 ForcedMovement_SpinDown(void);
-static void PlaySpinSound(void);
 
-static void MovePlayerNotOnBike(enum Direction, u16);
-static u8 CheckMovementInputNotOnBike(enum Direction);
-static void PlayerNotOnBikeNotMoving(enum Direction, u16);
-static void PlayerNotOnBikeTurningInPlace(enum Direction, u16);
-static void PlayerNotOnBikeMoving(enum Direction, u16);
-static enum Collision CheckForPlayerAvatarCollision(enum Direction);
-static enum Collision CheckForPlayerAvatarStaticCollision(enum Direction);
-static enum Collision CheckForObjectEventStaticCollision(struct ObjectEvent *, s16, s16, enum Direction, u8);
-static bool8 CanStopSurfing(s16, s16, enum Direction);
-static bool8 ShouldJumpLedge(s16, s16, enum Direction);
-static bool8 TryPushBoulder(s16, s16, enum Direction);
-static void CheckAcroBikeCollision(s16, s16, u8, enum Collision *);
+static void MovePlayerNotOnBike(u8, u16);
+static u8 CheckMovementInputNotOnBike(u8);
+static void PlayerNotOnBikeNotMoving(u8, u16);
+static void PlayerNotOnBikeTurningInPlace(u8, u16);
+static void PlayerNotOnBikeMoving(u8, u16);
+static u8 CheckForPlayerAvatarCollision(u8);
+static u8 CheckForPlayerAvatarStaticCollision(u8);
+static u8 CheckForObjectEventStaticCollision(struct ObjectEvent *, s16, s16, u8, u8);
+static bool8 CanStopSurfing(s16, s16, u8);
+static bool8 ShouldJumpLedge(s16, s16, u8);
+static bool8 TryPushBoulder(s16, s16, u8);
+static void CheckAcroBikeCollision(s16, s16, u8, u8 *);
 
 static void DoPlayerAvatarTransition(void);
 static void PlayerAvatarTransition_Dummy(struct ObjectEvent *);
@@ -122,20 +115,18 @@ static bool8 PlayerAnimIsMultiFrameStationaryAndStateNotTurning(void);
 static bool8 PlayerIsAnimActive(void);
 static bool8 PlayerCheckIfAnimFinishedOrInactive(void);
 
-static void PlayerWalkSlowStairs(enum Direction direction);
-static void UNUSED PlayerWalkSlow(enum Direction direction);
-static void PlayerRunSlow(enum Direction direction);
-static void PlayerRun(enum Direction);
-static void PlayerNotOnBikeCollide(enum Direction);
-static void PlayerNotOnBikeCollideWithFarawayIslandMew(enum Direction);
+static void PlayerWalkSlowStairs(u8 direction);
+static void UNUSED PlayerWalkSlow(u8 direction);
+static void PlayerRunSlow(u8 direction);
+static void PlayerRun(u8);
+static void PlayerNotOnBikeCollide(u8);
+static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8);
 
-static void PlayCollisionSoundIfNotFacingWarp(enum Direction);
-static void PlayerGoSpin(enum Direction direction);
-static void PlayerApplyTileForcedMovement(u8 metatileBehavior);
+static void PlayCollisionSoundIfNotFacingWarp(u8);
 
 static void HideShowWarpArrow(struct ObjectEvent *);
 
-static void StartStrengthAnim(u8, enum Direction);
+static void StartStrengthAnim(u8, u8);
 static void Task_PushBoulder(u8);
 static bool8 PushBoulder_Start(struct Task *, struct ObjectEvent *, struct ObjectEvent *);
 static bool8 PushBoulder_Move(struct Task *, struct ObjectEvent *, struct ObjectEvent *);
@@ -152,7 +143,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep1(struct Task *, struct ObjectEve
 static bool8 PlayerAvatar_SecretBaseMatSpinStep2(struct Task *, struct ObjectEvent *);
 static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *, struct ObjectEvent *);
 
-static void CreateStopSurfingTask(enum Direction);
+static void CreateStopSurfingTask(u8);
 static void Task_StopSurfingInit(u8);
 static void Task_WaitStopSurfing(u8);
 
@@ -178,10 +169,6 @@ static bool8 (*const sForcedMovementTestFuncs[NUM_FORCED_MOVEMENTS])(u8) =
     MetatileBehavior_IsSecretBaseJumpMat,
     MetatileBehavior_IsSecretBaseSpinMat,
     MetatileBehavior_IsMuddySlope,
-    MetatileBehavior_IsSpinRight,
-    MetatileBehavior_IsSpinLeft,
-    MetatileBehavior_IsSpinUp,
-    MetatileBehavior_IsSpinDown,
 };
 
 // + 1 for ForcedMovement_None, which is excluded above
@@ -206,13 +193,9 @@ static bool8 (*const sForcedMovementFuncs[NUM_FORCED_MOVEMENTS + 1])(void) =
     ForcedMovement_MatJump,
     ForcedMovement_MatSpin,
     ForcedMovement_MuddySlope,
-    ForcedMovement_SpinRight,
-    ForcedMovement_SpinLeft,
-    ForcedMovement_SpinUp,
-    ForcedMovement_SpinDown,
 };
 
-static void (*const sPlayerNotOnBikeFuncs[])(enum Direction, u16) =
+static void (*const sPlayerNotOnBikeFuncs[])(u8, u16) =
 {
     [NOT_MOVING]     = PlayerNotOnBikeNotMoving,
     [TURN_DIRECTION] = PlayerNotOnBikeTurningInPlace,
@@ -228,7 +211,7 @@ static bool8 (*const sAcroBikeTrickMetatiles[NUM_ACRO_BIKE_COLLISIONS])(u8) =
     MetatileBehavior_IsHorizontalRail,
 };
 
-static const enum Collision sAcroBikeTrickCollisionTypes[NUM_ACRO_BIKE_COLLISIONS] = {
+static const u8 sAcroBikeTrickCollisionTypes[NUM_ACRO_BIKE_COLLISIONS] = {
     COLLISION_WHEELIE_HOP,
     COLLISION_ISOLATED_VERTICAL_RAIL,
     COLLISION_ISOLATED_HORIZONTAL_RAIL,
@@ -269,17 +252,17 @@ static const u8 sRivalAvatarGfxIds[][GENDER_COUNT] =
     [PLAYER_AVATAR_STATE_VSSEEKER]   = {OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE},
 };
 
-static const u16 sPlayerAvatarGfxIds[][GENDER_COUNT] =
+static const u8 sPlayerAvatarGfxIds[][GENDER_COUNT] =
 {
-    [PLAYER_AVATAR_STATE_NORMAL]     = {PLAYER_AVATAR_GFX_MALE_NORMAL,     PLAYER_AVATAR_GFX_FEMALE_NORMAL},
-    [PLAYER_AVATAR_STATE_MACH_BIKE]  = {PLAYER_AVATAR_GFX_MALE_MACH_BIKE,  PLAYER_AVATAR_GFX_FEMALE_MACH_BIKE},
-    [PLAYER_AVATAR_STATE_ACRO_BIKE]  = {PLAYER_AVATAR_GFX_MALE_ACRO_BIKE,  PLAYER_AVATAR_GFX_FEMALE_ACRO_BIKE},
-    [PLAYER_AVATAR_STATE_SURFING]    = {PLAYER_AVATAR_GFX_MALE_SURFING,    PLAYER_AVATAR_GFX_FEMALE_SURFING},
-    [PLAYER_AVATAR_STATE_UNDERWATER] = {PLAYER_AVATAR_GFX_MALE_UNDERWATER, PLAYER_AVATAR_GFX_FEMALE_UNDERWATER},
-    [PLAYER_AVATAR_STATE_FIELD_MOVE] = {PLAYER_AVATAR_GFX_MALE_FIELD_MOVE, PLAYER_AVATAR_GFX_FEMALE_FIELD_MOVE},
-    [PLAYER_AVATAR_STATE_FISHING]    = {PLAYER_AVATAR_GFX_MALE_FISHING,    PLAYER_AVATAR_GFX_FEMALE_FISHING},
-    [PLAYER_AVATAR_STATE_WATERING]   = {PLAYER_AVATAR_GFX_MALE_WATERING,   PLAYER_AVATAR_GFX_FEMALE_WATERING},
-    [PLAYER_AVATAR_STATE_VSSEEKER]   = {PLAYER_AVATAR_GFX_MALE_VSSEEKER,   PLAYER_AVATAR_GFX_FEMALE_VSSEEKER},
+    [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL},
+    [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_MAY_MACH_BIKE},
+    [PLAYER_AVATAR_STATE_ACRO_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE,  OBJ_EVENT_GFX_MAY_ACRO_BIKE},
+    [PLAYER_AVATAR_STATE_SURFING]    = {OBJ_EVENT_GFX_BRENDAN_SURFING,    OBJ_EVENT_GFX_MAY_SURFING},
+    [PLAYER_AVATAR_STATE_UNDERWATER] = {OBJ_EVENT_GFX_BRENDAN_UNDERWATER, OBJ_EVENT_GFX_MAY_UNDERWATER},
+    [PLAYER_AVATAR_STATE_FIELD_MOVE] = {OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_MAY_FIELD_MOVE},
+    [PLAYER_AVATAR_STATE_FISHING]    = {OBJ_EVENT_GFX_BRENDAN_FISHING,    OBJ_EVENT_GFX_MAY_FISHING},
+    [PLAYER_AVATAR_STATE_WATERING]   = {OBJ_EVENT_GFX_BRENDAN_WATERING,   OBJ_EVENT_GFX_MAY_WATERING},
+    [PLAYER_AVATAR_STATE_VSSEEKER]   = {OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_MAY_FIELD_MOVE},
 };
 
 static const u8 sFRLGAvatarGfxIds[GENDER_COUNT] =
@@ -294,27 +277,23 @@ static const u8 sRSAvatarGfxIds[GENDER_COUNT] =
     [FEMALE] = OBJ_EVENT_GFX_LINK_RS_MAY
 };
 
-static const struct PACKED
-{
-    u16 graphicsId;
-    u8 playerFlag;
-} sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5] =
+static const u8 sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
 {
     [MALE] =
     {
-        {PLAYER_AVATAR_GFX_MALE_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_MALE_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_MALE_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_MALE_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
+        {OBJ_EVENT_GFX_BRENDAN_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
+        {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
+        {OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
+        {OBJ_EVENT_GFX_BRENDAN_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
+        {OBJ_EVENT_GFX_BRENDAN_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
     },
     [FEMALE] =
     {
-        {PLAYER_AVATAR_GFX_FEMALE_NORMAL,         PLAYER_AVATAR_FLAG_ON_FOOT},
-        {PLAYER_AVATAR_GFX_FEMALE_MACH_BIKE,      PLAYER_AVATAR_FLAG_MACH_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_ACRO_BIKE,      PLAYER_AVATAR_FLAG_ACRO_BIKE},
-        {PLAYER_AVATAR_GFX_FEMALE_SURFING,        PLAYER_AVATAR_FLAG_SURFING},
-        {PLAYER_AVATAR_GFX_FEMALE_UNDERWATER,     PLAYER_AVATAR_FLAG_UNDERWATER},
+        {OBJ_EVENT_GFX_MAY_NORMAL,         PLAYER_AVATAR_FLAG_ON_FOOT},
+        {OBJ_EVENT_GFX_MAY_MACH_BIKE,      PLAYER_AVATAR_FLAG_MACH_BIKE},
+        {OBJ_EVENT_GFX_MAY_ACRO_BIKE,      PLAYER_AVATAR_FLAG_ACRO_BIKE},
+        {OBJ_EVENT_GFX_MAY_SURFING,        PLAYER_AVATAR_FLAG_SURFING},
+        {OBJ_EVENT_GFX_MAY_UNDERWATER,     PLAYER_AVATAR_FLAG_UNDERWATER},
     }
 };
 
@@ -356,12 +335,12 @@ static u8 ObjectEventCB2_NoMovement2(void)
     return 0;
 }
 
-void PlayerStep(enum Direction direction, u16 newKeys, u16 heldKeys)
+void PlayerStep(u8 direction, u16 newKeys, u16 heldKeys)
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
     HideShowWarpArrow(playerObjEvent);
-    if (gPlayerAvatar.preventStep == FALSE && !TryUpdatePlayerSpinDirection())
+    if (gPlayerAvatar.preventStep == FALSE)
     {
         Bike_TryAcroBikeHistoryUpdate(newKeys, heldKeys);
         if (TryInterruptObjectEventSpecialAnim(playerObjEvent, direction) == 0)
@@ -387,7 +366,7 @@ void PlayerStep(enum Direction direction, u16 newKeys, u16 heldKeys)
 
 #define sCounter        data[3]
 
-static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEvent, enum Direction direction)
+static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEvent, u8 direction)
 {
     if (ObjectEventIsMovementOverridden(playerObjEvent)
      && !ObjectEventClearHeldMovementIfFinished(playerObjEvent))
@@ -440,7 +419,7 @@ static void npc_clear_strange_bits(struct ObjectEvent *objEvent)
     gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_DASH;
 }
 
-static void MovePlayerAvatarUsingKeypadInput(enum Direction direction, u16 newKeys, u16 heldKeys)
+static void MovePlayerAvatarUsingKeypadInput(u8 direction, u16 newKeys, u16 heldKeys)
 {
     if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
         MovePlayerOnBike(direction, newKeys, heldKeys);
@@ -452,29 +431,6 @@ static void PlayerAllowForcedMovementIfMovingSameDirection(void)
 {
     if (gPlayerAvatar.runningState == MOVING)
         gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_CONTROLLABLE;
-}
-
-static bool8 TryUpdatePlayerSpinDirection(void)
-{
-    if ((gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && MetatileBehavior_IsSpinTile(gPlayerAvatar.lastSpinTile))
-    {
-        struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-        if (playerObjEvent->heldMovementFinished)
-        {
-            if (MetatileBehavior_IsStopSpinning(playerObjEvent->currentMetatileBehavior))
-            {
-                return FALSE;
-            }
-            if (MetatileBehavior_IsSpinTile(playerObjEvent->currentMetatileBehavior))
-            {
-                gPlayerAvatar.lastSpinTile = playerObjEvent->currentMetatileBehavior;
-            }
-            ObjectEventClearHeldMovement(playerObjEvent);
-            PlayerApplyTileForcedMovement(gPlayerAvatar.lastSpinTile);
-        }
-        return TRUE;
-    }
-    return FALSE;
 }
 
 bool8 TryDoMetatileBehaviorForcedMovement(void)
@@ -493,10 +449,7 @@ static u8 GetForcedMovementByMetatileBehavior(void)
         for (i = 0; i < NUM_FORCED_MOVEMENTS; i++)
         {
             if (sForcedMovementTestFuncs[i](metatileBehavior))
-            {
-                gPlayerAvatar.lastSpinTile = metatileBehavior;
                 return i + 1;
-            }
         }
     }
     return 0;
@@ -516,10 +469,10 @@ static bool8 ForcedMovement_None(void)
     return FALSE;
 }
 
-static bool8 DoForcedMovement(enum Direction direction, void (*moveFunc)(enum Direction))
+static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
-    enum Collision collision;
+    u8 collision;
 
     // Check for sideways stairs onto ice movement.
     switch (direction)
@@ -531,8 +484,6 @@ static bool8 DoForcedMovement(enum Direction direction, void (*moveFunc)(enum Di
     case DIR_NORTHEAST:
     case DIR_SOUTHEAST:
         direction = DIR_EAST;
-        break;
-    default:
         break;
     }
 
@@ -570,7 +521,7 @@ static bool8 DoForcedMovement(enum Direction direction, void (*moveFunc)(enum Di
     }
 }
 
-static bool8 DoForcedMovementInCurrentDirection(void (*moveFunc)(enum Direction))
+static bool8 DoForcedMovementInCurrentDirection(void (*moveFunc)(u8))
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
@@ -623,7 +574,7 @@ static bool8 ForcedMovement_PushedEastByCurrent(void)
     return DoForcedMovement(DIR_EAST, PlayerRideWaterCurrent);
 }
 
-static bool8 ForcedMovement_Slide(enum Direction direction, void (*moveFunc)(enum Direction))
+static bool8 ForcedMovement_Slide(u8 direction, void (*moveFunc)(u8))
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
@@ -680,41 +631,12 @@ static bool8 ForcedMovement_MuddySlope(void)
     }
 }
 
-static bool8 ForcedMovement_SpinRight(void)
-{
-    PlaySpinSound();
-    return DoForcedMovement(DIR_EAST, PlayerGoSpin);
-}
-
-static bool8 ForcedMovement_SpinLeft(void)
-{
-    PlaySpinSound();
-    return DoForcedMovement(DIR_WEST, PlayerGoSpin);
-}
-
-static bool8 ForcedMovement_SpinUp(void)
-{
-    PlaySpinSound();
-    return DoForcedMovement(DIR_NORTH, PlayerGoSpin);
-}
-
-static bool8 ForcedMovement_SpinDown(void)
-{
-    PlaySpinSound();
-    return DoForcedMovement(DIR_SOUTH, PlayerGoSpin);
-}
-
-static void PlaySpinSound(void)
-{
-    PlaySE(SE_M_RAZOR_WIND2);
-}
-
-static void MovePlayerNotOnBike(enum Direction direction, u16 heldKeys)
+static void MovePlayerNotOnBike(u8 direction, u16 heldKeys)
 {
     sPlayerNotOnBikeFuncs[CheckMovementInputNotOnBike(direction)](direction, heldKeys);
 }
 
-static u8 CheckMovementInputNotOnBike(enum Direction direction)
+static u8 CheckMovementInputNotOnBike(u8 direction)
 {
     if (direction == DIR_NONE)
         return gPlayerAvatar.runningState = NOT_MOVING;
@@ -724,7 +646,7 @@ static u8 CheckMovementInputNotOnBike(enum Direction direction)
         return gPlayerAvatar.runningState = MOVING;
 }
 
-static void PlayerNotOnBikeNotMoving(enum Direction direction, u16 heldKeys)
+static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
     PlayerFaceDirection(GetPlayerFacingDirection());
 }
@@ -768,7 +690,7 @@ static const u8 sCounterClockwiseDirections[4][4] =
     { DIR_EAST, DIR_NORTH, DIR_WEST, DIR_SOUTH, },
 };
 
-static void WindUpSpinTimer(enum Direction direction)
+static void WindUpSpinTimer(u32 direction)
 {
     gPlayerSpinData.spinTimeout = 60;
     gPlayerSpinData.spinHistory0 = gPlayerSpinData.spinHistory1;
@@ -848,15 +770,15 @@ bool32 CanTriggerSpinEvolution()
     return FALSE;
 }
 
-static void PlayerNotOnBikeTurningInPlace(enum Direction direction, u16 heldKeys)
+static void PlayerNotOnBikeTurningInPlace(u8 direction, u16 heldKeys)
 {
     WindUpSpinTimer(direction);
     PlayerTurnInPlace(direction);
 }
 
-static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
+static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 {
-    enum Collision collision = CheckForPlayerAvatarCollision(direction);
+    u8 collision = CheckForPlayerAvatarCollision(direction);
 
     if (collision)
     {
@@ -919,10 +841,10 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
-     && (heldKeys & B_BUTTON)
+     && (heldKeys & B_BUTTON) 
      && FlagGet(FLAG_SYS_B_DASH)
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0
-     && !FollowerNPCComingThroughDoor()
+     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 
+     && !FollowerNPCComingThroughDoor() 
      && (I_ORAS_DOWSING_FLAG == 0 || (I_ORAS_DOWSING_FLAG != 0 && !FlagGet(I_ORAS_DOWSING_FLAG))))
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
@@ -947,7 +869,7 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
     }
 }
 
-static enum Collision CheckForPlayerAvatarCollision(enum Direction direction)
+static u8 CheckForPlayerAvatarCollision(u8 direction)
 {
     s16 x, y;
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
@@ -961,7 +883,7 @@ static enum Collision CheckForPlayerAvatarCollision(enum Direction direction)
     return CheckForObjectEventCollision(playerObjEvent, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
 }
 
-static enum Collision CheckForPlayerAvatarStaticCollision(enum Direction direction)
+static u8 CheckForPlayerAvatarStaticCollision(u8 direction)
 {
     s16 x, y;
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
@@ -972,9 +894,9 @@ static enum Collision CheckForPlayerAvatarStaticCollision(enum Direction directi
     return CheckForObjectEventStaticCollision(playerObjEvent, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
 }
 
-enum Collision CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction, u8 metatileBehavior)
+u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction, u8 metatileBehavior)
 {
-    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+    u8 collision = GetCollisionAtCoords(objectEvent, x, y, direction);
 
     if (collision == COLLISION_ELEVATION_MISMATCH && CanStopSurfing(x, y, direction))
         return COLLISION_STOP_SURFING;
@@ -997,9 +919,9 @@ enum Collision CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16
     return collision;
 }
 
-static enum Collision CheckForObjectEventStaticCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction, u8 metatileBehavior)
+static u8 CheckForObjectEventStaticCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction, u8 metatileBehavior)
 {
-    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+    u8 collision = GetCollisionAtCoords(objectEvent, x, y, direction);
 
     if (collision == COLLISION_NONE)
     {
@@ -1010,12 +932,12 @@ static enum Collision CheckForObjectEventStaticCollision(struct ObjectEvent *obj
     return collision;
 }
 
-static bool8 CanStopSurfing(s16 x, s16 y, enum Direction direction)
+static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
 {
     if ((gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
-     && MapGridGetElevationAt(x, y) == ELEVATION_DEFAULT
-     && (GetObjectEventIdByPosition(x, y, ELEVATION_DEFAULT) == OBJECT_EVENTS_COUNT
-     || GetObjectEventIdByPosition(x, y, ELEVATION_DEFAULT) == GetFollowerNPCObjectId()
+     && MapGridGetElevationAt(x, y) == 3
+     && (GetObjectEventIdByPosition(x, y, 3) == OBJECT_EVENTS_COUNT
+     || GetObjectEventIdByPosition(x, y, 3) == GetFollowerNPCObjectId()
      ))
     {
         CreateStopSurfingTask(direction);
@@ -1027,7 +949,7 @@ static bool8 CanStopSurfing(s16 x, s16 y, enum Direction direction)
     }
 }
 
-static bool8 ShouldJumpLedge(s16 x, s16 y, enum Direction direction)
+static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
 {
     if (GetLedgeJumpDirection(x, y, direction) != DIR_NONE)
         return TRUE;
@@ -1035,13 +957,13 @@ static bool8 ShouldJumpLedge(s16 x, s16 y, enum Direction direction)
         return FALSE;
 }
 
-static bool8 TryPushBoulder(s16 x, s16 y, enum Direction direction)
+static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 {
     if (FlagGet(FLAG_SYS_USE_STRENGTH))
     {
         u8 objectEventId = GetObjectEventIdByXY(x, y);
 
-        if (objectEventId != OBJECT_EVENTS_COUNT && (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER || gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER_FRLG))
+        if (objectEventId != OBJECT_EVENTS_COUNT && gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER)
         {
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;
@@ -1057,7 +979,7 @@ static bool8 TryPushBoulder(s16 x, s16 y, enum Direction direction)
     return FALSE;
 }
 
-static void CheckAcroBikeCollision(s16 x, s16 y, u8 metatileBehavior, enum Collision *collision)
+static void CheckAcroBikeCollision(s16 x, s16 y, u8 metatileBehavior, u8 *collision)
 {
     u8 i;
 
@@ -1071,7 +993,7 @@ static void CheckAcroBikeCollision(s16 x, s16 y, u8 metatileBehavior, enum Colli
     }
 }
 
-bool8 IsPlayerCollidingWithFarawayIslandMew(enum Direction direction)
+bool8 IsPlayerCollidingWithFarawayIslandMew(u8 direction)
 {
     u8 mewObjectId;
     struct ObjectEvent *object;
@@ -1143,10 +1065,7 @@ static void PlayerAvatarTransition_MachBike(struct ObjectEvent *objEvent)
 {
     ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
     ObjectEventTurn(objEvent, objEvent->movementDirection);
-    if (IS_FRLG)
-        SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_BIKE);
-    else
-        SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_MACH_BIKE);
+    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_MACH_BIKE);
     BikeClearState(0, 0);
 }
 
@@ -1154,10 +1073,7 @@ static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *objEvent)
 {
     ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_ACRO_BIKE));
     ObjectEventTurn(objEvent, objEvent->movementDirection);
-    if (IS_FRLG)
-        SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_BIKE);
-    else
-        SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ACRO_BIKE);
+    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ACRO_BIKE);
     BikeClearState(0, 0);
     Bike_HandleBumpySlopeJump();
 }
@@ -1240,12 +1156,12 @@ static bool8 PlayerCheckIfAnimFinishedOrInactive(void)
     return ObjectEventCheckHeldMovementStatus(&gObjectEvents[gPlayerAvatar.objectEventId]);
 }
 
-static void PlayerSetCopyableMovement(enum CopyMovement movement)
+static void PlayerSetCopyableMovement(u8 movement)
 {
     gObjectEvents[gPlayerAvatar.objectEventId].playerCopyableMovement = movement;
 }
 
-enum CopyMovement PlayerGetCopyableMovement(void)
+u8 PlayerGetCopyableMovement(void)
 {
     return gObjectEvents[gPlayerAvatar.objectEventId].playerCopyableMovement;
 }
@@ -1255,7 +1171,7 @@ static void PlayerForceSetHeldMovement(u8 movementActionId)
     ObjectEventForceSetHeldMovement(&gObjectEvents[gPlayerAvatar.objectEventId], movementActionId);
 }
 
-void PlayerSetAnimId(u8 movementActionId, enum CopyMovement copyableMovement)
+void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
 {
     if (!PlayerIsAnimActive())
     {
@@ -1265,52 +1181,52 @@ void PlayerSetAnimId(u8 movementActionId, enum CopyMovement copyableMovement)
 }
 
 // slow stairs (from FRLG--faster than slow)
-static void PlayerWalkSlowStairs(enum Direction direction)
+static void PlayerWalkSlowStairs(u8 direction)
 {
     PlayerSetAnimId(GetWalkSlowStairsMovementAction(direction), COPY_MOVE_WALK);
 }
 
 // slow
-static void UNUSED PlayerWalkSlow(enum Direction direction)
+static void UNUSED PlayerWalkSlow(u8 direction)
 {
     PlayerSetAnimId(GetWalkSlowMovementAction(direction), COPY_MOVE_WALK);
 }
 
-static void PlayerRunSlow(enum Direction direction)
+static void PlayerRunSlow(u8 direction)
 {
     PlayerSetAnimId(GetPlayerRunSlowMovementAction(direction), COPY_MOVE_WALK);
 }
 
 // normal speed (1 speed)
-void PlayerWalkNormal(enum Direction direction)
+void PlayerWalkNormal(u8 direction)
 {
     PlayerSetAnimId(GetWalkNormalMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerWalkFast(enum Direction direction)
+void PlayerWalkFast(u8 direction)
 {
     PlayerSetAnimId(GetWalkFastMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerRideWaterCurrent(enum Direction direction)
+void PlayerRideWaterCurrent(u8 direction)
 {
     PlayerSetAnimId(GetRideWaterCurrentMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerWalkFaster(enum Direction direction)
+void PlayerWalkFaster(u8 direction)
 {
     PlayerSetAnimId(GetWalkFasterMovementAction(direction), COPY_MOVE_WALK);
 }
 
-static void PlayerRun(enum Direction direction)
+static void PlayerRun(u8 direction)
 {
     PlayerSetAnimId(GetPlayerRunMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerOnBikeCollide(enum Direction direction)
+void PlayerOnBikeCollide(u8 direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_WALK_COLLIDE);
+    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_FACE);
     // Edge case: If the player stops at the top of a mud slide, but the NPC follower is still on a mud slide tile,
     // move the follower into the player and hide them.
     if (PlayerHasFollowerNPC())
@@ -1329,33 +1245,33 @@ void PlayerOnBikeCollide(enum Direction direction)
     }
 }
 
-void PlayerOnBikeCollideWithFarawayIslandMew(enum Direction direction)
+void PlayerOnBikeCollideWithFarawayIslandMew(u8 direction)
 {
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_WALK_COLLIDE);
+    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_FACE);
 }
 
-static void PlayerNotOnBikeCollide(enum Direction direction)
+static void PlayerNotOnBikeCollide(u8 direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_WALK_COLLIDE_SLOW);
+    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_FACE);
 }
 
-static void PlayerNotOnBikeCollideWithFarawayIslandMew(enum Direction direction)
+static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 direction)
 {
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_WALK_COLLIDE);
+    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_FACE);
 }
 
-void PlayerFaceDirection(enum Direction direction)
+void PlayerFaceDirection(u8 direction)
 {
     PlayerSetAnimId(GetFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
-void PlayerTurnInPlace(enum Direction direction)
+void PlayerTurnInPlace(u8 direction)
 {
     PlayerSetAnimId(GetWalkInPlaceFastMovementAction(direction), COPY_MOVE_FACE);
 }
 
-void PlayerJumpLedge(enum Direction direction)
+void PlayerJumpLedge(u8 direction)
 {
     PlaySE(SE_LEDGE);
     PlayerSetAnimId(GetJump2MovementAction(direction), COPY_MOVE_JUMP2);
@@ -1371,90 +1287,74 @@ void PlayerFreeze(void)
     }
 }
 
-static void PlayerGoSpin(enum Direction direction)
-{
-    PlayerSetAnimId(GetSpinMovementAction(direction), 3);
-}
-
-static void PlayerApplyTileForcedMovement(u8 metatileBehavior)
-{
-    int i;
-
-    for (i = 0; i < ARRAY_COUNT(sForcedMovementTestFuncs); i++)
-    {
-        if (sForcedMovementTestFuncs[i](metatileBehavior))
-            sForcedMovementFuncs[i + 1]();
-    }
-}
-
 // wheelie idle
-void PlayerIdleWheelie(enum Direction direction)
+void PlayerIdleWheelie(u8 direction)
 {
     PlayerSetAnimId(GetAcroWheelieFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 // normal to wheelie
-void PlayerStartWheelie(enum Direction direction)
+void PlayerStartWheelie(u8 direction)
 {
     PlayerSetAnimId(GetAcroPopWheelieFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 // wheelie to normal
-void PlayerEndWheelie(enum Direction direction)
+void PlayerEndWheelie(u8 direction)
 {
     PlayerSetAnimId(GetAcroEndWheelieFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 // wheelie hopping standing
-void PlayerStandingHoppingWheelie(enum Direction direction)
+void PlayerStandingHoppingWheelie(u8 direction)
 {
     PlaySE(SE_BIKE_HOP);
     PlayerSetAnimId(GetAcroWheelieHopFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 // wheelie hopping moving
-void PlayerMovingHoppingWheelie(enum Direction direction)
+void PlayerMovingHoppingWheelie(u8 direction)
 {
     PlaySE(SE_BIKE_HOP);
     PlayerSetAnimId(GetAcroWheelieHopDirectionMovementAction(direction), COPY_MOVE_WALK);
 }
 
 // wheelie hopping ledge
-void PlayerLedgeHoppingWheelie(enum Direction direction)
+void PlayerLedgeHoppingWheelie(u8 direction)
 {
     PlaySE(SE_BIKE_HOP);
     PlayerSetAnimId(GetAcroWheelieJumpDirectionMovementAction(direction), COPY_MOVE_JUMP2);
 }
 
 // acro turn jump
-void PlayerAcroTurnJump(enum Direction direction)
+void PlayerAcroTurnJump(u8 direction)
 {
     PlaySE(SE_BIKE_HOP);
     PlayerSetAnimId(GetJumpInPlaceTurnAroundMovementAction(direction), COPY_MOVE_FACE);
 }
 
-void PlayerWheelieInPlace(enum Direction direction)
+void PlayerWheelieInPlace(u8 direction)
 {
     PlaySE(SE_WALL_HIT);
     PlayerSetAnimId(GetAcroWheelieInPlaceDirectionMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerPopWheelieWhileMoving(enum Direction direction)
+void PlayerPopWheelieWhileMoving(u8 direction)
 {
     PlayerSetAnimId(GetAcroPopWheelieMoveDirectionMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerWheelieMove(enum Direction direction)
+void PlayerWheelieMove(u8 direction)
 {
     PlayerSetAnimId(GetAcroWheelieMoveDirectionMovementAction(direction), COPY_MOVE_WALK);
 }
 
-void PlayerEndWheelieWhileMoving(enum Direction direction)
+void PlayerEndWheelieWhileMoving(u8 direction)
 {
     PlayerSetAnimId(GetAcroEndWheelieMoveDirectionMovementAction(direction), COPY_MOVE_WALK);
 }
 
-static void PlayCollisionSoundIfNotFacingWarp(enum Direction direction)
+static void PlayCollisionSoundIfNotFacingWarp(u8 direction)
 {
     s16 x, y;
     u8 metatileBehavior = gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior;
@@ -1521,14 +1421,14 @@ u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
     return FALSE;
 }
 
-enum Direction GetPlayerFacingDirection(void)
+u8 GetPlayerFacingDirection(void)
 {
     Script_RequestEffects(SCREFF_V1);
 
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }
 
-enum Direction GetPlayerMovementDirection(void)
+u8 GetPlayerMovementDirection(void)
 {
     return gObjectEvents[gPlayerAvatar.objectEventId].movementDirection;
 }
@@ -1577,25 +1477,22 @@ void StopPlayerAvatar(void)
     }
 }
 
-u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
+u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
-    if (IS_FRLG)
-        return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gender);
-    else
-        return sRivalAvatarGfxIds[state][gender];
+    return sRivalAvatarGfxIds[state][gender];
 }
 
-u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
+u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     return sPlayerAvatarGfxIds[state][gender];
 }
 
-u16 GetFRLGAvatarGraphicsIdByGender(enum Gender gender)
+u16 GetFRLGAvatarGraphicsIdByGender(u8 gender)
 {
     return sFRLGAvatarGfxIds[gender];
 }
 
-u16 GetRSAvatarGraphicsIdByGender(enum Gender gender)
+u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 {
     return sRSAvatarGfxIds[gender];
 }
@@ -1605,7 +1502,7 @@ u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
     return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
 }
 
-enum Gender GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
+u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
 {
     switch (gfxId)
     {
@@ -1617,13 +1514,6 @@ enum Gender GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_MAY_UNDERWATER:
     case OBJ_EVENT_GFX_MAY_FISHING:
     case OBJ_EVENT_GFX_MAY_WATERING:
-    case OBJ_EVENT_GFX_GREEN_NORMAL:
-    case OBJ_EVENT_GFX_GREEN_BIKE:
-    case OBJ_EVENT_GFX_GREEN_SURF:
-    case OBJ_EVENT_GFX_GREEN_FIELD_MOVE:
-    case OBJ_EVENT_GFX_GREEN_FISH:
-    case OBJ_EVENT_GFX_GREEN_VS_SEEKER:
-    case OBJ_EVENT_GFX_GREEN_VS_SEEKER_BIKE:
         return FEMALE;
     default:
         return MALE;
@@ -1663,7 +1553,7 @@ bool8 IsPlayerFacingSurfableFishableWater(void)
 
     MoveCoords(playerObjEvent->facingDirection, &x, &y);
     if (GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
-     && PlayerGetElevation() == ELEVATION_DEFAULT
+     && PlayerGetElevation() == 3
      && MetatileBehavior_IsSurfableFishableWater(MapGridGetMetatileBehaviorAt(x, y)))
         return TRUE;
     else
@@ -1687,8 +1577,8 @@ static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 gender)
 
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gender][i].graphicsId == graphicsId)
-            return sPlayerAvatarGfxToStateFlag[gender][i].playerFlag;
+        if (sPlayerAvatarGfxToStateFlag[gender][i][0] == graphicsId)
+            return sPlayerAvatarGfxToStateFlag[gender][i][1];
     }
     return PLAYER_AVATAR_FLAG_ON_FOOT;
 }
@@ -1700,8 +1590,8 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
 
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
     {
-        if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].playerFlag & flags)
-            return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].graphicsId;
+        if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i][1] & flags)
+            return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i][0];
     }
     return 0;
 }
@@ -1714,7 +1604,7 @@ void SetPlayerAvatarExtraStateTransition(u16 graphicsId, u8 transitionFlag)
     DoPlayerAvatarTransition();
 }
 
-void InitPlayerAvatar(s16 x, s16 y, enum Direction direction, enum Gender gender)
+void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
 {
     struct ObjectEventTemplate playerObjEventTemplate;
     u8 objectEventId;
@@ -1724,7 +1614,7 @@ void InitPlayerAvatar(s16 x, s16 y, enum Direction direction, enum Gender gender
     playerObjEventTemplate.graphicsId = GetPlayerAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gender);
     playerObjEventTemplate.x = x - MAP_OFFSET;
     playerObjEventTemplate.y = y - MAP_OFFSET;
-    playerObjEventTemplate.elevation = ELEVATION_TRANSITION;
+    playerObjEventTemplate.elevation = 0;
     playerObjEventTemplate.movementType = MOVEMENT_TYPE_PLAYER;
     playerObjEventTemplate.movementRangeX = 0;
     playerObjEventTemplate.movementRangeY = 0;
@@ -1761,21 +1651,21 @@ void SetPlayerAvatarFieldMove(void)
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], ANIM_FIELD_MOVE);
 }
 
-void SetPlayerAvatarFishing(enum Direction direction)
+void SetPlayerAvatarFishing(u8 direction)
 {
     EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FISHING));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetFishingDirectionAnimNum(direction));
 }
 
-void PlayerUseAcroBikeOnBumpySlope(enum Direction direction)
+void PlayerUseAcroBikeOnBumpySlope(u8 direction)
 {
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_ACRO_BIKE));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetAcroWheelieDirectionAnimNum(direction));
     SeekSpriteAnim(&gSprites[gPlayerAvatar.spriteId], 1);
 }
 
-void SetPlayerAvatarWatering(enum Direction direction)
+void SetPlayerAvatarWatering(u8 direction)
 {
     EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_WATERING));
@@ -1786,7 +1676,7 @@ static void HideShowWarpArrow(struct ObjectEvent *objectEvent)
 {
     s16 x;
     s16 y;
-    enum Direction direction;
+    u8 direction;
     u8 metatileBehavior = objectEvent->currentMetatileBehavior;
 
     for (x = 0, direction = DIR_SOUTH; x < 4; x++, direction++)
@@ -1810,7 +1700,7 @@ static void HideShowWarpArrow(struct ObjectEvent *objectEvent)
 #define tBoulderObjId data[1]
 #define tDirection    data[2]
 
-static void StartStrengthAnim(u8 objectEventId, enum Direction direction)
+static void StartStrengthAnim(u8 objectEventId, u8 direction)
 {
     u8 taskId = CreateTask(Task_PushBoulder, 0xFF);
 
@@ -1868,8 +1758,6 @@ static bool8 PushBoulder_End(struct Task *task, struct ObjectEvent *player, stru
     {
         ObjectEventClearHeldMovementIfFinished(player);
         ObjectEventClearHeldMovementIfFinished(boulder);
-        HandleBoulderFallThroughHole(boulder);
-        HandleBoulderActivateVictoryRoadSwitch(boulder->currentCoords.x, boulder->currentCoords.y);
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroyTask(FindTaskIdByFunc(Task_PushBoulder));
@@ -1940,11 +1828,11 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep0(struct Task *task, struct Objec
 
 static bool8 PlayerAvatar_SecretBaseMatSpinStep1(struct Task *task, struct ObjectEvent *objectEvent)
 {
-    enum Direction directions[] = {DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
+    u8 directions[] = {DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
 
     if (ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
-        enum Direction direction;
+        u8 direction;
 
         ObjectEventSetHeldMovement(objectEvent, GetFaceDirectionMovementAction(direction = directions[objectEvent->movementDirection - 1]));
         if (direction == (u8)task->data[1])
@@ -1986,12 +1874,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct Objec
     return FALSE;
 }
 
-void SeafoamIslandsB4F_CurrentDumpsPlayerOnLand(void)
-{
-    CreateStopSurfingTask(DIR_NORTH);
-}
-
-static void CreateStopSurfingTask(enum Direction direction)
+static void CreateStopSurfingTask(u8 direction)
 {
     u8 taskId;
 
@@ -2040,12 +1923,12 @@ static void Task_WaitStopSurfing(u8 taskId)
     }
 }
 
-void SetSpinStartFacingDir(enum Direction direction)
+void SetSpinStartFacingDir(u8 direction)
 {
     sSpinStartFacingDir = direction;
 }
 
-static enum Direction GetSpinStartFacingDir(void)
+static u8 GetSpinStartFacingDir(void)
 {
     if (sSpinStartFacingDir == DIR_NONE)
         return DIR_SOUTH;
@@ -2072,36 +1955,36 @@ static void Task_DoPlayerSpinExit(u8 taskId)
 
     switch (tState)
     {
-    case 0: // Init
-        if (!ObjectEventClearHeldMovementIfFinished(object))
-            return;
+        case 0: // Init
+            if (!ObjectEventClearHeldMovementIfFinished(object))
+                return;
 
-        SetSpinStartFacingDir(object->facingDirection);
-        tSpinDelayTimer = 0;
-        tSpeed = 1;
-        tCurY = (u16)(sprite->y + sprite->y2) << 4;
-        sprite->y2 = 0;
-        CameraObjectFreeze();
-        object->fixedPriority = TRUE;
-        sprite->oam.priority = 0;
-        sprite->subpriority = 0;
-        sprite->subspriteMode = SUBSPRITES_OFF;
-        tState++;
-    case 1: // Spin while rising
-        TrySpinPlayerForWarp(object, &tSpinDelayTimer);
-
-        // Rise and accelerate
-        tCurY -= tSpeed;
-        tSpeed += 3;
-        sprite->y = tCurY >> 4;
-
-        // Check if offscreen
-        if (sprite->y + (s16)gTotalCameraPixelOffsetY < -32)
+            SetSpinStartFacingDir(object->facingDirection);
+            tSpinDelayTimer = 0;
+            tSpeed = 1;
+            tCurY = (u16)(sprite->y + sprite->y2) << 4;
+            sprite->y2 = 0;
+            CameraObjectFreeze();
+            object->fixedPriority = TRUE;
+            sprite->oam.priority = 0;
+            sprite->subpriority = 0;
+            sprite->subspriteMode = SUBSPRITES_OFF;
             tState++;
-        break;
-    case 2:
-        DestroyTask(taskId);
-        break;
+        case 1: // Spin while rising
+            TrySpinPlayerForWarp(object, &tSpinDelayTimer);
+
+            // Rise and accelerate
+            tCurY -= tSpeed;
+            tSpeed += 3;
+            sprite->y = tCurY >> 4;
+
+            // Check if offscreen
+            if (sprite->y + (s16)gTotalCameraPixelOffsetY < -32)
+                tState++;
+            break;
+        case 2:
+            DestroyTask(taskId);
+            break;
     }
 }
 
@@ -2127,7 +2010,7 @@ bool32 IsPlayerSpinExitActive(void)
     return FuncIsActiveTask(Task_DoPlayerSpinExit);
 }
 
-static const enum Direction sSpinDirections[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
+static const u8 sSpinDirections[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
 
 static void Task_DoPlayerSpinEntrance(u8 taskId)
 {
@@ -2137,58 +2020,58 @@ static void Task_DoPlayerSpinEntrance(u8 taskId)
 
     switch (tState)
     {
-    case 0:
-        // Because the spin start facing direction is never set for this
-        // warp type, the player will always exit the warp facing South.
-        // This may have been intentional, unclear
-        tStartDir = GetSpinStartFacingDir();
-        ObjectEventForceSetHeldMovement(object, GetFaceDirectionMovementAction(sSpinDirections[tStartDir]));
-        tSpinDelayTimer = 0;
-        tSpeed = 116;
-        tDestY = sprite->y;
-        tPriority = sprite->oam.priority;
-        tSubpriority = sprite->subpriority;
-        tCurY = -((u16)sprite->y2 + 32) * 16;
-        sprite->y2 = 0;
-        CameraObjectFreeze();
-        object->fixedPriority = TRUE;
-        sprite->oam.priority = 1;
-        sprite->subpriority = 0;
-        sprite->subspriteMode = SUBSPRITES_OFF;
-        tState++;
-    case 1: // Spin while descending
-        TrySpinPlayerForWarp(object, &tSpinDelayTimer);
-
-        // Fall and decelerate
-        tCurY += tSpeed;
-        tSpeed -= 3;
-        if (tSpeed < 4)
-            tSpeed = 4;
-        sprite->y = tCurY >> 4;
-
-        // Check if reached dest
-        if (sprite->y >= tDestY)
-        {
-            sprite->y = tDestY;
-            tGroundTimer = 0;
+        case 0:
+            // Because the spin start facing direction is never set for this
+            // warp type, the player will always exit the warp facing South.
+            // This may have been intentional, unclear
+            tStartDir = GetSpinStartFacingDir();
+            ObjectEventForceSetHeldMovement(object, GetFaceDirectionMovementAction(sSpinDirections[tStartDir]));
+            tSpinDelayTimer = 0;
+            tSpeed = 116;
+            tDestY = sprite->y;
+            tPriority = sprite->oam.priority;
+            tSubpriority = sprite->subpriority;
+            tCurY = -((u16)sprite->y2 + 32) * 16;
+            sprite->y2 = 0;
+            CameraObjectFreeze();
+            object->fixedPriority = TRUE;
+            sprite->oam.priority = 1;
+            sprite->subpriority = 0;
+            sprite->subspriteMode = SUBSPRITES_OFF;
             tState++;
-        }
-        break;
-    case 2: // Spin on ground
-        TrySpinPlayerForWarp(object, &tSpinDelayTimer);
-        if (++tGroundTimer > 8)
-            tState++;
-        break;
-    case 3: // Spin until facing original direction
-        if (tStartDir == TrySpinPlayerForWarp(object, &tSpinDelayTimer))
-        {
-            object->fixedPriority = 0;
-            sprite->oam.priority = tPriority;
-            sprite->subpriority = tSubpriority;
-            CameraObjectReset();
-            DestroyTask(taskId);
-        }
-        break;
+        case 1: // Spin while descending
+            TrySpinPlayerForWarp(object, &tSpinDelayTimer);
+
+            // Fall and decelerate
+            tCurY += tSpeed;
+            tSpeed -= 3;
+            if (tSpeed < 4)
+                tSpeed = 4;
+            sprite->y = tCurY >> 4;
+
+            // Check if reached dest
+            if (sprite->y >= tDestY)
+            {
+                sprite->y = tDestY;
+                tGroundTimer = 0;
+                tState++;
+            }
+            break;
+        case 2: // Spin on ground
+            TrySpinPlayerForWarp(object, &tSpinDelayTimer);
+            if (++tGroundTimer > 8)
+                tState++;
+            break;
+        case 3: // Spin until facing original direction
+            if (tStartDir == TrySpinPlayerForWarp(object, &tSpinDelayTimer))
+            {
+                object->fixedPriority = 0;
+                sprite->oam.priority = tPriority;
+                sprite->subpriority = tSubpriority;
+                CameraObjectReset();
+                DestroyTask(taskId);
+            }
+            break;
     }
 }
 
@@ -2206,7 +2089,7 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
 }
 
 //sideways stairs
-enum Direction GetRightSideStairsDirection(enum Direction direction)
+u8 GetRightSideStairsDirection(u8 direction)
 {
     switch (direction)
     {
@@ -2221,7 +2104,7 @@ enum Direction GetRightSideStairsDirection(enum Direction direction)
     }
 }
 
-enum Direction GetLeftSideStairsDirection(enum Direction direction)
+u8 GetLeftSideStairsDirection(u8 direction)
 {
     switch (direction)
     {
@@ -2236,7 +2119,7 @@ enum Direction GetLeftSideStairsDirection(enum Direction direction)
     }
 }
 
-bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, enum Direction direction)
+bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction)
 {
     #if SLOW_MOVEMENT_ON_STAIRS == TRUE
         s16 x = objectEvent->currentCoords.x;

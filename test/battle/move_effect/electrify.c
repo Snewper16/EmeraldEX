@@ -1,11 +1,6 @@
 #include "global.h"
 #include "test/battle.h"
 
-ASSUMPTIONS
-{
-    ASSUME(GetMoveEffect(MOVE_ELECTRIFY) == EFFECT_ELECTRIFY);
-}
-
 SINGLE_BATTLE_TEST("Electrify makes the target's move Electric-type for the remainder of the turn (single move)")
 {
     GIVEN {

@@ -8,7 +8,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Foul Play uses the target's Attack stat and stat stages of target", s16 damage)
 {
-    enum Move move;
+    u32 move;
 
     PARAMETRIZE { move = MOVE_HIGH_HORSEPOWER; }
     PARAMETRIZE { move = MOVE_FOUL_PLAY; }

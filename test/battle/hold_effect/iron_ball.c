@@ -5,24 +5,17 @@ ASSUMPTIONS{
     ASSUME(gItemsInfo[ITEM_IRON_BALL].holdEffect == HOLD_EFFECT_IRON_BALL);
 }
 
-SINGLE_BATTLE_TEST("Ground-type moves do neutral damage to non-grounded Flying types holding Iron Ball regardless of other typings (Gen5+)")
+SINGLE_BATTLE_TEST("Ground-type moves do neutral damage to non-grounded Flying types holding Iron Ball regardless of other typings") //gen5+ only
 {
-    u32 config;
-    PARAMETRIZE { config = GEN_4; }
-    PARAMETRIZE { config = GEN_5; }
+    ASSUME(B_IRON_BALL >= GEN_5);
     GIVEN {
-        WITH_CONFIG(B_IRON_BALL, config);
         PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_SKARMORY) { Item(ITEM_IRON_BALL); }
+        OPPONENT(SPECIES_SKARMORY) { Item(ITEM_IRON_BALL); };
     } WHEN {
-        TURN { MOVE(player, MOVE_EARTHQUAKE); }
+        TURN { MOVE(player, MOVE_EARTHQUAKE); };
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, player);
-        if (config >= GEN_5) {
-            NONE_OF {
-                MESSAGE("It's super effective!");
-            }
-        } else {
+        NONE_OF {
             MESSAGE("It's super effective!");
         }
     }

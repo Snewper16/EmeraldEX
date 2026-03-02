@@ -60,11 +60,6 @@ static void UpdateStairsMovement(s16, s16, s16*, s16*, s16*);
 static void Task_StairWarp(u8);
 static void ForceStairsMovement(u32, s16*, s16*);
 
-static const u8 sText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nprotecting the exhausted and fainted\nPOKéMON from further harm…\p");
-static const u8 sText_PlayerScurriedBackHome[] = _("{PLAYER} scurried back home, protecting\nthe exhausted and fainted POKéMON from\nfurther harm…\p");
-static const u8 sText_PlayerRegroupCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nto regroup and reconsider the battle\nstrategy…\p");
-static const u8 sText_PlayerRegroupHome[] = _("{PLAYER} scurried back home, to regroup\nand reconsider the battle strategy…\p");
-
 // data[0] is used universally by tasks in this file as a state for switches
 #define tState       data[0]
 
@@ -1381,7 +1376,7 @@ static bool32 PrintWhiteOutRecoveryMessage(u8 taskId, const u8 *text, u32 x, u32
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActiveOnWindow(windowId))
+        if (!IsTextPrinterActive(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;
@@ -1404,13 +1399,13 @@ static const u8 *GenerateRecoveryMessage(u8 taskId)
     bool32 destinationIsPlayersHouse = (gTasks[taskId].tIsPlayerHouse == TRUE);
 
     if (forfeitTrainer && destinationIsPlayersHouse)
-        return sText_PlayerRegroupHome;
+        return gText_PlayerRegroupHome;
     else if (forfeitTrainer && !destinationIsPlayersHouse)
-        return sText_PlayerRegroupCenter;
+        return gText_PlayerRegroupCenter;
     else if (!forfeitTrainer && destinationIsPlayersHouse)
-        return sText_PlayerScurriedBackHome;
+        return gText_PlayerScurriedBackHome;
     else
-        return sText_PlayerScurriedToCenter;
+        return gText_PlayerScurriedToCenter;
 }
 
 static void Task_RushInjuredPokemonToCenter(u8 taskId)
@@ -1690,7 +1685,7 @@ void DoStairWarp(u16 metatileBehavior, u16 delay)
 #undef tTimer
 #undef tDelay
 
-bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, enum Direction playerDirection)
+bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, u8 playerDirection)
 {
     if (playerDirection == DIR_WEST)
     {

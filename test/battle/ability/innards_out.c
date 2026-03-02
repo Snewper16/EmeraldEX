@@ -14,6 +14,7 @@ SINGLE_BATTLE_TEST("Innards Out deal dmg on fainting equal to the amount of dmg 
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET) { HP(70); SpAttack(1000); }
         OPPONENT(SPECIES_WOBBUFFET);
+        ASSUME(!IsBattleMoveStatus(MOVE_PSYCHIC));
         ASSUME(GetMoveCategory(MOVE_PSYCHIC) == DAMAGE_CATEGORY_SPECIAL);
     } WHEN {
         TURN { MOVE(opponent, MOVE_PSYCHIC); SEND_OUT(player, 1); if (hp == 100) { SEND_OUT(opponent, 1); } }
@@ -31,7 +32,7 @@ SINGLE_BATTLE_TEST("Innards Out does not trigger after Gastro Acid has been used
         PLAYER(SPECIES_PYUKUMUKU) { HP(1); Ability(ABILITY_INNARDS_OUT); }
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
-        ASSUME(GetMoveCategory(MOVE_PSYCHIC) != DAMAGE_CATEGORY_STATUS);
+        ASSUME(!IsBattleMoveStatus(MOVE_PSYCHIC));
         ASSUME(GetMoveEffect(MOVE_GASTRO_ACID) == EFFECT_GASTRO_ACID);
     } WHEN {
         TURN { MOVE(opponent, MOVE_GASTRO_ACID); }
@@ -54,7 +55,7 @@ SINGLE_BATTLE_TEST("Innards Out does not damage Magic Guard Pokemon")
         PLAYER(SPECIES_PYUKUMUKU) { HP(1); Ability(ABILITY_INNARDS_OUT); }
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_CLEFABLE) { Ability(ABILITY_MAGIC_GUARD); }
-        ASSUME(GetMoveCategory(MOVE_PSYCHIC) != DAMAGE_CATEGORY_STATUS);
+        ASSUME(!IsBattleMoveStatus(MOVE_PSYCHIC));
     } WHEN {
         TURN { MOVE(opponent, MOVE_PSYCHIC); SEND_OUT(player, 1); }
     } SCENE {
@@ -74,7 +75,7 @@ SINGLE_BATTLE_TEST("Innards Out uses correct damage amount for Future Sight")
         OPPONENT(SPECIES_WYNAUT);
     } WHEN {
         TURN { MOVE(opponent, MOVE_FUTURE_SIGHT); }
-        TURN {}
+        TURN { }
         TURN { SEND_OUT(player, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FUTURE_SIGHT, opponent);

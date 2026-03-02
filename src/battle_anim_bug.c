@@ -1,6 +1,5 @@
 #include "global.h"
 #include "battle_anim.h"
-#include "battle_anim_internal.h"
 #include "gpu_regs.h"
 #include "trig.h"
 #include "constants/rgb.h"
@@ -44,6 +43,8 @@ const struct SpriteTemplate gMegahornHornSpriteTemplate =
     .tileTag = ANIM_TAG_HORN_HIT_2,
     .paletteTag = ANIM_TAG_HORN_HIT_2,
     .oam = &gOamData_AffineDouble_ObjNormal_32x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
     .affineAnims = sAffineAnims_MegahornHorn,
     .callback = AnimMegahornHorn,
 };
@@ -78,6 +79,8 @@ const struct SpriteTemplate gLeechLifeNeedleSpriteTemplate =
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
     .oam = &gOamData_AffineNormal_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
     .affineAnims = sAffineAnims_LeechLifeNeedle,
     .callback = AnimLeechLifeNeedle,
 };
@@ -87,6 +90,9 @@ const struct SpriteTemplate gWebThreadSpriteTemplate =
     .tileTag = ANIM_TAG_WEB_THREAD,
     .paletteTag = ANIM_TAG_WEB_THREAD,
     .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimTranslateWebThread,
 };
 
@@ -95,6 +101,9 @@ const struct SpriteTemplate gStringWrapSpriteTemplate =
     .tileTag = ANIM_TAG_STRING,
     .paletteTag = ANIM_TAG_STRING,
     .oam = &gOamData_AffineOff_ObjNormal_64x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimStringWrap,
 };
 
@@ -115,6 +124,8 @@ const struct SpriteTemplate gSpiderWebSpriteTemplate =
     .tileTag = ANIM_TAG_SPIDER_WEB,
     .paletteTag = ANIM_TAG_SPIDER_WEB,
     .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
     .affineAnims = sAffineAnims_SpiderWeb,
     .callback = AnimSpiderWeb,
 };
@@ -124,6 +135,9 @@ const struct SpriteTemplate gLinearStingerSpriteTemplate =
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
     .oam = &gOamData_AffineNormal_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimTranslateStinger,
 };
 
@@ -132,6 +146,9 @@ const struct SpriteTemplate gPinMissileSpriteTemplate =
     .tileTag = ANIM_TAG_NEEDLE,
     .paletteTag = ANIM_TAG_NEEDLE,
     .oam = &gOamData_AffineNormal_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimMissileArc,
 };
 
@@ -140,6 +157,9 @@ const struct SpriteTemplate gIcicleSpearSpriteTemplate =
     .tileTag = ANIM_TAG_ICICLE_SPEAR,
     .paletteTag = ANIM_TAG_ICICLE_SPEAR,
     .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimMissileArc,
 };
 
@@ -164,35 +184,35 @@ const struct SpriteTemplate gTailGlowOrbSpriteTemplate =
     .tileTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .paletteTag = ANIM_TAG_CIRCLE_OF_LIGHT,
     .oam = &gOamData_AffineNormal_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
     .affineAnims = sAffineAnims_TailGlowOrb,
     .callback = AnimTailGlowOrb,
 };
 
 static void AnimMegahornHorn(struct Sprite *sprite)
 {
-    CMD_ARGS(x1, y1, x2, y2, duration);
-
     if (IsContest())
     {
         StartSpriteAffineAnim(sprite, 2);
-        cmd->x2 = -cmd->x2;
-        cmd->x1 = -cmd->x1;
+        gBattleAnimArgs[2] = -gBattleAnimArgs[2];
+        gBattleAnimArgs[0] = -gBattleAnimArgs[0];
     }
     else if (IsOnPlayerSide(gBattleAnimTarget))
     {
         StartSpriteAffineAnim(sprite, 1);
-        cmd->y1 = -cmd->y1;
-        cmd->x2 = -cmd->x2;
-        cmd->y2 = -cmd->y2;
-        cmd->x1 = -cmd->x1;
+        gBattleAnimArgs[1] = -gBattleAnimArgs[1];
+        gBattleAnimArgs[2] = -gBattleAnimArgs[2];
+        gBattleAnimArgs[3] = -gBattleAnimArgs[3];
+        gBattleAnimArgs[0] = -gBattleAnimArgs[0];
     }
 
-    sprite->x = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_X_2) + cmd->x1;
-    sprite->y = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + cmd->y1;
-    sprite->data[0] = cmd->duration;
+    sprite->x = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[0];
+    sprite->y = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[1];
+    sprite->data[0] = gBattleAnimArgs[4];
 
-    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + cmd->x2;
-    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + cmd->y2;
+    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[2];
+    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
 
     sprite->callback = StartAnimLinearTranslation;
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
@@ -200,22 +220,20 @@ static void AnimMegahornHorn(struct Sprite *sprite)
 
 static void AnimLeechLifeNeedle(struct Sprite *sprite)
 {
-    CMD_ARGS(x, y, duration);
-
     if (IsContest())
     {
-        cmd->x = -cmd->x;
+        gBattleAnimArgs[0] = -gBattleAnimArgs[0];
         StartSpriteAffineAnim(sprite, 2);
     }
     else if (IsOnPlayerSide(gBattleAnimTarget))
     {
-        cmd->y = -cmd->y;
-        cmd->x = -cmd->x;
+        gBattleAnimArgs[1] = -gBattleAnimArgs[1];
+        gBattleAnimArgs[0] = -gBattleAnimArgs[0];
     }
 
-    sprite->x = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_X_2) + cmd->x;
-    sprite->y = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + cmd->y;
-    sprite->data[0] = cmd->duration;
+    sprite->x = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[0];
+    sprite->y = GetBattlerSpriteCoord2(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[1];
+    sprite->data[0] = gBattleAnimArgs[2];
 
     sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
     sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET);
@@ -226,20 +244,22 @@ static void AnimLeechLifeNeedle(struct Sprite *sprite)
 
 // Creates a single web thread that travels from attacker to target.
 // Used by MOVE_STRING_SHOT and MOVE_SPIDER_WEB in their first move phase.
+// arg 0: x
+// arg 1: y
 // arg 2: controls the left-to-right movement
+// arg 3: amplitude
+// arg 4: if targets both opponents
 static void AnimTranslateWebThread(struct Sprite *sprite)
 {
-    CMD_ARGS(x, y, unk2, amplitude, targetsBoth);
-
     if (IsContest())
-        cmd->unk2 /= 2;
+        gBattleAnimArgs[2] /= 2;
 
     InitSpritePosToAnimAttacker(sprite, TRUE);
-    sprite->data[0] = cmd->unk2;
+    sprite->data[0] = gBattleAnimArgs[2];
     sprite->data[1] = sprite->x;
     sprite->data[3] = sprite->y;
 
-    if (!cmd->targetsBoth)
+    if (!gBattleAnimArgs[4])
     {
         sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
         sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET);
@@ -250,7 +270,7 @@ static void AnimTranslateWebThread(struct Sprite *sprite)
     }
 
     InitAnimLinearTranslationWithSpeed(sprite);
-    sprite->data[5] = cmd->amplitude;
+    sprite->data[5] = gBattleAnimArgs[3];
     sprite->callback = AnimTranslateWebThread_Step;
 }
 
@@ -269,15 +289,13 @@ static void AnimTranslateWebThread_Step(struct Sprite *sprite)
 // Second stage of String Shot
 static void AnimStringWrap(struct Sprite *sprite)
 {
-    CMD_ARGS(x, y);
-
     SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);
     if (!IsOnPlayerSide(gBattleAnimAttacker))
-        sprite->x -= cmd->x;
+        sprite->x -= gBattleAnimArgs[0];
     else
-        sprite->x += cmd->x;
+        sprite->x += gBattleAnimArgs[0];
 
-    sprite->y += cmd->y;
+    sprite->y += gBattleAnimArgs[1];
     if (IsOnPlayerSide(gBattleAnimTarget))
         sprite->y += 8;
 
@@ -347,24 +365,27 @@ static void AnimSpiderWeb_End(struct Sprite *sprite)
 
 // Translates a stinger sprite linearly to a destination location. The sprite is
 // initially rotated so that it appears to be traveling in a straight line.
+// arg 0: initial x pixel offset
+// arg 1: initial y pixel offset
+// arg 2: target x pixel offset
+// arg 3: target y pixel offset
+// arg 4: duration
 void AnimTranslateStinger(struct Sprite *sprite)
 {
-    CMD_ARGS(initialX, intialY, targetX, targetY, duration);
-
     s16 lVarX, lVarY;
     u16 rot;
 
     if (IsContest())
     {
-        cmd->targetX = -cmd->targetX;
+        gBattleAnimArgs[2] = -gBattleAnimArgs[2];
     }
     else
     {
         if (!IsOnPlayerSide(gBattleAnimAttacker))
         {
-            cmd->targetX = -cmd->targetX;
-            cmd->intialY = -cmd->intialY;
-            cmd->targetY = -cmd->targetY;
+            gBattleAnimArgs[2] = -gBattleAnimArgs[2];
+            gBattleAnimArgs[1] = -gBattleAnimArgs[1];
+            gBattleAnimArgs[3] = -gBattleAnimArgs[3];
         }
     }
 
@@ -373,20 +394,20 @@ void AnimTranslateStinger(struct Sprite *sprite)
         if (GetBattlerPosition(gBattleAnimTarget) == B_POSITION_PLAYER_LEFT
          || GetBattlerPosition(gBattleAnimTarget) == B_POSITION_OPPONENT_LEFT)
         {
-            cmd->targetX *= -1;
-            cmd->initialX *= -1;
+            gBattleAnimArgs[2] *= -1;
+            gBattleAnimArgs[0] *= -1;
         }
     }
 
     InitSpritePosToAnimAttacker(sprite, TRUE);
 
-    lVarX = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + cmd->targetX;
-    lVarY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + cmd->targetY;
+    lVarX = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[2];
+    lVarY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
     rot = ArcTan2Neg(lVarX - sprite->x, lVarY - sprite->y);
     rot += 0xC000;
     TrySetSpriteRotScale(sprite, FALSE, 0x100, 0x100, rot);
 
-    sprite->data[0] = cmd->duration;
+    sprite->data[0] = gBattleAnimArgs[4];
     sprite->data[2] = lVarX;
     sprite->data[4] = lVarY;
 
@@ -395,19 +416,23 @@ void AnimTranslateStinger(struct Sprite *sprite)
 }
 
 // Rotates sprite and moves it in an arc, so that it appears like a missle or arrow traveling.
+// arg 0: initial x pixel offset
+// arg 1: initial y pixel offset
+// arg 2: target x pixel offset
+// arg 3: target y pixel offset
+// arg 4: duration
+// arg 5: wave amplitude
 void AnimMissileArc(struct Sprite *sprite)
 {
-    CMD_ARGS(initialX, intialY, targetX, targetY, duration, waveAmplitude);
-
     InitSpritePosToAnimAttacker(sprite, TRUE);
 
     if (!IsOnPlayerSide(gBattleAnimAttacker))
-        cmd->targetX = -cmd->targetX;
+        gBattleAnimArgs[2] = -gBattleAnimArgs[2];
 
-    sprite->data[0] = cmd->duration;
-    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + cmd->targetX;
-    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + cmd->targetY;
-    sprite->data[5] = cmd->waveAmplitude;
+    sprite->data[0] = gBattleAnimArgs[4];
+    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[2];
+    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
+    sprite->data[5] = gBattleAnimArgs[5];
     InitAnimArcTranslation(sprite);
 
     sprite->callback = AnimMissileArc_Step;
@@ -453,9 +478,7 @@ void AnimMissileArc_Step(struct Sprite *sprite)
 
 static void AnimTailGlowOrb(struct Sprite *sprite)
 {
-    CMD_ARGS(relativeTo);
-
-    if (cmd->relativeTo == ANIM_ATTACKER)
+    if (gBattleAnimArgs[0] == ANIM_ATTACKER)
     {
         sprite->x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2);
         sprite->y = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET) + 18;

@@ -169,6 +169,9 @@ static const struct SpriteTemplate sSpriteTemplate_Egg =
     .paletteTag = PALTAG_EGG,
     .oam = &sOamData_Egg,
     .anims = sSpriteAnimTable_Egg,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
 };
 
 static const struct OamData sOamData_EggShard =
@@ -226,6 +229,8 @@ static const struct SpriteTemplate sSpriteTemplate_EggShard =
     .paletteTag = PALTAG_EGG,
     .oam = &sOamData_EggShard,
     .anims = sSpriteAnimTable_EggShard,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_EggShard
 };
 
@@ -311,7 +316,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     u32 personality, pokerus;
     enum PokeBall ball;
     u8 i, friendship, language, gameMet, markings, isModernFatefulEncounter;
-    enum Move moves[MAX_MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u32 ivs[NUM_STATS];
 
     species = GetMonData(egg, MON_DATA_SPECIES);
@@ -332,7 +337,8 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     isModernFatefulEncounter = GetMonData(egg, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     ball = GetMonData(egg, MON_DATA_POKEBALL);
 
-    CreateMonWithIVs(temp, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMon(temp, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
+
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonData(temp, MON_DATA_MOVE1 + i,  &moves[i]);
 
@@ -439,9 +445,9 @@ static u8 EggHatchCreateMonSprite(u8 useAlt, u8 state, u8 partyId, u16 *speciesL
         // Load mon sprite gfx
         {
             u32 pid = GetMonData(mon, MON_DATA_PERSONALITY);
-            HandleLoadSpecialPokePicIsEgg(TRUE,
+            HandleLoadSpecialPokePic(TRUE,
                                      gMonSpritesGfxPtr->spritesGfx[(useAlt * 2) + B_POSITION_OPPONENT_LEFT],
-                                     species, pid, FALSE);
+                                     species, pid);
             LoadSpritePaletteWithTag(GetMonFrontSpritePal(mon), species);
             *speciesLoc = species;
         }
@@ -531,43 +537,11 @@ static void CB2_LoadEggHatch(void)
         gMain.state++;
         break;
     case 3:
-    {
-        u32 species = GetMonData(&gPlayerParty[sEggHatchData->eggPartyId], MON_DATA_SPECIES);
-        if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
-        {
-            u32 *tempSprite = malloc_and_decompress(gEggDatas[gSpeciesInfo[species].eggId].eggHatchGfx, NULL);
-            struct SpriteSheet tempSheet;
-            tempSheet.data = tempSprite;
-            tempSheet.size = 2048;
-            tempSheet.tag = GFXTAG_EGG;
-            LoadSpriteSheet(&tempSheet);
-            Free(tempSprite);
-
-            struct SpritePalette tempPal;
-            tempPal.data = gEggDatas[gSpeciesInfo[species].eggId].eggHatchPal;
-            tempPal.tag = PALTAG_EGG;
-            LoadSpritePalette(&tempPal);
-            if (gEggDatas[gSpeciesInfo[species].eggId].eggShardsGfx != NULL)
-            {
-                tempSheet.data = gEggDatas[gSpeciesInfo[species].eggId].eggShardsGfx;
-                tempSheet.size = 128;
-                tempSheet.tag = GFXTAG_EGG_SHARD;
-                LoadSpriteSheet(&tempSheet);
-            }
-            else
-            {
-                LoadSpriteSheet(&sEggShards_Sheet);
-            }
-        }
-        else
-        {
-            LoadSpriteSheet(&sEggHatch_Sheet);
-            LoadSpriteSheet(&sEggShards_Sheet);
-            LoadSpritePalette(&sEgg_SpritePalette);
-        }
+        LoadSpriteSheet(&sEggHatch_Sheet);
+        LoadSpriteSheet(&sEggShards_Sheet);
+        LoadSpritePalette(&sEgg_SpritePalette);
         gMain.state++;
         break;
-    }
     case 4:
         CopyBgTilemapBufferToVram(0);
         AddHatchedMonToParty(sEggHatchData->eggPartyId);
@@ -703,7 +677,7 @@ static void CB2_EggHatch(void)
         break;
     case 9:
         // Print the nickname prompt
-        if (!IsTextPrinterActiveOnWindow(sEggHatchData->windowId))
+        if (!IsTextPrinterActive(sEggHatchData->windowId))
         {
             LoadUserWindowBorderGfx(sEggHatchData->windowId, 0x140, BG_PLTT_ID(14));
             CreateYesNoMenu(&sYesNoWinTemplate, 0x140, 0xE, 0);

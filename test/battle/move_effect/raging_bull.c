@@ -4,8 +4,7 @@
 ASSUMPTIONS
 {
     ASSUME(GetMoveEffect(MOVE_RAGING_BULL) == EFFECT_RAGING_BULL);
-    ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_WEATHER);
-    ASSUME(GetMoveWeatherType(MOVE_SNOWSCAPE) == BATTLE_WEATHER_SNOW);
+    ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
     ASSUME(GetMoveEffect(MOVE_LIGHT_SCREEN) == EFFECT_LIGHT_SCREEN);
     ASSUME(GetMoveEffect(MOVE_REFLECT) == EFFECT_REFLECT);
     ASSUME(GetMoveEffect(MOVE_AURORA_VEIL) == EFFECT_AURORA_VEIL);
@@ -13,7 +12,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Raging Bull removes Light Screen, Reflect and Aurora Veil from the target's side of the field")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
     PARAMETRIZE { move = MOVE_REFLECT; }
@@ -36,7 +35,7 @@ SINGLE_BATTLE_TEST("Raging Bull removes Light Screen, Reflect and Aurora Veil fr
 
 SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora Veil if the target is immune")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
     PARAMETRIZE { move = MOVE_REFLECT; }
@@ -61,7 +60,7 @@ SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora 
 
 SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora Veil if the target Protected")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
     PARAMETRIZE { move = MOVE_REFLECT; }
@@ -87,7 +86,7 @@ SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora 
 
 SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora Veil if it misses")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
     PARAMETRIZE { move = MOVE_REFLECT; }
@@ -112,7 +111,7 @@ SINGLE_BATTLE_TEST("Raging Bull doesn't remove Light Screen, Reflect and Aurora 
 
 DOUBLE_BATTLE_TEST("Raging Bull can remove Light Screen, Reflect and Aurora Veil on users side")
 {
-    enum Move move;
+    u16 move;
 
     PARAMETRIZE { move = MOVE_LIGHT_SCREEN; }
     PARAMETRIZE { move = MOVE_REFLECT; }

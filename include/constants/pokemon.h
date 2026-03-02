@@ -76,9 +76,6 @@ enum __attribute__((packed)) Type
 #define NATURE_QUIRKY   24 // Neutral
 #define NUM_NATURES     25
 
-#define NATURE_RANDOM            NUM_NATURES
-#define NATURE_MAY_SYNCHRONIZE   NUM_NATURES + 1
-
 // Pokémon Stats
 enum __attribute__((packed)) Stat
 {
@@ -157,12 +154,9 @@ enum __attribute__((packed)) Stat
 
 #define MAX_DYNAMAX_LEVEL 10
 
-enum OtIdMethod
-{
-    OT_ID_PLAYER_ID,
-    OT_ID_PRESET,
-    OT_ID_RANDOM_NO_SHINY
-};
+#define OT_ID_PLAYER_ID       0
+#define OT_ID_PRESET          1
+#define OT_ID_RANDOM_NO_SHINY 2
 
 #define MON_GIVEN_TO_PARTY      0
 #define MON_GIVEN_TO_PC         1
@@ -185,9 +179,6 @@ enum OtIdMethod
 #define MON_FEMALE     0xFE
 #define MON_GENDERLESS 0xFF
 
-#define MON_GENDER_RANDOM         0x01
-#define MON_GENDER_MAY_CUTE_CHARM 0x02
-
 // Constants for AdjustFriendship
 #define FRIENDSHIP_EVENT_GROW_LEVEL       0
 #define FRIENDSHIP_EVENT_VITAMIN          1 // unused, handled by PokemonUseItemEffects
@@ -198,7 +189,6 @@ enum OtIdMethod
 #define FRIENDSHIP_EVENT_FAINT_SMALL      6
 #define FRIENDSHIP_EVENT_FAINT_FIELD_PSN  7
 #define FRIENDSHIP_EVENT_FAINT_LARGE      8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
-#define FRIENDSHIP_EVENT_MASSAGE          9
 
 // Constants for GetLeadMonFriendshipScore
 #define FRIENDSHIP_NONE        0

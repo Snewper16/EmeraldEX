@@ -130,10 +130,10 @@ static void FavorLadyPickFavorAndBestItem(void)
     u8 numItems;
     u8 bestItem;
 
-    sFavorLadyPtr->favorId = Random() % ARRAY_COUNT(sFavorLady);
-    numItems = GetNumAcceptedItems(sFavorLady[sFavorLadyPtr->favorId].acceptedItems);
+    sFavorLadyPtr->favorId = Random() % ARRAY_COUNT(sFavorLadyRequests);
+    numItems = GetNumAcceptedItems(sFavorLadyAcceptedItemLists[sFavorLadyPtr->favorId]);
     bestItem = Random() % numItems;
-    sFavorLadyPtr->bestItem = sFavorLady[sFavorLadyPtr->favorId].acceptedItems[bestItem];
+    sFavorLadyPtr->bestItem = sFavorLadyAcceptedItemLists[sFavorLadyPtr->favorId][bestItem];
 }
 
 static void InitLilycoveFavorLady(void)
@@ -167,10 +167,15 @@ u8 GetFavorLadyState(void)
         return LILYCOVE_LADY_STATE_READY;
 }
 
+static const u8 *GetFavorLadyRequest(u8 idx)
+{
+    return sFavorLadyRequests[idx];
+}
+
 void BufferFavorLadyRequest(void)
 {
     sFavorLadyPtr = &gSaveBlock1Ptr->lilycoveLady.favor;
-    StringCopy(gStringVar1, sFavorLady[sFavorLadyPtr->favorId].request);
+    StringCopy(gStringVar1, GetFavorLadyRequest(sFavorLadyPtr->favorId));
 }
 
 bool8 HasAnotherPlayerGivenFavorLadyItem(void)
@@ -185,7 +190,7 @@ bool8 HasAnotherPlayerGivenFavorLadyItem(void)
     return FALSE;
 }
 
-static void BufferItemName(u8 *dest, enum Item itemId)
+static void BufferItemName(u8 *dest, u16 itemId)
 {
     StringCopy(dest, GetItemName(itemId));
 }
@@ -221,24 +226,23 @@ void Script_FavorLadyOpenBagMenu(void)
     FavorLadyOpenBagMenu();
 }
 
-static bool8 DoesFavorLadyLikeItem(enum Item itemId)
+static bool8 DoesFavorLadyLikeItem(u16 itemId)
 {
     u8 numItems;
     u8 i;
     bool8 likedItem;
 
     sFavorLadyPtr = &gSaveBlock1Ptr->lilycoveLady.favor;
-    numItems = GetNumAcceptedItems(sFavorLady[sFavorLadyPtr->favorId].acceptedItems);
+    numItems = GetNumAcceptedItems(sFavorLadyAcceptedItemLists[sFavorLadyPtr->favorId]);
     sFavorLadyPtr->state = LILYCOVE_LADY_STATE_COMPLETED;
     BufferItemName(gStringVar2, itemId);
     sFavorLadyPtr->itemId = itemId;
     SetFavorLadyPlayerName(gSaveBlock2Ptr->playerName, sFavorLadyPtr->playerName);
     sFavorLadyPtr->language = gGameLanguage;
     likedItem = FALSE;
-
     for (i = 0; i < numItems; i ++)
     {
-        if (sFavorLady[sFavorLadyPtr->favorId].acceptedItems[i] == itemId)
+        if (sFavorLadyAcceptedItemLists[sFavorLadyPtr->favorId][i] == itemId)
         {
             likedItem = TRUE;
             sFavorLadyPtr->numItemsGiven++;
@@ -266,13 +270,18 @@ bool8 IsFavorLadyThresholdMet(void)
     return numItemsGiven < LILYCOVE_LADY_GIFT_THRESHOLD ? FALSE : TRUE;
 }
 
+static void FavorLadyBufferPrizeName(u16 prize)
+{
+    BufferItemName(gStringVar2, prize);
+}
+
 u16 FavorLadyGetPrize(void)
 {
     u16 prize;
 
     sFavorLadyPtr = &gSaveBlock1Ptr->lilycoveLady.favor;
-    prize = sFavorLady[sFavorLadyPtr->favorId].prize;
-    BufferItemName(gStringVar2, prize);
+    prize = sFavorLadyPrizes[sFavorLadyPtr->favorId];
+    FavorLadyBufferPrizeName(prize);
     sFavorLadyPtr->state = LILYCOVE_LADY_STATE_PRIZE;
     return prize;
 }
@@ -293,12 +302,11 @@ static void QuizLadyPickQuestion(void)
     u8 questionId;
     u8 i;
 
-    questionId = Random() % ARRAY_COUNT(sQuizLadyQuestions);
+    questionId = Random() % ARRAY_COUNT(sQuizLadyQuizQuestions);
     for (i = 0; i < QUIZ_QUESTION_LEN; i ++)
-        sQuizLadyPtr->question[i] = sQuizLadyQuestions[questionId].question[i];
-
-    sQuizLadyPtr->correctAnswer = sQuizLadyQuestions[questionId].answer;
-    sQuizLadyPtr->prize = sQuizLadyQuestions[questionId].prize;
+        sQuizLadyPtr->question[i] = sQuizLadyQuizQuestions[questionId][i];
+    sQuizLadyPtr->correctAnswer = sQuizLadyQuizAnswers[questionId];
+    sQuizLadyPtr->prize = sQuizLadyPrizes[questionId];
     sQuizLadyPtr->questionId = questionId;
     sQuizLadyPtr->playerName[0] = EOS;
 }
@@ -322,7 +330,7 @@ static void InitLilycoveQuizLady(void)
 
     sQuizLadyPtr->prize = ITEM_NONE;
     sQuizLadyPtr->waitingForChallenger = FALSE;
-    sQuizLadyPtr->prevQuestionId = ARRAY_COUNT(sQuizLadyQuestions);
+    sQuizLadyPtr->prevQuestionId = ARRAY_COUNT(sQuizLadyQuizQuestions);
     sQuizLadyPtr->language = gGameLanguage;
     QuizLadyPickQuestion();
 }
@@ -358,19 +366,17 @@ u8 GetQuizAuthor(void)
         i = quiz->questionId;
         do
         {
-            if (++i >= (int)ARRAY_COUNT(sQuizLadyQuestions))
+            if (++i >= (int)ARRAY_COUNT(sQuizLadyQuizQuestions))
                 i = 0;
-        } while (IsEasyChatAnswerUnlocked(sQuizLadyQuestions[i].answer) == FALSE);
+        } while (IsEasyChatAnswerUnlocked(sQuizLadyQuizAnswers[i]) == FALSE);
 
         for (j = 0; j < QUIZ_QUESTION_LEN; j++)
-            quiz->question[j] = sQuizLadyQuestions[i].question[j];
-
-        quiz->correctAnswer = sQuizLadyQuestions[i].answer;
-        quiz->prize = sQuizLadyQuestions[i].prize;
+            quiz->question[j] = sQuizLadyQuizQuestions[i][j];
+        quiz->correctAnswer = sQuizLadyQuizAnswers[i];
+        quiz->prize = sQuizLadyPrizes[i];
         quiz->questionId = i;
         quiz->playerName[0] = EOS;
     }
-
     authorNameId = BufferQuizAuthorName();
     if (authorNameId == QUIZ_AUTHOR_NAME_LADY)
         return QUIZ_AUTHOR_LADY;
@@ -513,7 +519,7 @@ void QuizLadyPickNewQuestion(void)
     if (BufferQuizAuthorNameAndCheckIfLady())
         sQuizLadyPtr->prevQuestionId = sQuizLadyPtr->questionId;
     else
-        sQuizLadyPtr->prevQuestionId = ARRAY_COUNT(sQuizLadyQuestions);
+        sQuizLadyPtr->prevQuestionId = ARRAY_COUNT(sQuizLadyQuizQuestions);
     QuizLadyPickQuestion();
 }
 
@@ -524,7 +530,6 @@ void ClearQuizLadyQuestionAndAnswer(void)
     sQuizLadyPtr = &gSaveBlock1Ptr->lilycoveLady.quiz;
     for (i = 0; i < QUIZ_QUESTION_LEN; i++)
         sQuizLadyPtr->question[i] = EC_EMPTY_WORD;
-
     sQuizLadyPtr->correctAnswer = EC_EMPTY_WORD;
 }
 
@@ -545,10 +550,8 @@ void QuizLadyRecordCustomQuizData(void)
 
     sQuizLadyPtr = &gSaveBlock1Ptr->lilycoveLady.quiz;
     sQuizLadyPtr->prize = gSpecialVar_ItemId;
-
     for (i = 0; i < TRAINER_ID_LENGTH; i++)
         sQuizLadyPtr->playerTrainerId[i] = gSaveBlock2Ptr->playerTrainerId[i];
-
     StringCopy_PlayerName(sQuizLadyPtr->playerName, gSaveBlock2Ptr->playerName);
     sQuizLadyPtr->language = gGameLanguage;
 }
@@ -576,18 +579,17 @@ void QuizLadyClearQuestionForRecordMix(const LilycoveLady *lilycoveLady)
     u8 i;
 
     sQuizLadyPtr = &gSaveBlock1Ptr->lilycoveLady.quiz;
-    if (lilycoveLady->quiz.prevQuestionId < ARRAY_COUNT(sQuizLadyQuestions)
+    if (lilycoveLady->quiz.prevQuestionId < ARRAY_COUNT(sQuizLadyQuizQuestions)
         && sQuizLadyPtr->id == LILYCOVE_LADY_QUIZ)
     {
         for (i = 0; i < 4; i++)
         {
             if (lilycoveLady->quiz.prevQuestionId != sQuizLadyPtr->questionId)
                 break;
-            sQuizLadyPtr->questionId = Random() % ARRAY_COUNT(sQuizLadyQuestions);
+            sQuizLadyPtr->questionId = Random() % ARRAY_COUNT(sQuizLadyQuizQuestions);
         }
-
         if (lilycoveLady->quiz.prevQuestionId == sQuizLadyPtr->questionId)
-            sQuizLadyPtr->questionId = (sQuizLadyPtr->questionId + 1) % (int)ARRAY_COUNT(sQuizLadyQuestions);
+            sQuizLadyPtr->questionId = (sQuizLadyPtr->questionId + 1) % (int)ARRAY_COUNT(sQuizLadyQuizQuestions);
 
         sQuizLadyPtr->prevQuestionId = lilycoveLady->quiz.prevQuestionId;
     }

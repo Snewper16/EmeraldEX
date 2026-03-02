@@ -104,7 +104,7 @@ u16 WonderNews_GetRewardInfo(void)
 
 static u32 GetRewardItem(struct WonderNewsMetadata *data)
 {
-    enum Item itemId;
+    u32 itemId;
     data->newsType = WONDER_NEWS_NONE;
     itemId = data->berry + FIRST_BERRY_INDEX - 1;
     data->berry = 0;

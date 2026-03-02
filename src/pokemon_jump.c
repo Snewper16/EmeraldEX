@@ -339,7 +339,7 @@ static u16 GetPrizeData(void);
 static void UnpackPrizeData(u16, u16 *, u16 *);
 static u16 GetPrizeItemId(void);
 static u16 GetPrizeQuantity(void);
-static u16 GetQuantityLimitedByBag(enum Item, u16);
+static u16 GetQuantityLimitedByBag(u16, u16);
 static void SpriteCB_Star(struct Sprite *);
 static void SpriteCB_MonHitShake(struct Sprite *);
 static void SpriteCB_MonHitFlash(struct Sprite *);
@@ -352,9 +352,9 @@ static void SetUpPokeJumpGfxFuncById(int);
 static bool32 IsPokeJumpGfxFuncFinished(void);
 static void SetUpResetVineGfx(void);
 static bool32 ResetVineGfx(void);
-static void PrintPrizeMessage(enum Item, u16);
-static void PrintPrizeFilledBagMessage(enum Item);
-static void PrintNoRoomForPrizeMessage(enum Item);
+static void PrintPrizeMessage(u16, u16);
+static void PrintPrizeFilledBagMessage(u16);
+static void PrintNoRoomForPrizeMessage(u16);
 static bool32 DoPrizeMessageAndFanfare(void);
 static void ClearMessageWindow(void);
 static void SetMonSpriteY(u32, s16);
@@ -2153,7 +2153,7 @@ static bool32 HasEnoughScoreForPrize(void)
 
 static u16 GetPrizeData(void)
 {
-    enum Item itemId = GetPrizeItemId();
+    u16 itemId = GetPrizeItemId();
     u16 quantity = GetPrizeQuantity();
     return (quantity << 12) | (itemId & 0xFFF);
 }
@@ -2186,7 +2186,7 @@ static u16 GetPrizeQuantity(void)
     return quantity;
 }
 
-static u16 GetQuantityLimitedByBag(enum Item item, u16 quantity)
+static u16 GetQuantityLimitedByBag(u16 item, u16 quantity)
 {
     while (quantity && !CheckBagHasSpace(item, quantity))
         quantity--;
@@ -2275,6 +2275,10 @@ static const struct SpriteTemplate sSpriteTemplate_JumpMon =
     .tileTag = TAG_MON1,
     .paletteTag = TAG_MON1,
     .oam = &sOamData_JumpMon,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const s16 sVineYCoords[VINE_SPRITES_PER_SIDE][NUM_VINESTATES] =
@@ -2462,6 +2466,9 @@ static const struct SpriteTemplate sSpriteTemplate_Vine1 =
     .paletteTag = PALTAG_1,
     .oam = &sOamData_Vine16x32,
     .anims = sAnims_Vine,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Vine2 =
@@ -2470,6 +2477,9 @@ static const struct SpriteTemplate sSpriteTemplate_Vine2 =
     .paletteTag = PALTAG_1,
     .oam = &sOamData_Vine32x32,
     .anims = sAnims_VineTall,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Vine3 =
@@ -2478,6 +2488,9 @@ static const struct SpriteTemplate sSpriteTemplate_Vine3 =
     .paletteTag = PALTAG_1,
     .oam = &sOamData_Vine32x16,
     .anims = sAnims_Vine,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Vine4 =
@@ -2486,6 +2499,9 @@ static const struct SpriteTemplate sSpriteTemplate_Vine4 =
     .paletteTag = PALTAG_1,
     .oam = &sOamData_Vine32x16,
     .anims = sAnims_Vine,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_Star =
@@ -2534,6 +2550,9 @@ static const struct SpriteTemplate sSpriteTemplate_Star =
     .paletteTag = PALTAG_1,
     .oam = &sOamData_Star,
     .anims = sAnims_Star,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 static void LoadSpriteSheetsAndPalettes(struct PokemonJumpGfx *jumpGfx)
@@ -3331,7 +3350,7 @@ static bool32 ResetVineGfx(void)
     return TRUE;
 }
 
-static void PrintPrizeMessage(enum Item itemId, u16 quantity)
+static void PrintPrizeMessage(u16 itemId, u16 quantity)
 {
     CopyItemNameHandlePlural(itemId, sPokemonJumpGfx->itemName, quantity);
     ConvertIntToDecimalStringN(sPokemonJumpGfx->itemQuantityStr, quantity, STR_CONV_MODE_LEFT_ALIGN, 1);
@@ -3346,7 +3365,7 @@ static void PrintPrizeMessage(enum Item itemId, u16 quantity)
     sPokemonJumpGfx->msgWindowState = 0;
 }
 
-static void PrintPrizeFilledBagMessage(enum Item itemId)
+static void PrintPrizeFilledBagMessage(u16 itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
     DynamicPlaceholderTextUtil_Reset();
@@ -3359,7 +3378,7 @@ static void PrintPrizeFilledBagMessage(enum Item itemId)
     sPokemonJumpGfx->msgWindowState = 0;
 }
 
-static void PrintNoRoomForPrizeMessage(enum Item itemId)
+static void PrintNoRoomForPrizeMessage(u16 itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
     DynamicPlaceholderTextUtil_Reset();

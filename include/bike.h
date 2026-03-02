@@ -15,7 +15,7 @@ struct BikeHistoryInputInfo
 };
 
 // Player speeds
-enum PlayerSpeed
+enum
 {
     PLAYER_SPEED_STANDING,
     PLAYER_SPEED_NORMAL,
@@ -24,22 +24,8 @@ enum PlayerSpeed
     PLAYER_SPEED_FASTEST,
 };
 
-enum {
-    BIKE_TRANS_FACE_DIRECTION,
-    BIKE_TRANS_TURNING,
-    BIKE_TRANS_MOVE,
-    BIKE_TRANS_DOWNHILL,
-    BIKE_TRANS_UPHILL
-};
-
-enum {
-    BIKE_STATE_NORMAL,
-    BIKE_STATE_TURNING,
-    BIKE_STATE_SLOPE
-};
-
 // mach bike transitions enum
-enum MachTransition
+enum
 {
     MACH_TRANS_FACE_DIRECTION,
     MACH_TRANS_TURN_DIRECTION,
@@ -48,7 +34,7 @@ enum MachTransition
 };
 
 // Acro bike states
-enum AcroState
+enum
 {
     ACRO_STATE_NORMAL,
     ACRO_STATE_TURNING,
@@ -57,11 +43,10 @@ enum AcroState
     ACRO_STATE_WHEELIE_MOVING,
     ACRO_STATE_SIDE_JUMP,
     ACRO_STATE_TURN_JUMP,
-    ACRO_STATE_SLOPE
 };
 
 // Acro bike transitions
-enum AcroTransition
+enum
 {
     ACRO_TRANS_FACE_DIRECTION,
     ACRO_TRANS_TURN_DIRECTION,
@@ -76,15 +61,13 @@ enum AcroTransition
     ACRO_TRANS_WHEELIE_MOVING,
     ACRO_TRANS_WHEELIE_RISING_MOVING,
     ACRO_TRANS_WHEELIE_LOWERING_MOVING,
-    ACRO_TRANS_DOWNHILL,
-    ACRO_TRANS_UPHILL
 };
 
 // Exported RAM declarations
 extern bool8 gUnusedBikeCameraAheadPanback;
 
 // Exported ROM declarations
-void MovePlayerOnBike(enum Direction direction, u16 newKeys, u16 heldKeys);
+void MovePlayerOnBike(u8 direction, u16 newKeys, u16 heldKeys);
 void Bike_TryAcroBikeHistoryUpdate(u16 newKeys, u16 heldKeys);
 bool8 RS_IsRunningDisallowed(u8 tile);
 bool8 IsBikingDisallowedByPlayer(void);
@@ -92,7 +75,7 @@ bool8 IsPlayerNotUsingAcroBikeOnBumpySlope(void);
 void GetOnOffBike(u8 transitionFlags);
 void BikeClearState(int newDirHistory, int newAbStartHistory);
 void Bike_UpdateBikeCounterSpeed(u8 counter);
-enum PlayerSpeed GetPlayerSpeed(void);
+s16 GetPlayerSpeed(void);
 void Bike_HandleBumpySlopeJump(void);
 bool32 IsRunningDisallowed(u8 metatile);
 

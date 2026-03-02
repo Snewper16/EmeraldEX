@@ -8,7 +8,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Reflect reduces physical damage", s16 damage)
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_CELEBRATE; }
     PARAMETRIZE { move = MOVE_REFLECT; }
     GIVEN {

@@ -70,12 +70,15 @@ struct VsSeekerTrainerInfo
 struct VsSeekerStruct
 {
     struct VsSeekerTrainerInfo trainerInfo[OBJECT_EVENTS_COUNT];
-    u8 trainerIdxArray[OBJECT_EVENTS_COUNT];
+    u16 trainerIdxArray[OBJECT_EVENTS_COUNT];
     u8 runningBehaviourEtcArray[OBJECT_EVENTS_COUNT];
     u8 numRematchableTrainers;
+    u8 trainerHasNotYetBeenFought:1;
+    u8 trainerDoesNotWantRematch:1;
+    u8 trainerWantsRematch:1;
+    u8 responseCode:5;
 };
 
-#define END_TRAINER_INFO 0xFF
 // static declarations
 static EWRAM_DATA struct VsSeekerStruct *sVsSeeker = NULL;
 
@@ -96,8 +99,9 @@ static u16 GetTrainerFlagFromScript(const u8 * script);
 static void ClearAllTrainerRematchStates(void);
 #if FREE_MATCH_CALL == FALSE
 static bool8 IsTrainerVisibleOnScreen(struct VsSeekerTrainerInfo * trainerInfo);
-static bool32 HasFightableTrainers(void);
+static u32 GetRematchableTrainerLocalId(void);
 static void StartTrainerObjectMovementScript(struct VsSeekerTrainerInfo * trainerInfo, const u8 * script);
+static u8 GetCurVsSeekerResponse(s32 vsSeekerIdx, u16 trainerIdx);
 #endif //FREE_MATCH_CALL
 static void StartAllRespondantIdleMovements(void);
 static bool8 ObjectEventIdIsSane(u8 objectEventId);
@@ -112,11 +116,6 @@ static const u8 sMovementScript_Wait48[] = {
 
 static const u8 sMovementScript_TrainerUnfought[] = {
     MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK,
-    MOVEMENT_ACTION_STEP_END
-};
-
-static const u8 sMovementScript_TrainerUnknown[] = {
-    MOVEMENT_ACTION_EMOTE_QUESTION_MARK,
     MOVEMENT_ACTION_STEP_END
 };
 
@@ -310,11 +309,6 @@ static void VsSeekerResetChargingStepCounter(void)
 #endif //FREE_MATCH_CALL
 }
 
-#define tCountdown      data[0]
-#define tBeepDelay      data[1]
-#define tNumBeeps       data[2]
-#define tResponseCode   data[3]
-
 void Task_InitVsSeekerAndCheckForTrainersOnScreen(u8 taskId)
 {
     u32 i;
@@ -342,18 +336,16 @@ void Task_InitVsSeekerAndCheckForTrainersOnScreen(u8 taskId)
     {
         FieldEffectStart(FLDEFF_USE_VS_SEEKER);
         gTasks[taskId].func = Task_VsSeekerFrameCountdown;
-        gTasks[taskId].tCountdown = 15;
+        gTasks[taskId].data[0] = 15;
     }
 }
 
-
-
 static void Task_VsSeekerFrameCountdown(u8 taskId)
 {
-    if (--gTasks[taskId].tCountdown == 0)
+    if (--gTasks[taskId].data[0] == 0)
     {
         gTasks[taskId].func = Task_VsSeeker_PlaySoundAndGetResponseCode;
-        gTasks[taskId].tBeepDelay = 16;
+        gTasks[taskId].data[1] = 16;
     }
 }
 
@@ -361,48 +353,23 @@ static void Task_VsSeeker_PlaySoundAndGetResponseCode(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    if (tNumBeeps != 2 && --tBeepDelay == 0)
+    if (data[2] != 2 && --data[1] == 0)
     {
         PlaySE(SE_CONTEST_MONS_TURN);
-        tBeepDelay = 11;
-        tNumBeeps++;
+        data[1] = 11;
+        data[2]++;
     }
 
     if (!FieldEffectActiveListContains(FLDEFF_USE_VS_SEEKER))
     {
+        data[1] = 0;
+        data[2] = 0;
         VsSeekerResetInBagStepCounter();
-        tResponseCode = GetVsSeekerResponseInArea();
-        ScriptMovement_StartObjectMovementScript(LOCALID_PLAYER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, sMovementScript_Wait48);
+        sVsSeeker->responseCode = GetVsSeekerResponseInArea();
+        ScriptMovement_StartObjectMovementScript(0xFF, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, sMovementScript_Wait48);
         gTasks[taskId].func = Task_VsSeeker_ShowResponseToPlayer;
     }
 }
-
-static void Task_VsSeeker_ShowResponseToPlayer(u8 taskId)
-{
-    if (!ScriptMovement_IsObjectMovementFinished(LOCALID_PLAYER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup))
-        return;
-
-    if (gTasks[taskId].tResponseCode == VSSEEKER_RESPONSE_NO_RESPONSE)
-    {
-        DisplayItemMessageOnField(taskId, VSSeeker_Text_TrainersNotReady, Task_ItemUse_CloseMessageBoxAndReturnToField_VsSeeker);
-    }
-    else
-    {
-        if (gTasks[taskId].tResponseCode == VSSEEKER_RESPONSE_FOUND_REMATCHES)
-            StartAllRespondantIdleMovements();
-
-        ClearDialogWindowAndFrame(0, TRUE);
-        ScriptUnfreezeObjectEvents();
-        UnlockPlayerFieldControls();
-        DestroyTask(taskId);
-    }
-    Free(sVsSeeker);
-}
-
-#undef tCountdown
-#undef tBeepDelay
-#undef tNumBeeps
-#undef tResponseCode
 
 static void GatherNearbyTrainerInfo(void)
 {
@@ -413,11 +380,12 @@ static void GatherNearbyTrainerInfo(void)
 
     for (objectEventIdx = 0; objectEventIdx < gMapHeader.events->objectEventCount; objectEventIdx++)
     {
-        u16 trainerIdx = GetTrainerFlagFromScript(templates[objectEventIdx].script);
-        if (trainerIdx == TRAINER_NONE && (!I_SHOW_NO_ID_TRAINER || templates[objectEventIdx].trainerType == TRAINER_TYPE_NONE))
+        if (templates[objectEventIdx].trainerType != TRAINER_TYPE_NORMAL && templates[objectEventIdx].trainerType != TRAINER_TYPE_BURIED)
             continue;
-        if (trainerIdx == TRAINER_NONE && templates[objectEventIdx].trainerType != TRAINER_TYPE_NONE)
-            DebugPrintf("Object event with local id %d is not TRAINER_TYPE_NONE but doesn't have a visible trainerID", templates[objectEventIdx].localId);
+
+        u16 trainerIdx = GetTrainerFlagFromScript(templates[objectEventIdx].script);
+        if (trainerIdx == TRAINER_NONE)
+            continue;
         sVsSeeker->trainerInfo[vsSeekerObjectIdx].script = templates[objectEventIdx].script;
         sVsSeeker->trainerInfo[vsSeekerObjectIdx].trainerIdx = trainerIdx;
         sVsSeeker->trainerInfo[vsSeekerObjectIdx].localId = templates[objectEventIdx].localId;
@@ -428,7 +396,29 @@ static void GatherNearbyTrainerInfo(void)
         sVsSeeker->trainerInfo[vsSeekerObjectIdx].graphicsId = templates[objectEventIdx].graphicsId;
         vsSeekerObjectIdx++;
     }
-    sVsSeeker->trainerInfo[vsSeekerObjectIdx].localId = END_TRAINER_INFO;
+    sVsSeeker->trainerInfo[vsSeekerObjectIdx].localId = 0xFF;
+}
+
+static void Task_VsSeeker_ShowResponseToPlayer(u8 taskId)
+{
+    if (!ScriptMovement_IsObjectMovementFinished(0xFF, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup))
+        return;
+
+    if (sVsSeeker->responseCode == VSSEEKER_RESPONSE_NO_RESPONSE)
+    {
+        DisplayItemMessageOnField(taskId, VSSeeker_Text_TrainersNotReady, Task_ItemUse_CloseMessageBoxAndReturnToField_VsSeeker);
+    }
+    else
+    {
+        if (sVsSeeker->responseCode == VSSEEKER_RESPONSE_FOUND_REMATCHES)
+            StartAllRespondantIdleMovements();
+
+        ClearDialogWindowAndFrame(0, TRUE);
+        ScriptUnfreezeObjectEvents();
+        UnlockPlayerFieldControls();
+        DestroyTask(taskId);
+    }
+    Free(sVsSeeker);
 }
 
 static u8 CanUseVsSeeker(void)
@@ -436,7 +426,7 @@ static u8 CanUseVsSeeker(void)
 #if FREE_MATCH_CALL == FALSE
     u8 vsSeekerChargeSteps = gSaveBlock1Ptr->trainerRematchStepCounter;
 
-    if ((vsSeekerChargeSteps == VSSEEKER_RECHARGE_STEPS) && !HasFightableTrainers())
+    if ((vsSeekerChargeSteps == VSSEEKER_RECHARGE_STEPS) && (GetRematchableTrainerLocalId() == 0xFF))
         return VSSEEKER_NO_ONE_IN_RANGE;
 
     if (vsSeekerChargeSteps == VSSEEKER_RECHARGE_STEPS)
@@ -452,46 +442,66 @@ static u8 CanUseVsSeeker(void)
 static u8 GetVsSeekerResponseInArea(void)
 {
 #if FREE_MATCH_CALL == FALSE
-    u32 trainerIdx, rematchTrainerIdx;
-    s32 vsSeekerIdx = 0;
-    bool32 trainerHasNotYetBeenFought = FALSE;
-    bool32 trainerWantsRematch = FALSE;
-    for (vsSeekerIdx = 0; sVsSeeker->trainerInfo[vsSeekerIdx].localId != END_TRAINER_INFO; vsSeekerIdx++)
+    u16 trainerIdx = 0;
+    u8 response = 0, rematchTrainerIdx;
+    s32 vsSeekerIdx = 0, randomValue = 0;
+
+    while (sVsSeeker->trainerInfo[vsSeekerIdx].localId != 0xFF)
     {
         if (!IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[vsSeekerIdx]))
-            continue;
-
-        trainerIdx = sVsSeeker->trainerInfo[vsSeekerIdx].trainerIdx;
-        if (trainerIdx == TRAINER_NONE)
         {
-            StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerUnknown);
+            vsSeekerIdx++;
             continue;
         }
 
+        trainerIdx = sVsSeeker->trainerInfo[vsSeekerIdx].trainerIdx;
         if (!HasTrainerBeenFought(trainerIdx))
         {
             StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerUnfought);
-            trainerHasNotYetBeenFought = TRUE;
+            sVsSeeker->trainerHasNotYetBeenFought = 1;
+            vsSeekerIdx++;
             continue;
         }
 
-        rematchTrainerIdx = GetRematchTrainerIdVSSeeker(trainerIdx);
+        rematchTrainerIdx = GetRematchTrainerIdFromTable(gRematchTable, trainerIdx);
         if (rematchTrainerIdx == 0)
         {
             StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerNoRematch);
-            continue;
+            sVsSeeker->trainerDoesNotWantRematch = 1;
         }
+        else
+        {
+            randomValue = Random() % 100; // Even if it's overwritten below, it progresses the RNG.
+            response = GetCurVsSeekerResponse(vsSeekerIdx, trainerIdx);
 
-        gSaveBlock1Ptr->trainerRematches[VsSeekerConvertLocalIdToTableId(sVsSeeker->trainerInfo[vsSeekerIdx].localId)] = rematchTrainerIdx;
-        ShiftStillObjectEventCoords(&gObjectEvents[sVsSeeker->trainerInfo[vsSeekerIdx].objectEventId]);
-        StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerRematch);
-        sVsSeeker->trainerIdxArray[sVsSeeker->numRematchableTrainers] = vsSeekerIdx;
-        sVsSeeker->runningBehaviourEtcArray[sVsSeeker->numRematchableTrainers] = GetResponseMovementTypeFromTrainerGraphicsId(sVsSeeker->trainerInfo[vsSeekerIdx].graphicsId);
-        sVsSeeker->numRematchableTrainers++;
-        trainerWantsRematch = TRUE;
+            if (response == VSSEEKER_SINGLE_RESP_YES)
+            {
+                randomValue = 100; // Definitely yes
+            }
+            else if (response == VSSEEKER_SINGLE_RESP_NO)
+            {
+                randomValue = 0; // Definitely no
+            }
+            else if (randomValue < 30)
+            {
+                StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerNoRematch);
+                sVsSeeker->trainerDoesNotWantRematch = 1;
+            }
+            else
+            {
+                gSaveBlock1Ptr->trainerRematches[VsSeekerConvertLocalIdToTableId(sVsSeeker->trainerInfo[vsSeekerIdx].localId)] = rematchTrainerIdx;
+                ShiftStillObjectEventCoords(&gObjectEvents[sVsSeeker->trainerInfo[vsSeekerIdx].objectEventId]);
+                StartTrainerObjectMovementScript(&sVsSeeker->trainerInfo[vsSeekerIdx], sMovementScript_TrainerRematch);
+                sVsSeeker->trainerIdxArray[sVsSeeker->numRematchableTrainers] = trainerIdx;
+                sVsSeeker->runningBehaviourEtcArray[sVsSeeker->numRematchableTrainers] = GetResponseMovementTypeFromTrainerGraphicsId(sVsSeeker->trainerInfo[vsSeekerIdx].graphicsId);
+                sVsSeeker->numRematchableTrainers++;
+                sVsSeeker->trainerWantsRematch = 1;
+            }
+        }
+        vsSeekerIdx++;
     }
 
-    if (trainerWantsRematch)
+    if (sVsSeeker->trainerWantsRematch)
     {
         PlaySE(SE_PIN);
         FlagSet(I_VS_SEEKER_CHARGING);
@@ -499,18 +509,11 @@ static u8 GetVsSeekerResponseInArea(void)
         return VSSEEKER_RESPONSE_FOUND_REMATCHES;
     }
 
-    if (trainerHasNotYetBeenFought)
+    if (sVsSeeker->trainerHasNotYetBeenFought)
         return VSSEEKER_RESPONSE_UNFOUGHT_TRAINERS;
 #endif //FREE_MATCH_CALL
 
     return VSSEEKER_RESPONSE_NO_RESPONSE;
-}
-
-static bool32 ShouldChangeMovementForTrainerType(u32 trainerType)
-{
-    if (trainerType == TRAINER_TYPE_NORMAL)
-        return TRUE;
-    return (trainerType == TRAINER_TYPE_BURIED);
 }
 
 void ClearRematchMovementByTrainerId(void)
@@ -529,7 +532,8 @@ void ClearRematchMovementByTrainerId(void)
 
     for (i = 0; i < gMapHeader.events->objectEventCount; i++)
     {
-        if (!ShouldChangeMovementForTrainerType(objectEventTemplates[i].trainerType)
+        if ((objectEventTemplates[i].trainerType != TRAINER_TYPE_NORMAL
+        && objectEventTemplates[i].trainerType != TRAINER_TYPE_BURIED)
         || vsSeekerDataIdx != TrainerIdToRematchTableId(gRematchTable, GetTrainerFlagFromScript(objectEventTemplates[i].script)))
             continue;
 
@@ -569,14 +573,7 @@ u16 GetRematchTrainerIdVSSeeker(u16 trainerId)
     u32 tableId = FirstBattleTrainerIdToRematchTableId(gRematchTable, trainerId);
     u32 rematchTrainerIdx = GetGameProgressFlags();
 
-    if (!I_VS_SEEKER_CHARGING)
-        return 0;
-    if (tableId == -1)
-        return 0;
-    if (tableId >= REMATCH_ELITE_FOUR_ENTRIES)
-        return 0;
-    if (tableId >= REMATCH_SPECIAL_TRAINER_START)
-        return GetCurrentGymLeaderRematchLevel();
+    if (!I_VS_SEEKER_CHARGING) return 0;
 
     while (!HasTrainerBeenFought(gRematchTable[tableId].trainerIds[rematchTrainerIdx-1]))
     {
@@ -612,16 +609,16 @@ static u8 GetRandomFaceDirectionMovementType()
 
     switch (randomFacingDirection)
     {
-    case 0:
-        return MOVEMENT_TYPE_FACE_UP;
-    case 1:
-        return MOVEMENT_TYPE_FACE_DOWN;
-    case 2:
-        return MOVEMENT_TYPE_FACE_LEFT;
-    case 3:
-        return MOVEMENT_TYPE_FACE_RIGHT;
-    default:
-        return MOVEMENT_TYPE_FACE_DOWN;
+        case 0:
+            return MOVEMENT_TYPE_FACE_UP;
+        case 1:
+            return MOVEMENT_TYPE_FACE_DOWN;
+        case 2:
+            return MOVEMENT_TYPE_FACE_LEFT;
+        case 3:
+            return MOVEMENT_TYPE_FACE_RIGHT;
+        default:
+            return MOVEMENT_TYPE_FACE_DOWN;
     }
 }
 
@@ -678,21 +675,7 @@ static bool32 IsRegularLandTrainer(u8 graphicsId)
         OBJ_EVENT_GFX_WOMAN_2,
         OBJ_EVENT_GFX_WOMAN_4,
         OBJ_EVENT_GFX_WOMAN_5,
-        OBJ_EVENT_GFX_YOUNGSTER,
-        OBJ_EVENT_GFX_TUBER_F_FRLG,
-        OBJ_EVENT_GFX_SAILOR_FRLG,
-        OBJ_EVENT_GFX_HIKER_FRLG,
-        OBJ_EVENT_GFX_PICNICKER_FRLG,
-        OBJ_EVENT_GFX_CAMPER_FRLG,
-        OBJ_EVENT_GFX_BEAUTY_FRLG,
-        OBJ_EVENT_GFX_WOMAN_2_FRLG,
-        OBJ_EVENT_GFX_FAT_MAN_FRLG,
-        OBJ_EVENT_GFX_BUG_CATCHER_FRLG,
-        OBJ_EVENT_GFX_WOMAN_1_FRLG,
-        OBJ_EVENT_GFX_YOUNGSTER_FRLG,
-        OBJ_EVENT_GFX_LASS_FRLG,
-        OBJ_EVENT_GFX_LITTLE_GIRL_FRLG,
-        OBJ_EVENT_GFX_LITTLE_BOY_FRLG,
+        OBJ_EVENT_GFX_YOUNGSTER
     };
 
     for (i = 0; i < ARRAY_COUNT(regularTrainersOnLand); i++)
@@ -734,19 +717,33 @@ static u16 GetTrainerFlagFromScript(const u8 *script)
 {
     // The trainer flag is located 3 bytes (command + flags + localIdA) from the script pointer, assuming the trainerbattle command is first in the script.
     // Because scripts are unaligned, and because the ARM processor requires shorts to be 16-bit aligned, this function needs to perform explicit bitwise operations to get the correct flag.
-    u16 trainerFlag = TRAINER_NONE;
-    struct ScriptContext *ctx = AllocZeroed(sizeof(struct ScriptContext));
-    if (script[0] == SCR_OP_TRAINERBATTLE)
+    u16 trainerFlag;
+    switch (script[0])
     {
-        ctx->scriptPtr = script + 3;
-        trainerFlag = ScriptPeekHalfword(ctx);
+        case SCR_OP_TRAINERBATTLE:
+            script += 3;
+            trainerFlag = script[0];
+            trainerFlag |= script[1] << 8;
+            break;
+        case SCR_OP_CALLNATIVE:
+        {
+            u32 callnativeFunc = (((((script[4] << 8) + script[3]) << 8) + script[2]) << 8) + script[1];
+            if (callnativeFunc == ((u32)NativeVsSeekerRematchId | 0xA000000)) // | 0xA000000 corresponds to the request_effects=1 version of the function
+            {
+                script += 5;
+                trainerFlag = script[0];
+                trainerFlag |= script[1] << 8;
+            }
+            else
+            {
+                trainerFlag = TRAINER_NONE;
+            }
+            break;
+        }
+        default:
+            trainerFlag = TRAINER_NONE;
+        break;
     }
-    else if (Script_MatchesCallNative(script, NativeVsSeekerRematchId, TRUE))
-    {
-        ctx->scriptPtr = script + 5;
-        trainerFlag = ScriptPeekHalfword(ctx);
-    }
-    Free(ctx);
     return trainerFlag;
 }
 
@@ -777,25 +774,25 @@ static bool8 IsTrainerVisibleOnScreen(struct VsSeekerTrainerInfo * trainerInfo)
         && x + 7 >= trainerInfo->xCoord
         && y - 5 <= trainerInfo->yCoord
         && y + 5 >= trainerInfo->yCoord
-        && ObjectEventIdIsSane(trainerInfo->objectEventId))
+        && ObjectEventIdIsSane(trainerInfo->objectEventId) == 1)
         return TRUE;
     return FALSE;
 }
 
-static bool32 HasFightableTrainers(void)
+static u32 GetRematchableTrainerLocalId(void)
 {
     u32 i;
 
-    for (i = 0; sVsSeeker->trainerInfo[i].localId != END_TRAINER_INFO; i++)
+    for (i = 0; sVsSeeker->trainerInfo[i].localId != 0xFF; i++)
     {
-        if (IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[i]))
+        if (IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[i]) == 1)
         {
-            if (!HasTrainerBeenFought(sVsSeeker->trainerInfo[i].trainerIdx) || GetRematchTrainerIdVSSeeker(sVsSeeker->trainerInfo[i].trainerIdx))
-                return TRUE;
+            if (HasTrainerBeenFought(sVsSeeker->trainerInfo[i].trainerIdx) != 1 || GetRematchTrainerIdFromTable(gRematchTable, sVsSeeker->trainerInfo[i].trainerIdx))
+                return sVsSeeker->trainerInfo[i].localId;
         }
     }
 
-    return FALSE;
+    return 0xFF;
 }
 
 static void StartTrainerObjectMovementScript(struct VsSeekerTrainerInfo * trainerInfo, const u8 * script)
@@ -804,6 +801,25 @@ static void StartTrainerObjectMovementScript(struct VsSeekerTrainerInfo * traine
     ScriptMovement_StartObjectMovementScript(trainerInfo->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, script);
 }
 
+static u8 GetCurVsSeekerResponse(s32 vsSeekerIdx, u16 trainerIdx)
+{
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < vsSeekerIdx; i++)
+    {
+        if (IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[i]) != 1 || sVsSeeker->trainerInfo[i].trainerIdx != trainerIdx)
+            continue;
+
+        for (j = 0; j < sVsSeeker->numRematchableTrainers; j++)
+        {
+            if (sVsSeeker->trainerIdxArray[j] == sVsSeeker->trainerInfo[i].trainerIdx)
+                return VSSEEKER_SINGLE_RESP_YES;
+        }
+        return VSSEEKER_SINGLE_RESP_NO;
+    }
+    return VSSEEKER_SINGLE_RESP_RAND;
+}
 #endif //FREE_MATCH_CALL
 
 void NativeVsSeekerRematchId(struct ScriptContext *ctx)
@@ -822,16 +838,18 @@ static void StartAllRespondantIdleMovements(void)
 
     for (i = 0; i < sVsSeeker->numRematchableTrainers; i++)
     {
-        j = sVsSeeker->trainerIdxArray[i];
-        struct ObjectEvent *objectEvent = &gObjectEvents[sVsSeeker->trainerInfo[j].objectEventId];
-
-        if (ShouldChangeMovementForTrainerType(objectEvent->trainerType))
+        for (j = 0; sVsSeeker->trainerInfo[j].localId != 0xFF; j++)
         {
-            if (ObjectEventIdIsSane(sVsSeeker->trainerInfo[j].objectEventId))
-                SetTrainerMovementType(objectEvent, sVsSeeker->runningBehaviourEtcArray[i]);
-            TryOverrideTemplateCoordsForObjectEvent(objectEvent, sVsSeeker->runningBehaviourEtcArray[i]);
+            if (sVsSeeker->trainerInfo[j].trainerIdx == sVsSeeker->trainerIdxArray[i])
+            {
+                struct ObjectEvent *objectEvent = &gObjectEvents[sVsSeeker->trainerInfo[j].objectEventId];
+
+                if (ObjectEventIdIsSane(sVsSeeker->trainerInfo[j].objectEventId) == 1)
+                    SetTrainerMovementType(objectEvent, sVsSeeker->runningBehaviourEtcArray[i]);
+                TryOverrideTemplateCoordsForObjectEvent(objectEvent, sVsSeeker->runningBehaviourEtcArray[i]);
+                gSaveBlock1Ptr->trainerRematches[VsSeekerConvertLocalIdToTableId(sVsSeeker->trainerInfo[j].localId)] = GetRematchTrainerIdFromTable(gRematchTable, sVsSeeker->trainerInfo[j].trainerIdx);
+            }
         }
-        gSaveBlock1Ptr->trainerRematches[VsSeekerConvertLocalIdToTableId(sVsSeeker->trainerInfo[j].localId)] = GetRematchTrainerIdVSSeeker(sVsSeeker->trainerInfo[j].trainerIdx);
     }
 #endif //FREE_MATCH_CALL
 }

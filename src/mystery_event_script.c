@@ -1,6 +1,6 @@
 #include "global.h"
 #include "berry.h"
-#include "battle_special.h"
+#include "battle_tower.h"
 #include "easy_chat.h"
 #include "event_data.h"
 #include "mail.h"
@@ -132,7 +132,7 @@ static void ClearRecordMixingGift(void)
     CpuFill16(0, &gSaveBlock1Ptr->recordMixingGift, sizeof(gSaveBlock1Ptr->recordMixingGift));
 }
 
-static void SetRecordMixingGift(u8 unk, u8 quantity, enum Item itemId)
+static void SetRecordMixingGift(u8 unk, u8 quantity, u16 itemId)
 {
     if (!unk || !quantity || !itemId)
     {
@@ -158,7 +158,7 @@ u16 GetRecordMixingGift(void)
     }
     else
     {
-        enum Item itemId = data->itemId;
+        u16 itemId = data->itemId;
         data->quantity--;
         if (data->quantity == 0)
             ClearRecordMixingGift();
@@ -305,7 +305,7 @@ bool8 MEScrCmd_setrecordmixinggift(struct ScriptContext *ctx)
 {
     u8 unk = ScriptReadByte(ctx);
     u8 quantity = ScriptReadByte(ctx);
-    enum Item itemId = ScriptReadHalfword(ctx);
+    u16 itemId = ScriptReadHalfword(ctx);
     SetRecordMixingGift(unk, quantity, itemId);
     return FALSE;
 }

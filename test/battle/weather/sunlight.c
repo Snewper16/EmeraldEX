@@ -48,7 +48,7 @@ SINGLE_BATTLE_TEST("Sunlight multiplies the power of Water-type moves by 0.5x", 
 
 SINGLE_BATTLE_TEST("Sunny Day fails if Primordial Sea is active")
 {
-    enum Item item;
+    u32 item;
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_BLUE_ORB; }

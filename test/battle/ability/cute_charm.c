@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Cute Charm inflicts infatuation on contact")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_SCRATCH; }
     PARAMETRIZE { move = MOVE_SWIFT; }
     GIVEN {
@@ -48,14 +48,13 @@ SINGLE_BATTLE_TEST("Cute Charm cannot infatuate same gender")
 
 TO_DO_BATTLE_TEST("Cute Charm cannot infatuate if either Pokémon are Gender-unknown")
 
-SINGLE_BATTLE_TEST("Cute Charm triggers 1/3 times (Gen3) or 30% (Gen 4+) of the time")
+TO_DO_BATTLE_TEST("Cute Charm triggers 1/3 of the time (Gen 3)")
+
+SINGLE_BATTLE_TEST("Cute Charm triggers 30% of the time (Gen 4+)")
 {
-    u32 config, passes, trials;
-    PARAMETRIZE { config = GEN_3; passes = 1; trials = 3; }  // 33.3%
-    PARAMETRIZE { config = GEN_4; passes = 3; trials = 10; } // 30%
-    PASSES_RANDOMLY(passes, trials, RNG_CUTE_CHARM);
+    PASSES_RANDOMLY(3, 10, RNG_CUTE_CHARM);
     GIVEN {
-        WITH_CONFIG(B_ABILITY_TRIGGER_CHANCE, config);
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_4);
         ASSUME(MoveMakesContact(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET) { Gender(MON_MALE); }
         OPPONENT(SPECIES_CLEFAIRY) { Gender(MON_FEMALE); Ability(ABILITY_CUTE_CHARM); }

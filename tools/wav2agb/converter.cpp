@@ -396,11 +396,6 @@ void convert(const std::string& wav_file_str, const std::string& out_file_str,
         pitch_value = static_cast<uint32_t>(pitch * 1024.0);
     }
 
-    uint32_t loop_end = wf.loopEnd;
-    if (wf.agbLoopEnd != 0) {
-        loop_end = wf.agbLoopEnd;
-    }
-
     if (ot == out_type::binary) {
         // Binary output mode
         std::vector<uint8_t> bin_data;
@@ -419,7 +414,8 @@ void convert(const std::string& wav_file_str, const std::string& out_file_str,
         bin_write_u32_le(bin_data, wf.loopStart);
 
         // Bytes 12-15: loop end
-        bin_write_u32_le(bin_data, loop_end);
+        // wf.loopEnd is the exclusive end position; binary format expects (end - 1)
+        bin_write_u32_le(bin_data, wf.loopEnd > 0 ? wf.loopEnd - 1 : 0);
 
         // Write sample data
         if (ct == cmp_type::none)
@@ -451,7 +447,7 @@ void convert(const std::string& wav_file_str, const std::string& out_file_str,
 
         agb_out(fout, "    .byte   0x%X, 0x0, 0x0, 0x%X\n", fmt, wf.loopEnabled ? 0x40 : 0x0);
         agb_out(fout, "    .word   0x%08X  @ Mid-C ~%f\n", pitch_value, pitch);
-        agb_out(fout, "    .word   %u, %u\n", wf.loopStart, loop_end);
+        agb_out(fout, "    .word   %u, %u\n", wf.loopStart, wf.loopEnd);
 
         if (ct == cmp_type::none)
             convert_uncompressed(wf, fout);

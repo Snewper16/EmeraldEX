@@ -64,6 +64,8 @@ const struct SpriteTemplate gFireSpiralInwardSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_FireSpiralSpread,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireSpiralInward,
 };
 
@@ -73,6 +75,8 @@ const struct SpriteTemplate gFireSpreadSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_FireSpiralSpread,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireSpread,
 };
 
@@ -127,6 +131,7 @@ const struct SpriteTemplate gLargeFlameSpriteTemplate =
     .paletteTag = ANIM_TAG_FIRE,
     .oam = &gOamData_AffineNormal_ObjNormal_32x32,
     .anims = sAnims_LargeFlame,
+    .images = NULL,
     .affineAnims = sAffineAnims_LargeFlame,
     .callback = AnimLargeFlame,
 };
@@ -137,6 +142,8 @@ const struct SpriteTemplate gLargeFlameScatterSpriteTemplate =
     .paletteTag = ANIM_TAG_FIRE,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_LargeFlame,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimLargeFlame,
 };
 
@@ -146,6 +153,8 @@ const struct SpriteTemplate gFirePlumeSpriteTemplate =
     .paletteTag = ANIM_TAG_FIRE_PLUME,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_FirePlume,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFirePlume,
 };
 
@@ -156,6 +165,8 @@ static const struct SpriteTemplate sUnusedEmberFirePlumeSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_FirePlume,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFirePlume,
 };
 
@@ -179,6 +190,8 @@ static const struct SpriteTemplate sUnusedSmallEmberSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_UnusedSmallEmber,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimUnusedSmallEmber,
 };
 
@@ -199,6 +212,8 @@ const struct SpriteTemplate gSunlightRaySpriteTemplate =
     .tileTag = ANIM_TAG_SUNLIGHT,
     .paletteTag = ANIM_TAG_SUNLIGHT,
     .oam = &gOamData_AffineNormal_ObjBlend_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
     .affineAnims = sAffineAnims_SunlightRay,
     .callback = AnimSunlight,
 };
@@ -223,6 +238,9 @@ const struct SpriteTemplate gEmberSpriteTemplate =
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
@@ -232,6 +250,8 @@ const struct SpriteTemplate gEmberFlareSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimEmberFlare,
 };
 
@@ -254,6 +274,8 @@ const struct SpriteTemplate gIncinerateSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gIncinerateAnims,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = TranslateAnimSpriteToTargetMonLocation,
 };
 
@@ -263,6 +285,8 @@ const struct SpriteTemplate gBurnFlameSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimBurnFlame,
 };
 
@@ -272,6 +296,8 @@ const struct SpriteTemplate gFireBlastRingSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireRing,
 };
 
@@ -312,6 +338,8 @@ const struct SpriteTemplate gFireBlastCrossSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_FireBlastCross,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireCross,
 };
 
@@ -321,6 +349,8 @@ const struct SpriteTemplate gFireSpiralOutwardSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireSpiralOutward,
 };
 
@@ -330,6 +360,8 @@ const struct SpriteTemplate gWeatherBallFireDownSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimWeatherBallDown,
 };
 
@@ -338,6 +370,9 @@ const struct SpriteTemplate gEruptionLaunchRockSpriteTemplate =
     .tileTag = ANIM_TAG_WARM_ROCK,
     .paletteTag = ANIM_TAG_WARM_ROCK,
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimEruptionLaunchRock,
 };
 
@@ -357,6 +392,9 @@ const struct SpriteTemplate gEruptionFallingRockSpriteTemplate =
     .tileTag = ANIM_TAG_WARM_ROCK,
     .paletteTag = ANIM_TAG_WARM_ROCK,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimEruptionFallingRock,
 };
 
@@ -401,6 +439,8 @@ const struct SpriteTemplate gWillOWispOrbSpriteTemplate =
     .paletteTag = ANIM_TAG_WISP_ORB,
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
     .anims = gAnims_WillOWispOrb,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimWillOWispOrb,
 };
 
@@ -424,6 +464,8 @@ const struct SpriteTemplate gWillOWispFireSpriteTemplate =
     .paletteTag = ANIM_TAG_WISP_FIRE,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_WillOWispFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimWillOWispFire,
 };
 
@@ -458,6 +500,7 @@ const struct SpriteTemplate gLavaPlumeSpriteTemplate =
     .paletteTag = ANIM_TAG_FIRE_PLUME,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_FirePlume,
+    .images = NULL,
     .affineAnims = gLavaPlumeAffineAnims,
     .callback = AnimLavaPlumeOrbitScatter,
 };
@@ -468,6 +511,8 @@ const struct SpriteTemplate gSpacialRendBladesTemplate =
     .paletteTag = ANIM_TAG_PINK_HEART_2, //ANIM_TAG_BERRY_EATEN,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireSpiralOutward
 };
 
@@ -477,6 +522,8 @@ const struct SpriteTemplate gSpacialRendBladesTemplate2 =
     .paletteTag = ANIM_TAG_PINK_HEART_2,    //ANIM_TAG_BERRY_EATEN,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = sAnims_FireSpiralSpread,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimFireSpread
 };
 
@@ -487,6 +534,8 @@ const struct SpriteTemplate gTwisterEmberSpriteTemplate =
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_BasicFire,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimMoveTwisterParticle,
 };
 
@@ -628,7 +677,7 @@ static void AnimUnusedSmallEmber_Step(struct Sprite *sprite)
 {
     if (sprite->data[3])
     {
-        if (sprite->data[5] > 10000)
+        if(sprite->data[5] > 10000)
             sprite->subpriority = 1;
 
         sprite->x2 = Sin(sprite->data[0], sprite->data[1] + (sprite->data[5] >> 8));
@@ -891,7 +940,7 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
             }
         }
 
-        if (!UpdateEruptAnimTask(task))
+        if(!UpdateEruptAnimTask(task))
         {
             SetBattlerSpriteYOffsetFromYScale(task->tAttackerSpriteId);
             gSprites[task->tAttackerSpriteId].x2 = 0;
@@ -977,7 +1026,7 @@ static void CreateEruptionLaunchRocks(u8 spriteId, u8 taskId, u8 activeSpritesId
     u16 y = GetEruptionLaunchRockInitialYPos(spriteId);
     u16 x = gSprites[spriteId].x;
 
-    if (IsOnPlayerSide(gBattleAnimAttacker))
+    if(IsOnPlayerSide(gBattleAnimAttacker))
     {
         x -= 12;
         sign = 1;
@@ -1250,7 +1299,7 @@ static void AnimWillOWispFire(struct Sprite *sprite)
     if (IsDoubleBattle()
      && !IsContest()
      && IsBattlerAlive(BATTLE_PARTNER(gBattleAnimTarget))
-     && GetMoveTarget(gAnimMoveIndex) == TARGET_BOTH)
+     && GetMoveTarget(gAnimMoveIndex) == MOVE_TARGET_BOTH)
         SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &sprite->x, &sprite->y);
 
     sprite->x2 = Sin(sprite->data[1], sprite->data[3] >> 8);
@@ -1298,84 +1347,84 @@ static void AnimTask_MoveHeatWaveTargets_Step(u8 taskId)
 
     switch (task->data[0])
     {
-    case 0:
-        task->data[10] += task->data[12] * 2;
-        if (++task->data[1] >= 2)
-        {
-            task->data[1] = 0;
-            task->data[2]++;
-            if (task->data[2] & 1)
-                task->data[11] = 2;
-            else
-                task->data[11] = -2;
-        }
+        case 0:
+            task->data[10] += task->data[12] * 2;
+            if (++task->data[1] >= 2)
+            {
+                task->data[1] = 0;
+                task->data[2]++;
+                if (task->data[2] & 1)
+                    task->data[11] = 2;
+                else
+                    task->data[11] = -2;
+            }
 
-        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-        {
-            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-        }
+            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+            {
+                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+            }
 
-        if (++task->data[9] == 16)
-        {
-            task->data[9] = 0;
-            task->data[0]++;
-        }
-        break;
-    case 1:
-        if (++task->data[1] >= 5)
-        {
-            task->data[1] = 0;
-            task->data[2]++;
+            if (++task->data[9] == 16)
+            {
+                task->data[9] = 0;
+                task->data[0]++;
+            }
+            break;
+        case 1:
+            if (++task->data[1] >= 5)
+            {
+                task->data[1] = 0;
+                task->data[2]++;
 
-            if (task->data[2] & 1)
-                task->data[11] = 2;
-            else
-                task->data[11] = -2;
-        }
+                if (task->data[2] & 1)
+                    task->data[11] = 2;
+                else
+                    task->data[11] = -2;
+            }
 
-        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-        {
-            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-        }
+            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+            {
+                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+            }
 
-        if (++task->data[9] == 96)
-        {
-            task->data[9] = 0;
-            task->data[0]++;
-        }
-        break;
-    case 2:
-        task->data[10] -= task->data[12] * 2;
+            if (++task->data[9] == 96)
+            {
+                task->data[9] = 0;
+                task->data[0]++;
+            }
+            break;
+        case 2:
+            task->data[10] -= task->data[12] * 2;
 
-        if (++task->data[1] >= 2)
-        {
-            task->data[1] = 0;
-            task->data[2]++;
+            if (++task->data[1] >= 2)
+            {
+                task->data[1] = 0;
+                task->data[2]++;
 
-            if (task->data[2] & 1)
-                task->data[11] = 2;
-            else
-                task->data[11] = -2;
-        }
+                if (task->data[2] & 1)
+                    task->data[11] = 2;
+                else
+                    task->data[11] = -2;
+            }
 
-        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-        {
-            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-        }
+            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+            {
+                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+            }
 
-        if (++task->data[9] == 16)
-        {
-            task->data[0]++;
-        }
-        break;
-    case 3:
-        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-        {
-            gSprites[task->data[task->data[3] + 14]].x2 = 0;
-        }
+            if (++task->data[9] == 16)
+            {
+                task->data[0]++;
+            }
+            break;
+        case 3:
+            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+            {
+                gSprites[task->data[task->data[3] + 14]].x2 = 0;
+            }
 
-        DestroyAnimVisualTask(taskId);
-        break;
+            DestroyAnimVisualTask(taskId);
+            break;
     }
 }
 

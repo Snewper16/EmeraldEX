@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Shaymin-Sky reverts to Shaymin-Land when frozen or frostbitten")
 {
-    enum Move move;
+    u32 move;
 
     PARAMETRIZE { move = MOVE_POWDER_SNOW; }
     PARAMETRIZE { move = MOVE_EMBER; }
@@ -35,5 +35,6 @@ SINGLE_BATTLE_TEST("Shaymin-Sky reverts to Shaymin-Land when frozen or frostbitt
             EXPECT_EQ(player->species, SPECIES_SHAYMIN_LAND);
         else
             EXPECT_EQ(player->species, SPECIES_SHAYMIN_SKY);
+
     }
 }

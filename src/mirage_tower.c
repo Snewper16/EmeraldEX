@@ -154,6 +154,9 @@ static const struct SpriteTemplate sSpriteTemplate_FallingFossil =
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
     .oam = &sOamData_FallingFossil,
     .anims = sAnims_FallingFossil,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
 };
 
 const struct PulseBlendSettings gMirageTowerPulseBlendSettings = {
@@ -202,6 +205,8 @@ static const struct SpriteTemplate sSpriteTemplate_CeilingCrumbleSmall =
     .paletteTag = TAG_CEILING_CRUMBLE,
     .oam = &sOamData_CeilingCrumbleSmall,
     .anims = sAnims_CeilingCrumbleSmall,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_CeilingCrumble
 };
 
@@ -239,6 +244,8 @@ static const struct SpriteTemplate sSpriteTemplate_CeilingCrumbleLarge =
     .paletteTag = TAG_CEILING_CRUMBLE,
     .oam = &sOamData_CeilingCrumbleLarge,
     .anims = sAnims_CeilingCrumbleLarge,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_CeilingCrumble
 };
 
@@ -706,7 +713,7 @@ static void Task_FossilFallAndSink(u8 taskId)
         FieldEffectFreePaletteIfUnused(gSprites[sFallingFossil->spriteId].oam.paletteNum);
         gSprites[sFallingFossil->spriteId].inUse = TRUE;
         DestroySprite(&gSprites[sFallingFossil->spriteId]);
-        FREE_AND_SET_NULL(sFallingFossil->disintegrateRand);
+        FREE_AND_SET_NULL(sFallingFossil->disintegrateRand);;
         FREE_AND_SET_NULL(sFallingFossil->frameImage);
         FREE_AND_SET_NULL(sFallingFossil->frameImageTiles);
         FREE_AND_SET_NULL(sFallingFossil);

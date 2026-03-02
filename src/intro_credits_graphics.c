@@ -81,6 +81,9 @@ static const struct SpriteTemplate sSpriteTemplate_MovingScenery =
     .tileTag = TAG_MOVING_SCENERY,
     .paletteTag = TAG_NONE,
     .oam = &gDummyOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_MovingScenery
 };
 
@@ -465,6 +468,8 @@ static const struct SpriteTemplate sSpriteTemplate_Brendan =
     .paletteTag = TAG_BRENDAN,
     .oam = &sOamData_Player,
     .anims = sAnims_Player,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Player
 };
 
@@ -474,6 +479,8 @@ static const struct SpriteTemplate sSpriteTemplate_May =
     .paletteTag = TAG_MAY,
     .oam = &sOamData_Player,
     .anims = sAnims_Player,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Player
 };
 
@@ -505,6 +512,8 @@ static const struct SpriteTemplate sSpriteTemplate_BrendanBicycle =
     .paletteTag = TAG_BRENDAN,
     .oam = &sOamData_Bicycle,
     .anims = sAnims_Bicycle,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Bicycle
 };
 
@@ -514,6 +523,8 @@ static const struct SpriteTemplate sSpriteTemplate_MayBicycle =
     .paletteTag = TAG_MAY,
     .oam = &sOamData_Bicycle,
     .anims = sAnims_Bicycle,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Bicycle
 };
 
@@ -549,6 +560,8 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatios =
     .paletteTag = TAG_FLYGON_LATIOS,
     .oam = &sOamData_Flygon,
     .anims = sAnims_Flygon,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_FlygonLeftHalf
 };
 
@@ -558,6 +571,8 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatias =
     .paletteTag = TAG_FLYGON_LATIAS,
     .oam = &sOamData_Flygon,
     .anims = sAnims_Flygon,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_FlygonLeftHalf
 };
 
@@ -977,41 +992,41 @@ void CycleSceneryPalette(u8 mode)
     u16 y;
     switch (mode)
     {
-    case 0:
-    default:
-        if (gMain.vblankCounter1 & 3 || gPaletteFade.active)
+        case 0:
+        default:
+            if (gMain.vblankCounter1 & 3 || gPaletteFade.active)
+                break;
+            if (gMain.vblankCounter1 & 4)
+            {
+                x = gPlttBufferUnfaded[BG_PLTT_ID(0) + 9];
+                y = gPlttBufferUnfaded[BG_PLTT_ID(0) + 10];
+            }
+            else
+            {
+                x = gPlttBufferUnfaded[BG_PLTT_ID(0) + 10];
+                y = gPlttBufferUnfaded[BG_PLTT_ID(0) + 9];
+            }
+            LoadPalette(&x, BG_PLTT_ID(0) + 9, sizeof(x));
+            LoadPalette(&y, BG_PLTT_ID(0) + 10, sizeof(y));
             break;
-        if (gMain.vblankCounter1 & 4)
-        {
-            x = gPlttBufferUnfaded[BG_PLTT_ID(0) + 9];
-            y = gPlttBufferUnfaded[BG_PLTT_ID(0) + 10];
-        }
-        else
-        {
-            x = gPlttBufferUnfaded[BG_PLTT_ID(0) + 10];
-            y = gPlttBufferUnfaded[BG_PLTT_ID(0) + 9];
-        }
-        LoadPalette(&x, BG_PLTT_ID(0) + 9, sizeof(x));
-        LoadPalette(&y, BG_PLTT_ID(0) + 10, sizeof(y));
-        break;
-    case 2:
-        if (gMain.vblankCounter1 & 3 || gPaletteFade.active)
+        case 2:
+            if (gMain.vblankCounter1 & 3 || gPaletteFade.active)
+                break;
+            if (gMain.vblankCounter1 & 4)
+            {
+                x = RGB(7, 9, 15);
+                y = RGB(21, 20, 0);
+            }
+            else
+            {
+                x = RGB(28, 24, 0);
+                y = RGB(7, 9, 15);
+            }
+            LoadPalette(&x, BG_PLTT_ID(0) + 12, sizeof(x));
+            LoadPalette(&y, BG_PLTT_ID(0) + 13, sizeof(y));
             break;
-        if (gMain.vblankCounter1 & 4)
-        {
-            x = RGB(7, 9, 15);
-            y = RGB(21, 20, 0);
-        }
-        else
-        {
-            x = RGB(28, 24, 0);
-            y = RGB(7, 9, 15);
-        }
-        LoadPalette(&x, BG_PLTT_ID(0) + 12, sizeof(x));
-        LoadPalette(&y, BG_PLTT_ID(0) + 13, sizeof(y));
-        break;
-    case 1:
-        break;
+        case 1:
+            break;
     }
 }
 
@@ -1050,7 +1065,7 @@ static void CreateMovingScenerySprites(bool8 hasVerticalMove, const struct Intro
 {
     u8 i;
 
-    for (i = 0; i < numSprites; i++)
+    for(i = 0; i < numSprites; i++)
     {
         u8 sprite = CreateSprite(&sSpriteTemplate_MovingScenery, metadata[i].x, metadata[i].y, metadata[i].subpriority);
         CalcCenterToCornerVec(&gSprites[sprite], metadata[i].shape, metadata[i].size, ST_OAM_AFFINE_OFF);

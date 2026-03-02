@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Protective Pads protected moves still make direct contact", 
 
 SINGLE_BATTLE_TEST("Protective Pads doesn't reduce tough claws damage", s16 damage)
 {
-    enum Item item;
+    u32 item;
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_PROTECTIVE_PADS; }
     GIVEN {
@@ -76,7 +76,7 @@ SINGLE_BATTLE_TEST("Protective Pads protects from Rocly Helmet Damage")
 
 SINGLE_BATTLE_TEST("Protective Pads protects from Protect's secondary effects")
 {
-    enum Move move;
+    u32 move;
 
     PARAMETRIZE { move = MOVE_SPIKY_SHIELD; }
     PARAMETRIZE { move = MOVE_BANEFUL_BUNKER; }

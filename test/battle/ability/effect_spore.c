@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Effect Spore only inflicts status on contact")
 {
-    enum Move move;
+    u32 move;
 
     PARAMETRIZE { move = MOVE_SCRATCH; }
     PARAMETRIZE { move = MOVE_SWIFT; }
@@ -32,15 +32,11 @@ SINGLE_BATTLE_TEST("Effect Spore only inflicts status on contact")
     }
 }
 
-SINGLE_BATTLE_TEST("Effect Spore causes poison 3.3% (Gen3), 10% (Gen4) and 9% (Gen5+) of the time")
+SINGLE_BATTLE_TEST("Effect Spore causes poison 9% of the time")
 {
-    u32 config, passes, trials;
-    PARAMETRIZE { config = GEN_3; passes = 1; trials = 30;  } // 3.3%
-    PARAMETRIZE { config = GEN_4; passes = 1; trials = 10;  } // 10%
-    PARAMETRIZE { config = GEN_5; passes = 9; trials = 100; } // 9%
-    PASSES_RANDOMLY(passes, trials, RNG_EFFECT_SPORE);
+    PASSES_RANDOMLY(9, 100, RNG_EFFECT_SPORE);
     GIVEN {
-        WITH_CONFIG(B_ABILITY_TRIGGER_CHANCE, config);
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_5);
         ASSUME(MoveMakesContact(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_BRELOOM) { Ability(ABILITY_EFFECT_SPORE); }
@@ -55,15 +51,11 @@ SINGLE_BATTLE_TEST("Effect Spore causes poison 3.3% (Gen3), 10% (Gen4) and 9% (G
     }
 }
 
-SINGLE_BATTLE_TEST("Effect Spore causes paralysis 3.3% (Gen3) and 10% (Gen4+) of the time")
+SINGLE_BATTLE_TEST("Effect Spore causes paralysis 10% of the time")
 {
-    u32 config, passes, trials;
-    PARAMETRIZE { config = GEN_3; passes = 1; trials = 30; } // 3.3%
-    PARAMETRIZE { config = GEN_4; passes = 1; trials = 10; } // 10%
-    PARAMETRIZE { config = GEN_5; passes = 1; trials = 10; } // 10%
-    PASSES_RANDOMLY(passes, trials, RNG_EFFECT_SPORE);
+    PASSES_RANDOMLY(10, 100, RNG_EFFECT_SPORE);
     GIVEN {
-        WITH_CONFIG(B_ABILITY_TRIGGER_CHANCE, config);
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_5);
         ASSUME(MoveMakesContact(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_BRELOOM) { Ability(ABILITY_EFFECT_SPORE); }
@@ -78,15 +70,11 @@ SINGLE_BATTLE_TEST("Effect Spore causes paralysis 3.3% (Gen3) and 10% (Gen4+) of
     }
 }
 
-SINGLE_BATTLE_TEST("Effect Spore causes sleep 3.3% (Gen3), 10% (Gen4) and 11% (Gen5+) of the time")
+SINGLE_BATTLE_TEST("Effect Spore causes sleep 11% of the time")
 {
-    u32 config, passes, trials;
-    PARAMETRIZE { config = GEN_3; passes = 1;  trials = 30; }  // 3.3%
-    PARAMETRIZE { config = GEN_4; passes = 1;  trials = 10; }  // 10%
-    PARAMETRIZE { config = GEN_5; passes = 11; trials = 100; } // 11%
-    PASSES_RANDOMLY(passes, trials, RNG_EFFECT_SPORE);
+    PASSES_RANDOMLY(11, 100, RNG_EFFECT_SPORE);
     GIVEN {
-        WITH_CONFIG(B_ABILITY_TRIGGER_CHANCE, config);
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_5);
         ASSUME(MoveMakesContact(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_BRELOOM) { Ability(ABILITY_EFFECT_SPORE); }
@@ -103,13 +91,9 @@ SINGLE_BATTLE_TEST("Effect Spore causes sleep 3.3% (Gen3), 10% (Gen4) and 11% (G
 
 SINGLE_BATTLE_TEST("Effect Spore will check if it can inflict status onto attacker, not itself")
 {
-    u32 config, passes, trials;
-    PARAMETRIZE { config = GEN_3; passes = 1;  trials = 30; }  // 3.3%
-    PARAMETRIZE { config = GEN_4; passes = 1;  trials = 10; }  // 10%
-    PARAMETRIZE { config = GEN_5; passes = 11; trials = 100; } // 11%
-    PASSES_RANDOMLY(passes, trials, RNG_EFFECT_SPORE);
+    PASSES_RANDOMLY(11, 100, RNG_EFFECT_SPORE);
     GIVEN {
-        WITH_CONFIG(B_ABILITY_TRIGGER_CHANCE, config);
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_5);
         ASSUME(MoveMakesContact(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_BRELOOM) { Status1(STATUS1_BURN); Ability(ABILITY_EFFECT_SPORE); }

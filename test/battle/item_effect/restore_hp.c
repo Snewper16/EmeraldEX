@@ -3,8 +3,7 @@
 
 SINGLE_BATTLE_TEST("Items can restore a battler's HP by a fixed amount (singles, player)")
 {
-    enum Item item;
-    u32 hp;
+    u32 item, hp;
     PARAMETRIZE { item = ITEM_POTION; hp = 20; }
     PARAMETRIZE { item = ITEM_SUPER_POTION; hp = I_HEALTH_RECOVERY >= GEN_7 ? 60 : 50; }
     PARAMETRIZE { item = ITEM_HYPER_POTION; hp = I_HEALTH_RECOVERY >= GEN_7 ? 120 : 200; }
@@ -32,8 +31,7 @@ SINGLE_BATTLE_TEST("Items can restore a battler's HP by a fixed amount (singles,
 
 SINGLE_BATTLE_TEST("Items can restore a battler's HP by a fixed amount (singles, opponent)")
 {
-    enum Item item;
-    u32 hp;
+    u32 item, hp;
     PARAMETRIZE { item = ITEM_POTION; hp = 20; }
     PARAMETRIZE { item = ITEM_SUPER_POTION; hp = I_HEALTH_RECOVERY >= GEN_7 ? 60 : 50; }
     PARAMETRIZE { item = ITEM_HYPER_POTION; hp = I_HEALTH_RECOVERY >= GEN_7 ? 120 : 200; }
@@ -189,8 +187,7 @@ DOUBLE_BATTLE_TEST("Items can restore a partner battler's HP (opponentLeft to op
 
 SINGLE_BATTLE_TEST("Items can restore a battler's HP by a percentage")
 {
-    enum Item item;
-    u32 percentage;
+    u32 item, percentage;
     PARAMETRIZE { item = ITEM_MAX_POTION; percentage = 100; }
 #if I_SITRUS_BERRY_HEAL >= GEN_4
     PARAMETRIZE { item = ITEM_SITRUS_BERRY; percentage = 25; }

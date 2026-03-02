@@ -5,7 +5,6 @@
 #include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
-#include "frontier_util.h"
 #include "field_player_avatar.h"
 #include "international_string_util.h"
 #include "item.h"
@@ -82,7 +81,7 @@ COMMON_DATA void (*gApprenticeFunc)(void) = NULL;
 
 // This file's functions.
 static u16 GetRandomAlternateMove(u8 monId);
-static bool8 TrySetMove(u8 monId, enum Move move);
+static bool8 TrySetMove(u8 monId, u16 move);
 static void CreateChooseAnswerTask(bool8 noBButton, u8 itemsCount, u8 windowId);
 static u8 CreateAndShowWindow(u8 left, u8 top, u8 width, u8 height);
 static void RemoveAndHideWindow(u8 windowId);
@@ -317,7 +316,7 @@ static u16 GetRandomAlternateMove(u8 monId)
     u16 species;
     const struct LevelUpMove *learnset;
     bool32 needTMs = FALSE;
-    enum Move move = MOVE_NONE;
+    u16 move = MOVE_NONE;
     bool32 shouldUseMove;
     u8 level;
 
@@ -420,7 +419,7 @@ static u16 GetRandomAlternateMove(u8 monId)
     return move;
 }
 
-static bool8 TrySetMove(u8 monId, enum Move move)
+static bool8 TrySetMove(u8 monId, u16 move)
 {
     u8 i;
 
@@ -462,9 +461,9 @@ static void GetLatestLearnedMoves(u16 species, u16 *moves)
 
 // Get the level up move or previously suggested move to be the first move choice
 // Compare to GetRandomAlternateMove, which gets the move that will be the second choice
-static enum Move GetDefaultMove(u8 monId, u8 speciesArrayId, u8 moveSlot)
+static u16 GetDefaultMove(u8 monId, u8 speciesArrayId, u8 moveSlot)
 {
-    enum Move moves[MAX_MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u8 i, numQuestions;
 
     if (PLAYER_APPRENTICE.questionsAnswered < NUM_WHICH_MON_QUESTIONS)
@@ -1237,7 +1236,7 @@ static void GetShouldApprenticeLeave(void)
     gSpecialVar_0x8004 = TRUE;
 }
 
-const u8 *GetApprenticeNameInLanguage(u32 apprenticeId, enum Language language)
+const u8 *GetApprenticeNameInLanguage(u32 apprenticeId, s32 language)
 {
     const struct ApprenticeTrainer *apprentice = &gApprentices[apprenticeId];
 

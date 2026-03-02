@@ -10,7 +10,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Work Up raises Attack and Sp. Attack by 1 stage each", s16 damage)
 {
     bool32 raiseStats;
-    enum Move move;
+    u32 move;
     PARAMETRIZE { raiseStats = FALSE; move = MOVE_SCRATCH; }
     PARAMETRIZE { raiseStats = TRUE;  move = MOVE_SCRATCH; }
     PARAMETRIZE { raiseStats = FALSE; move = MOVE_SWIFT; }

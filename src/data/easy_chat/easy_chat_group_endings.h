@@ -1,415 +1,485 @@
+const u8 gEasyChatWord_Will[] = _("WILL");
+const u8 gEasyChatWord_WillBeHere[] = _("WILL BE HERE");
+const u8 gEasyChatWord_Or[] = _("OR");
+const u8 gEasyChatWord_Times[] = _("TIMES");
+const u8 gEasyChatWord_Wonder[] = _("WONDER");
+const u8 gEasyChatWord_IsItQues[] = _("IS IT?");
+const u8 gEasyChatWord_Be[] = _("BE");
+const u8 gEasyChatWord_Gimme[] = _("GIMME");
+const u8 gEasyChatWord_Could[] = _("COULD");
+const u8 gEasyChatWord_LikelyTo[] = _("LIKELY TO");
+const u8 gEasyChatWord_Would[] = _("WOULD");
+const u8 gEasyChatWord_Is[] = _("IS");
+const u8 gEasyChatWord_IsntItQues[] = _("ISN'T IT?");
+const u8 gEasyChatWord_Lets[] = _("LET'S");
+const u8 gEasyChatWord_Other[] = _("OTHER");
+const u8 gEasyChatWord_Are[] = _("ARE");
+const u8 gEasyChatWord_Was[] = _("WAS");
+const u8 gEasyChatWord_Were[] = _("WERE");
+const u8 gEasyChatWord_Those[] = _("THOSE");
+const u8 gEasyChatWord_Isnt[] = _("ISN'T");
+const u8 gEasyChatWord_Wont[] = _("WON'T");
+const u8 gEasyChatWord_Cant[] = _("CAN'T");
+const u8 gEasyChatWord_Can[] = _("CAN");
+const u8 gEasyChatWord_Dont[] = _("DON'T");
+const u8 gEasyChatWord_Do[] = _("DO");
+const u8 gEasyChatWord_Does[] = _("DOES");
+const u8 gEasyChatWord_Whom[] = _("WHOM");
+const u8 gEasyChatWord_Which[] = _("WHICH");
+const u8 gEasyChatWord_Wasnt[] = _("WASN'T");
+const u8 gEasyChatWord_Werent[] = _("WEREN'T");
+const u8 gEasyChatWord_Have[] = _("HAVE");
+const u8 gEasyChatWord_Havent[] = _("HAVEN'T");
+const u8 gEasyChatWord_A[] = _("A");
+const u8 gEasyChatWord_An[] = _("AN");
+const u8 gEasyChatWord_Not[] = _("NOT");
+const u8 gEasyChatWord_There[] = _("THERE");
+const u8 gEasyChatWord_OkQues[] = _("OK?");
+const u8 gEasyChatWord_So[] = _("SO");
+const u8 gEasyChatWord_Maybe[] = _("MAYBE");
+const u8 gEasyChatWord_About[] = _("ABOUT");
+const u8 gEasyChatWord_Over[] = _("OVER");
+const u8 gEasyChatWord_It[] = _("IT");
+const u8 gEasyChatWord_All[] = _("ALL");
+const u8 gEasyChatWord_For[] = _("FOR");
+const u8 gEasyChatWord_On[] = _("ON");
+const u8 gEasyChatWord_Off[] = _("OFF");
+const u8 gEasyChatWord_As[] = _("AS");
+const u8 gEasyChatWord_To[] = _("TO");
+const u8 gEasyChatWord_With[] = _("WITH");
+const u8 gEasyChatWord_Better[] = _("BETTER");
+const u8 gEasyChatWord_Ever[] = _("EVER");
+const u8 gEasyChatWord_Since[] = _("SINCE");
+const u8 gEasyChatWord_Of[] = _("OF");
+const u8 gEasyChatWord_BelongsTo[] = _("BELONGS TO");
+const u8 gEasyChatWord_At[] = _("AT");
+const u8 gEasyChatWord_In[] = _("IN");
+const u8 gEasyChatWord_Out[] = _("OUT");
+const u8 gEasyChatWord_Too[] = _("TOO");
+const u8 gEasyChatWord_Like[] = _("LIKE");
+const u8 gEasyChatWord_Did[] = _("DID");
+const u8 gEasyChatWord_Didnt[] = _("DIDN'T");
+const u8 gEasyChatWord_Doesnt[] = _("DOESN'T");
+const u8 gEasyChatWord_Without[] = _("WITHOUT");
+const u8 gEasyChatWord_After[] = _("AFTER");
+const u8 gEasyChatWord_Before[] = _("BEFORE");
+const u8 gEasyChatWord_While[] = _("WHILE");
+const u8 gEasyChatWord_Than[] = _("THAN");
+const u8 gEasyChatWord_Once[] = _("ONCE");
+const u8 gEasyChatWord_Anywhere[] = _("ANYWHERE");
+
 const struct EasyChatWordInfo gEasyChatGroup_Endings[] = {
     [EC_INDEX(EC_WORD_WILL)] =
     {
-        .text = COMPOUND_STRING("WILL"),
+        .text = gEasyChatWord_Will,
         .alphabeticalOrder = EC_INDEX(EC_WORD_A),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WILL_BE_HERE)] =
     {
-        .text = COMPOUND_STRING("WILL BE HERE"),
+        .text = gEasyChatWord_WillBeHere,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ABOUT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OR)] =
     {
-        .text = COMPOUND_STRING("OR"),
+        .text = gEasyChatWord_Or,
         .alphabeticalOrder = EC_INDEX(EC_WORD_AFTER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TIMES)] =
     {
-        .text = COMPOUND_STRING("TIMES"),
+        .text = gEasyChatWord_Times,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ALL),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WONDER)] =
     {
-        .text = COMPOUND_STRING("WONDER"),
+        .text = gEasyChatWord_Wonder,
         .alphabeticalOrder = EC_INDEX(EC_WORD_AN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IS_IT_QUES)] =
     {
-        .text = COMPOUND_STRING("IS IT?"),
+        .text = gEasyChatWord_IsItQues,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ANYWHERE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BE)] =
     {
-        .text = COMPOUND_STRING("BE"),
+        .text = gEasyChatWord_Be,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ARE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_GIMME)] =
     {
-        .text = COMPOUND_STRING("GIMME"),
+        .text = gEasyChatWord_Gimme,
         .alphabeticalOrder = EC_INDEX(EC_WORD_AS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COULD)] =
     {
-        .text = COMPOUND_STRING("COULD"),
+        .text = gEasyChatWord_Could,
         .alphabeticalOrder = EC_INDEX(EC_WORD_AT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LIKELY_TO)] =
     {
-        .text = COMPOUND_STRING("LIKELY TO"),
+        .text = gEasyChatWord_LikelyTo,
         .alphabeticalOrder = EC_INDEX(EC_WORD_BE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WOULD)] =
     {
-        .text = COMPOUND_STRING("WOULD"),
+        .text = gEasyChatWord_Would,
         .alphabeticalOrder = EC_INDEX(EC_WORD_BEFORE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IS)] =
     {
-        .text = COMPOUND_STRING("IS"),
+        .text = gEasyChatWord_Is,
         .alphabeticalOrder = EC_INDEX(EC_WORD_BELONGS_TO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ISN_T_IT_QUES)] =
     {
-        .text = COMPOUND_STRING("ISN'T IT?"),
+        .text = gEasyChatWord_IsntItQues,
         .alphabeticalOrder = EC_INDEX(EC_WORD_BETTER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LET_S)] =
     {
-        .text = COMPOUND_STRING("LET'S"),
+        .text = gEasyChatWord_Lets,
         .alphabeticalOrder = EC_INDEX(EC_WORD_CAN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OTHER)] =
     {
-        .text = COMPOUND_STRING("OTHER"),
+        .text = gEasyChatWord_Other,
         .alphabeticalOrder = EC_INDEX(EC_WORD_CAN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ARE)] =
     {
-        .text = COMPOUND_STRING("ARE"),
+        .text = gEasyChatWord_Are,
         .alphabeticalOrder = EC_INDEX(EC_WORD_COULD),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WAS)] =
     {
-        .text = COMPOUND_STRING("WAS"),
+        .text = gEasyChatWord_Was,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DID),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WERE)] =
     {
-        .text = COMPOUND_STRING("WERE"),
+        .text = gEasyChatWord_Were,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DIDN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THOSE)] =
     {
-        .text = COMPOUND_STRING("THOSE"),
+        .text = gEasyChatWord_Those,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ISN_T)] =
     {
-        .text = COMPOUND_STRING("ISN'T"),
+        .text = gEasyChatWord_Isnt,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DOES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WON_T)] =
     {
-        .text = COMPOUND_STRING("WON'T"),
+        .text = gEasyChatWord_Wont,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DOESN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAN_T)] =
     {
-        .text = COMPOUND_STRING("CAN'T"),
+        .text = gEasyChatWord_Cant,
         .alphabeticalOrder = EC_INDEX(EC_WORD_DON_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAN)] =
     {
-        .text = COMPOUND_STRING("CAN"),
+        .text = gEasyChatWord_Can,
         .alphabeticalOrder = EC_INDEX(EC_WORD_EVER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DON_T)] =
     {
-        .text = COMPOUND_STRING("DON'T"),
+        .text = gEasyChatWord_Dont,
         .alphabeticalOrder = EC_INDEX(EC_WORD_FOR),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DO)] =
     {
-        .text = COMPOUND_STRING("DO"),
+        .text = gEasyChatWord_Do,
         .alphabeticalOrder = EC_INDEX(EC_WORD_GIMME),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DOES)] =
     {
-        .text = COMPOUND_STRING("DOES"),
+        .text = gEasyChatWord_Does,
         .alphabeticalOrder = EC_INDEX(EC_WORD_HAVE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WHOM)] =
     {
-        .text = COMPOUND_STRING("WHOM"),
+        .text = gEasyChatWord_Whom,
         .alphabeticalOrder = EC_INDEX(EC_WORD_HAVEN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WHICH)] =
     {
-        .text = COMPOUND_STRING("WHICH"),
+        .text = gEasyChatWord_Which,
         .alphabeticalOrder = EC_INDEX(EC_WORD_IN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WASN_T)] =
     {
-        .text = COMPOUND_STRING("WASN'T"),
+        .text = gEasyChatWord_Wasnt,
         .alphabeticalOrder = EC_INDEX(EC_WORD_IS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WEREN_T)] =
     {
-        .text = COMPOUND_STRING("WEREN'T"),
+        .text = gEasyChatWord_Werent,
         .alphabeticalOrder = EC_INDEX(EC_WORD_IS_IT_QUES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_HAVE)] =
     {
-        .text = COMPOUND_STRING("HAVE"),
+        .text = gEasyChatWord_Have,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ISN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_HAVEN_T)] =
     {
-        .text = COMPOUND_STRING("HAVEN'T"),
+        .text = gEasyChatWord_Havent,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ISN_T_IT_QUES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_A)] =
     {
-        .text = COMPOUND_STRING("A"),
+        .text = gEasyChatWord_A,
         .alphabeticalOrder = EC_INDEX(EC_WORD_IT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_AN)] =
     {
-        .text = COMPOUND_STRING("AN"),
+        .text = gEasyChatWord_An,
         .alphabeticalOrder = EC_INDEX(EC_WORD_LET_S),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_NOT)] =
     {
-        .text = COMPOUND_STRING("NOT"),
+        .text = gEasyChatWord_Not,
         .alphabeticalOrder = EC_INDEX(EC_WORD_LIKE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THERE)] =
     {
-        .text = COMPOUND_STRING("THERE"),
+        .text = gEasyChatWord_There,
         .alphabeticalOrder = EC_INDEX(EC_WORD_LIKELY_TO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OK_QUES)] =
     {
-        .text = COMPOUND_STRING("OK?"),
+        .text = gEasyChatWord_OkQues,
         .alphabeticalOrder = EC_INDEX(EC_WORD_MAYBE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SO)] =
     {
-        .text = COMPOUND_STRING("SO"),
+        .text = gEasyChatWord_So,
         .alphabeticalOrder = EC_INDEX(EC_WORD_NOT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_MAYBE)] =
     {
-        .text = COMPOUND_STRING("MAYBE"),
+        .text = gEasyChatWord_Maybe,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OF),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ABOUT)] =
     {
-        .text = COMPOUND_STRING("ABOUT"),
+        .text = gEasyChatWord_About,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OFF),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OVER)] =
     {
-        .text = COMPOUND_STRING("OVER"),
+        .text = gEasyChatWord_Over,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OK_QUES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IT)] =
     {
-        .text = COMPOUND_STRING("IT"),
+        .text = gEasyChatWord_It,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ON),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ALL)] =
     {
-        .text = COMPOUND_STRING("ALL"),
+        .text = gEasyChatWord_All,
         .alphabeticalOrder = EC_INDEX(EC_WORD_ONCE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FOR)] =
     {
-        .text = COMPOUND_STRING("FOR"),
+        .text = gEasyChatWord_For,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OR),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ON)] =
     {
-        .text = COMPOUND_STRING("ON"),
+        .text = gEasyChatWord_On,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OTHER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OFF)] =
     {
-        .text = COMPOUND_STRING("OFF"),
+        .text = gEasyChatWord_Off,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OUT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_AS)] =
     {
-        .text = COMPOUND_STRING("AS"),
+        .text = gEasyChatWord_As,
         .alphabeticalOrder = EC_INDEX(EC_WORD_OVER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TO)] =
     {
-        .text = COMPOUND_STRING("TO"),
+        .text = gEasyChatWord_To,
         .alphabeticalOrder = EC_INDEX(EC_WORD_SINCE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WITH)] =
     {
-        .text = COMPOUND_STRING("WITH"),
+        .text = gEasyChatWord_With,
         .alphabeticalOrder = EC_INDEX(EC_WORD_SO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BETTER)] =
     {
-        .text = COMPOUND_STRING("BETTER"),
+        .text = gEasyChatWord_Better,
         .alphabeticalOrder = EC_INDEX(EC_WORD_THAN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_EVER)] =
     {
-        .text = COMPOUND_STRING("EVER"),
+        .text = gEasyChatWord_Ever,
         .alphabeticalOrder = EC_INDEX(EC_WORD_THERE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SINCE)] =
     {
-        .text = COMPOUND_STRING("SINCE"),
+        .text = gEasyChatWord_Since,
         .alphabeticalOrder = EC_INDEX(EC_WORD_THOSE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OF)] =
     {
-        .text = COMPOUND_STRING("OF"),
+        .text = gEasyChatWord_Of,
         .alphabeticalOrder = EC_INDEX(EC_WORD_TIMES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BELONGS_TO)] =
     {
-        .text = COMPOUND_STRING("BELONGS TO"),
+        .text = gEasyChatWord_BelongsTo,
         .alphabeticalOrder = EC_INDEX(EC_WORD_TO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_AT)] =
     {
-        .text = COMPOUND_STRING("AT"),
+        .text = gEasyChatWord_At,
         .alphabeticalOrder = EC_INDEX(EC_WORD_TOO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IN)] =
     {
-        .text = COMPOUND_STRING("IN"),
+        .text = gEasyChatWord_In,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WAS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OUT)] =
     {
-        .text = COMPOUND_STRING("OUT"),
+        .text = gEasyChatWord_Out,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WASN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TOO)] =
     {
-        .text = COMPOUND_STRING("TOO"),
+        .text = gEasyChatWord_Too,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WERE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LIKE)] =
     {
-        .text = COMPOUND_STRING("LIKE"),
+        .text = gEasyChatWord_Like,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WEREN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DID)] =
     {
-        .text = COMPOUND_STRING("DID"),
+        .text = gEasyChatWord_Did,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WHICH),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DIDN_T)] =
     {
-        .text = COMPOUND_STRING("DIDN'T"),
+        .text = gEasyChatWord_Didnt,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WHILE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DOESN_T)] =
     {
-        .text = COMPOUND_STRING("DOESN'T"),
+        .text = gEasyChatWord_Doesnt,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WHOM),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WITHOUT)] =
     {
-        .text = COMPOUND_STRING("WITHOUT"),
+        .text = gEasyChatWord_Without,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WILL),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_AFTER)] =
     {
-        .text = COMPOUND_STRING("AFTER"),
+        .text = gEasyChatWord_After,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WILL_BE_HERE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BEFORE)] =
     {
-        .text = COMPOUND_STRING("BEFORE"),
+        .text = gEasyChatWord_Before,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WITH),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WHILE)] =
     {
-        .text = COMPOUND_STRING("WHILE"),
+        .text = gEasyChatWord_While,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WITHOUT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THAN)] =
     {
-        .text = COMPOUND_STRING("THAN"),
+        .text = gEasyChatWord_Than,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WON_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ONCE)] =
     {
-        .text = COMPOUND_STRING("ONCE"),
+        .text = gEasyChatWord_Once,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WONDER),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ANYWHERE)] =
     {
-        .text = COMPOUND_STRING("ANYWHERE"),
+        .text = gEasyChatWord_Anywhere,
         .alphabeticalOrder = EC_INDEX(EC_WORD_WOULD),
         .enabled = TRUE,
     },

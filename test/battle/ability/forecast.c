@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from an opponent's move")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -30,15 +30,13 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from an opponent's m
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(player->species, SPECIES_CASTFORM_SNOWY);
             break;
-        default:
-            break;
         }
     }
 }
 
 SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from its own move")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -65,15 +63,13 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from its own move")
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(player->species, SPECIES_CASTFORM_SNOWY);
             break;
-        default:
-            break;
         }
     }
 }
 
 DOUBLE_BATTLE_TEST("Forecast transforms Castform in weather from a partner's move")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -102,15 +98,13 @@ DOUBLE_BATTLE_TEST("Forecast transforms Castform in weather from a partner's mov
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(playerLeft->species, SPECIES_CASTFORM_SNOWY);
             break;
-        default:
-            break;
         }
     }
 }
 
 DOUBLE_BATTLE_TEST("Forecast transforms all Castforms present in weather")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -156,8 +150,6 @@ DOUBLE_BATTLE_TEST("Forecast transforms all Castforms present in weather")
             EXPECT_EQ(playerRight->species, SPECIES_CASTFORM_SNOWY);
             EXPECT_EQ(opponentLeft->species, SPECIES_CASTFORM_SNOWY);
             EXPECT_EQ(opponentRight->species, SPECIES_CASTFORM_SNOWY);
-            break;
-        default:
             break;
         }
     }

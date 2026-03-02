@@ -332,7 +332,7 @@ bool32 ShouldDrawRematchPokeballIcon(int index)
 #endif //FREE_MATCH_CALL
 }
 
-enum TrainerPicID GetMatchCallTrainerPic(int index)
+int GetMatchCallTrainerPic(int index)
 {
     int headerId;
     struct Pokenav_MatchCallMenu *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);

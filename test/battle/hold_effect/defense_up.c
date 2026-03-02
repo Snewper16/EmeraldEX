@@ -10,7 +10,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Ganlon Berry raises the holder's Defense by one stage when HP drops to 1/4 or below")
 {
-    enum Move move;
+    u32 move;
 
     PARAMETRIZE { move = MOVE_SCRATCH; }
     PARAMETRIZE { move = MOVE_DRAGON_RAGE; }

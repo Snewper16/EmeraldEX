@@ -18,37 +18,18 @@ SINGLE_BATTLE_TEST("Sturdy prevents OHKO moves")
     }
 }
 
-SINGLE_BATTLE_TEST("Sturdy prevents OHKOs (Gen5+)")
+SINGLE_BATTLE_TEST("Sturdy prevents OHKOs")
 {
-    u32 config;
-    PARAMETRIZE { config = GEN_4; }
-    PARAMETRIZE { config = GEN_5; }
     GIVEN {
-        WITH_CONFIG(B_STURDY, config);
         PLAYER(SPECIES_GEODUDE) { Ability(ABILITY_STURDY); MaxHP(100); HP(100); }
-        PLAYER(SPECIES_GEODUDE);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN {
-            MOVE(opponent, MOVE_SEISMIC_TOSS);
-            if (config < GEN_5) {
-                SEND_OUT(player, 1);
-            }
-        }
+        TURN { MOVE(opponent, MOVE_SEISMIC_TOSS); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SEISMIC_TOSS, opponent);
-        if (config >= GEN_5) {
-            HP_BAR(player, hp: 1);
-            ABILITY_POPUP(player, ABILITY_STURDY);
-            MESSAGE("Geodude endured the hit using Sturdy!");
-        } else {
-            HP_BAR(player, hp: 0);
-            NONE_OF {
-                ABILITY_POPUP(player, ABILITY_STURDY);
-                MESSAGE("Geodude endured the hit using Sturdy!");
-            }
-            SEND_IN_MESSAGE("Geodude");
-        }
+        HP_BAR(player, hp: 1);
+        ABILITY_POPUP(player, ABILITY_STURDY);
+        MESSAGE("Geodude endured the hit using Sturdy!");
     }
 }
 

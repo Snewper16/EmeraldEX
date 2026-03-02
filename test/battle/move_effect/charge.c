@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(GetMoveCategory(MOVE_THUNDERBOLT) != DAMAGE_CATEGORY_STATUS);
+    ASSUME(!IsBattleMoveStatus(MOVE_THUNDERBOLT));
     ASSUME(GetMoveType(MOVE_THUNDERBOLT) == TYPE_ELECTRIC);
 }
 
@@ -84,7 +84,7 @@ SINGLE_BATTLE_TEST("Charge's effect does not stack with Electromorphosis or Wind
 
     GIVEN {
         ASSUME(IsWindMove(MOVE_AIR_CUTTER));
-        PLAYER(species) { Ability(ability); }
+        PLAYER(species) { Ability(ability);  }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, MOVE_THUNDERBOLT); }
@@ -108,7 +108,7 @@ SINGLE_BATTLE_TEST("Charge's effect is removed regardless if the next move is El
     s16 damage[2];
     GIVEN {
         ASSUME(GetMoveType(MOVE_SCRATCH) != TYPE_ELECTRIC);
-        ASSUME(GetMoveCategory(MOVE_SCRATCH) != DAMAGE_CATEGORY_STATUS);
+        ASSUME(!IsBattleMoveStatus(MOVE_SCRATCH));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

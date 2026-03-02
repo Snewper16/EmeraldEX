@@ -28,14 +28,14 @@ void ObjectEventInteractionPickApricornTree(void)
 {
     u32 id = GetObjectEventApricornTreeId(gSelectedObjectEvent);
     enum ApricornType apricorn = GetApricornTypeByApricornTreeId(id);
-    gSpecialVar_0x8006 = CheckBagHasSpace((enum Item)apricorn, GetApricornCountByApricornTreeId(id));
+    gSpecialVar_0x8006 = CheckBagHasSpace(apricorn, GetApricornCountByApricornTreeId(id));
 
     if (gSpecialVar_0x8006)
     {
-        AddBagItem((enum Item)apricorn, GetApricornCountByApricornTreeId(id));
+        AddBagItem(apricorn, GetApricornCountByApricornTreeId(id));
         SetApricornTreePicked(id);
     }
-    gSpecialVar_Result = GetItemPocket((enum Item)apricorn);
+    gSpecialVar_Result = GetItemPocket(apricorn);
 }
 
 enum ApricornType GetApricornTypeByApricornTreeId(u32 id)

@@ -25,9 +25,7 @@ static const u16 sMoveItemTable[][18] =
 
 SINGLE_BATTLE_TEST("Type-enhancing items increase the base power of moves by 20%", s16 damage)
 {
-    enum Move move = MOVE_NONE;
-    enum Item item = ITEM_NONE;
-    enum Type type = TYPE_NONE;
+    u32 move = 0, item = 0, type = 0;
 
     for (u32 j = 0; j < ARRAY_COUNT(sMoveItemTable); j++) {
         PARAMETRIZE { type = sMoveItemTable[j][0]; move = sMoveItemTable[j][1]; item = ITEM_NONE; }
@@ -58,7 +56,7 @@ SINGLE_BATTLE_TEST("Type-enhancing items increase the base power of moves by 20%
 
 SINGLE_BATTLE_TEST("Type-enhancing items do not increase the power of Struggle", s16 damage)
 {
-    enum Item item = ITEM_NONE;
+    u32 item = 0;
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_SILK_SCARF; }

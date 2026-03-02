@@ -22,11 +22,9 @@
 #include "overworld.h"
 #include "item.h"
 #include "regions.h"
-#include "malloc.h"
 #include "constants/form_change_types.h"
 #include "constants/items.h"
 #include "constants/moves.h"
-#include "constants/party_menu.h"
 #include "constants/region_map_sections.h"
 
 #define IS_DITTO(species) (gSpeciesInfo[species].eggGroups[0] == EGG_GROUP_DITTO || gSpeciesInfo[species].eggGroups[1] == EGG_GROUP_DITTO)
@@ -88,7 +86,7 @@ static const struct ListMenuTemplate sDaycareListMenuLevelTemplate =
 
 static const struct {
   u16 currSpecies;
-  enum Item item;
+  u16 item;
   u16 babySpecies;
 } sIncenseBabyTable[] =
 {
@@ -261,7 +259,12 @@ void StorePokemonInDaycare(struct Pokemon *mon, struct DaycareMon *daycareMon)
         TakeMailFromMon(mon);
     }
 
-    TryFormChange(mon, FORM_CHANGE_DEPOSIT);
+    u32 newSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_DEPOSIT, 0);
+    if (newSpecies != GetMonData(mon, MON_DATA_SPECIES))
+    {
+        SetMonData(mon, MON_DATA_SPECIES, &newSpecies);
+        CalculateMonStats(mon);
+    }
 
     daycareMon->mon = mon->box;
     daycareMon->steps = 0;
@@ -281,19 +284,8 @@ static void StorePokemonInEmptyDaycareSlot(struct Pokemon *mon, struct DayCare *
 
 void StoreSelectedPokemonInDaycare(void)
 {
-    struct Pokemon *mon;
-    if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
-    {
-        mon = Alloc(sizeof(struct Pokemon));
-        RemoveSelectedPcMon(mon);
-    }
-    else
-    {
-        mon = &gPlayerParty[gSpecialVar_0x8004];
-    }
-    StorePokemonInEmptyDaycareSlot(mon, &gSaveBlock1Ptr->daycare);
-    if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
-        Free(mon);
+    u8 monId = GetCursorSelectionMonId();
+    StorePokemonInEmptyDaycareSlot(&gPlayerParty[monId], &gSaveBlock1Ptr->daycare);
 }
 
 // Shifts the second daycare Pokémon slot into the first slot.
@@ -350,13 +342,22 @@ static u32 GetExpAtLevelCap(struct Pokemon *mon)
 
 static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
 {
+    u32 species;
+    u32 newSpecies;
     u32 experience;
     struct Pokemon pokemon;
 
     GetBoxMonNickname(&daycareMon->mon, gStringVar1);
+    species = GetBoxMonData(&daycareMon->mon, MON_DATA_SPECIES);
     BoxMonToMon(&daycareMon->mon, &pokemon);
 
-    TryFormChange(&pokemon, FORM_CHANGE_WITHDRAW);
+    newSpecies = GetFormChangeTargetSpecies(&pokemon, FORM_CHANGE_WITHDRAW, 0);
+    if (newSpecies != species)
+    {
+        SetMonData(&pokemon, MON_DATA_SPECIES, &newSpecies);
+        CalculateMonStats(&pokemon);
+        species = newSpecies;
+    }
 
     if (GetMonData(&pokemon, MON_DATA_LEVEL) < GetCurrentLevelCap())
     {
@@ -379,7 +380,7 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
     daycareMon->steps = 0;
     CompactPartySlots();
     CalculatePlayerPartyCount();
-    return GetMonData(&pokemon, MON_DATA_SPECIES);
+    return species;
 }
 
 static u16 TakeSelectedPokemonMonFromDaycareShiftSlots(struct DayCare *daycare, u8 slotId)
@@ -571,7 +572,7 @@ static void _TriggerPendingDaycareEgg(struct DayCare *daycare)
     // inherit nature
     else
     {
-        u8 wantedNature = GetNatureFromPersonality(GetBoxMonData(&daycare->mons[parent].mon, MON_DATA_PERSONALITY));
+        u8 wantedNature = GetNatureFromPersonality(GetBoxMonData(&daycare->mons[parent].mon, MON_DATA_PERSONALITY, NULL));
         u32 personality;
 
         do
@@ -681,30 +682,30 @@ static void InheritIVs(struct Pokemon *egg, struct DayCare *daycare)
     {
         switch (selectedIvs[i])
         {
-        case 0:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_HP_IV);
-            SetMonData(egg, MON_DATA_HP_IV, &iv);
-            break;
-        case 1:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_ATK_IV);
-            SetMonData(egg, MON_DATA_ATK_IV, &iv);
-            break;
-        case 2:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_DEF_IV);
-            SetMonData(egg, MON_DATA_DEF_IV, &iv);
-            break;
-        case 3:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPEED_IV);
-            SetMonData(egg, MON_DATA_SPEED_IV, &iv);
-            break;
-        case 4:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPATK_IV);
-            SetMonData(egg, MON_DATA_SPATK_IV, &iv);
-            break;
-        case 5:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPDEF_IV);
-            SetMonData(egg, MON_DATA_SPDEF_IV, &iv);
-            break;
+            case 0:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_HP_IV);
+                SetMonData(egg, MON_DATA_HP_IV, &iv);
+                break;
+            case 1:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_ATK_IV);
+                SetMonData(egg, MON_DATA_ATK_IV, &iv);
+                break;
+            case 2:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_DEF_IV);
+                SetMonData(egg, MON_DATA_DEF_IV, &iv);
+                break;
+            case 3:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPEED_IV);
+                SetMonData(egg, MON_DATA_SPEED_IV, &iv);
+                break;
+            case 4:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPATK_IV);
+                SetMonData(egg, MON_DATA_SPATK_IV, &iv);
+                break;
+            case 5:
+                iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPDEF_IV);
+                SetMonData(egg, MON_DATA_SPDEF_IV, &iv);
+                break;
         }
     }
 }
@@ -805,7 +806,7 @@ u8 GetEggMovesBySpecies(u16 species, u16 *eggMoves)
     return numEggMoves;
 }
 
-bool8 SpeciesCanLearnEggMove(u16 species, enum Move move) //Move search PokedexPlus HGSS_Ui
+bool8 SpeciesCanLearnEggMove(u16 species, u16 move) //Move search PokedexPlus HGSS_Ui
 {
     u32 i;
     const u16 *eggMoveLearnset = GetSpeciesEggMoves(species);
@@ -897,7 +898,7 @@ static void BuildEggMoveset(struct Pokemon *egg, struct BoxPokemon *father, stru
             {
                 for (j = 0; j < NUM_ALL_MACHINES; j++)
                 {
-                    enum Move moveId = GetTMHMMoveId(j + 1);
+                    u16 moveId = GetTMHMMoveId(j + 1);
                     if (sHatchedEggFatherMoves[i] == moveId && CanLearnTeachableMove(GetMonData(egg, MON_DATA_SPECIES_OR_EGG), moveId))
                     {
                         if (GiveMoveToMon(egg, sHatchedEggFatherMoves[i]) == MON_HAS_MAX_MOVES)
@@ -965,8 +966,8 @@ static void AlterEggSpeciesWithIncenseItem(u16 *species, struct DayCare *daycare
 
 static const struct {
   u16 offspring;
-  enum Item item;
-  enum Move move;
+  u16 item;
+  u16 move;
 } sBreedingSpecialMoveItemTable[] =
 {
     // Offspring,    Item,            Move
@@ -1106,11 +1107,11 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
 {
     u8 metLevel;
     enum PokeBall ball;
-    enum Language language;
+    u8 language;
     metloc_u8_t metLocation;
     u8 isEgg;
 
-    CreateRandomMonWithIVs(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS);
+    CreateMon(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     metLevel = 0;
     ball = BALL_POKE;
     language = LANGUAGE_JAPANESE;
@@ -1137,7 +1138,7 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     u8 language;
 
     personality = daycare->offspringPersonality;
-    CreateMonWithIVs(mon, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    CreateMon(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
     metLevel = 0;
     ball = BALL_POKE;
     language = LANGUAGE_JAPANESE;
@@ -1213,10 +1214,6 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
 
 bool8 ShouldEggHatch(void)
 {
-#if IS_FRLG
-    if (GetBoxMonData(&gSaveBlock1Ptr->route5DayCareMon.mon, MON_DATA_SANITY_HAS_SPECIES))
-        gSaveBlock1Ptr->route5DayCareMon.steps++;
-#endif
     return TryProduceOrHatchEgg(&gSaveBlock1Ptr->daycare);
 }
 
@@ -1246,9 +1243,8 @@ static void _GetDaycareMonNicknames(struct DayCare *daycare)
 
 u16 GetSelectedMonNicknameAndSpecies(void)
 {
-    struct BoxPokemon *boxmon = GetSelectedBoxMonFromPcOrParty();
-    GetBoxMonNickname(boxmon, gStringVar1);
-    return GetBoxMonData(boxmon, MON_DATA_SPECIES);
+    GetBoxMonNickname(&gPlayerParty[GetCursorSelectionMonId()].box, gStringVar1);
+    return GetBoxMonData(&gPlayerParty[GetCursorSelectionMonId()].box, MON_DATA_SPECIES);
 }
 
 void GetDaycareMonNicknames(void)
@@ -1472,20 +1468,19 @@ static void DaycareAddTextPrinter(u8 windowId, const u8 *text, u32 x, u32 y)
     struct TextPrinterTemplate printer;
 
     printer.currentChar = text;
-    printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;
     printer.fontId = FONT_NORMAL;
     printer.x = x;
     printer.y = y;
     printer.currentX = x;
     printer.currentY = y;
+    printer.unk = 0;
     gTextFlags.useAlternateDownArrow = 0;
     printer.letterSpacing = 0;
     printer.lineSpacing = 1;
-    printer.color.accent = 1;
-    printer.color.foreground = 2;
-    printer.color.background = 1;
-    printer.color.shadow = 3;
+    printer.fgColor = 2;
+    printer.bgColor = 1;
+    printer.shadowColor = 3;
 
     AddTextPrinter(&printer, TEXT_SKIP_DRAW, NULL);
 }
@@ -1604,52 +1599,4 @@ static u8 ModifyBreedingScoreForOvalCharm(u8 score)
     }
 
     return score;
-}
-
-// Route 5 Daycare
-
-void PutMonInRoute5Daycare(void)
-{
-#if IS_FRLG
-    u8 monIdx = GetCursorSelectionMonId();
-    StorePokemonInDaycare(&gPlayerParty[monIdx], &gSaveBlock1Ptr->route5DayCareMon);
-#endif
-}
-
-void GetCostToWithdrawRoute5DaycareMon(void)
-{
-#if IS_FRLG
-    u16 cost = GetDaycareCostForSelectedMon(&gSaveBlock1Ptr->route5DayCareMon);
-#else
-    u16 cost = 100;
-#endif
-    gSpecialVar_0x8005 = cost;
-}
-
-bool8 IsThereMonInRoute5Daycare(void)
-{
-#if IS_FRLG
-    if (GetBoxMonData(&gSaveBlock1Ptr->route5DayCareMon.mon, MON_DATA_SPECIES) != SPECIES_NONE)
-        return TRUE;
-#endif
-
-    return FALSE;
-}
-
-u8 GetNumLevelsGainedForRoute5DaycareMon(void)
-{
-#if IS_FRLG
-    return GetNumLevelsGainedForDaycareMon(&gSaveBlock1Ptr->route5DayCareMon);
-#else
-    return 0;
-#endif
-}
-
-u16 TakePokemonFromRoute5Daycare(void)
-{
-#if IS_FRLG
-    return TakeSelectedPokemonFromDaycare(&gSaveBlock1Ptr->route5DayCareMon);
-#else
-    return SPECIES_NONE;
-#endif
 }

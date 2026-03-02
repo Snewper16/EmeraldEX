@@ -2,15 +2,13 @@
 #include "test/battle.h"
 
 ASSUMPTIONS {
-    ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_WEATHER);
-    ASSUME(GetMoveWeatherType(MOVE_HAIL) == BATTLE_WEATHER_HAIL);
-    ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_WEATHER);
-    ASSUME(GetMoveWeatherType(MOVE_SNOWSCAPE) == BATTLE_WEATHER_SNOW);
+    ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_HAIL);
+    ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
 }
 
 SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_HAIL; }
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
     GIVEN {
@@ -25,7 +23,7 @@ SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")
 
 SINGLE_BATTLE_TEST("Ice Body recovers 1/16th of Max HP in hail.")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_HAIL; }
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
     GIVEN {
@@ -42,7 +40,7 @@ SINGLE_BATTLE_TEST("Ice Body recovers 1/16th of Max HP in hail.")
 
 SINGLE_BATTLE_TEST("Ice Body doesn't recover HP if Cloud Nine/Air Lock is on the field")
 {
-    enum Move move;
+    u32 move;
     PARAMETRIZE { move = MOVE_HAIL; }
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
     GIVEN {
