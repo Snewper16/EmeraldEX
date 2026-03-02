@@ -4971,8 +4971,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ROXANNE_1 ===
 Name: ROXANNE
-Class: Leader
-Pic: Leader Roxanne
+Class: Gym Leader
+Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
 Items: Potion / Potion
@@ -5008,8 +5008,8 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY
-Class: Leader
-Pic: Leader Brawly
+Class: Gym Leader
+Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
@@ -5045,8 +5045,8 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_WATTSON_1 ===
 Name: WATTSON
-Class: Leader
-Pic: Leader Wattson
+Class: Gym Leader
+Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
@@ -5091,8 +5091,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
-Class: Leader
-Pic: Leader Flannery
+Class: Gym Leader
+Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
@@ -5137,8 +5137,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_NORMAN_1 ===
 Name: NORMAN
-Class: Leader
-Pic: Leader Norman
+Class: Gym Leader
+Pic: Gym Leader Norman
 Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
@@ -5183,8 +5183,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_WINONA_1 ===
 Name: WINONA
-Class: Leader
-Pic: Leader Winona
+Class: Gym Leader
+Pic: Gym Leader Winona
 Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
@@ -5238,8 +5238,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_TATE_AND_LIZA_1 ===
 Name: TATE&LIZA
-Class: Leader
-Pic: Leader Tate And Liza
+Class: Gym Leader
+Pic: Gym Leader Tate And Liza
 Gender: Male
 Music: Female
 Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
@@ -5284,8 +5284,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_JUAN_1 ===
 Name: JUAN
-Class: Leader
-Pic: Leader Juan
+Class: Gym Leader
+Pic: Gym Leader Juan
 Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
@@ -14513,8 +14513,8 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE
-Class: Leader
-Pic: Leader Roxanne
+Class: Gym Leader
+Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -14560,8 +14560,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ROXANNE_3 ===
 Name: ROXANNE
-Class: Leader
-Pic: Leader Roxanne
+Class: Gym Leader
+Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -14615,8 +14615,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ROXANNE_4 ===
 Name: ROXANNE
-Class: Leader
-Pic: Leader Roxanne
+Class: Gym Leader
+Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -14670,8 +14670,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ROXANNE_5 ===
 Name: ROXANNE
-Class: Leader
-Pic: Leader Roxanne
+Class: Gym Leader
+Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -14734,8 +14734,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BRAWLY_2 ===
 Name: BRAWLY
-Class: Leader
-Pic: Leader Brawly
+Class: Gym Leader
+Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -14780,8 +14780,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BRAWLY_3 ===
 Name: BRAWLY
-Class: Leader
-Pic: Leader Brawly
+Class: Gym Leader
+Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -14826,8 +14826,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BRAWLY_4 ===
 Name: BRAWLY
-Class: Leader
-Pic: Leader Brawly
+Class: Gym Leader
+Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -14881,8 +14881,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BRAWLY_5 ===
 Name: BRAWLY
-Class: Leader
-Pic: Leader Brawly
+Class: Gym Leader
+Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -14944,8 +14944,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WATTSON_2 ===
 Name: WATTSON
-Class: Leader
-Pic: Leader Wattson
+Class: Gym Leader
+Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -14990,8 +14990,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WATTSON_3 ===
 Name: WATTSON
-Class: Leader
-Pic: Leader Wattson
+Class: Gym Leader
+Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15045,8 +15045,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WATTSON_4 ===
 Name: WATTSON
-Class: Leader
-Pic: Leader Wattson
+Class: Gym Leader
+Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15100,8 +15100,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WATTSON_5 ===
 Name: WATTSON
-Class: Leader
-Pic: Leader Wattson
+Class: Gym Leader
+Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15162,8 +15162,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_FLANNERY_2 ===
 Name: FLANNERY
-Class: Leader
-Pic: Leader Flannery
+Class: Gym Leader
+Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15208,8 +15208,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_FLANNERY_3 ===
 Name: FLANNERY
-Class: Leader
-Pic: Leader Flannery
+Class: Gym Leader
+Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15263,8 +15263,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_FLANNERY_4 ===
 Name: FLANNERY
-Class: Leader
-Pic: Leader Flannery
+Class: Gym Leader
+Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15317,8 +15317,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_FLANNERY_5 ===
 Name: FLANNERY
-Class: Leader
-Pic: Leader Flannery
+Class: Gym Leader
+Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15380,8 +15380,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_NORMAN_2 ===
 Name: NORMAN
-Class: Leader
-Pic: Leader Norman
+Class: Gym Leader
+Pic: Gym Leader Norman
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15426,8 +15426,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_NORMAN_3 ===
 Name: NORMAN
-Class: Leader
-Pic: Leader Norman
+Class: Gym Leader
+Pic: Gym Leader Norman
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15481,8 +15481,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_NORMAN_4 ===
 Name: NORMAN
-Class: Leader
-Pic: Leader Norman
+Class: Gym Leader
+Pic: Gym Leader Norman
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15536,8 +15536,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_NORMAN_5 ===
 Name: NORMAN
-Class: Leader
-Pic: Leader Norman
+Class: Gym Leader
+Pic: Gym Leader Norman
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15598,8 +15598,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WINONA_2 ===
 Name: WINONA
-Class: Leader
-Pic: Leader Winona
+Class: Gym Leader
+Pic: Gym Leader Winona
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15653,8 +15653,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WINONA_3 ===
 Name: WINONA
-Class: Leader
-Pic: Leader Winona
+Class: Gym Leader
+Pic: Gym Leader Winona
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15717,8 +15717,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WINONA_4 ===
 Name: WINONA
-Class: Leader
-Pic: Leader Winona
+Class: Gym Leader
+Pic: Gym Leader Winona
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15780,8 +15780,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WINONA_5 ===
 Name: WINONA
-Class: Leader
-Pic: Leader Winona
+Class: Gym Leader
+Pic: Gym Leader Winona
 Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15843,8 +15843,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_TATE_AND_LIZA_2 ===
 Name: TATE&LIZA
-Class: Leader
-Pic: Leader Tate And Liza
+Class: Gym Leader
+Pic: Gym Leader Tate And Liza
 Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15898,8 +15898,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_TATE_AND_LIZA_3 ===
 Name: TATE&LIZA
-Class: Leader
-Pic: Leader Tate And Liza
+Class: Gym Leader
+Pic: Gym Leader Tate And Liza
 Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -15962,8 +15962,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_TATE_AND_LIZA_4 ===
 Name: TATE&LIZA
-Class: Leader
-Pic: Leader Tate And Liza
+Class: Gym Leader
+Pic: Gym Leader Tate And Liza
 Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -16024,8 +16024,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_TATE_AND_LIZA_5 ===
 Name: TATE&LIZA
-Class: Leader
-Pic: Leader Tate And Liza
+Class: Gym Leader
+Pic: Gym Leader Tate And Liza
 Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
@@ -16087,8 +16087,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_JUAN_2 ===
 Name: JUAN
-Class: Leader
-Pic: Leader Juan
+Class: Gym Leader
+Pic: Gym Leader Juan
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -16142,8 +16142,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_JUAN_3 ===
 Name: JUAN
-Class: Leader
-Pic: Leader Juan
+Class: Gym Leader
+Pic: Gym Leader Juan
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -16196,8 +16196,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_JUAN_4 ===
 Name: JUAN
-Class: Leader
-Pic: Leader Juan
+Class: Gym Leader
+Pic: Gym Leader Juan
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -16260,8 +16260,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_JUAN_5 ===
 Name: JUAN
-Class: Leader
-Pic: Leader Juan
+Class: Gym Leader
+Pic: Gym Leader Juan
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore

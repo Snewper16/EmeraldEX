@@ -993,8 +993,7 @@
 #define FLAG_MYSTERY_GIFT_14     0x3E6
 #define FLAG_MYSTERY_GIFT_15     0x3E7
 
-#define FLAG_HIDDEN_ITEMS_START 1000 // 0x3E8
-
+#define FLAG_HIDDEN_ITEMS_START                                                         			 0x3E8
 #define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_POTION                            (FLAG_HIDDEN_ITEMS_START +   0)
 #define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_ANTIDOTE                          (FLAG_HIDDEN_ITEMS_START +   1)
 #define FLAG_HIDDEN_ITEM_MT_MOON_B2F_MOON_STONE                            (FLAG_HIDDEN_ITEMS_START +   2)

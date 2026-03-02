@@ -7321,12 +7321,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #endif //P_FAMILY_SPINDA
 
 #if P_FAMILY_TRAPINCH
-#if P_UPDATED_EGG_GROUPS >= GEN_8
-    #define TRAPINCH_FAMILY_EGG_GROUPS MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON)
-#else
-    #define TRAPINCH_FAMILY_EGG_GROUPS MON_EGG_GROUPS(EGG_GROUP_BUG)
-#endif
-
     [SPECIES_TRAPINCH] =
     {
         .baseHP        = 45,
@@ -7344,7 +7338,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = TRAPINCH_FAMILY_EGG_GROUPS,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON),
         .abilities = { ABILITY_HYPER_CUTTER, ABILITY_ARENA_TRAP, ABILITY_SHEER_FORCE },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Trapinch"),
@@ -7416,13 +7410,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-    #if P_UPDATED_EGG_GROUPS >= GEN_8
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON),
-    #else
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-    #endif
         .abilities = { ABILITY_LEVITATE, ABILITY_SAND_RUSH, ABILITY_SAND_FORCE },
-        .eggGroups = TRAPINCH_FAMILY_EGG_GROUPS,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON),
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Vibrava"),
         .cryId = CRY_VIBRAVA,
@@ -7500,13 +7489,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-    #if P_UPDATED_EGG_GROUPS >= GEN_8
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON),
-    #else
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-    #endif
         .abilities = { ABILITY_LEVITATE, ABILITY_SAND_RUSH, ABILITY_SAND_FORCE },
-        .eggGroups = TRAPINCH_FAMILY_EGG_GROUPS,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_DRAGON),
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Flygon"),
         .cryId = CRY_FLYGON,

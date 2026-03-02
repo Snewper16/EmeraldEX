@@ -257,9 +257,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
-    [BATTLE_ENVIRONMENT_LEADER] =
+    [BATTLE_ENVIRONMENT_GYM_LEADER] =
     {
-        .name = _("Leader"),
+        .name = _("Gym Leader"),
         .secretPowerAnimation = BUILDING_SECRET_POWER_ANIMATION,
         .secretPowerEffect = BUILDING_SECRET_POWER_EFFECT,
         .camouflageType = BUILDING_CAMOUFLAGE_TYPE,

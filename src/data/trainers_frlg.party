@@ -5024,7 +5024,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_LEADER_GIOVANNI ===
 Name: GIOVANNI
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Giovanni Frlg
 Gender: Male
 Music: Aqua
@@ -7036,7 +7036,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_LEADER_BROCK ===
 Name: BROCK
-Class: Leader Frlg
+Class: Gym Gym Leader Frlg
 Pic: Leader Brock Frlg
 Gender: Male
 Music: Male
@@ -7058,7 +7058,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_MISTY ===
 Name: MISTY
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Misty Frlg
 Gender: Male
 Music: Female
@@ -7084,7 +7084,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_LT_SURGE ===
 Name: LT. SURGE
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Lt Surge Frlg
 Gender: Male
 Music: Male
@@ -7118,7 +7118,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_ERIKA ===
 Name: ERIKA
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Erika Frlg
 Gender: Male
 Music: Female
@@ -7152,7 +7152,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_KOGA ===
 Name: KOGA
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Koga Frlg
 Gender: Male
 Music: Male
@@ -7194,7 +7194,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_BLAINE ===
 Name: BLAINE
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Blaine Frlg
 Gender: Male
 Music: Male
@@ -7236,7 +7236,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEADER_SABRINA ===
 Name: SABRINA
-Class: Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Sabrina Frlg
 Gender: Male
 Music: Female

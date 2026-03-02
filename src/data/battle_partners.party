@@ -2,7 +2,6 @@
 Name:
 Class: Pkmn Trainer 1
 Pic: Brendan
-Gender: Male
 Music: Male
 Back Pic: Brendan
 
@@ -10,7 +9,6 @@ Back Pic: Brendan
 Name: STEVEN
 Class: Rival
 Pic: Steven
-Gender: Male
 Music: Male
 Back Pic: Steven
 AI: Basic Trainer

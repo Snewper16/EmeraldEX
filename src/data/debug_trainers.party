@@ -12,9 +12,9 @@ Start Debug Battle action is selected.
 */
 
 === DEBUG_TRAINER_PLAYER ===
-Name: Connor
-Class: Pkmn Trainer 1
-Pic: Brendan
+Name: CONNOR
+Class: RS Protag
+Pic: RS Brendan
 Gender: Male
 Music: Male
 
@@ -29,7 +29,7 @@ EVs: 252 HP / 252 Atk / 6 Spe
 - Slash
 
 === DEBUG_TRAINER_AI ===
-Name: Maxie
+Name: MAXIE
 AI: Basic Trainer
 Class: Magma Boss
 Battle Type: Singles
