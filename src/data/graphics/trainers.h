@@ -309,6 +309,7 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pic
 const struct TrainerSprite gTrainerSprites[] =
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     TRAINER_SPRITE(TRAINER_PIC_FRONT_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_AQUA_GRUNT_M, gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_POKEMON_BREEDER_F, gTrainerFrontPic_PokemonBreederF, gTrainerPalette_PokemonBreederF),
@@ -465,6 +466,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LADY_FRLG, gTrainerFrontPic_LadyFrlg, gTrainerPalette_LadyFrlg),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_PAINTER_FRLG, gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
 =======
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
     TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
     TRAINER_SPRITE(TRAINER_PIC_AQUA_GRUNT_M, gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_BREEDER_F, gTrainerFrontPic_PokemonBreederF, gTrainerPalette_PokemonBreederF),
@@ -558,6 +561,9 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_LEAF, gTrainerFrontPic_Leaf, gTrainerPalette_Leaf),
     TRAINER_SPRITE(TRAINER_PIC_RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, gTrainerPalette_RubySapphireBrendan),
     TRAINER_SPRITE(TRAINER_PIC_RS_MAY, gTrainerFrontPic_RubySapphireMay, gTrainerPalette_RubySapphireMay),
+<<<<<<< HEAD
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
+=======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 };
 

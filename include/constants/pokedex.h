@@ -1505,6 +1505,7 @@ enum HoennDexOrder
 	HOENN_DEX_LUGIA,
 	HOENN_DEX_HO_OH,
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
 
 // Kanto Pokedex order
@@ -1706,6 +1707,13 @@ enum KantoDexOrder
 #define HOENN_DEX_COUNT (HOENN_DEX_HO_OH + 1)
 
 #define REGIONAL_DEX_COUNT (IS_FRLG ? KANTO_DEX_COUNT : HOENN_DEX_COUNT)
+=======
+	HOENN_DEX_MEWTWO,
+	HOENN_DEX_MEW,
+};
+
+#define HOENN_DEX_COUNT (HOENN_DEX_MEW + 1)
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
 	HOENN_DEX_MEWTWO,
 	HOENN_DEX_MEW,

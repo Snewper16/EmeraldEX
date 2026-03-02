@@ -34,6 +34,7 @@
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "gMapGroup_IndoorRoute124",
     "gMapGroup_Link",
     "gMapGroup_Dungeons_FRLG",
@@ -76,6 +77,9 @@
     "gMapGroup_IndoorTwoIslandRoute",
     "gMapGroup_IndoorSixIslandRoute",
     "gMapGroup_IndoorSevenIslandRoute"
+=======
+    "gMapGroup_IndoorRoute124"
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
     "gMapGroup_IndoorRoute124"
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
@@ -669,6 +673,7 @@
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
 <<<<<<< HEAD
+<<<<<<< HEAD
   ],
   "gMapGroup_Link": [],
   "gMapGroup_Dungeons_FRLG": [
@@ -1169,6 +1174,8 @@
     "RecordCorner_FRLG",
     "BattleColosseum_4P_FRLG",
     "UnionRoom_FRLG"
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
   ]

@@ -16,6 +16,7 @@
 #define TRAINER_UNION_ROOM                  3072
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum __attribute__((packed)) TrainerPicID
 {
     TRAINER_PIC_FRONT_HIKER,
@@ -188,6 +189,8 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_BACK_COUNT = (TRAINER_PIC_COUNT - TRAINER_PIC_FRONT_COUNT),
 };
 =======
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 #define TRAINER_PIC_HIKER                  0
 #define TRAINER_PIC_AQUA_GRUNT_M           1
 #define TRAINER_PIC_POKEMON_BREEDER_F      2
@@ -282,6 +285,9 @@ enum __attribute__((packed)) TrainerPicID
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
 #define TRAINER_PIC_COUNT                 93
+<<<<<<< HEAD
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
+=======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
@@ -528,6 +534,7 @@ enum TrainerClassID
     TRAINER_CLASS_PYRAMID_KING,
     TRAINER_CLASS_RS_PROTAG,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     TRAINER_CLASS_YOUNGSTER_FRLG,
     TRAINER_CLASS_BUG_CATCHER_FRLG,
@@ -580,6 +587,8 @@ enum TrainerClassID
     TRAINER_CLASS_LADY_FRLG,
     TRAINER_CLASS_PAINTER_FRLG,
 
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
     TRAINER_CLASS_COUNT,

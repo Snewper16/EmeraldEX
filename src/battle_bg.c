@@ -1076,7 +1076,11 @@ void DrawBattleEntryBackground(void)
         {
             enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (trainerClass == TRAINER_CLASS_GYM_LEADER || trainerClass == TRAINER_CLASS_CHAMPION)
+=======
+            if (trainerClass == TRAINER_CLASS_LEADER)
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
             if (trainerClass == TRAINER_CLASS_LEADER)
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)

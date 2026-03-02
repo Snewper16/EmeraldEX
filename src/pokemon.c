@@ -122,6 +122,7 @@ static const struct CombinedMove sCombinedMoves[2] =
 #define HOENN_TO_NATIONAL(name)     [HOENN_DEX_##name - 1] = NATIONAL_DEX_##name
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static const enum NationalDexOrder sKantoToNationalOrder[KANTO_DEX_COUNT] =
 {
@@ -317,6 +318,8 @@ static const enum NationalDexOrder sKantoToNationalOrder[KANTO_DEX_COUNT] =
 };
 
 
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 // Assigns all Hoenn Dex Indexes to a National Dex Index
@@ -6479,11 +6482,14 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
 <<<<<<< HEAD
+<<<<<<< HEAD
         case TRAINER_CLASS_CHAMPION_FRLG:
             return MUS_RG_VS_CHAMPION;
         case TRAINER_CLASS_GYM_LEADER_FRLG:
         case TRAINER_CLASS_ELITE_FOUR_FRLG:
             return MUS_RG_VS_GYM_LEADER;
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
         case TRAINER_CLASS_SALON_MAIDEN:

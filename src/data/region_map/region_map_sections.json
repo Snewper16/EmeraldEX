@@ -738,6 +738,7 @@
     {
       "id": "MAPSEC_ROUTE_4_POKECENTER",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "name": "ROUTE 4",
       "x": 8,
       "y": 3,
@@ -751,6 +752,13 @@
       "y": 3,
       "width": 1,
       "height": 1
+=======
+      "name": "ROUTE 4"
+    },
+    {
+      "id": "MAPSEC_ROUTE_10_POKECENTER",
+      "name": "ROUTE 10"
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
       "name": "ROUTE 4"
     },
@@ -878,11 +886,15 @@
     {
       "id": "MAPSEC_UNDERGROUND_PATH_2",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "name": "UNDERGROUND PATH",
       "x": 12,
       "y": 6,
       "width": 1,
       "height": 1
+=======
+      "name": "UNDERGROUND PATH"
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
       "name": "UNDERGROUND PATH"
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
@@ -1082,11 +1094,15 @@
     {
       "id": "MAPSEC_TRAINER_TOWER_2",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "name": "TRAINER TOWER",
       "x": 5,
       "y": 6,
       "width": 1,
       "height": 1
+=======
+      "name": "TRAINER TOWER"
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 =======
       "name": "TRAINER TOWER"
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)

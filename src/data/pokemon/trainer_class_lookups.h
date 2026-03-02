@@ -1,6 +1,7 @@
 const u16 gFacilityClassToPicIndex[] =
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     [FACILITY_CLASS_HIKER] = TRAINER_PIC_FRONT_HIKER,
     [FACILITY_CLASS_AQUA_GRUNT_M] = TRAINER_PIC_FRONT_AQUA_GRUNT_M,
     [FACILITY_CLASS_PKMN_BREEDER_F] = TRAINER_PIC_FRONT_POKEMON_BREEDER_F,
@@ -121,6 +122,8 @@ const u16 gFacilityClassToPicIndex[] =
     [FACILITY_CLASS_BEAUTY_FRLG]        = TRAINER_PIC_FRONT_BEAUTY_FRLG,
     [FACILITY_CLASS_LASS_FRLG]          = TRAINER_PIC_FRONT_LASS_FRLG,
 =======
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
     [FACILITY_CLASS_HIKER] = TRAINER_PIC_HIKER,
     [FACILITY_CLASS_AQUA_GRUNT_M] = TRAINER_PIC_AQUA_GRUNT_M,
     [FACILITY_CLASS_PKMN_BREEDER_F] = TRAINER_PIC_POKEMON_BREEDER_F,
@@ -203,6 +206,9 @@ const u16 gFacilityClassToPicIndex[] =
     [FACILITY_CLASS_LEAF] = TRAINER_PIC_LEAF,
     [FACILITY_CLASS_RS_BRENDAN] = TRAINER_PIC_RS_BRENDAN,
     [FACILITY_CLASS_RS_MAY] = TRAINER_PIC_RS_MAY,
+<<<<<<< HEAD
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
+=======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 };
 

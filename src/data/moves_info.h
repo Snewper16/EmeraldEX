@@ -1584,6 +1584,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_BOTH,
 =======
         .target = MOVE_TARGET_BOTH,
+<<<<<<< HEAD
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
+=======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,

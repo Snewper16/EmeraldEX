@@ -199,6 +199,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
     [BATTLE_ENVIRONMENT_GYM_LEADER] =
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         .name = _("Gym Leader"),
         .secretPowerAnimation = BUILDING_SECRET_POWER_ANIMATION,
         .secretPowerEffect = BUILDING_SECRET_POWER_EFFECT,
@@ -209,6 +210,8 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .palette = gBattleEnvironmentPalette_BuildingLeader,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
 =======
+=======
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
         .background =
         {
             .tileset = gBattleEnvironmentTiles_Building,
@@ -217,6 +220,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
             .entryTilemap = gBattleEnvironmentAnimTilemap_Building,
             .palette = gBattleEnvironmentPalette_BuildingLeader,
         },
+<<<<<<< HEAD
+>>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
+=======
 >>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
     },
 
