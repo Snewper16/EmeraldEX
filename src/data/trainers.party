@@ -18,7 +18,7 @@ Optional (but still recommended) fields for trainers:
     - Class (if not specified, PkMn Trainer will be used)
     - Gender (Male/Female, affects random gender weights of party if not specified)
     - Music
-    - Items (Some Item / Another Item / Third Item)
+    - Items (Some Item / Another Item / Third Items)
             (Can also be specified with ITEM_SOME_ITEM)
     - Double Battle (Yes/No, defaults to No)
     - AI (Ai Flag / Another Flag / Third Flag / ...
@@ -639,7 +639,7 @@ Class: Aqua Boss
 Pic: Aqua Boss Archie
 Gender: Male
 Music: Aqua
-Items: Super Potion / Super Potion
+Items: Hyper Potion / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -679,7 +679,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Brine
 - Dragon Pulse
 
-Sharpedo
+Sharpedo @ Sharpedonite
 Level: 43
 Ability: Rough Skin
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
@@ -4751,7 +4751,7 @@ Class: Elite Four
 Pic: Elite Four Sidney
 Gender: Male
 Music: Elite Four
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability / Check Viability
 Mugshot: Purple
@@ -4792,7 +4792,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Air Slash
 - Thunder Wave
 
-Absol @ Sitrus Berry
+Absol @ Absolite Z
 Level: 49
 Ability: Pressure
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -4807,7 +4807,7 @@ Class: Elite Four
 Pic: Elite Four Phoebe
 Gender: Female
 Music: Elite Four
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Green
@@ -4830,15 +4830,6 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Energy Ball
 - Dark Pulse
 
-Sableye
-Ability: Prankster
-Level: 50
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Claw
-- Double Team
-- Confuse Ray
-- Feint Attack
-
 Banette
 Level: 49
 Ability: Cursed Body
@@ -4848,8 +4839,8 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Thunderbolt
 - Dark Pulse
 
-Dusknoir @ Leftovers
-Level: 51
+Dusknoir
+Level: 50
 Ability: Pressure
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Punch
@@ -4857,13 +4848,22 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
 - Earthquake
 
+Sableye @ Sablenite
+Ability: Prankster
+Level: 51
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Shadow Sneak
+- Swords Dance
+- Toxic
+- Protect
+
 === TRAINER_GLACIA ===
 Name: GLACIA
 Class: Elite Four
 Pic: Elite Four Glacia
 Gender: Female
 Music: Elite Four
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Pink
@@ -4886,14 +4886,14 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Metal Claw
 - Protect
 
-Froslass
+Walrein
 Level: 52
-Ability: Cursed Body
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Attract
-- Shadow Ball
-- Hail
-- Blizzard
+Ability: Ice Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dive
+- Earthquake
+- Ice Fang
+- Iron Head
 
 Glalie
 Level: 52
@@ -4904,14 +4904,14 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Hail
 - Ice Beam
 
-Walrein @ Power Herb
+Froslass @ Froslassite
 Level: 53
-Ability: Ice Body
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dive
-- Earthquake
-- Ice Fang
-- Iron Head
+Ability: Cursed Body
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Attract
+- Shadow Ball
+- Hail
+- Blizzard
 
 === TRAINER_DRAKE ===
 Name: DRAKE
@@ -4919,7 +4919,7 @@ Class: Elite Four
 Pic: Elite Four Drake
 Gender: Male
 Music: Elite Four
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Blue
@@ -4960,7 +4960,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Dragon Claw
 - Earthquake
 
-Salamence @ Expert Belt
+Salamence @ Salamencite
 Level: 55
 Ability: Intimidate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -5173,7 +5173,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Headbutt
 
 Slaking @ Sitrus Berry
-Level: 31
+Level: 34
 Ability: Truant
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Counter
@@ -5192,7 +5192,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability / Risky
 
 Staravia
-Level: 29
+Level: 32
 Ability: Intimidate
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Quick Attack
@@ -5201,7 +5201,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Aerial Ace
 
 Fletchinder
-Level: 29
+Level: 32
 Ability: Gale Wings
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Sunny Day
@@ -5210,7 +5210,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Quick Attack
 
 Corvisquire
-Level: 30
+Level: 32
 Ability: Big Pecks
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Steel Wing
@@ -5219,7 +5219,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Aerial Ace
 
 Gliscor
-Level: 31
+Level: 35
 Ability: Poison Heal
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Fire Fang
@@ -5228,7 +5228,7 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Aerial Ace
 
 Altaria @ Oran Berry
-Level: 33
+Level: 38
 Ability: Cloud Nine
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
@@ -5288,12 +5288,21 @@ Class: Gym Leader
 Pic: Gym Leader Juan
 Gender: Male
 Music: Male
-Items: Hyper Potion / Hyper Potion
+Items: Hyper Potion / Hyper Potion / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
+Toxapex
+Level: 45
+Ability: Merciless
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Pulse
+- Baneful Bunker
+- Taunt
+- Venoshock
+
 Walrein
-Level: 41
+Level: 43
 Ability: Thick Fat
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Waterfall
@@ -5302,31 +5311,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Crunch
 
 Samurott-Hisui
-Level: 41
+Level: 43
 Ability: Sharpness
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Razor Shell
 - Night Slash
 - Fury Cutter
 - Slash
-
-Golisopod
-Level: 43
-Ability: Emergency Exit
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- First Impression
-- Aqua Jet
-- Brick Break
-- Slash
-
-Toxapex
-Level: 43
-Ability: Merciless
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Baneful Bunker
-- Taunt
-- Venoshock
 
 Kingdra @ Chesto Berry
 Level: 46
@@ -5336,6 +5327,15 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Dragon Pulse
 - Ice Beam
 - Rest
+
+Golisopod @ Golisopite
+Level: 49
+Ability: Emergency Exit
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- First Impression
+- Aqua Jet
+- Brick Break
+- Slash
 
 === TRAINER_JERRY_1 ===
 Name: JERRY
@@ -6414,7 +6414,7 @@ Class: Champion
 Pic: Champion Wallace
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore  / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Blue
@@ -6437,15 +6437,6 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Play Rough
 - Aqua Ring
 
-Basculegion @ Power Herb
-Level: 56
-Ability : Mold Breaker
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Wave Crash
-- Phantom Force
-- Aqua Jet
-- Headbutt
-
 Whiscash @ Rindo Berry
 Level: 56
 Ability: Oblivious
@@ -6456,7 +6447,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Double Team
 
 Milotic @ Flame Orb
-Level: 58
+Level: 57
 Ability: Marvel Scale
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aqua Ring
@@ -6465,13 +6456,22 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
 
 Ogerpon-Wellspring @ Wellspring Mask
-Level: 60
+Level: 58
 Ability: Water Absorb
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ivy Cudgel
 - Horn Leech
 - Play Rough
 - Spiky Shield
+
+Starmie @ Starminite
+Level: 60
+Ability : Natural Cure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Wave Crash
+- Zen Headbutt
+- Drain Punch
+- Recover
 
 === TRAINER_ANDREW ===
 Name: ANDREW
@@ -9644,7 +9644,7 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -9684,7 +9684,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Wild Charge
 - Screech
 
-Gallade
+Gallade @ Galladite
 Level: 45
 Ability: Sharpness
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
@@ -11261,7 +11261,7 @@ Class: Magma Boss
 Pic: Magma Boss Maxie
 Gender: Male
 Music: Magma
-Items: Super Potion / Super Potion
+Items: Super Potion / Super Potion / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -11302,7 +11302,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Bulldoze
 - Dragon Tail
 
-Camerupt
+Camerupt @ Cameruptite
 Level: 40
 Ability: Magma Armor
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
@@ -12361,12 +12361,13 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Zoroark-Hisui
 Level: 47
+Ability: Illusion
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Focus Blast
 - Hyper Voice
@@ -12375,6 +12376,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Noivern
 Level: 46
+Ability: Infiltrator
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Dragon Pulse
 - Boomburst
@@ -12383,6 +12385,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Roserade
 Level: 47
+Ability: Natural Cure
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Toxic
 - Giga Drain
@@ -12391,14 +12394,16 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Klinklang
 Level: 44
+Ability: Clear Body
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Gear Grind
 - Shift Gear
 - Wild Charge
 - Screech
 
-Gallade
+Gallade @ Galladite
 Level: 48
+Ability: Sharpness
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psycho Cut
 - Night Slash
@@ -12411,12 +12416,13 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Zoroark-Hisui
 Level: 50
+Ability: Illusion
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Focus Blast
 - Hyper Voice
@@ -12425,6 +12431,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Noivern
 Level: 49
+Ability: Infiltrator
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Dragon Pulse
 - Boomburst
@@ -12433,6 +12440,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Roserade
 Level: 50
+Ability: Natural Cure
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Toxic Spikes
 - Giga Drain
@@ -12441,13 +12449,14 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Klinklang
 Level: 47
+Ability: Clear Body
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Gear Grind
 - Shift Gear
 - Wild Charge
 - Screech
 
-Gallade
+Gallade @ Galladite
 Level: 51
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psycho Cut
@@ -12461,12 +12470,13 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Zoroark-Hisui
 Level: 53
+Ability: Illusion
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Focus Blast
 - Hyper Voice
@@ -12475,6 +12485,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Aegislash
 Level: 52
+Ability: Stance Change
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Kings Shield
 - Shadow Sneak
@@ -12483,6 +12494,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Roserade
 Level: 53
+Ability: Natural Cure
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Toxic Spikes
 - Giga Drain
@@ -12491,14 +12503,16 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Arcanine-Hisui
 Level: 50
+Ability: Rock Head
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Wild Charge
 - Flare Blitz
 - Head Smash
 - Roar
 
-Gallade
+Gallade @ Galladite
 Level: 54
+Ability: Sharpness
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psycho Cut
 - Sacred Sword
@@ -12511,52 +12525,58 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore  / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Zoroark-Hisui
+Zoroark-Hisui @ Focus Sash
 Level: 56
+Ability: Illusion
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Focus Blast
 - Hyper Voice
 - Shadow Ball
 - Nasty Plot
 
-Aegislash
+Aegislash @ Air Balloon
 Level: 55
+Ability: Stance Change
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Kings Shield
 - Shadow Sneak
 - Iron Head
 - Sacred Sword
 
-Roserade
+Roserade @ Big Root
 Level: 56
+Ability: Natural Cure
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Toxic Spikes
 - Giga Drain
 - Sludge Bomb
 - Dazzling Gleam
 
-Arcanine-Hisui
+Arcanine-Hisui @ Shuca Berry
 Level: 53
+Ability: Rock Head
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Wild Charge
 - Flare Blitz
 - Head Smash
 - Roar
 
-Gallade
-Level: 57
+Gallade @ Galladite
+Level: 60
+Ability: Sharpness
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psycho Cut
 - Sacred Sword
 - Aqua Cutter
 - Leaf Blade
 
-Manaphy
+Manaphy @ Leftovers 
 Level: 60
+Ability: Water Veil
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Tail Glow
 - Hydro Pump
@@ -12569,12 +12589,9 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Pawmot
 Level: 32
@@ -12586,6 +12603,10 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Araquanid
 Level: 34
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
+Skarmory @ Skarmorite
+Level: 36
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Meowscarada
@@ -12598,12 +12619,9 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Pawmot
 Level: 32
@@ -12617,6 +12635,10 @@ Araquanid
 Level: 34
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Skarmory @ Skarmorite
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
 Cinderace
 Level: 36
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
@@ -12627,12 +12649,9 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Pawmot
 Level: 32
@@ -12646,6 +12665,10 @@ Armarouge
 Level: 34
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Skarmory @ Skarmorite
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
 Greninja
 Level: 36
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
@@ -12656,12 +12679,9 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Porygon-Z
 Level: 32
@@ -12675,6 +12695,10 @@ Golisopod
 Level: 34
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Skarmory @ Skarmorite
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
 Meowscarada
 Level: 36
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
@@ -12685,12 +12709,9 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Porygon-Z
 Level: 32
@@ -12704,6 +12725,10 @@ Parasect
 Level: 34
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Skarmory @ Skarmorite
+Level: 36
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
 Cinderace
 Level: 36
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
@@ -12714,12 +12739,9 @@ Class: Rival
 Pic: May
 Gender: Female
 Music: Female
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Skarmory
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Porygon-Z
 Level: 32
@@ -12731,6 +12753,10 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Ceruledge
 Level: 34
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
+Skarmory @ Skarmorite
+Level: 36
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Greninja
@@ -13878,6 +13904,7 @@ Class: Magma Boss
 Pic: Magma Boss Maxie
 Gender: Male
 Music: Magma
+Items: Hyper Potion / Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -13897,7 +13924,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Fire Punch
 - Iron Tail
 
-Camerupt
+Camerupt @ Cameruptite
 Level: 44
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Focus Energy
@@ -14674,7 +14701,7 @@ Class: Gym Leader
 Pic: Gym Leader Roxanne
 Gender: Female
 Music: Female
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -14723,7 +14750,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Protect
 - Stone Edge
 
-Diancie @ Focus Sash
+Diancie @ Diancite
 Level: 52
 Ability: Clear Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -14885,21 +14912,12 @@ Class: Gym Leader
 Pic: Gym Leader Brawly
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Crabominable @ Expert Belt
-Level: 46
-Ability: Anger Point
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Liquidation
-- Ice Punch
-- Close Combat
-- Zen Headbutt
-
 Hawlucha @ Sitrus Berry
-Level: 48
+Level: 46
 Ability: Unburden
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Flying Press
@@ -14940,6 +14958,15 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Spectral Thief
 - Drain Punch
 - Iron Head
+- Zen Headbutt
+
+Crabominable @ Crabominite
+Level: 52
+Ability: Anger Point
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Liquidation
+- Ice Punch
+- Close Combat
 - Zen Headbutt
 
 === TRAINER_WATTSON_2 ===
@@ -15104,7 +15131,7 @@ Class: Gym Leader
 Pic: Gym Leader Wattson
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -15144,8 +15171,8 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder
 - Rain Dance
 
-Manectric @ Focus Sash
-Level: 54
+Manectric @ Manectite
+Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Roar
 - Charge Beam
@@ -15321,9 +15348,18 @@ Class: Gym Leader
 Pic: Gym Leader Flannery
 Gender: Female
 Music: Female
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
+
+Torkoal @ Heat Rock
+Level: 53
+Ability: Drought
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Fire Blast
+- Iron Defense
+- Clear Smog
+- Solar Beam
 
 Tauros-Paldea-Blaze @ Assault Vest
 Level: 53
@@ -15352,23 +15388,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Energy Ball
 - Dark Pulse
 
-Camerupt @ Passho Berry
-Level: 54
+Camerupt @ Cameruptite
+Level: 55
 Ability: Magma Armor
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Earth Power
 - Flash Cannon
 - Attract
-
-Torkoal @ Heat Rock
-Level: 55
-Ability: Drought
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fire Blast
-- Iron Defense
-- Clear Smog
-- Solar Beam
 
 Volcanion @ Leftovers
 Level: 56
@@ -15540,7 +15567,7 @@ Class: Gym Leader
 Pic: Gym Leader Norman
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -15561,15 +15588,6 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Heavy Slam
 - High Horsepower
 
-Linoone @ Sitrus Berry
-Level: 57
-Ability: Gluttony
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Belly Drum
-- Quick Attack
-- Shadow Claw
-- Iron Tail
-
 Spinda @ Quick Claw
 Level: 58
 Ability: Contrary
@@ -15580,7 +15598,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Baton Pass
 
 Slaking @ Assault Vest
-Level: 60
+Level: 58
 Ability: Truant
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Giga Impact
@@ -15588,8 +15606,17 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder Punch
 - Shadow Claw
 
+Kangaskhan @ Kangaskhanite
+Level: 60
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dizzy Punch
+- Iron Tail
+- Earthquake
+- Outrage
+
 Meloetta @ Focus Sash
-Level: 57
+Level: 60
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Relic Song
 - Play Rough
@@ -15784,7 +15811,7 @@ Class: Gym Leader
 Pic: Gym Leader Winona
 Gender: Female
 Music: Female
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability / Risky
 
@@ -15824,7 +15851,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Cross Poison
 - Fire Fang
 
-Altaria @ Yache Berry
+Altaria @ Altarianite
 Level: 60
 Ability: Cloud Nine
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -15846,7 +15873,7 @@ Name: TATE&LIZA
 Class: Gym Leader
 Pic: Gym Leader Tate And Liza
 Gender: Male
-Music: Female
+Music: Twins
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
@@ -15901,7 +15928,7 @@ Name: TATE&LIZA
 Class: Gym Leader
 Pic: Gym Leader Tate And Liza
 Gender: Male
-Music: Female
+Music: Twins
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
@@ -15965,7 +15992,7 @@ Name: TATE&LIZA
 Class: Gym Leader
 Pic: Gym Leader Tate And Liza
 Gender: Male
-Music: Female
+Music: Twins
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
@@ -16027,30 +16054,13 @@ Name: TATE&LIZA
 Class: Gym Leader
 Pic: Gym Leader Tate And Liza
 Gender: Male
-Music: Female
-Items: Full Restore / Full Restore / Full Restore
+Music: Twins
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Gallade @ Expert Belt
-Level: 63
-Ability: Sharpness
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sacred Sword
-- Psycho Cut
-- Leaf Blade
-- Night Slash
-
-Gardevoir @ Wise Glasses
-Level: 63
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Future Sight
-- Moonblast
-- Shadow Ball
-- Dark Pulse
-
 Lunatone @ Sitrus Berry
-Level: 64
+Level: 63
 Ability: Levitate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Power Gem
@@ -16059,13 +16069,30 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Calm Mind
 
 Solrock @ Chesto Berry
-Level: 64
+Level: 63
 Ability: Levitate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Flare Blitz
 - Stone Edge
 - Zen Headbutt
 - Rest
+
+Gallade @ Galladite
+Level: 64
+Ability: Sharpness
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Night Slash
+
+Gardevoir @ Gardevoirite
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Future Sight
+- Moonblast
+- Shadow Ball
+- Dark Pulse
 
 Solgaleo @ Leftovers
 Level: 65
@@ -16091,18 +16118,9 @@ Class: Gym Leader
 Pic: Gym Leader Juan
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Golisopod
-Level: 46
-Ability: Emergency Exit
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- First Impression
-- Razor Shell
-- Slash
-- Fury Cutter
 
 Toxapex
 Level: 46
@@ -16140,24 +16158,24 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Smokescreen
 
-=== TRAINER_JUAN_3 ===
-Name: JUAN
-Class: Gym Leader
-Pic: Gym Leader Juan
-Gender: Male
-Music: Male
-Items: Full Restore / Full Restore / Full Restore
-Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
-
-Golisopod
-Level: 50
+Golisopod @ Golisopite
+Level: 53
 Ability: Emergency Exit
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - First Impression
 - Razor Shell
 - Slash
 - Fury Cutter
+
+=== TRAINER_JUAN_3 ===
+Name: JUAN
+Class: Gym Leader
+Pic: Gym Leader Juan
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
 
 Toxapex
 Level: 51
@@ -16194,27 +16212,27 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Smokescreen
 
+Golisopod @ Golisopite
+Level: 58
+Ability: Emergency Exit
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- First Impression
+- Razor Shell
+- Night Slash
+- Fury Cutter
+
 === TRAINER_JUAN_4 ===
 Name: JUAN
 Class: Gym Leader
 Pic: Gym Leader Juan
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Golisopod
-Level: 56
-Ability: Emergency Exit
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- First Impression
-- Aqua Jet
-- Fury Cutter
-- Slash
-
 Toxapex
-Level: 58
+Level: 56
 Ability: Merciless
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Baneful Bunker
@@ -16258,24 +16276,24 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Smokescreen
 
+Golisopod @ Golisopite
+Level: 63
+Ability: Emergency Exit
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- First Impression
+- Aqua Jet
+- Night Slash
+- Fury Cutter
+
 === TRAINER_JUAN_5 ===
 Name: JUAN
 Class: Gym Leader
 Pic: Gym Leader Juan
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore / Mega Ring
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
-
-Golisopod @ Focus Sash
-Level: 61
-Ability: Emergency Exit
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- First Impression
-- Aqua Jet
-- Fury Cutter
-- Slash
 
 Toxapex @ Black Sludge
 Level: 63
@@ -16305,13 +16323,22 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Slash
 
 Kingdra @ Scope Lens
-Level: 65
+Level: 64
 Ability: Sniper
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
 - Dragon Pulse
 - Ice Beam
 - Smokescreen
+
+Golisopod @ Golisopite
+Level: 65
+Ability: Emergency Exit
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- First Impression
+- Aqua Jet
+- Night Slash
+- Fury Cutter
 
 Suicune @ Assault Vest
 Level: 65
@@ -16363,7 +16390,7 @@ Class: Champion
 Pic: Steven
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore / Full Restore
+Items: Full Restore / Full Restore / Full Restore /  Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Purple
@@ -16413,7 +16440,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Meteor Mash
 - Shadow Ball
 
-Heatran @ Charti Berry
+Heatran @ Heatranite
 Level: 78
 Ability: Flame Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -16427,7 +16454,8 @@ Name: ANABEL
 Class: Salon Maiden
 Pic: Salon Maiden Anabel
 Gender: Female
-Music: Male
+Music: Female
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16441,6 +16469,7 @@ Class: Dome Ace
 Pic: Dome Ace Tucker
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16454,6 +16483,7 @@ Class: Palace Maven
 Pic: Palace Maven Spenser
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16466,7 +16496,8 @@ Name: GRETA
 Class: Arena Tycoon
 Pic: Arena Tycoon Greta
 Gender: Female
-Music: Male
+Music: Intense
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16480,6 +16511,7 @@ Class: Factory Head
 Pic: Factory Head Noland
 Gender: Male
 Music: Male
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16492,7 +16524,8 @@ Name: LUCY
 Class: Pike Queen
 Pic: Pike Queen Lucy
 Gender: Female
-Music: Male
+Music: Suspicious
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -16505,7 +16538,8 @@ Name: BRANDON
 Class: Pyramid King
 Pic: Pyramid King Brandon
 Gender: Male
-Music: Male
+Music: Cool
+Items: Mega Ring
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 

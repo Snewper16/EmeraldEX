@@ -31,8 +31,12 @@ LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs:
 	.2byte ITEM_TM_FIRE_FANG
 	.2byte ITEM_TM_THUNDER_FANG
 	.2byte ITEM_TM_ICE_FANG
+	.2byte ITEM_TM_FIRE_PUNCH
+	.2byte ITEM_TM_THUNDER_PUNCH
+	.2byte ITEM_TM_ICE_PUNCH
 	.2byte ITEM_TM_HYPER_BEAM
 	.2byte ITEM_TM_GIGA_IMPACT
+	.2byte ITEM_TM_TERA_BLAST
 	pokemartlistend
 
 LilycoveCity_DepartmentStore_4F_EventScript_ClerkRight::

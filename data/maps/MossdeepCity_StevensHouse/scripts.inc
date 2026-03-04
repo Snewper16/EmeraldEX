@@ -37,9 +37,12 @@ MossdeepCity_StevensHouse_EventScript_StevenGivesDive::
 	applymovement LOCALID_STEVENS_HOUSE_STEVEN, MossdeepCity_StevensHouse_Movement_StevenApproachPlayer
 	waitmovement 0
 	msgbox MossdeepCity_StevensHouse_Text_YouveEarnedHMDive, MSGBOX_DEFAULT
+	giveitem ITEM_MEGA_RING
+	setflag FLAG_RECEIVED_MEGA_RING
 	giveitem ITEM_HM_DIVE
 	setflag FLAG_RECEIVED_HM_DIVE
 	setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
+	msgbox MossdeepCity_StevensHouse_Text_ExplainMegaRing, MSGBOX_DEFAULT
 	msgbox MossdeepCity_StevensHouse_Text_ExplainDive, MSGBOX_DEFAULT
 	closemessage
 	delay 20
@@ -152,13 +155,18 @@ MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:
 	.string "As you can see, there's not much here,\n"
 	.string "but this is my home.\p"
 	.string "Thank you for all that you've done.\p"
-	.string "This is my token of appreciation.\n"
-	.string "It's the HIDDEN MACHINE DIVE.\p"
+	.string "These are a token of my appreciation.\n"
 	.string "No need to be shy--you've earned\n"
-	.string "this HM.$"
+	.string "these for your help.$"
+
+MossdeepCity_StevensHouse_Text_ExplainMegaRing:
+	.string "STEVEN: A ring with untold power...\n"
+	.string "That's what I was told when I was\n"
+	.string "given this ring, anyway. It's up to\n"
+	.string "you how to figure out how to use it.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive:
-	.string "STEVEN: While you're using SURF, you\n"
+	.string "Also, while you're using SURF, you\n"
 	.string "should notice dark patches of water.\p"
 	.string "Use DIVE if you come to deep water\n"
 	.string "like it. You'll drop to the seafloor.\p"

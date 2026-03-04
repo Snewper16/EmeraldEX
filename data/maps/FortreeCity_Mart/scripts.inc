@@ -33,10 +33,11 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_AIR_BALLOON
 	.2byte ITEM_TM_SHADOW_CLAW
 	.2byte ITEM_TM_EARTH_POWER
-	.2byte ITEM_TM_DAZZLING_GLEAM
-	.2byte ITEM_TM_PLAY_ROUGH
+	.2byte ITEM_TM_POWER_UP_PUNCH
+	.2byte ITEM_TM_DRILL_RUN
 	.2byte ITEM_TM_FLASH_CANNON
 	.2byte ITEM_TM_DARK_PULSE
+	
 	pokemartlistend
 
 FortreeCity_Mart_EventScript_Woman::

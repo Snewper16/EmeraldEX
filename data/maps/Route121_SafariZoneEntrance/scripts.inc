@@ -151,5 +151,12 @@ Route121_SafariZoneEntrance_Pokemart_SupplyGuy:
 	.2byte ITEM_COVERT_CLOAK
 	.2byte ITEM_CLEAR_AMULET
 	.2byte ITEM_FAIRY_FEATHER
+	.2byte ITEM_TM_SLUDGE_WAVE
+	.2byte ITEM_TM_U_TURN
+	.2byte ITEM_TM_KNOCK_OFF
+	.2byte ITEM_TM_LEAF_BLADE
+	.2byte ITEM_TM_INCINERATE	
+	.2byte ITEM_TM_RETALIATE
+	.2byte ITEM_TM_NIGHT_SLASH
 	pokemartlistend
 

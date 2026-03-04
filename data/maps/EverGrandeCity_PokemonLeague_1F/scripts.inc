@@ -75,6 +75,74 @@ EverGrandeCity_PokemonLeague_1F_Pokemart:
 	.2byte ITEM_DREAM_BALL
 	pokemartlistend
 
+EverGrandeCity_PokemonLeague_1F_EventScript_MegaClerk::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart EverGrandeCity_PokemonLeague_1F_MegaStoneMart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+EverGrandeCity_PokemonLeague_1F_MegaStoneMart:
+	.2byte ITEM_BEEDRILLITE
+	.2byte ITEM_RAICHUNITE_X
+	.2byte ITEM_RAICHUNITE_Y
+	.2byte ITEM_CLEFABLITE
+	.2byte ITEM_ALAKAZITE
+	.2byte ITEM_SLOWBRONITE
+	.2byte ITEM_STARMINITE
+	.2byte ITEM_PINSIRITE
+	.2byte ITEM_GYARADOSITE
+	.2byte ITEM_MEGANIUMITE
+	.2byte ITEM_FERALIGITE
+	.2byte ITEM_GYARADOSITE
+	.2byte ITEM_AMPHAROSITE
+	.2byte ITEM_STEELIXITE
+	.2byte ITEM_SCIZORITE
+	.2byte ITEM_HERACRONITE
+	.2byte ITEM_SKARMORITE
+	.2byte ITEM_HOUNDOOMINITE
+	.2byte ITEM_SCEPTILITE
+	.2byte ITEM_BLAZIKENITE
+	.2byte ITEM_SWAMPERTITE
+	.2byte ITEM_GARDEVOIRITE
+	.2byte ITEM_SABLENITE
+	.2byte ITEM_MAWILITE
+	.2byte ITEM_AGGRONITE
+	.2byte ITEM_MEDICHAMITE
+	.2byte ITEM_MANECTITE
+	.2byte ITEM_SHARPEDONITE
+	.2byte ITEM_CAMERUPTITE
+	.2byte ITEM_ALTARIANITE
+	.2byte ITEM_BANETTITE
+	.2byte ITEM_CHIMECHITE
+	.2byte ITEM_ABSOLITE
+	.2byte ITEM_ABSOLITE_Z
+	.2byte ITEM_GLALITITE
+	.2byte ITEM_SALAMENCITE
+	.2byte ITEM_METAGROSSITE
+	.2byte ITEM_STARAPTITE
+	.2byte ITEM_LUCARIONITE
+	.2byte ITEM_LUCARIONITE_Z
+	.2byte ITEM_GARCHOMPITE
+	.2byte ITEM_GARCHOMPITE_Z
+	.2byte ITEM_GALLADITE
+	.2byte ITEM_FROSLASSITE
+	.2byte ITEM_EMBOARITE
+	.2byte ITEM_EELEKTROSSITE
+	.2byte ITEM_CHANDELURITE
+	.2byte ITEM_GRENINJITE
+	.2byte ITEM_BARBARACITE
+	.2byte ITEM_GOLISOPITE
+	.2byte ITEM_DRAMPANITE
+	.2byte ITEM_FALINKSITE
+	.2byte ITEM_SCOVILLAINITE
+	.2byte ITEM_TATSUGIRINITE
+	pokemartlistend
+
 @ The door guards only check for FLAG_BADGE06_GET because Winonas badge is the only one that can be skipped
 @ Its assumed the player has the remaining badges
 EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard::

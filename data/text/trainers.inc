@@ -3060,8 +3060,9 @@ Route120_Text_ChipDefeat:
 	.string "What a disgraceful setback…$"
 
 Route120_Text_ChipPostBattle:
-	.string "That giant rock… I believe it may\n"
-	.string "contain an ancient ruins!$"
+	.string "That giant rock… I would like to\n"
+	.string "believe it may indeed contain ancient\l"
+	.string "ruins. But I see no entrance.$"
 
 Route120_Text_ClarissaIntro:
 	.string "Why am I carrying this parasol?\p"

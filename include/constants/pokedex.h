@@ -1042,7 +1042,6 @@ enum NationalDexOrder
     NATIONAL_DEX_PECHARUNT,
 };
 
-#define KANTO_DEX_COUNT     NATIONAL_DEX_MEW
 #define JOHTO_DEX_COUNT     NATIONAL_DEX_CELEBI
 
 #if P_GEN_9_POKEMON == TRUE
@@ -1452,6 +1451,8 @@ enum HoennDexOrder
 	HOENN_DEX_EELEKTROSS,
 	HOENN_DEX_CLOBBOPUS,
 	HOENN_DEX_GRAPPLOCT,
+	HOENN_DEX_DONDOZO,
+	HOENN_DEX_TATSUGIRI,
 	HOENN_DEX_MAGBY,
 	HOENN_DEX_MAGMAR,
 	HOENN_DEX_MAGMORTAR,
@@ -1504,8 +1505,6 @@ enum HoennDexOrder
 	HOENN_DEX_OGERPON,
 	HOENN_DEX_LUGIA,
 	HOENN_DEX_HO_OH,
-<<<<<<< HEAD
-<<<<<<< HEAD
 };
 
 // Kanto Pokedex order
@@ -1707,20 +1706,6 @@ enum KantoDexOrder
 #define HOENN_DEX_COUNT (HOENN_DEX_HO_OH + 1)
 
 #define REGIONAL_DEX_COUNT (IS_FRLG ? KANTO_DEX_COUNT : HOENN_DEX_COUNT)
-=======
-	HOENN_DEX_MEWTWO,
-	HOENN_DEX_MEW,
-};
-
-#define HOENN_DEX_COUNT (HOENN_DEX_MEW + 1)
->>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
-=======
-	HOENN_DEX_MEWTWO,
-	HOENN_DEX_MEW,
-};
-
-#define HOENN_DEX_COUNT (HOENN_DEX_MEW + 1)
->>>>>>> parent of 92304b7a20 (Merge tag 'expansion/1.15.0' of https://github.com/rh-hideout/pokeemerald-expansion)
 
 #define DECAGRAMS_IN_POUND             4536
 #define CM_PER_INCH                    2.54

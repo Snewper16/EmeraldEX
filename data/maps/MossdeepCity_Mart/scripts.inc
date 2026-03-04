@@ -36,6 +36,11 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_LOVE_SWEET
 	.2byte ITEM_STAR_SWEET
 	.2byte ITEM_RIBBON_SWEET
+	.2byte ITEM_TM_DAZZLING_GLEAM
+	.2byte ITEM_TM_PLAY_ROUGH
+	.2byte ITEM_TM_DRAIN_PUNCH
+	.2byte ITEM_TM_LIQUIDATION
+	.2byte ITEM_TM_SOLAR_BLADE
 	pokemartlistend
 
 MossdeepCity_Mart_EventScript_Woman::
