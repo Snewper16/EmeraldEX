@@ -868,7 +868,10 @@ static bool8 LoadBagMenu_Graphics(void)
         gBagMenu->graphicsLoadState++;
         break;
     case 4:
-        LoadSpritePalette(&gBagPaletteTable);
+		if (gSaveBlock2Ptr->playerGender == MALE)
+			LoadSpritePalette(&gBagMalePaletteTable);
+		else
+	        LoadSpritePalette(&gBagFemalePaletteTable);
         gBagMenu->graphicsLoadState++;
         break;
     default:
