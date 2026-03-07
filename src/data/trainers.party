@@ -4985,23 +4985,19 @@ Ability: Sturdy
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
 - Defense Curl
-- Magnet Rise
 - Rock Tomb
 
 Nacli
-Level: 12
+Level: 10
 Ability: Purifying Salt
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Smack Down
-- Mud Shot
-- Rock Throw
+- Harden
 - Rock Tomb
 
 Nosepass @ Oran Berry
-Level: 13
+Level: 12
 Ability: Sturdy
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Block
 - Harden
 - Tackle
 - Rock Tomb
@@ -6438,7 +6434,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aqua Ring
 
 Whiscash @ Rindo Berry
-Level: 56
+Level: 57
 Ability: Oblivious
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earth Power
@@ -6447,7 +6443,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Double Team
 
 Milotic @ Flame Orb
-Level: 57
+Level: 58
 Ability: Marvel Scale
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aqua Ring
@@ -6456,7 +6452,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hydro Pump
 
 Ogerpon-Wellspring @ Wellspring Mask
-Level: 58
+Level: 60
 Ability: Water Absorb
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ivy Cudgel
@@ -6468,7 +6464,7 @@ Starmie @ Starminite
 Level: 60
 Ability : Natural Cure
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Wave Crash
+- Liquidation
 - Zen Headbutt
 - Drain Punch
 - Recover
@@ -11195,7 +11191,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Numel
 Level: 22
-Ability: Magma Armor
+Ability: Oblivious
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Sandile
@@ -13862,7 +13858,7 @@ AI: Check Bad Move
 
 Numel
 Level: 26
-Ability: Magma Armor
+Ability: Oblivious
 IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 
 Baltoy

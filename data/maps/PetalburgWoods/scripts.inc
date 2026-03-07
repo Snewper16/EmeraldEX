@@ -414,8 +414,8 @@ PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "That was awfully close!\p"
 	.string "Thanks to you, he didn't rob me of\n"
 	.string "these important papers.\p"
-	.string "I know, I'll give you an EXP SHARE\n"
-	.string "as my thanks!$"
+	.string "I know, I'll give you an EXP.\n"
+	.string "SHARE as my thanks!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
 	.string "Didn't that TEAM AQUA thug say\n"

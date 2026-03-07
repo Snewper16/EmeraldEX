@@ -214,12 +214,12 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "rocks, it also lowers SPEED.\p"
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a POKéMON.\p"
-	.string "Remember, a TM can be used only once,\n"
-	.string "so think before you use it.$"
+	.string "Remember, a TM can be used infinitely,\n"
+	.string "so feel free to strategize.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you are so strong, you should\n"
-	.string "challenge other GYM LEADERS.\p"
+	.string "challenge the other GYM LEADERS.\p"
 	.string "By battling many TRAINERS, you should\n"
 	.string "learn many things.$"
 

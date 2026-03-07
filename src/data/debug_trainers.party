@@ -23,10 +23,20 @@ Adamant Nature
 Level: 100
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 6 Spe
-- Razor Shell
+- Aqua Cutter
 - Night Slash
 - Fury Cutter
-- Slash
+- False Swipe
+
+Paco (Giratina)
+Modest Nature
+Level: 100
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 126 Def / 252 SpA / 126 SpD
+- Shadow Ball
+- Dragon Pulse
+- Earth Power
+- Aura Sphere
 
 === DEBUG_TRAINER_AI ===
 Name: MAXIE
@@ -35,6 +45,7 @@ Class: Magma Boss
 Battle Type: Singles
 Pic: Magma Boss Maxie
 Gender: Male
+Items: Hyper Potion / Mega Ring
 Music: Magma
 
 Mightyena
@@ -74,7 +85,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Iron Tail
 - Fire Punch
 
-Camerupt
+Camerupt @ Cameruptite
 Level: 43
 Ability: Magma Armor
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
