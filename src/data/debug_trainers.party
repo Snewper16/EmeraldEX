@@ -12,84 +12,57 @@ Start Debug Battle action is selected.
 */
 
 === DEBUG_TRAINER_PLAYER ===
-Name: CONNOR
-Class: RS Protag
-Pic: RS Brendan
+Name: Player
+Class: Pkmn Trainer 1
+Pic: Brendan
 Gender: Male
 Music: Male
 
-Oshals (Samurott)
-Adamant Nature
+Buffie (Wobbuffet)
+Brave Nature
 Level: 100
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 252 Atk / 6 Spe
-- Aqua Cutter
-- Night Slash
-- Fury Cutter
-- False Swipe
-
-Paco (Giratina)
-Modest Nature
-Level: 100
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 126 Def / 252 SpA / 126 SpD
-- Shadow Ball
-- Dragon Pulse
-- Earth Power
-- Aura Sphere
+EVs: 252 Atk / 252 Def / 6 SpA
+- Earthquake
+- Flamethrower
+- Celebrate
+- Celebrate
 
 === DEBUG_TRAINER_AI ===
-Name: MAXIE
-AI: Basic Trainer
-Class: Magma Boss
+Name: Debugger
+AI: Smart Trainer
+Class: Rival
 Battle Type: Singles
-Pic: Magma Boss Maxie
+Pic: Steven
 Gender: Male
-Items: Hyper Potion / Mega Ring
-Music: Magma
+Music: Male
 
-Mightyena
-Level: 40
-Ability: Intimidate
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Crunch
-- Fire Fang
-- Thunder Fang
-- Ice Fang
-
-Crobat
-Level: 40
-Ability: Infiltrator
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Toxic
-- Venoshock
-- Air Slash
-- Protect
-
-
-Scovillain
-Level: 41
-Ability: Chlorophyll
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sunny Day
-- Flamethrower
-- Solar Beam
-- Leech Seed
-
-Flygon
+Metang
+Brave Nature
 Level: 42
-Ability: Levitate
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Earthquake
-- Dragon Claw
-- Iron Tail
-- Fire Punch
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Def / 6 SpA
+- Light Screen
+- Psychic
+- Reflect
+- Metal Claw
 
-Camerupt @ Cameruptite
+Skarmory
+Impish Nature
 Level: 43
-Ability: Magma Armor
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Yawn
-- Flamethrower
-- Earth Power
-- Focus Energy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 6 SpA / 252 SpD
+- Toxic
+- Aerial Ace
+- Protect
+- Steel Wing
+
+Aggron
+Adamant Nature
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 SpA / 6 SpD
+- Thunder
+- Protect
+- Solar Beam
+- Dragon Claw
