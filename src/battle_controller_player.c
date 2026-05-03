@@ -719,9 +719,8 @@ void HandleInputChooseMove(enum BattlerId battler)
         if (isUserOrAlly)
             gMultiUsePlayerCursor = battler;
         else if (moveTarget == TARGET_ALLY)
-			gMultiUsePlayerCursor =
-		BATTLE_PARTNER(battler);
-		else
+            gMultiUsePlayerCursor = BATTLE_PARTNER(battler);
+        else
             gMultiUsePlayerCursor = GetOpposingSideBattler(battler);
 
         if (gBattleResources->bufferA[battler][1]) // a double battle

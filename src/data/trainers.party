@@ -4792,7 +4792,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Air Slash
 - Thunder Wave
 
-Absol @ Absolite Z
+Absol @ Absolite
 Level: 49
 Ability: Pressure
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -4895,23 +4895,23 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Fang
 - Iron Head
 
-Glalie
+Froslass
 Level: 52
-Ability: Ice Body
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Shadow Ball
-- Explosion
-- Hail
-- Ice Beam
-
-Froslass @ Froslassite
-Level: 53
 Ability: Cursed Body
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Attract
 - Shadow Ball
-- Hail
+- Charge Beam
 - Blizzard
+
+Glalie @ Glalitite
+Level: 53
+Ability: Ice Body
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Shadow Ball
+- Dark Pulse
+- Hail
+- Hyper Beam
 
 === TRAINER_DRAKE ===
 Name: DRAKE
@@ -6460,14 +6460,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Play Rough
 - Spiky Shield
 
-Starmie @ Starminite
+Slowbro @ Slowbronite
 Level: 60
-Ability : Natural Cure
+Ability : Oblivious
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Liquidation
-- Zen Headbutt
-- Drain Punch
-- Recover
+- Hydro Pump
+- Psyshock
+- Slack Off
+- Ice Beam
 
 === TRAINER_ANDREW ===
 Name: ANDREW
