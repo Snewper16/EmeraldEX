@@ -5511,7 +5511,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
             // Only if it's a trainer battle with league progression significance
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
                 return;
-            if (!(opponentTrainerClass == TRAINER_CLASS_LEADER
+            if (!(opponentTrainerClass == TRAINER_CLASS_GYM_LEADER
                 || opponentTrainerClass == TRAINER_CLASS_ELITE_FOUR
                 || opponentTrainerClass == TRAINER_CLASS_CHAMPION))
                 return;
@@ -5794,15 +5794,15 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
-        case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_AQUA_MAGMA_LEADER;
+        case TRAINER_CLASS_AQUA_BOSS:
+        case TRAINER_CLASS_MAGMA_BOSS:
+            return MUS_VS_AQUA_MAGMA_BOSS;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_AQUA_MAGMA;
-        case TRAINER_CLASS_LEADER:
+        case TRAINER_CLASS_GYM_LEADER:
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
@@ -5816,7 +5816,7 @@ u16 GetBattleBGM(void)
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_CHAMPION_FRLG:
             return MUS_RG_VS_CHAMPION;
-        case TRAINER_CLASS_LEADER_FRLG:
+        case TRAINER_CLASS_GYM_LEADER_FRLG:
         case TRAINER_CLASS_ELITE_FOUR_FRLG:
             return MUS_RG_VS_GYM_LEADER;
         case TRAINER_CLASS_SALON_MAIDEN:

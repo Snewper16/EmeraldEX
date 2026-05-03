@@ -132,17 +132,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Dartrix,
             gShinyOverworldPalette_Dartrix
         )
         .levelUpLearnset = sDartrixLevelUpLearnset,
         .teachableLearnset = sDartrixTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_DECIDUEYE, CONDITIONS({IF_NOT_REGION, REGION_HISUI})}
-                            #if P_HISUIAN_FORMS
-                                ,{EVO_LEVEL, 36, SPECIES_DECIDUEYE_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}
-                            #endif
-                            ),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_DECIDUEYE, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
+                                {EVO_ITEM, ITEM_LEAF_STONE, SPECIES_DECIDUEYE_HISUI}),
     },
 
     [SPECIES_DECIDUEYE] =
@@ -1397,7 +1394,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Crabrawler,
             gShinyOverworldPalette_Crabrawler
         )
@@ -1464,7 +1461,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Crabominable,
             gShinyOverworldPalette_Crabominable
         )
@@ -1493,7 +1490,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_HYPER_CUTTER, ABILITY_IRON_FIST, ABILITY_ANGER_POINT },
+        .abilities = { ABILITY_ANGER_POINT, ABILITY_NONE, ABILITY_HUGE_POWER },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Crabominable"),
     #if P_MODIFIED_MEGA_CRIES
@@ -1509,22 +1506,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "It can pulverize reinforced concrete with\n"
             "a light swing of one of its fists, each of\n"
             "which is covered in a thick layer of ice."),
-        .frontPic = gMonFrontPic_CrabominableMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonBackPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_CrabominableMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_CrabominableMega,
-        .shinyPalette = gMonShinyPalette_CrabominableMega,
-        .iconSprite = gMonIcon_CrabominableMega,
-        .iconPalIndex = 2,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        //.iconSprite = gMonIcon_QuestionMark,
+        //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Crabominable)
-        SHADOW(-4, 17, SHADOW_SIZE_L)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sCrabominableLevelUpLearnset,
         .teachableLearnset = sCrabominableTeachableLearnset,
@@ -2770,7 +2767,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_BUG),
-        .abilities = { ABILITY_WATER_BUBBLE, ABILITY_NONE, ABILITY_WATER_ABSORB },
+        .abilities = { ABILITY_WATER_BUBBLE, ABILITY_DRIZZLE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Dewpider"),
         .cryId = CRY_DEWPIDER,
@@ -2844,7 +2841,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_BUG),
-        .abilities = { ABILITY_WATER_BUBBLE, ABILITY_NONE, ABILITY_WATER_ABSORB },
+        .abilities = { ABILITY_WATER_BUBBLE, ABILITY_DRIZZLE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Araquanid"),
         .cryId = CRY_ARAQUANID,
@@ -3206,7 +3203,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Morelull,
             gShinyOverworldPalette_Morelull
         )
@@ -3875,7 +3872,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Comfey,
             gShinyOverworldPalette_Comfey
         )
@@ -4171,7 +4168,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 40,
         .baseSpAttack  = 70,
         .baseSpDefense = 120,
-        .types = MON_TYPES(TYPE_BUG, TYPE_STEEL),
+        .types = MON_TYPES(TYPE_BUG, TYPE_WATER),
         .catchRate = 45,
         .expYield = 186,
         .evYield_Defense = 2,
@@ -4180,7 +4177,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_EMERGENCY_EXIT, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_ANGER_SHELL, ABILITY_NONE, ABILITY_BATTLE_ARMOR },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Golisopod"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4197,22 +4194,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "assail its foes. Once they've been pushed\n"
             "to the brink of defeat, it finishes them\n"
             "off with the arms it kept hidden."),
-        .frontPic = gMonFrontPic_GolisopodMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonBackPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_GolisopodMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 4,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_GolisopodMega,
-        .shinyPalette = gMonShinyPalette_GolisopodMega,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_GolisopodMega,
         .iconPalIndex = 2,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Golisopod)
-        SHADOW(0, 10, SHADOW_SIZE_XL_BATTLE_ONLY)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sGolisopodLevelUpLearnset,
         .teachableLearnset = sGolisopodTeachableLearnset,
@@ -4241,7 +4238,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_WATER_COMPACTION, ABILITY_NONE, ABILITY_SAND_VEIL },
+        .abilities = { ABILITY_WATER_COMPACTION, ABILITY_SAND_STREAM, ABILITY_SAND_VEIL },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Sandygast"),
         .cryId = CRY_SANDYGAST,
@@ -4279,7 +4276,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Sandygast,
             gShinyOverworldPalette_Sandygast
         )
@@ -4307,7 +4304,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_WATER_COMPACTION, ABILITY_NONE, ABILITY_SAND_VEIL },
+        .abilities = { ABILITY_WATER_COMPACTION, ABILITY_SAND_STREAM, ABILITY_SAND_VEIL },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Palossand"),
         .cryId = CRY_PALOSSAND,
@@ -4749,7 +4746,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Komala,
             gShinyOverworldPalette_Komala
         )
@@ -5011,7 +5008,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_MimikyuDisguised,
             gShinyOverworldPalette_MimikyuDisguised
         )
@@ -5355,7 +5352,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_BERSERK, ABILITY_SAP_SIPPER, ABILITY_CLOUD_NINE },
+        .abilities = { ABILITY_CLOUD_NINE, ABILITY_NONE, ABILITY_FILTER },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Drampa"),
     #if P_MODIFIED_MEGA_CRIES
@@ -5372,23 +5369,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "invigorated, allowing it to regain\n"
             "its youth. It manipulates the\n"
             "atmosphere to summon storms."),
-        .frontPic = gMonFrontPic_DrampaMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonFrontPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .enemyMonElevation = 4,
-        .backPic = gMonBackPic_DrampaMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_DrampaMega,
-        .shinyPalette = gMonShinyPalette_DrampaMega,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_DrampaMega,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Drampa)
-        SHADOW(-6, 16, SHADOW_SIZE_XL_BATTLE_ONLY)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sDrampaLevelUpLearnset,
         .teachableLearnset = sDrampaTeachableLearnset,
@@ -6048,7 +6044,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_UNAWARE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_UNAWARE, ABILITY_NONE, ABILITY_OBLIVIOUS },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cosmog"),
         .cryId = CRY_COSMOG,
@@ -6118,7 +6114,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_AIR_LOCK },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cosmoem"),
         .cryId = CRY_COSMOEM,
@@ -6188,7 +6184,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Solgaleo"),
         .cryId = CRY_SOLGALEO,
@@ -6223,7 +6219,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         FOOTPRINT(Solgaleo)
         OVERWORLD(
             sPicTable_Solgaleo,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
             sAnimTable_Following,
@@ -6254,7 +6250,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SHADOW_SHIELD, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SHADOW_SHIELD, ABILITY_NONE, ABILITY_DAZZLING },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Lunala"),
         .cryId = CRY_LUNALA,
@@ -6290,7 +6286,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         FOOTPRINT(Lunala)
         OVERWORLD(
             sPicTable_Lunala,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
             sAnimTable_Following,
@@ -6323,7 +6319,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_POISON_PUPPETEER },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Nihilego"),
         .cryId = CRY_NIHILEGO,
@@ -6392,7 +6388,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_HUGE_POWER },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Buzzwole"),
         .cryId = CRY_BUZZWOLE,
@@ -6459,7 +6455,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_QUEENLY_MAJESTY },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Pheromosa"),
         .cryId = CRY_PHEROMOSA,
@@ -6526,7 +6522,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_VOLT_ABSORB },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Xurkitree"),
         .cryId = CRY_XURKITREE,
@@ -6564,7 +6560,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Xurkitree,
             gShinyOverworldPalette_Xurkitree
         )
@@ -6595,7 +6591,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_HEAVY_METAL },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Celesteela"),
         .cryId = CRY_CELESTEELA,
@@ -6662,7 +6658,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_LIGHT_METAL },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Kartana"),
         .cryId = CRY_KARTANA,
@@ -6730,7 +6726,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_GLUTTONY },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Guzzlord"),
         .cryId = CRY_GUZZLORD,
@@ -6798,7 +6794,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_PRESSURE },
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = TRUE,
         .speciesName = _("Necrozma"),
@@ -6835,10 +6831,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         FOOTPRINT(Necrozma)
         OVERWORLD(
             sPicTable_Necrozma,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Necrozma,
             gShinyOverworldPalette_Necrozma
         )
@@ -6868,7 +6864,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NEUROFORCE },
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = TRUE,
         .speciesName = _("Necrozma"),
@@ -6904,10 +6900,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         FOOTPRINT(Necrozma)
         OVERWORLD(
             sPicTable_NecrozmaDuskMane,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_NecrozmaDuskMane,
             gShinyOverworldPalette_NecrozmaDuskMane
         )
@@ -6938,7 +6934,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NEUROFORCE },
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
         .speciesName = _("Necrozma"),
@@ -6975,10 +6971,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         FOOTPRINT(Necrozma)
         OVERWORLD(
             sPicTable_NecrozmaDawnWings,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_NecrozmaDawnWings,
             gShinyOverworldPalette_NecrozmaDawnWings
         )
@@ -7012,7 +7008,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NEUROFORCE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_NEUROFORCE, ABILITY_NONE, ABILITY_PRISM_ARMOR },
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = TRUE,
         .speciesName = _("Necrozma"),
@@ -7050,10 +7046,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     #if OW_BATTLE_ONLY_FORMS
         OVERWORLD(
             sPicTable_NecrozmaUltra,
-            SIZE_32x32, //TODO: 64x64 overworld sprite!
+            SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_NecrozmaUltra,
             gShinyOverworldPalette_NecrozmaUltra
         )
@@ -7090,7 +7086,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SOUL_HEART, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SOUL_HEART, ABILITY_NONE, ABILITY_WANDERING_SPIRIT },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magearna"),
         .cryId = CRY_MAGEARNA,
@@ -7227,7 +7223,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SOUL_HEART, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LIBERO, ABILITY_NONE, ABILITY_WANDERING_SPIRIT },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magearna"),
     #if P_MODIFIED_MEGA_CRIES
@@ -7244,22 +7240,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "than 500 years ago, can understand human\n"
             "speech but cannot itself speak. Its true\n"
             "self is its Soul-Heart, an artificial soul."),
-        .frontPic = gMonFrontPic_MagearnaMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonBackPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_MagearnaMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_MagearnaMega,
-        .shinyPalette = gMonShinyPalette_MagearnaMega,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_MagearnaMega,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Magearna)
-        SHADOW(-1, 15, SHADOW_SIZE_M)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .isMythical = TRUE,
         .isFrontierBanned = TRUE,
@@ -7287,7 +7283,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SOUL_HEART, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_LIBERO, ABILITY_NONE, ABILITY_WANDERING_SPIRIT },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magearna"),
     #if P_MODIFIED_MEGA_CRIES
@@ -7304,22 +7300,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "limitations has lain secretly within\n"
             "Magearna for 500 years. This mechanism\n"
             "is triggered by a Mega Stone."),
-        .frontPic = gMonFrontPic_MagearnaOriginalMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonBackPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_MagearnaOriginalMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_MagearnaOriginalMega,
-        .shinyPalette = gMonShinyPalette_MagearnaOriginalMega,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_MagearnaOriginalMega,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Magearna)
-        SHADOW(-1, 15, SHADOW_SIZE_M)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .isMythical = TRUE,
         .isFrontierBanned = TRUE,
@@ -7351,7 +7347,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_TECHNICIAN, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_TECHNICIAN, ABILITY_NONE, ABILITY_IRON_FIST },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Marshadow"),
@@ -7424,7 +7420,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_POISON_POINT },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Poipole"),
         .cryId = CRY_POIPOLE,
@@ -7490,7 +7486,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_POISON_POINT },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Naganadel"),
         .cryId = CRY_NAGANADEL,
@@ -7557,7 +7553,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Stakataka"),
@@ -7624,7 +7620,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_WHITE_SMOKE },
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = TRUE,
         .speciesName = _("Blacephalon"),
@@ -7662,7 +7658,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_Blacephalon,
             gShinyOverworldPalette_Blacephalon
         )
@@ -7691,7 +7687,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_NONE, ABILITY_IRON_FIST },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Zeraora"),
         .cryId = CRY_ZERAORA,
@@ -7750,17 +7746,16 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 153,
         .baseSpAttack  = 147,
         .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_ELECTRIC),
+        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
         .evYield_Speed = 3,
-
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_NEUROFORCE },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Zeraora"),
     #if P_MODIFIED_MEGA_CRIES
@@ -7777,22 +7772,22 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             "of electricity. When it stops limiting\n"
             "itself, it's in the strongest class of\n"
             "electric Pokémon."),
-        .frontPic = gMonFrontPic_ZeraoraMega,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontPic = gMonBackPic_CircledQuestionMark,
+        //.frontPicSize = MON_COORDS_SIZE(40, 40),
+        //.frontPicYOffset = 12,
+        //.frontAnimFrames = sAnims_TwoFramePlaceHolder,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_ZeraoraMega,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 9,
+        //.backPic = gMonBackPic_CircledQuestionMark,
+        //.backPicSize = MON_COORDS_SIZE(40, 40),
+        //.backPicYOffset = 12,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_ZeraoraMega,
-        .shinyPalette = gMonShinyPalette_ZeraoraMega,
+        //.palette = gMonPalette_CircledQuestionMark,
+        //.shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_ZeraoraMega,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Zeraora)
-        SHADOW(-6, 12, SHADOW_SIZE_L)
+        //SHADOW(-1, 0, SHADOW_SIZE_M)
         .isMegaEvolution = TRUE,
         .isMythical = TRUE,
         .isFrontierBanned = TRUE,
@@ -7823,7 +7818,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_MAGNET_PULL, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_MAGNET_PULL, ABILITY_NONE, ABILITY_STEELWORKER },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Meltan"),
         .cryId = CRY_MELTAN,
@@ -7869,6 +7864,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMeltanLevelUpLearnset,
         .teachableLearnset = sMeltanTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_MELMETAL}),
     },
 
     [SPECIES_MELMETAL] =
@@ -7888,7 +7884,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_STEELWORKER },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Melmetal"),
         .cryId = CRY_MELMETAL,
@@ -7956,7 +7952,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_STEELWORKER },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Melmetal"),
         .cryId = CRY_MELMETAL,
