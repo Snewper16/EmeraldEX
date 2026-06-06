@@ -187,7 +187,7 @@ static const struct MatchCallStructNPC sMrStoneMatchCallHeader =
         { MatchCall_Text_MrStone1,  ALWAYS_AVAILABLE,                    FLAG_ENABLE_MR_STONE_POKENAV },
         { MatchCall_Text_MrStone2,  FLAG_ENABLE_MR_STONE_POKENAV,        NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone3,  FLAG_DELIVERED_STEVEN_LETTER,        NO_FLAG_TO_SET },
-        { MatchCall_Text_MrStone4,  FLAG_RECEIVED_EXP_SHARE,             NO_FLAG_TO_SET },
+        { MatchCall_Text_MrStone4,  FLAG_RECEIVED_ABILITY_PATCH,         NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone5,  FLAG_RECEIVED_HM_STRENGTH,           NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone6,  FLAG_DEFEATED_PETALBURG_GYM,         NO_FLAG_TO_SET },
         { MatchCall_Text_MrStone7,  FLAG_RECEIVED_CASTFORM,              NO_FLAG_TO_SET },

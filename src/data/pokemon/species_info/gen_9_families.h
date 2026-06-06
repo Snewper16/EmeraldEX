@@ -4702,7 +4702,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_FILTER, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },
         .abilities = { ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY, ABILITY_FILTER },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Glimmora"),
