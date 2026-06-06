@@ -1082,6 +1082,230 @@ enum NationalDexOrder
 
 #define POKEMON_SLOTS_NUMBER (NATIONAL_DEX_COUNT + 1)
 
+#if P_NEW_EVOS_IN_REGIONAL_DEX
+#define HOENN_DEX_IF(config, ...) CAT(HOENN_DEX_IF_, config)(__VA_ARGS__)
+#define HOENN_DEX_IF_0(...)
+#define HOENN_DEX_IF_1(...) __VA_ARGS__
+#else
+#define HOENN_DEX_IF(config, ...)
+#endif
+
+#define FOREACH_SPECIES_IN_HOENN_DEX_ORDER(F) \
+    F(TREECKO) \
+    F(GROVYLE) \
+    F(SCEPTILE) \
+    F(TORCHIC) \
+    F(COMBUSKEN) \
+    F(BLAZIKEN) \
+    F(MUDKIP) \
+    F(MARSHTOMP) \
+    F(SWAMPERT) \
+    F(POOCHYENA) \
+    F(MIGHTYENA) \
+    F(ZIGZAGOON) \
+    F(LINOONE) \
+    HOENN_DEX_IF(P_GALARIAN_FORMS, F(OBSTAGOON)) \
+    F(WURMPLE) \
+    F(SILCOON) \
+    F(BEAUTIFLY) \
+    F(CASCOON) \
+    F(DUSTOX) \
+    F(LOTAD) \
+    F(LOMBRE) \
+    F(LUDICOLO) \
+    F(SEEDOT) \
+    F(NUZLEAF) \
+    F(SHIFTRY) \
+    F(TAILLOW) \
+    F(SWELLOW) \
+    F(WINGULL) \
+    F(PELIPPER) \
+    F(RALTS) \
+    F(KIRLIA) \
+    F(GARDEVOIR) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(GALLADE)) \
+    F(SURSKIT) \
+    F(MASQUERAIN) \
+    F(SHROOMISH) \
+    F(BRELOOM) \
+    F(SLAKOTH) \
+    F(VIGOROTH) \
+    F(SLAKING) \
+    F(ABRA) \
+    F(KADABRA) \
+    F(ALAKAZAM) \
+    F(NINCADA) \
+    F(NINJASK) \
+    F(SHEDINJA) \
+    F(WHISMUR) \
+    F(LOUDRED) \
+    F(EXPLOUD) \
+    F(MAKUHITA) \
+    F(HARIYAMA) \
+    F(GOLDEEN) \
+    F(SEAKING) \
+    F(MAGIKARP) \
+    F(GYARADOS) \
+    F(AZURILL) \
+    F(MARILL) \
+    F(AZUMARILL) \
+    F(GEODUDE) \
+    F(GRAVELER) \
+    F(GOLEM) \
+    F(NOSEPASS) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(PROBOPASS)) \
+    F(SKITTY) \
+    F(DELCATTY) \
+    F(ZUBAT) \
+    F(GOLBAT) \
+    F(CROBAT) \
+    F(TENTACOOL) \
+    F(TENTACRUEL) \
+    F(SABLEYE) \
+    F(MAWILE) \
+    F(ARON) \
+    F(LAIRON) \
+    F(AGGRON) \
+    F(MACHOP) \
+    F(MACHOKE) \
+    F(MACHAMP) \
+    F(MEDITITE) \
+    F(MEDICHAM) \
+    F(ELECTRIKE) \
+    F(MANECTRIC) \
+    F(PLUSLE) \
+    F(MINUN) \
+    F(MAGNEMITE) \
+    F(MAGNETON) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(MAGNEZONE)) \
+    F(VOLTORB) \
+    F(ELECTRODE) \
+    F(VOLBEAT) \
+    F(ILLUMISE) \
+    F(ODDISH) \
+    F(GLOOM) \
+    F(VILEPLUME) \
+    F(BELLOSSOM) \
+    F(DODUO) \
+    F(DODRIO) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(BUDEW)) \
+    F(ROSELIA) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(ROSERADE)) \
+    F(GULPIN) \
+    F(SWALOT) \
+    F(CARVANHA) \
+    F(SHARPEDO) \
+    F(WAILMER) \
+    F(WAILORD) \
+    F(NUMEL) \
+    F(CAMERUPT) \
+    F(SLUGMA) \
+    F(MAGCARGO) \
+    F(TORKOAL) \
+    F(GRIMER) \
+    F(MUK) \
+    F(KOFFING) \
+    F(WEEZING) \
+    F(SPOINK) \
+    F(GRUMPIG) \
+    F(SANDSHREW) \
+    F(SANDSLASH) \
+    F(SPINDA) \
+    F(SKARMORY) \
+    F(TRAPINCH) \
+    F(VIBRAVA) \
+    F(FLYGON) \
+    F(CACNEA) \
+    F(CACTURNE) \
+    F(SWABLU) \
+    F(ALTARIA) \
+    F(ZANGOOSE) \
+    F(SEVIPER) \
+    F(LUNATONE) \
+    F(SOLROCK) \
+    F(BARBOACH) \
+    F(WHISCASH) \
+    F(CORPHISH) \
+    F(CRAWDAUNT) \
+    F(BALTOY) \
+    F(CLAYDOL) \
+    F(LILEEP) \
+    F(CRADILY) \
+    F(ANORITH) \
+    F(ARMALDO) \
+    F(IGGLYBUFF) \
+    F(JIGGLYPUFF) \
+    F(WIGGLYTUFF) \
+    F(FEEBAS) \
+    F(MILOTIC) \
+    F(CASTFORM) \
+    F(STARYU) \
+    F(STARMIE) \
+    F(KECLEON) \
+    F(SHUPPET) \
+    F(BANETTE) \
+    F(DUSKULL) \
+    F(DUSCLOPS) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(DUSKNOIR)) \
+    F(TROPIUS) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(CHINGLING)) \
+    F(CHIMECHO) \
+    F(ABSOL) \
+    F(VULPIX) \
+    F(NINETALES) \
+    F(PICHU) \
+    F(PIKACHU) \
+    F(RAICHU) \
+    F(PSYDUCK) \
+    F(GOLDUCK) \
+    F(WYNAUT) \
+    F(WOBBUFFET) \
+    F(NATU) \
+    F(XATU) \
+    F(GIRAFARIG) \
+    HOENN_DEX_IF(P_GEN_9_CROSS_EVOS, F(FARIGIRAF)) \
+    F(PHANPY) \
+    F(DONPHAN) \
+    F(PINSIR) \
+    F(HERACROSS) \
+    F(RHYHORN) \
+    F(RHYDON) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(RHYPERIOR)) \
+    F(SNORUNT) \
+    F(GLALIE) \
+    HOENN_DEX_IF(P_GEN_4_CROSS_EVOS, F(FROSLASS)) \
+    F(SPHEAL) \
+    F(SEALEO) \
+    F(WALREIN) \
+    F(CLAMPERL) \
+    F(HUNTAIL) \
+    F(GOREBYSS) \
+    F(RELICANTH) \
+    F(CORSOLA) \
+    HOENN_DEX_IF(P_GALARIAN_FORMS, F(CURSOLA)) \
+    F(CHINCHOU) \
+    F(LANTURN) \
+    F(LUVDISC) \
+    F(HORSEA) \
+    F(SEADRA) \
+    F(KINGDRA) \
+    F(BAGON) \
+    F(SHELGON) \
+    F(SALAMENCE) \
+    F(BELDUM) \
+    F(METANG) \
+    F(METAGROSS) \
+    F(REGIROCK) \
+    F(REGICE) \
+    F(REGISTEEL) \
+    F(LATIAS) \
+    F(LATIOS) \
+    F(KYOGRE) \
+    F(GROUDON) \
+    F(RAYQUAZA) \
+    F(JIRACHI) \
+    F(DEOXYS)
+
 // Hoenn Pokédex order
 enum HoennDexOrder
 {
@@ -1526,8 +1750,210 @@ enum HoennDexOrder
 	HOENN_DEX_LUGIA,
 	HOENN_DEX_HO_OH,
 	HOENN_DEX_ZERAORA,
+    #define HOENN_DEX_ENUM(name) HOENN_DEX_ ##name,
+    FOREACH_SPECIES_IN_HOENN_DEX_ORDER(HOENN_DEX_ENUM)
+    #undef HOENN_DEX_ENUM
 };
 
+
+
+#if P_NEW_EVOS_IN_REGIONAL_DEX
+#define KANTO_DEX_IF(config, ...) CAT(KANTO_DEX_IF_, config)(__VA_ARGS__)
+#define KANTO_DEX_IF_0(...)
+#define KANTO_DEX_IF_1(...) __VA_ARGS__
+#else
+#define KANTO_DEX_IF(config, ...)
+#endif
+
+#define FOREACH_SPECIES_IN_KANTO_DEX_ORDER(F) \
+    F(BULBASAUR) \
+    F(IVYSAUR) \
+    F(VENUSAUR) \
+    F(CHARMANDER) \
+    F(CHARMELEON) \
+    F(CHARIZARD) \
+    F(SQUIRTLE) \
+    F(WARTORTLE) \
+    F(BLASTOISE) \
+    F(CATERPIE) \
+    F(METAPOD) \
+    F(BUTTERFREE) \
+    F(WEEDLE) \
+    F(KAKUNA) \
+    F(BEEDRILL) \
+    F(PIDGEY) \
+    F(PIDGEOTTO) \
+    F(PIDGEOT) \
+    F(RATTATA) \
+    F(RATICATE) \
+    F(SPEAROW) \
+    F(FEAROW) \
+    F(EKANS) \
+    F(ARBOK) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(PICHU)) \
+    F(PIKACHU) \
+    F(RAICHU) \
+    F(SANDSHREW) \
+    F(SANDSLASH) \
+    F(NIDORAN_F) \
+    F(NIDORINA) \
+    F(NIDOQUEEN) \
+    F(NIDORAN_M) \
+    F(NIDORINO) \
+    F(NIDOKING) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(CLEFFA)) \
+    F(CLEFAIRY) \
+    F(CLEFABLE) \
+    F(VULPIX) \
+    F(NINETALES) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(IGGLYBUFF)) \
+    F(JIGGLYPUFF) \
+    F(WIGGLYTUFF) \
+    F(ZUBAT) \
+    F(GOLBAT) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(CROBAT)) \
+    F(ODDISH) \
+    F(GLOOM) \
+    F(VILEPLUME) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(BELLOSSOM)) \
+    F(PARAS) \
+    F(PARASECT) \
+    F(VENONAT) \
+    F(VENOMOTH) \
+    F(DIGLETT) \
+    F(DUGTRIO) \
+    F(MEOWTH) \
+    F(PERSIAN) \
+    KANTO_DEX_IF(P_GALARIAN_FORMS, F(PERRSERKER)) \
+    F(PSYDUCK) \
+    F(GOLDUCK) \
+    F(MANKEY) \
+    F(PRIMEAPE) \
+    KANTO_DEX_IF(P_GEN_9_CROSS_EVOS, F(ANNIHILAPE)) \
+    F(GROWLITHE) \
+    F(ARCANINE) \
+    F(POLIWAG) \
+    F(POLIWHIRL) \
+    F(POLIWRATH) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(POLITOED)) \
+    F(ABRA) \
+    F(KADABRA) \
+    F(ALAKAZAM) \
+    F(MACHOP) \
+    F(MACHOKE) \
+    F(MACHAMP) \
+    F(BELLSPROUT) \
+    F(WEEPINBELL) \
+    F(VICTREEBEL) \
+    F(TENTACOOL) \
+    F(TENTACRUEL) \
+    F(GEODUDE) \
+    F(GRAVELER) \
+    F(GOLEM) \
+    F(PONYTA) \
+    F(RAPIDASH) \
+    F(SLOWPOKE) \
+    F(SLOWBRO) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(SLOWKING)) \
+    F(MAGNEMITE) \
+    F(MAGNETON) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(MAGNEZONE)) \
+    F(FARFETCHD) \
+    KANTO_DEX_IF(P_GALARIAN_FORMS, F(SIRFETCHD)) \
+    F(DODUO) \
+    F(DODRIO) \
+    F(SEEL) \
+    F(DEWGONG) \
+    F(GRIMER) \
+    F(MUK) \
+    F(SHELLDER) \
+    F(CLOYSTER) \
+    F(GASTLY) \
+    F(HAUNTER) \
+    F(GENGAR) \
+    F(ONIX) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(STEELIX)) \
+    F(DROWZEE) \
+    F(HYPNO) \
+    F(KRABBY) \
+    F(KINGLER) \
+    F(VOLTORB) \
+    F(ELECTRODE) \
+    F(EXEGGCUTE) \
+    F(EXEGGUTOR) \
+    F(CUBONE) \
+    F(MAROWAK) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(TYROGUE)) \
+    F(HITMONLEE) \
+    F(HITMONCHAN) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(HITMONTOP)) \
+    F(LICKITUNG) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(LICKILICKY)) \
+    F(KOFFING) \
+    F(WEEZING) \
+    F(RHYHORN) \
+    F(RHYDON) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(RHYPERIOR)) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(HAPPINY)) \
+    F(CHANSEY) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(BLISSEY)) \
+    F(TANGELA) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(TANGROWTH)) \
+    F(KANGASKHAN) \
+    F(HORSEA) \
+    F(SEADRA) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(KINGDRA)) \
+    F(GOLDEEN) \
+    F(SEAKING) \
+    F(STARYU) \
+    F(STARMIE) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(MIME_JR)) \
+    F(MR_MIME) \
+    KANTO_DEX_IF(P_GALARIAN_FORMS, F(MR_RIME)) \
+    F(SCYTHER) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(SCIZOR)) \
+    KANTO_DEX_IF(P_GEN_8_CROSS_EVOS, F(KLEAVOR)) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(SMOOCHUM)) \
+    F(JYNX) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(ELEKID)) \
+    F(ELECTABUZZ) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(ELECTIVIRE)) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(MAGBY)) \
+    F(MAGMAR) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(MAGMORTAR)) \
+    F(PINSIR) \
+    F(TAUROS) \
+    F(MAGIKARP) \
+    F(GYARADOS) \
+    F(LAPRAS) \
+    F(DITTO) \
+    F(EEVEE) \
+    F(VAPOREON) \
+    F(JOLTEON) \
+    F(FLAREON) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(ESPEON)) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(UMBREON)) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(LEAFEON)) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(GLACEON)) \
+    KANTO_DEX_IF(P_GEN_6_CROSS_EVOS, F(SYLVEON)) \
+    F(PORYGON) \
+    KANTO_DEX_IF(P_GEN_2_CROSS_EVOS, F(PORYGON2)) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(PORYGON_Z)) \
+    F(OMANYTE) \
+    F(OMASTAR) \
+    F(KABUTO) \
+    F(KABUTOPS) \
+    F(AERODACTYL) \
+    KANTO_DEX_IF(P_GEN_4_CROSS_EVOS, F(MUNCHLAX)) \
+    F(SNORLAX) \
+    F(ARTICUNO) \
+    F(ZAPDOS) \
+    F(MOLTRES) \
+    F(DRATINI) \
+    F(DRAGONAIR) \
+    F(DRAGONITE) \
+    F(MEWTWO) \
+    F(MEW)
 
 // Kanto Pokedex order
 enum KantoDexOrder
@@ -1724,6 +2150,9 @@ enum KantoDexOrder
     KANTO_DEX_MEW,
 	KANTO_DEX_MELTAN,
 	KANTO_DEX_MELMETAL,
+    #define KANTO_DEX_ENUM(name) KANTO_DEX_ ##name,
+    FOREACH_SPECIES_IN_KANTO_DEX_ORDER(KANTO_DEX_ENUM)
+    #undef KANTO_DEX_ENUM
 };
 
 #define KANTO_DEX_COUNT (KANTO_DEX_MELMETAL + 1)
@@ -1731,7 +2160,7 @@ enum KantoDexOrder
 
 #define REGIONAL_DEX_COUNT (IS_FRLG ? KANTO_DEX_COUNT : HOENN_DEX_COUNT)
 
-#define DECAGRAMS_IN_POUND             4536
+#define DECAGRAMS_IN_POUND             453592
 #define CM_PER_INCH                    2.54
 #define CM_PER_INCH_FACTOR             (CM_PER_INCH * 100)
 #define INCHES_IN_FOOT                 12

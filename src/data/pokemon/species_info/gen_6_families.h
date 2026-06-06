@@ -232,7 +232,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STAMINA, ABILITY_NONE, ABILITY_BATTLE_ARMOR },
+        .abilities = { ABILITY_BULLETPROOF, ABILITY_BULLETPROOF, ABILITY_STAMINA },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Chesnaught"),
     #if P_MODIFIED_MEGA_CRIES
@@ -506,7 +506,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MAGIC_BOUNCE, ABILITY_NONE, ABILITY_MAGIC_GUARD },
+        .abilities = { ABILITY_LEVITATE, ABILITY_LEVITATE, ABILITY_MAGIC_BOUNCE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Delphox"),
     #if P_MODIFIED_MEGA_CRIES
@@ -902,7 +902,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_CLOUD_NINE, ABILITY_NONE, ABILITY_PROTEAN },
+        .abilities = { ABILITY_PROTEAN, ABILITY_PROTEAN, ABILITY_CLOUD_NINE },
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
         .speciesName = _("Greninja"),
@@ -2316,7 +2316,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_WONDER_GUARD, ABILITY_NONE, ABILITY_SYMBIOSIS },
+        .abilities = { ABILITY_FAIRY_AURA, ABILITY_FAIRY_AURA, ABILITY_WONDER_GUARD },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Floette"),
     #if P_MODIFIED_MEGA_CRIES
@@ -2940,7 +2940,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MOODY, ABILITY_NONE, ABILITY_PRANKSTER },
+        .abilities = { ABILITY_TRACE, ABILITY_TRACE, ABILITY_MOODY },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Meowstic"),
     #if P_MODIFIED_MEGA_CRIES
@@ -2997,7 +2997,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MOODY, ABILITY_NONE, ABILITY_COMPETITIVE },
+        .abilities = { ABILITY_TRACE, ABILITY_TRACE, ABILITY_MOODY },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Meowstic"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4886,7 +4886,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING, EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_MOXIE, ABILITY_NONE, ABILITY_MOLD_BREAKER },
+        .abilities = { ABILITY_NO_GUARD, ABILITY_NO_GUARD, ABILITY_MOXIE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Hawlucha"),
     #if P_MODIFIED_MEGA_CRIES

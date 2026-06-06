@@ -3404,7 +3404,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-        .abilities = { ABILITY_DROUGHT, ABILITY_NONE, ABILITY_SOLAR_POWER },
+        .abilities = { ABILITY_SPICY_SPRAY, ABILITY_SPICY_SPRAY, ABILITY_DROUGHT },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Scovillain"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4703,6 +4703,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
         .abilities = { ABILITY_FILTER, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },
+        .abilities = { ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY, ABILITY_FILTER },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Glimmora"),
     #if P_MODIFIED_MEGA_CRIES

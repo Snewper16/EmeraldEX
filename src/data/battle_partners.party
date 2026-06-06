@@ -3,14 +3,12 @@ Name:
 Class: Pkmn Trainer 1
 Pic: Brendan
 Music: Male
-Back Pic: Brendan
 
 === PARTNER_STEVEN ===
 Name: STEVEN
 Class: Rival
 Pic: Steven
 Music: Male
-Back Pic: Steven
 AI: Basic Trainer
 
 Glimmora
@@ -42,15 +40,3 @@ EVs: 6 HP/ 252 Atk / 252 Def
 - Iron Tail
 - Protect
 - Dragon Claw
-
-=== PARTNER_DUMMY ===
-Name:
-Class: Pkmn Trainer 1
-Pic: Brendan
-Gender: Male
-Music: Male
-Back Pic: Brendan
-Party Size: 0
-
-Wynaut
-

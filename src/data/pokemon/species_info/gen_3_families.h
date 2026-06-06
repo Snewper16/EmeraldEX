@@ -10344,7 +10344,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_LIGHT_METAL, ABILITY_NONE, ABILITY_SERENE_GRACE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_LEVITATE, ABILITY_SERENE_GRACE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Chimecho"),
     #if P_MODIFIED_MEGA_CRIES
@@ -10925,7 +10925,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_SNOW_WARNING, ABILITY_NONE, ABILITY_CURSED_BODY },
+        .abilities = { ABILITY_SNOW_WARNING, ABILITY_SNOW_WARNING, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Froslass"),
     #if P_MODIFIED_MEGA_CRIES

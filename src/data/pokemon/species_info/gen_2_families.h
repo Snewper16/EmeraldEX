@@ -248,7 +248,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_DAZZLING, ABILITY_NONE, ABILITY_CHLOROPHYLL },
+        .abilities = { ABILITY_MEGA_SOL, ABILITY_MEGA_SOL, ABILITY_DAZZLING },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Meganium"),
     #if P_MODIFIED_MEGA_CRIES
@@ -811,7 +811,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_STRONG_JAW, ABILITY_NONE, ABILITY_SHEER_FORCE },
+        .abilities = { ABILITY_DRAGONIZE, ABILITY_DRAGONIZE, ABILITY_STRONG_JAW },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Feraligatr"),
     #if P_MODIFIED_MEGA_CRIES
@@ -7269,7 +7269,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_MIRROR_ARMOR, ABILITY_NONE, ABILITY_STURDY },
+        .abilities = { ABILITY_STALWART, ABILITY_STALWART, ABILITY_MIRROR_ARMOR },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Skarmory"),
     #if P_MODIFIED_MEGA_CRIES
