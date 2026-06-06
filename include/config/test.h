@@ -526,8 +526,8 @@
 #define P_FAMILY_GIRATINA                TRUE
 #undef P_FAMILY_CRESSELIA
 #define P_FAMILY_CRESSELIA               TRUE
-#undef P_FAMILY_MANAPHY
-#define P_FAMILY_MANAPHY                 TRUE
+#undef P_FAMILY_PHIONE
+#define P_FAMILY_PHIONE                  TRUE
 #undef P_FAMILY_DARKRAI
 #define P_FAMILY_DARKRAI                 TRUE
 #undef P_FAMILY_SHAYMIN

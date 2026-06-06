@@ -160,10 +160,10 @@ MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:
 	.string "these for your help.$"
 
 MossdeepCity_StevensHouse_Text_ExplainMegaRing:
-	.string "STEVEN: A ring with untold power...\n"
+	.string "STEVEN: A ring with untold power…\p"
 	.string "That's what I was told when I was\n"
-	.string "given this ring, anyway. It's up to\n"
-	.string "you how to figure out how to use it.$"
+	.string "given this ring, anyway.\p"
+	.string "It's up to you how to use it.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive:
 	.string "Also, while you're using SURF, you\n"

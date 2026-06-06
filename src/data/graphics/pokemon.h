@@ -15951,7 +15951,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_CRESSELIA
 
-#if P_FAMILY_MANAPHY
+#if P_FAMILY_PHIONE
     const u32 gMonFrontPic_Phione[] = INCGFX_U32("graphics/pokemon/phione/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Phione[] = INCGFX_U16("graphics/pokemon/phione/normal.pal", ".gbapal");
     const u32 gMonBackPic_Phione[] = INCGFX_U32("graphics/pokemon/phione/back.png", ".4bpp.smol");
@@ -15988,7 +15988,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gShinyOverworldPalette_Manaphy[] = INCGFX_U16("graphics/pokemon/manaphy/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
-#endif //P_FAMILY_MANAPHY
+#endif //P_FAMILY_PHIONE
 
 #if P_FAMILY_DARKRAI
     const u32 gMonFrontPic_Darkrai[] = INCGFX_U32("graphics/pokemon/darkrai/anim_front.png", ".4bpp.smol");

@@ -11,7 +11,7 @@ gSongTable::
 	song se_pc_login, MUSIC_PLAYER_SE1, 1
 	song se_pc_off, MUSIC_PLAYER_SE1, 1
 	song se_pc_on, MUSIC_PLAYER_SE1, 1
-	song se_select, MUSIC_PLAYER_SE2, 2
+	song se_rg_bag_cursor, MUSIC_PLAYER_SE1, 1
 	song se_win_open, MUSIC_PLAYER_SE1, 1
 	song se_wall_hit, MUSIC_PLAYER_SE2, 2
 	song se_door, MUSIC_PLAYER_SE1, 1

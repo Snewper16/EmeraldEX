@@ -7052,11 +7052,11 @@ static s32 AI_Roaming(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum
     bool32 roamerCanFlee = FALSE;
 
     if (AI_CanBattlerEscape(battlerAtk))
-        roamerCanFlee = TRUE;
+        roamerCanFlee = FALSE;
     else if (gAiLogicData->abilities[battlerAtk] == ABILITY_RUN_AWAY)
-        roamerCanFlee = TRUE;
+        roamerCanFlee = FALSE;
     else if (gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_CAN_ALWAYS_RUN)
-        roamerCanFlee = TRUE;
+        roamerCanFlee = FALSE;
 
     if (!roamerCanFlee && IsBattlerTrapped(battlerDef, battlerAtk))
         return score;

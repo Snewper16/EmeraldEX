@@ -4514,7 +4514,7 @@ Cry_Cresselia::
 .endif
 .endif @ P_FAMILY_CRESSELIA
 
-.if P_FAMILY_MANAPHY == TRUE
+.if P_FAMILY_PHIONE == TRUE
 	.align 2
 Cry_Phione::
 .if TESTING == FALSE
@@ -4526,7 +4526,7 @@ Cry_Manaphy::
 .if TESTING == FALSE
 	.incbin "sound/direct_sound_samples/cries/manaphy.bin"
 .endif
-.endif @ P_FAMILY_MANAPHY
+.endif @ P_FAMILY_PHIONE
 
 .if P_FAMILY_DARKRAI == TRUE
 	.align 2

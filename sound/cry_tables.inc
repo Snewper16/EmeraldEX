@@ -1285,10 +1285,10 @@ gCryTable::
 .if P_FAMILY_CRESSELIA == TRUE
 	cry Cry_Cresselia
 .endif @ P_FAMILY_CRESSELIA
-.if P_FAMILY_MANAPHY == TRUE
+.if P_FAMILY_PHIONE == TRUE
 	cry Cry_Phione
 	cry Cry_Manaphy
-.endif @ P_FAMILY_MANAPHY
+.endif @ P_FAMILY_PHIONE
 .if P_FAMILY_DARKRAI == TRUE
 	cry Cry_Darkrai
 .if P_MODIFIED_MEGA_CRIES == TRUE
@@ -3841,10 +3841,10 @@ gCryTable_Reverse::
 .if P_FAMILY_CRESSELIA == TRUE
 	cry_reverse Cry_Cresselia
 .endif @ P_FAMILY_CRESSELIA
-.if P_FAMILY_MANAPHY == TRUE
+.if P_FAMILY_PHIONE == TRUE
 	cry_reverse Cry_Phione
 	cry_reverse Cry_Manaphy
-.endif @ P_FAMILY_MANAPHY
+.endif @ P_FAMILY_PHIONE
 .if P_FAMILY_DARKRAI == TRUE
 	cry_reverse Cry_Darkrai
 .if P_MODIFIED_MEGA_CRIES == TRUE

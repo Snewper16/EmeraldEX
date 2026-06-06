@@ -3605,14 +3605,14 @@ static const struct SpriteFrameImage sPicTable_Cresselia[] = {
 };
 #endif //P_FAMILY_CRESSELIA
 
-#if P_FAMILY_MANAPHY
+#if P_FAMILY_PHIONE
 static const struct SpriteFrameImage sPicTable_Phione[] = {
     overworld_ascending_frames(gObjectEventPic_Phione, 4, 4),
 };
 static const struct SpriteFrameImage sPicTable_Manaphy[] = {
     overworld_ascending_frames(gObjectEventPic_Manaphy, 4, 4),
 };
-#endif //P_FAMILY_MANAPHY
+#endif //P_FAMILY_PHIONE
 
 #if P_FAMILY_DARKRAI
 static const struct SpriteFrameImage sPicTable_Darkrai[] = {

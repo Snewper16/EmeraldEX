@@ -162,7 +162,7 @@ MauvilleCity_BikeShop_Text_ExplainBikes:
 	.string "And an ACRO BIKE is for those who\n"
 	.string "prefer technical rides!\p"
 	.string "I'm real generous, so you can have\n"
-	.string "them both for your convenience!$"
+	.string "them both for your convenience.$"
 
 MauvilleCity_BikeShop_Text_FeelWindInHair:
 	.string "RYDEL: Enjoy your BIKES!\n"
