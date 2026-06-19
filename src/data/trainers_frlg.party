@@ -4981,19 +4981,19 @@ Name: GIOVANNI
 Class: Boss Frlg
 Pic: Leader Giovanni Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Onix
+Rhyhorn
 Level: 25
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-Rhyhorn
+Honchkrow
 Level: 24
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-Kangaskhan
+Persian
 Level: 29
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
@@ -5002,23 +5002,23 @@ Name: GIOVANNI
 Class: Boss Frlg
 Pic: Leader Giovanni Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Nidorino
-Level: 37
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-
-Kangaskhan
+Persian
 Level: 35
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-Rhyhorn
+Honchkrow
 Level: 37
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
-Nidoqueen
+Nidoking
+Level: 37
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+
+Rhydon
 Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
@@ -5027,49 +5027,49 @@ Name: GIOVANNI
 Class: Gym Leader Frlg
 Pic: Leader Giovanni Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Rhyhorn
+Persian
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Take Down
-- Rock Blast
-- Scary Face
-- Earthquake
+- Slash
+- Screech
+- Night Slash
+- Pay Day
 
-Dugtrio
+Honchkrow
 Level: 42
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Slash
-- Sand Tomb
-- Mud Slap
-- Earthquake
+- Dark Pulse
+- Air Slash
+- Heat Wave
+- Thunder Wave
 
 Nidoqueen
 Level: 44
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Body Slam
-- Double Kick
-- Poison Sting
+- Drain Punch
+- Poison Tail
 - Earthquake
 
 Nidoking
 Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Thrash
-- Double Kick
-- Poison Sting
+- Megahorn
+- Brick Break
+- Poison Tail
 - Earthquake
 
-Rhyhorn
+Rhyperior
 Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Take Down
+- Megahorn
 - Rock Blast
-- Scary Face
+- Horn Drill
 - Earthquake
 
 === TRAINER_TEAM_ROCKET_GRUNT ===
@@ -5077,7 +5077,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5094,7 +5094,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5115,7 +5115,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5132,7 +5132,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5149,7 +5149,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5166,7 +5166,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5183,7 +5183,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5200,7 +5200,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5217,7 +5217,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5234,7 +5234,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5265,7 +5265,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5290,7 +5290,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5315,7 +5315,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5363,7 +5363,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5384,7 +5384,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5401,7 +5401,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5422,7 +5422,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5443,7 +5443,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5460,7 +5460,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5481,7 +5481,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5498,7 +5498,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5523,7 +5523,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5540,7 +5540,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5557,7 +5557,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5586,7 +5586,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5607,7 +5607,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5624,7 +5624,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5645,7 +5645,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5658,7 +5658,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5671,7 +5671,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5688,7 +5688,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5709,7 +5709,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5750,7 +5750,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5767,7 +5767,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5784,7 +5784,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5809,7 +5809,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5830,7 +5830,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5851,7 +5851,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5872,7 +5872,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5885,7 +5885,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -5914,7 +5914,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -7036,21 +7036,27 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 === TRAINER_LEADER_BROCK ===
 Name: BROCK
-Class: Gym Gym Leader Frlg
+Class: Gym Leader Frlg
 Pic: Leader Brock Frlg
 Gender: Male
 Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
+Rhyhorn
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Rock Tomb
+
 Geodude
-Level: 12
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Defense Curl
 
 Onix
-Level: 14
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Bind
@@ -7066,20 +7072,26 @@ Items: Super Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Staryu
+Horsea
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bubble
+- Icy Wind
+- Attract
+
+Goldeen
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tackle
-- Harden
-- Recover
-- Water Pulse
+- Peck
+- Tail Whip
+- Supersonic
 
 Starmie
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Swift
 - Recover
-- Rapid Spin
+- Psybeam
 - Water Pulse
 
 === TRAINER_LEADER_LT_SURGE ===
@@ -7092,18 +7104,18 @@ Items: Super Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Voltorb
+Magnemite
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sonic Boom
 - Tackle
-- Screech
+- Magnet Bomb
 - Shock Wave
 
-Pikachu
+Elekid
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Quick Attack
+- Charge
 - Thunder Wave
 - Double Team
 - Shock Wave
@@ -7127,27 +7139,35 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Victreebel
-Level: 29
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Stun Spore
+- Protect
 - Acid
 - Poison Powder
 - Giga Drain
 
-Tangela
-Level: 24
+Bellossom
+Level: 28
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Powder
-- Constrict
-- Ingrain
+- Sunny Day
+- Growth
+- Synthesis
 - Giga Drain
 
 Vileplume
-Level: 29
+Level: 28
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sleep Powder
+- Protect
 - Acid
-- Stun Spore
+- Double Team
+- Giga Drain
+
+Tangrowth
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Ancient Power
+- Bind
+- Toxic
 - Giga Drain
 
 === TRAINER_LEADER_KOGA ===
@@ -7160,12 +7180,12 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Koffing
-Level: 37
+Arbok
+Level: 39
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Self Destruct
-- Sludge
-- Smokescreen
+- Glare
+- Constrict
+- Protect
 - Toxic
 
 Muk
@@ -7176,20 +7196,20 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Acid Armor
 - Toxic
 
-Koffing
-Level: 37
+Weezing
+Level: 39
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Self Destruct
 - Sludge
 - Smokescreen
 - Toxic
 
-Weezing
+Crobat
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tackle
-- Sludge
-- Smokescreen
+- Wing Attack
+- Poison Fang
+- Protect
 - Toxic
 
 === TRAINER_LEADER_BLAINE ===
@@ -7202,21 +7222,21 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Growlithe
-Level: 42
+Ninetales
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Bite
-- Roar
-- Take Down
+- Confuse Ray
+- Shadow Ball
+- Quick Attack
 - Fire Blast
 
-Ponyta
-Level: 40
+Arcannine
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Stomp
-- Bounce
-- Fire Spin
-- Fire Blast
+- Extreme Speed
+- Take Down
+- Thunder Fang
+- Flare Blitz
 
 Rapidash
 Level: 42
@@ -7226,12 +7246,20 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Spin
 - Fire Blast
 
-Arcanine
-Level: 47
+Flareon
+Level: 44
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
-- Roar
-- Take Down
+- Dig
+- Quick Attack
+- Flare Blitz
+
+Magmortar
+Level: 45
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sunny Day
+- Solar Beam
+- Thunderbolt
 - Fire Blast
 
 === TRAINER_LEADER_SABRINA ===
@@ -7244,13 +7272,13 @@ Items: Hyper Potion / Hyper Potion / Full Heal
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kadabra
+Slowbro
 Level: 38
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psybeam
+- Light Screen
 - Reflect
 - Future Sight
-- Calm Mind
+- Scald
 
 Mr Mime
 Level: 37
@@ -7260,18 +7288,18 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Baton Pass
 - Calm Mind
 
-Venomoth
+Espeon
 Level: 38
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psybeam
-- Gust
-- Leech Life
-- Supersonic
+- Morning Sun
+- Protect
+- Dazzling Gleam
 
 Alakazam
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psychic
+- Shadow Ball
 - Recover
 - Future Sight
 - Calm Mind
@@ -8400,8 +8428,8 @@ Pidgey
 Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_PICNICKER_ARIANA ===
-Name: ARIANA
+=== TRAINER_PICNICKER_JULIE ===
+Name: JULIE
 Class: Picnicker Frlg
 Pic: Picnicker Frlg
 Gender: Male
@@ -8956,7 +8984,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt F Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9371,7 +9399,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9388,7 +9416,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9413,7 +9441,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9434,7 +9462,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9455,7 +9483,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9476,7 +9504,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -9488,73 +9516,73 @@ Hypno
 Level: 49
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_TEAM_ROCKET_ADMIN ===
-Name: ADMIN
+=== TRAINER_TEAM_ROCKET_ARIANA ===
+Name: ARIANA
 Class: Team Rocket Frlg
 Pic: Rocket Grunt F Frlg
-Gender: Male
-Music: Aqua
+Gender: Female
+Music: Suspicious
 Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Muk
+Fearow
 Level: 52
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sludge Bomb
-- Screech
-- Minimize
-- Rock Tomb
+- Drill Peck
+- Steel Wing
+- Drill Run
+- Tailwind
 
 Arbok
 Level: 53
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sludge Bomb
-- Bite
+- Poison Fang
+- Crunch
 - Earthquake
 - Iron Tail
 
 Vileplume
 Level: 54
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sludge Bomb
+- Toxic
+- Venoshock
 - Giga Drain
-- Sleep Powder
-- Stun Spore
+- Moonblast
 
-=== TRAINER_TEAM_ROCKET_ADMIN_2 ===
-Name: ADMIN
+=== TRAINER_TEAM_ROCKET_ADMIN_ARCHER ===
+Name: ARCHER
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Golbat
+Scizor
 Level: 53
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Confuse Ray
-- Sludge Bomb
-- Air Cutter
-- Shadow Ball
+- Bullet Punch
+- Fury Cutter
+- Quick Attack
+- Swords Dance
 
 Weezing
 Level: 54
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sludge Bomb
 - Thunderbolt
-- Explosion
+- Flamethrower
 - Shadow Ball
 
 Houndoom
 Level: 55
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Flamethrower
-- Crunch
-- Iron Tail
+- Fire Blast
+- Dark Pulse
 - Shadow Ball
+- Nasty Plot
 
 === TRAINER_SCIENTIST_GIDEON ===
 Name: GIDEON
@@ -9565,37 +9593,21 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Voltorb
+Magnezone
 Level: 46
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Swift
-- Screech
-- Spark
-- Sonic Boom
+- Flash Cannon
+- Thunderbolt
+- Hyper Beam
+- Protect
 
 Electrode
 Level: 46
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Spark
-- Sonic Boom
+- Magnet Rise
 - Screech
 - Charge
-
-Magnemite
-Level: 46
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Screech
-- Swift
-- Spark
-- Thunder Wave
-
-Magneton
-Level: 46
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tri Attack
-- Spark
-- Thunder Wave
-- Sonic Boom
 
 Porygon
 Level: 46
@@ -9604,6 +9616,22 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Conversion
 - Recover
 - Psybeam
+
+Porygon2
+Level: 46
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tri Attack
+- Conversion2
+- Recover
+- Shadow Ball
+
+Porygon-Z
+Level: 46
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tri Attack
+- Shadow Ball
+- Ice Beam
+- Thunderbolt
 
 === TRAINER_SWIMMER_FEMALE_AMARA ===
 Name: AMARA
@@ -10016,7 +10044,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -10037,7 +10065,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt M Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
@@ -10062,7 +10090,7 @@ Name: GRUNT
 Class: Team Rocket Frlg
 Pic: Rocket Grunt F Frlg
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
