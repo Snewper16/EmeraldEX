@@ -6444,23 +6444,23 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Blizzard
 - Double Team
 
-Milotic @ Flame Orb
+Basculegion-M @ Leftovers
 Level: 58
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Last Respects
+- Wave Crash
+- Ice Fang
+- Psychic Fangs
+
+Milotic @ Flame Orb
+Level: 60
 Ability: Marvel Scale
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Aqua Ring
 - Recover
+- Protect
 - Ice Beam
 - Hydro Pump
-
-Ogerpon-Wellspring @ Wellspring Mask
-Level: 60
-Ability: Water Absorb
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Ivy Cudgel
-- Horn Leech
-- Play Rough
-- Spiky Shield
 
 Starmie @ Starminite
 Level: 60
