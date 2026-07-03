@@ -32,7 +32,6 @@ RemoteShrine_EventScript_Regigigas::
 	setwildbattle SPECIES_REGIGIGAS, 70
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special StartRegiBattle
-	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RemoteShrine_EventScript_DefeatedRegigigas
