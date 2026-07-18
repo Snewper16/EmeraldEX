@@ -156,8 +156,8 @@ MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:
 	.string "but this is my home.\p"
 	.string "Thank you for all that you've done.\p"
 	.string "These are a token of my appreciation.\n"
-	.string "No need to be shy--you've earned\n"
-	.string "these for your help.$"
+	.string "No need to be shy.\p"
+	.string "You've earned these for your help.$"
 
 MossdeepCity_StevensHouse_Text_ExplainMegaRing:
 	.string "STEVEN: A ring with untold power…\p"
